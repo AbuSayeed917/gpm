@@ -1,28 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  Container,
-  Card,
-  CardContent,
-  Avatar,
-  Chip,
-  Divider
-} from '@mui/material';
-import {
   Business,
+  TrendingUp,
   AccessTime,
   MonetizationOn,
-  Star
+  Star,
+  CheckCircle,
+  ArrowForward,
+  Phone,
+  Timeline,
+  Speed,
+  Support,
+  Analytics
 } from '@mui/icons-material';
-import { motion } from 'framer-motion';
-import AppleBackground from '../components/AppleBackground';
-
-const MotionDiv = motion.div;
-const MotionCard = motion(Card);
 
 const SMESuccessStories = () => {
   const stories = [
@@ -36,7 +27,7 @@ const SMESuccessStories = () => {
       solution: "Migrated to cloud-based system with automated tax calculations and real-time processing capabilities.",
       results: [
         "Reduced payroll processing time from 3 days to 2 hours",
-        "100% accuracy in tax calculations",
+        "100% accuracy in tax calculations", 
         "40% reduction in HR administrative overhead",
         "Improved employee satisfaction with self-service portal"
       ],
@@ -54,7 +45,7 @@ const SMESuccessStories = () => {
     },
     {
       company: "Green Manufacturing Ltd",
-      industry: "Manufacturing",
+      industry: "Manufacturing", 
       size: "120 employees",
       location: "Birmingham, UK",
       avatar: "GM",
@@ -81,7 +72,7 @@ const SMESuccessStories = () => {
     {
       company: "Creative Agency Plus",
       industry: "Marketing & Advertising",
-      size: "45 employees",
+      size: "45 employees", 
       location: "London, UK",
       avatar: "CA",
       challenge: "Freelancer and contractor payments scattered across multiple systems, causing cash flow tracking issues.",
@@ -103,335 +94,330 @@ const SMESuccessStories = () => {
         costReduction: "35%",
         implementation: "4 weeks"
       }
-    },
-    {
-      company: "HealthCare Partners",
-      industry: "Healthcare",
-      size: "95 employees",
-      location: "Edinburgh, UK",
-      avatar: "HP",
-      challenge: "Complex shift patterns for medical staff and strict compliance requirements for healthcare worker regulations.",
-      solution: "Specialized healthcare payroll system with automated compliance checking and flexible shift management.",
-      results: [
-        "Automated compliance with healthcare regulations",
-        "Flexible scheduling for medical staff shifts",
-        "Reduced compliance audit preparation time by 90%",
-        "Improved staff satisfaction with transparent pay calculations"
-      ],
-      quote: "The system understands the complexity of healthcare payroll. Compliance is now automatic, and our staff trust their pay calculations completely.",
-      testimonial: {
-        name: "Dr. James Wilson",
-        role: "Practice Manager",
-        rating: 5
-      },
-      metrics: {
-        timeSaved: "85%",
-        costReduction: "28%",
-        implementation: "10 weeks"
-      }
     }
   ];
 
   const stats = [
-    { number: "150+", label: "SMEs Migrated", icon: <Business /> },
-    { number: "98%", label: "Success Rate", icon: <Star /> },
-    { number: "6 weeks", label: "Avg Implementation", icon: <AccessTime /> },
-    { number: "£50K", label: "Avg Annual Savings", icon: <MonetizationOn /> }
+    {
+      value: "150+",
+      label: "SME Migrations",
+      description: "Successful small to medium enterprise projects",
+      icon: <Business sx={{ fontSize: 24, color: 'var(--color-primary)' }} />
+    },
+    {
+      value: "6.5 weeks",
+      label: "Average Timeline", 
+      description: "From planning to go-live for SME projects",
+      icon: <AccessTime sx={{ fontSize: 24, color: 'var(--color-success-60)' }} />
+    },
+    {
+      value: "32%",
+      label: "Cost Savings",
+      description: "Average operational cost reduction",
+      icon: <MonetizationOn sx={{ fontSize: 24, color: 'var(--color-tertiary)' }} />
+    },
+    {
+      value: "98.5%",
+      label: "Success Rate",
+      description: "Projects completed on time and budget",
+      icon: <TrendingUp sx={{ fontSize: 24, color: 'var(--color-warning-60)' }} />
+    }
+  ];
+
+  const benefits = [
+    {
+      icon: <Speed sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Rapid Implementation",
+      description: "Streamlined processes designed specifically for SME requirements with minimal disruption to operations."
+    },
+    {
+      icon: <Support sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Dedicated Support",
+      description: "Personal project manager and UK-based support team available throughout the migration process."
+    },
+    {
+      icon: <Analytics sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Cost-Effective Solutions",
+      description: "Tailored packages that deliver enterprise-level functionality within SME budgets and constraints."
+    },
+    {
+      icon: <CheckCircle sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Proven Results",
+      description: "Track record of successful migrations for companies from 10 to 500 employees across all industries."
+    }
   ];
 
   return (
-    <AppleBackground>
-    <Box>
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        {/* Hero Section */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
-        >
-          <Business sx={{ fontSize: 80, color: 'primary.main', mb: 2 }} />
-          <Typography 
-            variant="h1" 
-            component="h1"
-            sx={{ 
-              mb: 3,
-              background: 'linear-gradient(135deg, #007AFF 0%, #5856D6 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontWeight: 700
-            }}
-          >
-            SME Success Stories
-          </Typography>
-          <Typography 
-            variant="h5" 
-            color="text.secondary" 
-            sx={{ maxWidth: '700px', mx: 'auto', mb: 6 }}
-          >
-            Discover how small and medium enterprises have transformed their payroll operations 
-            with our tailored migration solutions.
-          </Typography>
-        </MotionDiv>
+    <div className="surface">
+      {/* Hero Section */}
+      <section className="py-20 lg:py-32 surface-container">
+        <div className="container">
+          <div className="text-center">
+            <div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+              style={{ backgroundColor: 'var(--color-primary-container)' }}
+            >
+              <Business sx={{ fontSize: 20, color: 'var(--color-primary)' }} />
+              <span className="body-small font-medium text-primary">SME Success Stories</span>
+            </div>
+            
+            <h1 className="display-large mb-6 text-on-surface">
+              Small to Medium Enterprise <span className="text-primary">Migration Success</span>
+            </h1>
+            
+            <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
+              Real stories from SME clients who transformed their payroll operations with our tailored migration services. 
+              See how we help growing businesses streamline processes and reduce costs.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        {/* Stats Section */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{ marginBottom: '4rem' }}
-        >
-          <Grid container spacing={4}>
+      {/* Stats Section */}
+      <section className="py-16 surface-variant">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="display-medium mb-4 text-on-surface">SME Migration Results</h2>
+            <p className="body-large text-on-surface-variant">
+              Key metrics from our small to medium enterprise payroll migrations
+            </p>
+          </div>
+
+          <div className="grid grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <Grid item xs={6} md={3} key={stat.label}>
-                <MotionDiv
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  style={{ textAlign: 'center' }}
-                >
-                  <Box sx={{ mb: 2 }}>
-                    {React.cloneElement(stat.icon, { 
-                      sx: { fontSize: 40, color: 'primary.main' } 
-                    })}
-                  </Box>
-                  <Typography 
-                    variant="h3" 
-                    component="div" 
-                    sx={{ 
-                      fontWeight: 700, 
-                      color: 'primary.main',
-                      mb: 1 
-                    }}
-                  >
-                    {stat.number}
-                  </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ fontWeight: 600 }}>
-                    {stat.label}
-                  </Typography>
-                </MotionDiv>
-              </Grid>
+              <div key={index} className="card text-center p-6">
+                <div className="flex justify-center mb-4">
+                  {stat.icon}
+                </div>
+                <div className="display-small mb-2 text-primary">{stat.value}</div>
+                <h3 className="title-medium mb-2 text-on-surface">{stat.label}</h3>
+                <p className="body-small text-on-surface-variant">{stat.description}</p>
+              </div>
             ))}
-          </Grid>
-        </MotionDiv>
+          </div>
+        </div>
+      </section>
 
-        {/* Success Stories */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{ marginBottom: '4rem' }}
-        >
-          <Typography variant="h2" component="h2" sx={{ textAlign: 'center', mb: 6 }}>
-            Real SME Transformations
-          </Typography>
-          <Grid container spacing={4}>
+      {/* Success Stories */}
+      <section className="py-20 surface">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Client Success Stories</h2>
+            <p className="body-large text-on-surface-variant">
+              Real transformations from SME clients across different industries
+            </p>
+          </div>
+
+          <div className="space-y-12">
             {stories.map((story, index) => (
-              <Grid item xs={12} key={story.company}>
-                <MotionCard
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  sx={{ 
-                    transition: 'transform 0.3s ease',
-                    '&:hover': { transform: 'translateY(-4px)' }
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    {/* Company Header */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Avatar 
-                        sx={{ 
-                          width: 60, 
-                          height: 60, 
-                          bgcolor: 'primary.main', 
-                          fontSize: '1.5rem',
-                          mr: 3 
-                        }}
+              <div key={index} className="card p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Company Info */}
+                  <div className="lg:col-span-1">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div 
+                        className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-on-primary"
+                        style={{ backgroundColor: 'var(--color-primary)' }}
                       >
                         {story.avatar}
-                      </Avatar>
-                      <Box sx={{ flexGrow: 1 }}>
-                        <Typography variant="h4" component="h3" sx={{ fontWeight: 600, mb: 1 }}>
-                          {story.company}
-                        </Typography>
-                        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                          <Chip label={story.industry} color="primary" variant="outlined" size="small" />
-                          <Chip label={story.size} color="secondary" variant="outlined" size="small" />
-                          <Chip label={story.location} variant="outlined" size="small" />
-                        </Box>
-                      </Box>
-                      
-                      {/* Quick Metrics */}
-                      <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 3, textAlign: 'center' }}>
-                        <Box>
-                          <Typography variant="h6" color="success.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.timeSaved}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Time Saved
-                          </Typography>
-                        </Box>
-                        <Box>
-                          <Typography variant="h6" color="success.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.costReduction}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Cost Reduction
-                          </Typography>
-                        </Box>
-                        <Box>
-                          <Typography variant="h6" color="info.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.implementation}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Implementation
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Box>
+                      </div>
+                      <div>
+                        <h3 className="headline-small text-on-surface">{story.company}</h3>
+                        <p className="body-medium text-on-surface-variant">{story.industry}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3 mb-6">
+                      <div className="flex justify-between">
+                        <span className="body-medium text-on-surface-variant">Size:</span>
+                        <span className="body-medium text-on-surface">{story.size}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="body-medium text-on-surface-variant">Location:</span>
+                        <span className="body-medium text-on-surface">{story.location}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="body-medium text-on-surface-variant">Timeline:</span>
+                        <span className="body-medium text-on-surface">{story.metrics.implementation}</span>
+                      </div>
+                    </div>
 
-                    <Divider sx={{ mb: 3 }} />
-
-                    <Grid container spacing={3}>
-                      <Grid item xs={12} md={4}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'error.main' }}>
-                          Challenge
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {story.challenge}
-                        </Typography>
-                      </Grid>
-                      
-                      <Grid item xs={12} md={4}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'info.main' }}>
-                          Solution
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {story.solution}
-                        </Typography>
-                      </Grid>
-                      
-                      <Grid item xs={12} md={4}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'success.main' }}>
-                          Results
-                        </Typography>
-                        <Box component="ul" sx={{ pl: 2, m: 0 }}>
-                          {story.results.map((result, idx) => (
-                            <Typography component="li" variant="body2" color="text.secondary" key={idx} sx={{ mb: 0.5 }}>
-                              {result}
-                            </Typography>
+                    {/* Metrics */}
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <div className="headline-small text-primary">{story.metrics.timeSaved}</div>
+                        <div className="body-small text-on-surface-variant">Time Saved</div>
+                      </div>
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <div className="headline-small text-primary">{story.metrics.costReduction}</div>
+                        <div className="body-small text-on-surface-variant">Cost Reduction</div>
+                      </div>
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <div className="flex justify-center gap-1">
+                          {[...Array(story.testimonial.rating)].map((_, i) => (
+                            <Star key={i} sx={{ fontSize: 16, color: 'var(--color-warning-60)' }} />
                           ))}
-                        </Box>
-                      </Grid>
-                    </Grid>
+                        </div>
+                        <div className="body-small text-on-surface-variant">Rating</div>
+                      </div>
+                    </div>
+                  </div>
 
-                    <Divider sx={{ my: 3 }} />
+                  {/* Story Content */}
+                  <div className="lg:col-span-2">
+                    <div className="space-y-6">
+                      {/* Challenge */}
+                      <div>
+                        <h4 className="title-large mb-3 text-on-surface">Challenge</h4>
+                        <p className="body-large text-on-surface-variant">{story.challenge}</p>
+                      </div>
 
-                    {/* Testimonial */}
-                    <Box sx={{ bgcolor: 'grey.50', p: 3, borderRadius: 2 }}>
-                      <Typography variant="body1" sx={{ fontStyle: 'italic', mb: 2 }}>
-                        "{story.quote}"
-                      </Typography>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Box>
-                          <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
-                            {story.testimonial.name}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            {story.testimonial.role}
-                          </Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', gap: 0.5 }}>
-                          {[...Array(story.testimonial.rating)].map((_, idx) => (
-                            <Star key={idx} sx={{ color: '#F59E0B', fontSize: 20 }} />
+                      {/* Solution */}
+                      <div>
+                        <h4 className="title-large mb-3 text-on-surface">Solution</h4>
+                        <p className="body-large text-on-surface-variant">{story.solution}</p>
+                      </div>
+
+                      {/* Results */}
+                      <div>
+                        <h4 className="title-large mb-3 text-on-surface">Results</h4>
+                        <ul className="space-y-2">
+                          {story.results.map((result, resultIndex) => (
+                            <li key={resultIndex} className="flex items-start gap-3">
+                              <CheckCircle sx={{ fontSize: 20, color: 'var(--color-success-60)', mt: 0.25 }} />
+                              <span className="body-medium text-on-surface-variant">{result}</span>
+                            </li>
                           ))}
-                        </Box>
-                      </Box>
-                    </Box>
-                  </CardContent>
-                </MotionCard>
-              </Grid>
+                        </ul>
+                      </div>
+
+                      {/* Testimonial */}
+                      <div className="p-6 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <blockquote className="body-large text-on-surface-variant italic mb-4">
+                          "{story.quote}"
+                        </blockquote>
+                        <div className="flex items-center gap-3">
+                          <div 
+                            className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-on-primary"
+                            style={{ backgroundColor: 'var(--color-primary)' }}
+                          >
+                            {story.testimonial.name.split(' ').map(n => n[0]).join('')}
+                          </div>
+                          <div>
+                            <div className="title-medium text-on-surface">{story.testimonial.name}</div>
+                            <div className="body-small text-on-surface-variant">{story.testimonial.role}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
-          </Grid>
-        </MotionDiv>
+          </div>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <Card sx={{ 
-            background: 'linear-gradient(135deg, #007AFF 0%, #5856D6 100%)',
-            color: 'white',
-            textAlign: 'center',
-            p: 4
+      {/* Benefits Section */}
+      <section className="py-20 surface-container">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Why SMEs Choose Us</h2>
+            <p className="body-large text-on-surface-variant">
+              Specialized expertise and tailored solutions for growing businesses
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="card p-6">
+                <div className="flex items-start gap-6">
+                  <div 
+                    className="p-3 rounded-lg flex-shrink-0"
+                    style={{ backgroundColor: 'var(--color-primary-container)' }}
+                  >
+                    {benefit.icon}
+                  </div>
+                  <div>
+                    <h3 className="headline-small mb-3 text-on-surface">{benefit.title}</h3>
+                    <p className="body-medium text-on-surface-variant">{benefit.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 surface-variant">
+        <div className="container">
+          <div className="card p-12 text-center" style={{
+            background: 'linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-secondary-container) 100%)'
           }}>
-            <CardContent>
-              <Typography variant="h3" component="h2" sx={{ mb: 3, color: 'white' }}>
-                Ready to Join These Success Stories?
-              </Typography>
-              <Typography variant="h6" sx={{ mb: 4, color: 'rgba(255,255,255,0.9)' }}>
-                Transform your SME's payroll operations with our proven migration expertise. 
-                Get started with a free consultation today.
-              </Typography>
-              <Grid container spacing={3} justifyContent="center">
-                <Grid item>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    component={Link}
-                    to="/contact"
-                    sx={{ 
-                      bgcolor: 'white',
-                      color: 'primary.main',
-                      px: 4,
-                      py: 1.5,
-                      '&:hover': { 
-                        bgcolor: 'grey.100',
-                        transform: 'translateY(-2px)'
-                      }
-                    }}
-                  >
-                    Start Your Migration
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    component={Link}
-                    to="/services/sme"
-                    sx={{ 
-                      borderColor: 'white',
-                      color: 'white',
-                      px: 4,
-                      py: 1.5,
-                      '&:hover': { 
-                        bgcolor: 'rgba(255,255,255,0.1)',
-                        borderColor: 'white',
-                        color: 'white',
-                        transform: 'translateY(-2px)'
-                      }
-                    }}
-                  >
-                    View SME Services
-                  </Button>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </MotionDiv>
-      </Container>
-    </Box>
-    </AppleBackground>
+            <h2 className="display-medium mb-6 text-on-surface">
+              Ready for Your SME Migration?
+            </h2>
+            <p className="body-large mb-8 text-on-surface-variant max-w-2xl mx-auto">
+              Join these successful SME clients who transformed their payroll operations. 
+              Get a free consultation tailored to your business size and requirements.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="btn-primary">
+                <Phone sx={{ fontSize: 20 }} />
+                Get Free SME Consultation
+              </Link>
+              <Link to="/services/sme" className="btn-outlined">
+                <ArrowForward sx={{ fontSize: 20 }} />
+                Learn About SME Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Success Stories */}
+      <section className="py-20 surface">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">More Success Stories</h2>
+            <p className="body-large text-on-surface-variant">
+              Explore success stories from different business segments
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8">
+            <div className="card-elevated p-8 text-center transition-all duration-300">
+              <div className="flex justify-center mb-6">
+                <Timeline sx={{ fontSize: 48, color: 'var(--color-secondary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Large Enterprise Stories</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Complex multi-country migrations for enterprise organizations
+              </p>
+              <Link to="/success-stories/large-enterprise" className="btn-outlined w-full">
+                View Enterprise Stories
+                <ArrowForward sx={{ fontSize: 18 }} />
+              </Link>
+            </div>
+            
+            <div className="card-elevated p-8 text-center transition-all duration-300">
+              <div className="flex justify-center mb-6">
+                <Support sx={{ fontSize: 48, color: 'var(--color-tertiary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Consultancy Stories</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Strategic guidance and optimization without full migration
+              </p>
+              <Link to="/success-stories/consultancy" className="btn-outlined w-full">
+                View Consultancy Stories
+                <ArrowForward sx={{ fontSize: 18 }} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

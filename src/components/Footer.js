@@ -1,17 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Button,
-  Stack,
-  Divider,
-  IconButton,
-  Chip
-} from '@mui/material';
-import {
   Language,
   Security,
   Public,
@@ -28,290 +17,240 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <Box component="footer" sx={{ 
-      background: 'linear-gradient(135deg, rgba(0, 122, 255, 0.05) 0%, rgba(88, 86, 214, 0.05) 100%)',
-      pt: 8, 
-      pb: 4,
-      borderTop: '1px solid rgba(0, 0, 0, 0.1)'
-    }}>
-      <Container maxWidth="lg">
-        <Grid container spacing={4}>
+    <footer className="surface-container gradient-subtle py-12 md:py-16">
+      <div className="container">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Company Section */}
-          <Grid item xs={12} md={4}>
-            <Box sx={{ mb: 3 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Language sx={{ color: 'primary.main', mr: 1 }} />
-                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+          <div className="lg:col-span-2">
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-4">
+                <Language sx={{ fontSize: 28, color: 'var(--color-primary)' }} />
+                <h3 className="title-large text-on-surface">
                   Global Payroll Migration
-                </Typography>
-              </Box>
-              <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3, lineHeight: 1.6 }}>
+                </h3>
+              </div>
+              <p className="body-medium text-on-surface-variant mb-6 leading-relaxed max-w-md">
                 UK-based payroll migration specialists trusted by Fortune 500 companies 
                 worldwide. Zero downtime guaranteed.
-              </Typography>
-              <Stack direction="row" spacing={1} flexWrap="wrap" sx={{ gap: 1 }}>
-                <Chip 
-                  icon={<Security sx={{ fontSize: '16px !important' }} />}
-                  label="ISO 27001 Certified" 
-                  variant="outlined" 
-                  size="small"
-                />
-                <Chip 
-                  icon={<Public sx={{ fontSize: '16px !important' }} />}
-                  label="Global Coverage" 
-                  variant="outlined" 
-                  size="small"
-                />
-                <Chip 
-                  icon={<Support sx={{ fontSize: '16px !important' }} />}
-                  label="24/7 Support" 
-                  variant="outlined" 
-                  size="small"
-                />
-              </Stack>
-            </Box>
-          </Grid>
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full surface-container-high">
+                  <Security sx={{ fontSize: 16, color: 'var(--color-primary)' }} />
+                  <span className="body-small text-on-surface">ISO 27001 Certified</span>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full surface-container-high">
+                  <Public sx={{ fontSize: 16, color: 'var(--color-tertiary)' }} />
+                  <span className="body-small text-on-surface">Global Coverage</span>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full surface-container-high">
+                  <Support sx={{ fontSize: 16, color: 'var(--color-primary)' }} />
+                  <span className="body-small text-on-surface">24/7 Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Services Section */}
-          <Grid item xs={12} sm={6} md={2}>
-            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+          <div>
+            <h4 className="title-medium text-on-surface mb-4">
               Services
-            </Typography>
-            <Stack spacing={1}>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+            </h4>
+            <div className="space-y-3">
+              <Link 
                 to="/services/sme" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 SME Solutions
-              </Typography>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+              </Link>
+              <Link 
                 to="/services/large-enterprise" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 Large Enterprise
-              </Typography>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+              </Link>
+              <Link 
                 to="/services/consultancy" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 Expert Consultancy
-              </Typography>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+              </Link>
+              <Link 
                 to="/quote" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 Get Quote
-              </Typography>
-            </Stack>
-          </Grid>
+              </Link>
+            </div>
+          </div>
 
           {/* Success Stories Section */}
-          <Grid item xs={12} sm={6} md={2}>
-            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+          <div>
+            <h4 className="title-medium text-on-surface mb-4">
               Success Stories
-            </Typography>
-            <Stack spacing={1}>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+            </h4>
+            <div className="space-y-3">
+              <Link 
                 to="/success-stories/sme" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 SME Case Studies
-              </Typography>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+              </Link>
+              <Link 
                 to="/success-stories/large-enterprise" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 Enterprise Stories
-              </Typography>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+              </Link>
+              <Link 
                 to="/success-stories/consultancy" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 Consultancy Results
-              </Typography>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+              </Link>
+              <Link 
                 to="/success-stories" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 All Success Stories
-              </Typography>
-            </Stack>
-          </Grid>
+              </Link>
+            </div>
+          </div>
 
           {/* Company Links Section */}
-          <Grid item xs={12} sm={6} md={2}>
-            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+          <div>
+            <h4 className="title-medium text-on-surface mb-4">
               Company
-            </Typography>
-            <Stack spacing={1}>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+            </h4>
+            <div className="space-y-3">
+              <Link 
                 to="/about" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 About Us
-              </Typography>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+              </Link>
+              <Link 
                 to="/faq" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 FAQ
-              </Typography>
-              <Typography 
-                variant="body2" 
-                component={Link} 
+              </Link>
+              <Link 
                 to="/contact" 
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 Contact
-              </Typography>
-              <Typography 
-                variant="body2" 
-                component="a"
+              </Link>
+              <a 
                 href="/careers"
                 target="_blank"
                 rel="noopener noreferrer"
-                sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                className="block body-medium text-on-surface-variant hover:text-primary transition-colors duration-200"
               >
                 Careers
-              </Typography>
-            </Stack>
-          </Grid>
+              </a>
+            </div>
+          </div>
 
           {/* Contact Section */}
-          <Grid item xs={12} md={2}>
-            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+          <div>
+            <h4 className="title-medium text-on-surface mb-4">
               Get Started
-            </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
+            </h4>
+            <p className="body-medium text-on-surface-variant mb-4">
               Ready to migrate your payroll system with zero downtime?
-            </Typography>
-            <Button 
-              variant="contained" 
-              component={Link} 
-              to="/quote"
-              size="small"
-              sx={{ mb: 3 }}
+            </p>
+            <Link 
+              to="/quote" 
+              className="btn-gradient inline-flex items-center gap-2 mb-6"
             >
               Get Free Quote
-            </Button>
-            <Stack spacing={1}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Phone sx={{ fontSize: 16, color: 'text.secondary' }} />
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            </Link>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <Phone sx={{ fontSize: 16, color: 'var(--color-on-surface-variant)' }} />
+                <span className="body-small text-on-surface-variant">
                   +44 20 1234 5678
-                </Typography>
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Email sx={{ fontSize: 16, color: 'text.secondary' }} />
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Email sx={{ fontSize: 16, color: 'var(--color-on-surface-variant)' }} />
+                <span className="body-small text-on-surface-variant">
                   hello@gpm.co.uk
-                </Typography>
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Schedule sx={{ fontSize: 16, color: 'text.secondary' }} />
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Schedule sx={{ fontSize: 16, color: 'var(--color-on-surface-variant)' }} />
+                <span className="body-small text-on-surface-variant">
                   2 hour response
-                </Typography>
-              </Box>
-            </Stack>
-          </Grid>
-        </Grid>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Bottom Section */}
-        <Divider sx={{ my: 4 }} />
-        
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
-          <Box>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              &copy; {currentYear} Global Payroll Migration Ltd. All rights reserved.
-            </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              Registered in England & Wales. Company No: 12345678
-            </Typography>
-          </Box>
+        <div className="border-t border-outline-variant mt-12 pt-8">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+            <div>
+              <p className="body-small text-on-surface-variant mb-1">
+                &copy; {currentYear} Global Payroll Migration Ltd. All rights reserved.
+              </p>
+              <p className="body-small text-on-surface-variant">
+                Registered in England & Wales. Company No: 12345678
+              </p>
+            </div>
 
-          <Stack direction="row" spacing={2}>
-            <Typography 
-              variant="body2" 
-              component={Link} 
-              to="/privacy" 
-              sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
-            >
-              Privacy Policy
-            </Typography>
-            <Typography 
-              variant="body2" 
-              component={Link} 
-              to="/terms" 
-              sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
-            >
-              Terms of Service
-            </Typography>
-            <Typography 
-              variant="body2" 
-              component={Link} 
-              to="/cookies" 
-              sx={{ color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
-            >
-              Cookie Policy
-            </Typography>
-          </Stack>
+            <div className="flex flex-wrap gap-6">
+              <Link 
+                to="/privacy" 
+                className="body-small text-on-surface-variant hover:text-primary transition-colors duration-200"
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                to="/terms" 
+                className="body-small text-on-surface-variant hover:text-primary transition-colors duration-200"
+              >
+                Terms of Service
+              </Link>
+              <Link 
+                to="/cookies" 
+                className="body-small text-on-surface-variant hover:text-primary transition-colors duration-200"
+              >
+                Cookie Policy
+              </Link>
+            </div>
 
-          <Stack direction="row" spacing={1}>
-            <IconButton 
-              component="a"
-              href="https://linkedin.com/company/globalpayrollmigration" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              size="small"
-              sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}
-            >
-              <LinkedIn />
-            </IconButton>
-            <IconButton 
-              component="a"
-              href="https://twitter.com/globalpayrollmigration" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              size="small"
-              sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}
-            >
-              <Twitter />
-            </IconButton>
-            <IconButton 
-              component="a"
-              href="https://youtube.com/@globalpayrollmigration" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              size="small"
-              sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}
-            >
-              <YouTube />
-            </IconButton>
-          </Stack>
-        </Box>
-      </Container>
-    </Box>
+            <div className="flex gap-3">
+              <a 
+                href="https://linkedin.com/company/globalpayrollmigration" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-full hover:bg-surface-container-high transition-colors duration-200"
+              >
+                <LinkedIn sx={{ fontSize: 20, color: 'var(--color-on-surface-variant)' }} />
+              </a>
+              <a 
+                href="https://twitter.com/globalpayrollmigration" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-full hover:bg-surface-container-high transition-colors duration-200"
+              >
+                <Twitter sx={{ fontSize: 20, color: 'var(--color-on-surface-variant)' }} />
+              </a>
+              <a 
+                href="https://youtube.com/@globalpayrollmigration" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-full hover:bg-surface-container-high transition-colors duration-200"
+              >
+                <YouTube sx={{ fontSize: 20, color: 'var(--color-on-surface-variant)' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };
 

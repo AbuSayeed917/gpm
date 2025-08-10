@@ -9,7 +9,6 @@ import {
   Email,
   BusinessCenter
 } from '@mui/icons-material';
-import ThemeToggle from './ThemeToggle';
 
 const ProfessionalNavigation2025 = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,11 +16,12 @@ const ProfessionalNavigation2025 = () => {
   const [successStoriesOpen, setSuccessStoriesOpen] = useState(false);
   const location = useLocation();
 
-  // Close mobile menu on route change
+  // Close mobile menu on route change and scroll to top
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesOpen(false);
     setSuccessStoriesOpen(false);
+    window.scrollTo(0, 0);
   }, [location]);
 
   // Close dropdowns when clicking outside
@@ -357,9 +357,6 @@ const ProfessionalNavigation2025 = () => {
             </li>
           </ul>
 
-          {/* Theme Toggle */}
-          <ThemeToggle variant="icon" size="medium" />
-
           {/* CTA Button */}
           <Link to="/quote" className="btn-primary">
             Get Free Quote
@@ -368,7 +365,6 @@ const ProfessionalNavigation2025 = () => {
 
         {/* Mobile Menu Toggle */}
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle variant="icon" size="medium" />
           <button
             style={mobileToggleStyle}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

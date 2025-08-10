@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   Phone,
   Email,
-  Security,
   Speed,
   Support,
   Analytics,
@@ -86,32 +85,6 @@ const ProfessionalHome2025 = () => {
     }
   ];
 
-  const stats = [
-    { 
-      value: '500+', 
-      label: 'Migrations Completed', 
-      description: 'Successful payroll system migrations',
-      icon: <TrendingUp sx={{ fontSize: 24, color: 'var(--color-primary)' }} />
-    },
-    { 
-      value: '99.9%', 
-      label: 'Success Rate', 
-      description: 'Zero-downtime migrations delivered',
-      icon: <CheckCircle sx={{ fontSize: 24, color: 'var(--color-success-60)' }} />
-    },
-    { 
-      value: '£2.5M', 
-      label: 'Average Savings', 
-      description: 'Cost savings per client engagement',
-      icon: <Security sx={{ fontSize: 24, color: 'var(--color-tertiary)' }} />
-    },
-    { 
-      value: '24/7', 
-      label: 'Support Available', 
-      description: 'Round-the-clock expert assistance',
-      icon: <Support sx={{ fontSize: 24, color: 'var(--color-warning-60)' }} />
-    }
-  ];
 
   const testimonials = [
     {
@@ -144,15 +117,15 @@ const ProfessionalHome2025 = () => {
   return (
     <div className="surface">
       {/* Hero Section */}
-      <section className="py-20 lg:py-32 surface-container">
-        <div className="container">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+      <section className="py-16 md:py-20 lg:py-24 surface-container">
+        <div className="container max-w-6xl">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-24 lg:justify-between">
             {/* Hero Content */}
-            <div className="flex-1 text-center lg:text-left">
+            <div className="text-center lg:text-left w-full lg:w-96">
               <h1 className="display-large mb-6 text-on-surface">
                 Professional Payroll Migration Services
               </h1>
-              <p className="body-large mb-8 text-on-surface-variant max-w-2xl">
+              <p className="body-large mb-8 text-on-surface-variant">
                 Seamless payroll migration with zero downtime guarantee. 
                 Expert UK-based team with proven track record of successful migrations 
                 across industries and system complexities.
@@ -168,49 +141,31 @@ const ProfessionalHome2025 = () => {
               </div>
             </div>
             
-            {/* Hero Visual */}
-            <div className="flex-1 flex justify-center">
-              <div 
-                className="card shadow-4 p-8 max-w-md"
-                style={{
-                  background: 'linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-tertiary-container) 100%)'
-                }}
-              >
-                <div className="text-center">
-                  <Shield sx={{ fontSize: 80, color: 'var(--color-primary)', mb: 2 }} />
-                  <h3 className="headline-small mb-2 text-on-surface">Zero Downtime</h3>
-                  <p className="body-medium text-on-surface-variant">
-                    99.9% success rate with guaranteed continuity
-                  </p>
+            {/* Hero Visual - Company Goal */}
+            <div className="flex justify-center lg:justify-center w-full lg:w-auto">
+              <div className="text-center">
+                <div className="animate-bounce-slow mb-6">
+                  <TrendingUp 
+                    sx={{ 
+                      fontSize: 72, 
+                      color: 'var(--color-primary)', 
+                      filter: 'drop-shadow(0 4px 8px rgba(107, 62, 145, 0.3))'
+                    }} 
+                  />
                 </div>
+                <h3 className="headline-large animate-fade-in-up gradient-text">
+                  Helping You To Succeed
+                </h3>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 surface-variant">
-        <div className="container">
-          <div className="grid grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <div key={index} className="card text-center p-6">
-                <div className="flex justify-center mb-4">
-                  {stat.icon}
-                </div>
-                <div className="display-small mb-2 text-primary">{stat.value}</div>
-                <h3 className="title-medium mb-2 text-on-surface">{stat.label}</h3>
-                <p className="body-small text-on-surface-variant">{stat.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
-      <section className="py-20 surface">
+      <section className="py-12 md:py-16 lg:py-20 surface">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <h2 className="display-medium mb-6 text-on-surface">Our Migration Services</h2>
             <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
               Comprehensive payroll migration solutions tailored to your organization's size, 
@@ -218,11 +173,11 @@ const ProfessionalHome2025 = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {services.map((service, index) => (
               <div 
                 key={service.id} 
-                className="card-elevated p-8 transition-all duration-300"
+                className="card-elevated p-6 md:p-8 transition-all duration-300 flex-1 min-w-[280px] md:min-w-[320px] max-w-[400px]"
                 style={{
                   background: `linear-gradient(135deg, ${service.color}20 0%, var(--color-surface) 100%)`
                 }}
@@ -268,9 +223,9 @@ const ProfessionalHome2025 = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 surface-container">
+      <section className="py-12 md:py-16 lg:py-20 surface-container">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <h2 className="display-medium mb-6 text-on-surface">Why Choose Us</h2>
             <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
               Industry-leading expertise, proven methodologies, and unwavering commitment 
@@ -302,9 +257,9 @@ const ProfessionalHome2025 = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 surface-variant">
+      <section className="py-12 md:py-16 lg:py-20 surface-variant">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <h2 className="display-medium mb-6 text-on-surface">What Our Clients Say</h2>
             <p className="body-large text-on-surface-variant">
               Hear from organizations who have transformed their payroll operations with our services.
@@ -340,7 +295,7 @@ const ProfessionalHome2025 = () => {
       </section>
 
       {/* Client Logos Section */}
-      <section className="py-16 surface">
+      <section className="py-10 md:py-12 lg:py-16 surface">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="headline-large mb-4 text-on-surface">Trusted by Industry Leaders</h2>
@@ -349,24 +304,32 @@ const ProfessionalHome2025 = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center">
-            {clientLogos.map((logo, index) => (
-              <div 
-                key={index} 
-                className="flex items-center justify-center p-4 rounded-lg"
-                style={{ backgroundColor: 'var(--color-surface-container-low)' }}
-              >
-                <span className="body-medium text-on-surface-variant font-medium">
-                  {logo}
-                </span>
-              </div>
-            ))}
+          <div className="relative overflow-hidden">
+            <div 
+              className="flex items-center gap-8 animate-flow"
+              style={{
+                animation: 'flow 20s linear infinite',
+                width: 'fit-content'
+              }}
+            >
+              {[...clientLogos, ...clientLogos].map((logo, index) => (
+                <div 
+                  key={index} 
+                  className="flex items-center justify-center p-4 rounded-lg flex-shrink-0 min-w-[160px]"
+                  style={{ backgroundColor: 'var(--color-surface-container-low)' }}
+                >
+                  <span className="body-medium text-on-surface-variant font-medium whitespace-nowrap">
+                    {logo}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 surface-container">
+      <section className="py-12 md:py-16 lg:py-20 surface-container">
         <div className="container">
           <div className="card p-12 text-center" style={{
             background: 'linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-secondary-container) 100%)'

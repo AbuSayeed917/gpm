@@ -1,32 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  Container,
-  Card,
-  CardContent,
-  Avatar,
-  Chip,
-  Divider,
-  Paper
-} from '@mui/material';
-import {
-  Groups,
-  Psychology,
-  Star,
   Business,
-  Handshake,
+  TrendingUp,
+  AccessTime,
   MonetizationOn,
-  TrendingUp
+  Star,
+  CheckCircle,
+  ArrowForward,
+  Phone,
+  Timeline,
+  Support,
+  Analytics,
+  Psychology,
+  Groups,
+  Handshake
 } from '@mui/icons-material';
-import { motion } from 'framer-motion';
-import AppleBackground from '../components/AppleBackground';
-
-const MotionDiv = motion.div;
-const MotionCard = motion(Card);
 
 const ConsultancySuccessStories = () => {
   const stories = [
@@ -48,493 +37,451 @@ const ConsultancySuccessStories = () => {
       ],
       quote: "This partnership transformed our practice. We can now offer enterprise-grade payroll migrations while focusing on what we do best - strategic HR consulting.",
       testimonial: {
-        name: "James Patterson",
+        name: "Catherine Williams",
         role: "Managing Partner",
         rating: 5
       },
       metrics: {
-        revenueAdded: "£2.8M",
-        clientsMigrated: "85+",
-        satisfaction: "98%",
-        partnership: "3 years"
-      },
-      partnershipType: "White-Label Services"
+        timeSaved: "90%",
+        revenueGrowth: "65%",
+        implementation: "3 months"
+      }
     },
     {
-      company: "TechConsult Excellence",
-      industry: "Technology Consulting",
-      size: "120 consultants",
-      clients: "Fortune 500 focus",
-      location: "Manchester, UK",
-      avatar: "TC",
-      challenge: "Enterprise clients requesting complex payroll system modernization as part of broader digital transformation initiatives, requiring specialized expertise.",
-      solution: "Joint venture approach combining their change management expertise with our technical payroll migration capabilities for comprehensive digital transformation projects.",
-      results: [
-        "Won 12 major digital transformation contracts",
-        "Generated £6.5M in additional project value",
-        "Established expertise in payroll modernization",
-        "Enhanced competitive positioning in market",
-        "Built long-term strategic partnerships with key clients"
-      ],
-      quote: "Our clients now see us as the complete digital transformation partner. The payroll expertise we gained through this partnership has been a game-changer.",
-      testimonial: {
-        name: "Sarah Williams",
-        role: "Digital Transformation Director",
-        rating: 5
-      },
-      metrics: {
-        revenueAdded: "£6.5M",
-        clientsMigrated: "12",
-        satisfaction: "100%",
-        partnership: "2 years"
-      },
-      partnershipType: "Joint Venture"
-    },
-    {
-      company: "Professional Services Group",
-      industry: "Management Consulting",
-      size: "85 partners",
-      clients: "Mid-market focus",
+      company: "Digital Finance Solutions",
+      industry: "Financial Technology",
+      size: "180 employees",
+      clients: "150+ financial services",
       location: "Edinburgh, UK",
-      avatar: "PS",
-      challenge: "Clients experiencing payroll compliance issues and inefficiencies, but the firm lacked specialized knowledge to provide comprehensive solutions.",
-      solution: "Strategic advisory partnership providing training, knowledge transfer, and co-delivery of payroll optimization consulting services to their client base.",
+      avatar: "DF",
+      challenge: "Existing payroll system couldn't scale with rapid business growth, causing processing delays and compliance issues affecting client trust.",
+      solution: "Strategic payroll optimization and phased system enhancement without full migration, focusing on process improvement and automation.",
       results: [
-        "Upskilled 25 consultants in payroll expertise",
-        "Delivered 40+ payroll optimization projects",
-        "Increased average project value by 60%",
-        "Reduced client churn by 35%",
-        "Established new center of excellence"
+        "Improved payroll accuracy from 92% to 99.8%",
+        "Reduced processing time by 75%",
+        "Enhanced compliance reporting capabilities",
+        "Eliminated overtime calculation errors",
+        "Increased employee satisfaction by 40%"
       ],
-      quote: "The knowledge transfer was exceptional. Our consultants now have deep payroll expertise that adds tremendous value to every client engagement.",
+      quote: "The consultancy approach was perfect for our needs. We got the improvements we needed without the disruption of a full migration.",
       testimonial: {
-        name: "Michael Thompson",
-        role: "Senior Partner",
+        name: "Andrew MacLeod",
+        role: "Chief Operating Officer",
         rating: 5
       },
       metrics: {
-        revenueAdded: "£3.2M",
-        clientsMigrated: "40+",
-        satisfaction: "96%",
-        partnership: "4 years"
-      },
-      partnershipType: "Strategic Advisory"
+        timeSaved: "75%",
+        revenueGrowth: "25%",
+        implementation: "8 weeks"
+      }
     },
     {
-      company: "Legal & Compliance Associates",
-      industry: "Legal Services",
-      size: "60 attorneys",
-      clients: "Corporate legal focus",
-      location: "Birmingham, UK",
-      avatar: "LC",
-      challenge: "Corporate clients needed payroll compliance expertise for M&A transactions and regulatory changes, requiring specialized technical knowledge.",
-      solution: "Expert advisory services providing payroll due diligence, compliance assessments, and migration planning for corporate transactions and regulatory changes.",
+      company: "Global Consulting Group",
+      industry: "Management Consulting",
+      size: "320 consultants",
+      clients: "Fortune 500 clients",
+      location: "Manchester, UK",
+      avatar: "GC",
+      challenge: "Complex contractor and employee payment structures across multiple projects required specialized expertise for optimization and compliance.",
+      solution: "Comprehensive payroll audit, process reengineering, and implementation of best practices for multi-tier workforce management.",
       results: [
-        "Supported 30+ M&A transactions",
-        "Enhanced due diligence capabilities",
-        "Reduced client compliance risks significantly",
-        "Expanded corporate legal service offerings",
-        "Achieved recognition as payroll compliance specialists"
+        "Streamlined payments for 5 different worker types",
+        "Reduced administrative overhead by 60%",
+        "Improved project profitability by 15%",
+        "Enhanced regulatory compliance across all markets",
+        "Automated expense and time tracking integration"
       ],
-      quote: "Our clients rely on us for comprehensive payroll expertise in their most critical transactions. This partnership has made us the go-to firm for payroll compliance.",
+      quote: "The strategic insights and process improvements delivered immediate value. Our payroll operations now support our growth ambitions perfectly.",
       testimonial: {
-        name: "Elizabeth Crawford",
-        role: "Corporate Law Partner",
+        name: "Rachel Thompson",
+        role: "Finance Director",
         rating: 5
       },
       metrics: {
-        revenueAdded: "£1.9M",
-        clientsMigrated: "30+",
-        satisfaction: "100%",
-        partnership: "2.5 years"
-      },
-      partnershipType: "Expert Advisory"
+        timeSaved: "60%",
+        revenueGrowth: "15%",
+        implementation: "12 weeks"
+      }
     }
   ];
 
   const stats = [
-    { number: "50+", label: "Consulting Partners", icon: <Groups /> },
-    { number: "£20M+", label: "Partner Revenue Generated", icon: <MonetizationOn /> },
-    { number: "300+", label: "Joint Client Projects", icon: <Business /> },
-    { number: "99%", label: "Partnership Satisfaction", icon: <Star /> }
+    {
+      value: "200+",
+      label: "Consultancy Projects",
+      description: "Strategic guidance and optimization engagements",
+      icon: <Psychology sx={{ fontSize: 24, color: 'var(--color-primary)' }} />
+    },
+    {
+      value: "8.5 weeks",
+      label: "Average Timeline", 
+      description: "From assessment to implementation",
+      icon: <AccessTime sx={{ fontSize: 24, color: 'var(--color-success-60)' }} />
+    },
+    {
+      value: "38%",
+      label: "Average ROI",
+      description: "Return on investment within first year",
+      icon: <MonetizationOn sx={{ fontSize: 24, color: 'var(--color-tertiary)' }} />
+    },
+    {
+      value: "100%",
+      label: "Success Rate",
+      description: "All consultancy projects delivered successfully",
+      icon: <TrendingUp sx={{ fontSize: 24, color: 'var(--color-warning-60)' }} />
+    }
   ];
 
-  const getPartnershipTypeColor = (type) => {
-    switch (type) {
-      case 'White-Label Services': return 'primary';
-      case 'Joint Venture': return 'secondary';
-      case 'Strategic Advisory': return 'success';
-      case 'Expert Advisory': return 'info';
-      default: return 'default';
+  const benefits = [
+    {
+      icon: <Psychology sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Strategic Expertise",
+      description: "Deep payroll and HR expertise combined with strategic business insights to optimize operations without full migration."
+    },
+    {
+      icon: <Support sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Flexible Engagement",
+      description: "Tailored consultancy packages from quick assessments to comprehensive transformation programs based on your needs."
+    },
+    {
+      icon: <Analytics sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Risk-Free Approach",
+      description: "Optimize and improve existing systems with minimal disruption while maximizing efficiency and compliance."
+    },
+    {
+      icon: <Handshake sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Partnership Model",
+      description: "White-label services for consultants and solution providers to expand their portfolio with our technical expertise."
     }
-  };
+  ];
 
   return (
-    <AppleBackground>
-    <Box>
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        {/* Hero Section */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
-        >
-          <Groups sx={{ fontSize: 80, color: 'success.main', mb: 2 }} />
-          <Typography 
-            variant="h1" 
-            component="h1"
-            sx={{ 
-              mb: 3,
-              background: 'linear-gradient(135deg, #34C759 0%, #30DB5B 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontWeight: 700
-            }}
-          >
-            Consultancy Success Stories
-          </Typography>
-          <Typography 
-            variant="h5" 
-            color="text.secondary" 
-            sx={{ maxWidth: '800px', mx: 'auto', mb: 6 }}
-          >
-            Discover how consulting firms have expanded their service offerings and grown their practices 
-            through strategic partnerships in payroll migration expertise.
-          </Typography>
-        </MotionDiv>
+    <div className="surface">
+      {/* Hero Section */}
+      <section className="py-20 lg:py-32 surface-container">
+        <div className="container">
+          <div className="text-center">
+            <div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+              style={{ backgroundColor: 'var(--color-primary-container)' }}
+            >
+              <Psychology sx={{ fontSize: 20, color: 'var(--color-primary)' }} />
+              <span className="body-small font-medium text-primary">Consultancy Success Stories</span>
+            </div>
+            
+            <h1 className="display-large mb-6 text-on-surface">
+              Strategic Payroll <span className="text-primary">Consultancy Success</span>
+            </h1>
+            
+            <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
+              Strategic guidance and optimization solutions without full migration. See how our consultancy services 
+              help organizations improve efficiency, ensure compliance, and maximize ROI.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        {/* Stats Section */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{ marginBottom: '4rem' }}
-        >
-          <Grid container spacing={4}>
+      {/* Stats Section */}
+      <section className="py-16 surface-variant">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="display-medium mb-4 text-on-surface">Consultancy Results</h2>
+            <p className="body-large text-on-surface-variant">
+              Key metrics from our strategic consultancy and optimization projects
+            </p>
+          </div>
+
+          <div className="grid grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <Grid item xs={6} md={3} key={stat.label}>
-                <MotionDiv
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  style={{ textAlign: 'center' }}
-                >
-                  <Box sx={{ mb: 2 }}>
-                    {React.cloneElement(stat.icon, { 
-                      sx: { fontSize: 40, color: 'success.main' } 
-                    })}
-                  </Box>
-                  <Typography 
-                    variant="h3" 
-                    component="div" 
-                    sx={{ 
-                      fontWeight: 700, 
-                      color: 'success.main',
-                      mb: 1 
-                    }}
-                  >
-                    {stat.number}
-                  </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ fontWeight: 600 }}>
-                    {stat.label}
-                  </Typography>
-                </MotionDiv>
-              </Grid>
+              <div key={index} className="card text-center p-6">
+                <div className="flex justify-center mb-4">
+                  {stat.icon}
+                </div>
+                <div className="display-small mb-2 text-primary">{stat.value}</div>
+                <h3 className="title-medium mb-2 text-on-surface">{stat.label}</h3>
+                <p className="body-small text-on-surface-variant">{stat.description}</p>
+              </div>
             ))}
-          </Grid>
-        </MotionDiv>
+          </div>
+        </div>
+      </section>
 
-        {/* Success Stories */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{ marginBottom: '4rem' }}
-        >
-          <Typography variant="h2" component="h2" sx={{ textAlign: 'center', mb: 6 }}>
-            Partnership Success Stories
-          </Typography>
-          <Grid container spacing={4}>
+      {/* Success Stories */}
+      <section className="py-20 surface">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Consultancy Client Success Stories</h2>
+            <p className="body-large text-on-surface-variant">
+              Strategic transformations and optimizations across different business models
+            </p>
+          </div>
+
+          <div className="space-y-12">
             {stories.map((story, index) => (
-              <Grid item xs={12} key={story.company}>
-                <MotionCard
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  sx={{ 
-                    transition: 'transform 0.3s ease',
-                    '&:hover': { transform: 'translateY(-4px)' }
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    {/* Company Header */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Avatar 
-                        sx={{ 
-                          width: 60, 
-                          height: 60, 
-                          bgcolor: 'success.main', 
-                          fontSize: '1.5rem',
-                          mr: 3 
-                        }}
+              <div key={index} className="card p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Company Info */}
+                  <div className="lg:col-span-1">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div 
+                        className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-on-primary"
+                        style={{ backgroundColor: 'var(--color-primary)' }}
                       >
                         {story.avatar}
-                      </Avatar>
-                      <Box sx={{ flexGrow: 1 }}>
-                        <Typography variant="h4" component="h3" sx={{ fontWeight: 600, mb: 1 }}>
-                          {story.company}
-                        </Typography>
-                        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1 }}>
-                          <Chip label={story.industry} color="success" variant="outlined" size="small" />
-                          <Chip label={story.size} color="primary" variant="outlined" size="small" />
-                          <Chip label={story.clients} color="secondary" variant="outlined" size="small" />
-                          <Chip 
-                            label={story.partnershipType} 
-                            color={getPartnershipTypeColor(story.partnershipType)} 
-                            variant="filled" 
-                            size="small" 
-                          />
-                        </Box>
-                      </Box>
-                    </Box>
+                      </div>
+                      <div>
+                        <h3 className="headline-small text-on-surface">{story.company}</h3>
+                        <p className="body-medium text-on-surface-variant">{story.industry}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3 mb-6">
+                      <div className="flex justify-between">
+                        <span className="body-medium text-on-surface-variant">Size:</span>
+                        <span className="body-medium text-on-surface">{story.size}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="body-medium text-on-surface-variant">Clients:</span>
+                        <span className="body-medium text-on-surface">{story.clients}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="body-medium text-on-surface-variant">Timeline:</span>
+                        <span className="body-medium text-on-surface">{story.metrics.implementation}</span>
+                      </div>
+                    </div>
 
-                    {/* Partnership Metrics */}
-                    <Paper sx={{ p: 2, mb: 3, bgcolor: 'success.50' }}>
-                      <Grid container spacing={2} sx={{ textAlign: 'center' }}>
-                        <Grid item xs={6} md={3}>
-                          <Typography variant="h6" color="success.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.revenueAdded}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Revenue Added
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={6} md={3}>
-                          <Typography variant="h6" color="success.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.clientsMigrated}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Clients Served
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={6} md={3}>
-                          <Typography variant="h6" color="success.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.satisfaction}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Client Satisfaction
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={6} md={3}>
-                          <Typography variant="h6" color="info.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.partnership}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Partnership Duration
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </Paper>
-
-                    <Grid container spacing={3}>
-                      <Grid item xs={12} md={4}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'error.main' }}>
-                          Business Challenge
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {story.challenge}
-                        </Typography>
-                      </Grid>
-                      
-                      <Grid item xs={12} md={4}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'info.main' }}>
-                          Partnership Solution
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {story.solution}
-                        </Typography>
-                      </Grid>
-                      
-                      <Grid item xs={12} md={4}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'success.main' }}>
-                          Business Results
-                        </Typography>
-                        <Box component="ul" sx={{ pl: 2, m: 0 }}>
-                          {story.results.map((result, idx) => (
-                            <Typography component="li" variant="body2" color="text.secondary" key={idx} sx={{ mb: 0.5 }}>
-                              {result}
-                            </Typography>
+                    {/* Metrics */}
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <div className="headline-small text-primary">{story.metrics.timeSaved}</div>
+                        <div className="body-small text-on-surface-variant">Time Saved</div>
+                      </div>
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <div className="headline-small text-primary">{story.metrics.revenueGrowth}</div>
+                        <div className="body-small text-on-surface-variant">Revenue Growth</div>
+                      </div>
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <div className="flex justify-center gap-1">
+                          {[...Array(story.testimonial.rating)].map((_, i) => (
+                            <Star key={i} sx={{ fontSize: 16, color: 'var(--color-warning-60)' }} />
                           ))}
-                        </Box>
-                      </Grid>
-                    </Grid>
+                        </div>
+                        <div className="body-small text-on-surface-variant">Rating</div>
+                      </div>
+                    </div>
+                  </div>
 
-                    <Divider sx={{ my: 3 }} />
+                  {/* Story Content */}
+                  <div className="lg:col-span-2">
+                    <div className="space-y-6">
+                      {/* Challenge */}
+                      <div>
+                        <h4 className="title-large mb-3 text-on-surface">Challenge</h4>
+                        <p className="body-large text-on-surface-variant">{story.challenge}</p>
+                      </div>
 
-                    {/* Partner Testimonial */}
-                    <Box sx={{ bgcolor: 'success.50', p: 3, borderRadius: 2, border: '1px solid', borderColor: 'success.200' }}>
-                      <Typography variant="body1" sx={{ fontStyle: 'italic', mb: 2, fontSize: '1.1rem' }}>
-                        "{story.quote}"
-                      </Typography>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Box>
-                          <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                            {story.testimonial.name}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {story.testimonial.role} • {story.company}
-                          </Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', gap: 0.5 }}>
-                          {[...Array(story.testimonial.rating)].map((_, idx) => (
-                            <Star key={idx} sx={{ color: '#F59E0B', fontSize: 24 }} />
+                      {/* Solution */}
+                      <div>
+                        <h4 className="title-large mb-3 text-on-surface">Solution</h4>
+                        <p className="body-large text-on-surface-variant">{story.solution}</p>
+                      </div>
+
+                      {/* Results */}
+                      <div>
+                        <h4 className="title-large mb-3 text-on-surface">Results</h4>
+                        <ul className="space-y-2">
+                          {story.results.map((result, resultIndex) => (
+                            <li key={resultIndex} className="flex items-start gap-3">
+                              <CheckCircle sx={{ fontSize: 20, color: 'var(--color-success-60)', mt: 0.25 }} />
+                              <span className="body-medium text-on-surface-variant">{result}</span>
+                            </li>
                           ))}
-                        </Box>
-                      </Box>
-                    </Box>
-                  </CardContent>
-                </MotionCard>
-              </Grid>
+                        </ul>
+                      </div>
+
+                      {/* Testimonial */}
+                      <div className="p-6 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <blockquote className="body-large text-on-surface-variant italic mb-4">
+                          "{story.quote}"
+                        </blockquote>
+                        <div className="flex items-center gap-3">
+                          <div 
+                            className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-on-primary"
+                            style={{ backgroundColor: 'var(--color-primary)' }}
+                          >
+                            {story.testimonial.name.split(' ').map(n => n[0]).join('')}
+                          </div>
+                          <div>
+                            <div className="title-medium text-on-surface">{story.testimonial.name}</div>
+                            <div className="body-small text-on-surface-variant">{story.testimonial.role}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
-          </Grid>
-        </MotionDiv>
+          </div>
+        </div>
+      </section>
 
-        {/* Partnership Benefits */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{ marginBottom: '4rem' }}
-        >
-          <Typography variant="h3" component="h2" sx={{ textAlign: 'center', mb: 4, fontWeight: 600 }}>
-            Partnership Models Available
-          </Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={3}>
-              <Paper sx={{ p: 3, textAlign: 'center', height: '100%' }}>
-                <Psychology sx={{ fontSize: 50, color: 'primary.main', mb: 2 }} />
-                <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-                  White-Label Services
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Complete migration services under your brand
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Paper sx={{ p: 3, textAlign: 'center', height: '100%' }}>
-                <Handshake sx={{ fontSize: 50, color: 'secondary.main', mb: 2 }} />
-                <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-                  Joint Ventures
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Collaborative project delivery partnerships
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Paper sx={{ p: 3, textAlign: 'center', height: '100%' }}>
-                <TrendingUp sx={{ fontSize: 50, color: 'success.main', mb: 2 }} />
-                <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-                  Strategic Advisory
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Expert guidance and knowledge transfer
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Paper sx={{ p: 3, textAlign: 'center', height: '100%' }}>
-                <Business sx={{ fontSize: 50, color: 'info.main', mb: 2 }} />
-                <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-                  Expert Advisory
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Specialized expertise for complex projects
-                </Typography>
-              </Paper>
-            </Grid>
-          </Grid>
-        </MotionDiv>
+      {/* Benefits Section */}
+      <section className="py-20 surface-container">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Why Choose Our Consultancy</h2>
+            <p className="body-large text-on-surface-variant">
+              Strategic expertise and flexible solutions tailored to your specific needs
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="card p-6">
+                <div className="flex items-start gap-6">
+                  <div 
+                    className="p-3 rounded-lg flex-shrink-0"
+                    style={{ backgroundColor: 'var(--color-primary-container)' }}
+                  >
+                    {benefit.icon}
+                  </div>
+                  <div>
+                    <h3 className="headline-small mb-3 text-on-surface">{benefit.title}</h3>
+                    <p className="body-medium text-on-surface-variant">{benefit.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <Card sx={{ 
-            background: 'linear-gradient(135deg, #34C759 0%, #30DB5B 100%)',
-            color: 'white',
-            textAlign: 'center',
-            p: 4
+      {/* Consultancy Services */}
+      <section className="py-20 surface-variant">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Our Consultancy Services</h2>
+            <p className="body-large text-on-surface-variant">
+              Flexible engagement models to suit your specific requirements
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-8">
+            <div className="card p-8 text-center">
+              <div className="flex justify-center mb-6">
+                <Analytics sx={{ fontSize: 48, color: 'var(--color-primary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Payroll Health Check</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Comprehensive audit of current processes, compliance, and efficiency
+              </p>
+              <div className="text-center p-3 rounded-lg mb-4" style={{ backgroundColor: 'var(--color-primary-container)' }}>
+                <div className="title-large text-primary">2-4 weeks</div>
+                <div className="body-small text-on-surface-variant">Typical Duration</div>
+              </div>
+            </div>
+
+            <div className="card p-8 text-center">
+              <div className="flex justify-center mb-6">
+                <Timeline sx={{ fontSize: 48, color: 'var(--color-secondary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Process Optimization</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Strategic improvements to existing systems without full migration
+              </p>
+              <div className="text-center p-3 rounded-lg mb-4" style={{ backgroundColor: 'var(--color-secondary-container)' }}>
+                <div className="title-large text-secondary">6-12 weeks</div>
+                <div className="body-small text-on-surface-variant">Typical Duration</div>
+              </div>
+            </div>
+
+            <div className="card p-8 text-center">
+              <div className="flex justify-center mb-6">
+                <Handshake sx={{ fontSize: 48, color: 'var(--color-tertiary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Partnership Services</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                White-label migration services for consultants and solution providers
+              </p>
+              <div className="text-center p-3 rounded-lg mb-4" style={{ backgroundColor: 'var(--color-tertiary-container)' }}>
+                <div className="title-large text-tertiary">Ongoing</div>
+                <div className="body-small text-on-surface-variant">Partnership Model</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 surface">
+        <div className="container">
+          <div className="card p-12 text-center" style={{
+            background: 'linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-secondary-container) 100%)'
           }}>
-            <CardContent>
-              <Typography variant="h3" component="h2" sx={{ mb: 3, color: 'white' }}>
-                Ready to Expand Your Practice?
-              </Typography>
-              <Typography variant="h6" sx={{ mb: 4, color: 'rgba(255,255,255,0.9)' }}>
-                Join our network of successful consulting partners. Let's discuss how payroll migration 
-                expertise can accelerate your business growth and enhance your client relationships.
-              </Typography>
-              <Grid container spacing={3} justifyContent="center">
-                <Grid item>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    component={Link}
-                    to="/contact"
-                    sx={{ 
-                      bgcolor: 'white',
-                      color: 'success.main',
-                      px: 4,
-                      py: 1.5,
-                      '&:hover': { 
-                        bgcolor: 'grey.100',
-                        transform: 'translateY(-2px)'
-                      }
-                    }}
-                  >
-                    Explore Partnership
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    component={Link}
-                    to="/services/consultancy"
-                    sx={{ 
-                      borderColor: 'white',
-                      color: 'white',
-                      px: 4,
-                      py: 1.5,
-                      '&:hover': { 
-                        bgcolor: 'rgba(255,255,255,0.1)',
-                        borderColor: 'white',
-                        color: 'white',
-                        transform: 'translateY(-2px)'
-                      }
-                    }}
-                  >
-                    View Consultancy Services
-                  </Button>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </MotionDiv>
-      </Container>
-    </Box>
-    </AppleBackground>
+            <h2 className="display-medium mb-6 text-on-surface">
+              Ready for Strategic Consultancy?
+            </h2>
+            <p className="body-large mb-8 text-on-surface-variant max-w-2xl mx-auto">
+              Get expert guidance to optimize your payroll operations without full migration disruption. 
+              Our consultancy services deliver immediate value and long-term strategic advantage.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="btn-primary">
+                <Phone sx={{ fontSize: 20 }} />
+                Get Consultancy Quote
+              </Link>
+              <Link to="/services/consultancy" className="btn-outlined">
+                <ArrowForward sx={{ fontSize: 20 }} />
+                Learn About Consultancy Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Success Stories */}
+      <section className="py-20 surface-container">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">More Success Stories</h2>
+            <p className="body-large text-on-surface-variant">
+              Explore success stories from different business segments
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8">
+            <div className="card-elevated p-8 text-center transition-all duration-300">
+              <div className="flex justify-center mb-6">
+                <Business sx={{ fontSize: 48, color: 'var(--color-primary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">SME Success Stories</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Tailored migration solutions for small to medium enterprises
+              </p>
+              <Link to="/success-stories/sme" className="btn-outlined w-full">
+                View SME Stories
+                <ArrowForward sx={{ fontSize: 18 }} />
+              </Link>
+            </div>
+            
+            <div className="card-elevated p-8 text-center transition-all duration-300">
+              <div className="flex justify-center mb-6">
+                <Groups sx={{ fontSize: 48, color: 'var(--color-secondary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Enterprise Stories</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Complex multi-country migrations for large organizations
+              </p>
+              <Link to="/success-stories/large-enterprise" className="btn-outlined w-full">
+                View Enterprise Stories
+                <ArrowForward sx={{ fontSize: 18 }} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

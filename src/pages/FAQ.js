@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   HelpOutline,
   ExpandMore,
-  ExpandLess,
   Phone,
   Email,
   Security,
@@ -13,8 +12,7 @@ import {
   Business,
   People,
   Timeline,
-  ArrowForward,
-  CheckCircle
+  ArrowForward
 } from '@mui/icons-material';
 
 

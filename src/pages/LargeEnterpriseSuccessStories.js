@@ -1,489 +1,445 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  Container,
-  Card,
-  CardContent,
-  Avatar,
-  Chip,
-  Divider,
-  Paper
-} from '@mui/material';
-import {
-  CorporateFare,
-  Public,
+  Business,
+  TrendingUp,
+  AccessTime,
+  MonetizationOn,
   Star,
-  People,
-  Security
+  CheckCircle,
+  ArrowForward,
+  Phone,
+  Public,
+  Support,
+  Analytics,
+  People
 } from '@mui/icons-material';
-import { motion } from 'framer-motion';
-import AppleBackground from '../components/AppleBackground';
-
-const MotionDiv = motion.div;
-const MotionCard = motion(Card);
 
 const LargeEnterpriseSuccessStories = () => {
   const stories = [
     {
-      company: "GlobalTech Industries",
+      company: "Global Tech Corporation",
       industry: "Technology",
-      size: "12,500 employees",
-      countries: "25 countries",
-      location: "Multinational",
+      size: "15,000 employees",
+      location: "UK, Germany, France, Netherlands",
       avatar: "GT",
-      challenge: "Legacy mainframe payroll system struggling with global compliance and taking 8 days to process monthly payroll across multiple jurisdictions.",
-      solution: "Complete migration to cloud-based enterprise platform with real-time multi-country processing and automated compliance management.",
+      challenge: "Multi-country payroll across 4 European markets with complex regulatory requirements, multiple currencies, and inconsistent processes causing compliance risks.",
+      solution: "Unified global payroll platform with country-specific compliance modules, automated currency conversion, and centralized reporting dashboard.",
       results: [
-        "Reduced global payroll processing from 8 days to 6 hours",
-        "Achieved 100% compliance across all 25 jurisdictions",
-        "Eliminated $2.3M in annual compliance penalties",
-        "Improved employee satisfaction scores by 45%",
-        "Reduced IT maintenance costs by 60%"
+        "Consolidated 12 separate payroll systems into single platform",
+        "Achieved 100% compliance across all 4 countries",
+        "Reduced monthly processing time from 5 days to 8 hours",
+        "Eliminated 95% of manual data entry and reconciliation",
+        "Real-time visibility into global labor costs and analytics"
       ],
-      quote: "This migration transformed our global operations. We now process payroll for 12,500 employees across 25 countries in less than a day, with perfect compliance.",
+      quote: "This transformation revolutionized our HR operations. We now have complete visibility and control over our European payroll with significantly reduced compliance risk.",
       testimonial: {
-        name: "Michael Chen",
-        role: "Global CHRO",
-        rating: 5
-      },
-      metrics: {
-        employees: "12,500",
-        countries: "25",
-        timeSaved: "95%",
-        costSavings: "$2.3M",
-        implementation: "18 months"
-      },
-      complexity: "High"
-    },
-    {
-      company: "International Manufacturing Corp",
-      industry: "Manufacturing",
-      size: "8,750 employees",
-      countries: "18 countries",
-      location: "Europe & Asia",
-      avatar: "IM",
-      challenge: "Multiple disparate payroll systems causing data inconsistencies, reporting delays, and difficulty in global workforce analytics.",
-      solution: "Unified global payroll platform with advanced analytics, real-time reporting, and seamless ERP integration across all manufacturing sites.",
-      results: [
-        "Consolidated 18 separate payroll systems into one",
-        "Real-time global workforce analytics and reporting",
-        "Reduced month-end closing time by 70%",
-        "Improved data accuracy to 99.97%",
-        "Generated $1.8M annual operational savings"
-      ],
-      quote: "Having unified payroll data across our global operations has revolutionized our workforce planning and financial reporting capabilities.",
-      testimonial: {
-        name: "Anna Kowalski",
-        role: "VP Global Operations",
-        rating: 5
-      },
-      metrics: {
-        employees: "8,750",
-        countries: "18",
-        timeSaved: "70%",
-        costSavings: "$1.8M",
-        implementation: "14 months"
-      },
-      complexity: "High"
-    },
-    {
-      company: "Financial Services Global",
-      industry: "Financial Services",
-      size: "15,200 employees",
-      countries: "32 countries",
-      location: "Global",
-      avatar: "FS",
-      challenge: "Strict regulatory requirements across multiple financial jurisdictions with complex bonus calculations and audit trail requirements.",
-      solution: "Enterprise-grade solution with advanced security, comprehensive audit trails, and automated regulatory reporting for financial services compliance.",
-      results: [
-        "Achieved SOX compliance across all jurisdictions",
-        "Automated complex bonus and commission calculations",
-        "Reduced audit preparation time by 85%",
-        "Enhanced security with military-grade encryption",
-        "Streamlined regulatory reporting across 32 countries"
-      ],
-      quote: "The security and compliance features exceeded our expectations. We now handle complex financial regulations with confidence and complete audit transparency.",
-      testimonial: {
-        name: "Robert Harrison",
-        role: "Chief Compliance Officer",
-        rating: 5
-      },
-      metrics: {
-        employees: "15,200",
-        countries: "32",
-        timeSaved: "85%",
-        costSavings: "$3.1M",
-        implementation: "24 months"
-      },
-      complexity: "Very High"
-    },
-    {
-      company: "Retail Empire Holdings",
-      industry: "Retail",
-      size: "22,000 employees",
-      countries: "15 countries",
-      location: "Americas & Europe",
-      avatar: "RE",
-      challenge: "Seasonal workforce fluctuations, complex shift patterns, and varying regional labor laws creating payroll processing bottlenecks during peak seasons.",
-      solution: "Scalable platform with dynamic workforce management, automated shift calculations, and region-specific compliance rules for retail operations.",
-      results: [
-        "Seamlessly handled 40% seasonal workforce increases",
-        "Automated complex shift and overtime calculations",
-        "Reduced peak season processing time by 60%",
-        "Improved workforce cost visibility and forecasting",
-        "Enhanced employee self-service adoption to 92%"
-      ],
-      quote: "During our busiest seasons, the system scales effortlessly. Our seasonal hiring and payroll processing is now completely automated and error-free.",
-      testimonial: {
-        name: "Lisa Rodriguez",
+        name: "James Richardson",
         role: "Global HR Director",
         rating: 5
       },
       metrics: {
-        employees: "22,000",
-        countries: "15",
-        timeSaved: "60%",
-        costSavings: "$1.4M",
-        implementation: "16 months"
+        timeSaved: "85%",
+        costReduction: "45%",
+        implementation: "16 weeks"
+      }
+    },
+    {
+      company: "International Manufacturing Group",
+      industry: "Manufacturing",
+      size: "8,500 employees",
+      location: "UK, Germany, Poland, Czech Republic",
+      avatar: "IM",
+      challenge: "Post-acquisition integration requiring consolidation of different payroll systems across newly merged facilities with varying local requirements.",
+      solution: "Phased migration approach with parallel system testing, comprehensive data mapping, and extensive change management program.",
+      results: [
+        "Successfully integrated 3 acquired companies",
+        "Standardized payroll processes across all locations",
+        "Implemented multi-language employee self-service",
+        "Reduced payroll errors by 92%",
+        "Achieved ROI within 8 months of go-live"
+      ],
+      quote: "The complexity of our post-acquisition integration was immense, but the systematic approach and expertise delivered exceeded our expectations.",
+      testimonial: {
+        name: "Maria Kowalski",
+        role: "Chief Financial Officer",
+        rating: 5
       },
-      complexity: "High"
+      metrics: {
+        timeSaved: "78%",
+        costReduction: "38%",
+        implementation: "20 weeks"
+      }
+    },
+    {
+      company: "European Financial Services",
+      industry: "Financial Services",
+      size: "12,000 employees",
+      location: "UK, Ireland, Germany, Belgium, Luxembourg",
+      avatar: "EF",
+      challenge: "Highly regulated industry requiring detailed audit trails, complex bonus calculations, and strict data security across multiple financial centers.",
+      solution: "Enterprise-grade platform with advanced security features, automated compliance reporting, and sophisticated compensation management.",
+      results: [
+        "Implemented bank-grade security and encryption",
+        "Automated regulatory reporting for 5 countries",
+        "Reduced bonus calculation errors to zero",
+        "Achieved SOX compliance certification",
+        "Improved audit preparation time by 70%"
+      ],
+      quote: "The security and compliance features were exactly what we needed for our regulated environment. The audit process is now streamlined and stress-free.",
+      testimonial: {
+        name: "Sophie Laurent",
+        role: "Chief Compliance Officer",
+        rating: 5
+      },
+      metrics: {
+        timeSaved: "82%",
+        costReduction: "42%",
+        implementation: "24 weeks"
+      }
     }
   ];
 
   const stats = [
-    { number: "75+", label: "Enterprise Clients", icon: <CorporateFare /> },
-    { number: "2M+", label: "Employees Migrated", icon: <People /> },
-    { number: "50+", label: "Countries Served", icon: <Public /> },
-    { number: "99.99%", label: "Uptime SLA", icon: <Security /> }
+    {
+      value: "50+",
+      label: "Enterprise Migrations",
+      description: "Large-scale multi-country implementations",
+      icon: <People sx={{ fontSize: 24, color: 'var(--color-primary)' }} />
+    },
+    {
+      value: "18 weeks",
+      label: "Average Timeline", 
+      description: "From planning to full deployment",
+      icon: <AccessTime sx={{ fontSize: 24, color: 'var(--color-success-60)' }} />
+    },
+    {
+      value: "42%",
+      label: "Cost Savings",
+      description: "Average operational cost reduction",
+      icon: <MonetizationOn sx={{ fontSize: 24, color: 'var(--color-tertiary)' }} />
+    },
+    {
+      value: "99.8%",
+      label: "Success Rate",
+      description: "Enterprise projects delivered successfully",
+      icon: <TrendingUp sx={{ fontSize: 24, color: 'var(--color-warning-60)' }} />
+    }
   ];
 
-  const getComplexityColor = (complexity) => {
-    switch (complexity) {
-      case 'High': return 'warning';
-      case 'Very High': return 'error';
-      default: return 'info';
+  const benefits = [
+    {
+      icon: <Public sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Multi-Country Expertise",
+      description: "Deep knowledge of payroll regulations, tax requirements, and compliance across 14+ European and Middle Eastern countries."
+    },
+    {
+      icon: <Support sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Dedicated Project Team",
+      description: "Senior consultants, project managers, and technical specialists assigned exclusively to your enterprise migration."
+    },
+    {
+      icon: <Analytics sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Advanced Integration",
+      description: "Complex ERP, HRIS, and financial system integrations with real-time data synchronization and reporting."
+    },
+    {
+      icon: <CheckCircle sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      title: "Risk Mitigation",
+      description: "Comprehensive testing, parallel runs, and rollback procedures to ensure zero business disruption."
     }
-  };
+  ];
 
   return (
-    <AppleBackground>
-    <Box>
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        {/* Hero Section */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
-        >
-          <CorporateFare sx={{ fontSize: 80, color: 'secondary.main', mb: 2 }} />
-          <Typography 
-            variant="h1" 
-            component="h1"
-            sx={{ 
-              mb: 3,
-              background: 'linear-gradient(135deg, #FF3B30 0%, #FF9500 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontWeight: 700
-            }}
-          >
-            Enterprise Success Stories
-          </Typography>
-          <Typography 
-            variant="h5" 
-            color="text.secondary" 
-            sx={{ maxWidth: '800px', mx: 'auto', mb: 6 }}
-          >
-            Explore how global enterprises have revolutionized their payroll operations 
-            with our comprehensive migration solutions spanning multiple countries and complex requirements.
-          </Typography>
-        </MotionDiv>
+    <div className="surface">
+      {/* Hero Section */}
+      <section className="py-20 lg:py-32 surface-container">
+        <div className="container">
+          <div className="text-center">
+            <div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+              style={{ backgroundColor: 'var(--color-primary-container)' }}
+            >
+              <People sx={{ fontSize: 20, color: 'var(--color-primary)' }} />
+              <span className="body-small font-medium text-primary">Enterprise Success Stories</span>
+            </div>
+            
+            <h1 className="display-large mb-6 text-on-surface">
+              Large Enterprise <span className="text-primary">Migration Success</span>
+            </h1>
+            
+            <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
+              Complex, multi-country payroll transformations for global enterprises. Discover how we help large organizations 
+              achieve compliance, reduce costs, and streamline operations across multiple markets.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        {/* Stats Section */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{ marginBottom: '4rem' }}
-        >
-          <Grid container spacing={4}>
+      {/* Stats Section */}
+      <section className="py-16 surface-variant">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="display-medium mb-4 text-on-surface">Enterprise Migration Results</h2>
+            <p className="body-large text-on-surface-variant">
+              Key metrics from our large enterprise payroll transformation projects
+            </p>
+          </div>
+
+          <div className="grid grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <Grid item xs={6} md={3} key={stat.label}>
-                <MotionDiv
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  style={{ textAlign: 'center' }}
-                >
-                  <Box sx={{ mb: 2 }}>
-                    {React.cloneElement(stat.icon, { 
-                      sx: { fontSize: 40, color: 'secondary.main' } 
-                    })}
-                  </Box>
-                  <Typography 
-                    variant="h3" 
-                    component="div" 
-                    sx={{ 
-                      fontWeight: 700, 
-                      color: 'secondary.main',
-                      mb: 1 
-                    }}
-                  >
-                    {stat.number}
-                  </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ fontWeight: 600 }}>
-                    {stat.label}
-                  </Typography>
-                </MotionDiv>
-              </Grid>
+              <div key={index} className="card text-center p-6">
+                <div className="flex justify-center mb-4">
+                  {stat.icon}
+                </div>
+                <div className="display-small mb-2 text-primary">{stat.value}</div>
+                <h3 className="title-medium mb-2 text-on-surface">{stat.label}</h3>
+                <p className="body-small text-on-surface-variant">{stat.description}</p>
+              </div>
             ))}
-          </Grid>
-        </MotionDiv>
+          </div>
+        </div>
+      </section>
 
-        {/* Success Stories */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{ marginBottom: '4rem' }}
-        >
-          <Typography variant="h2" component="h2" sx={{ textAlign: 'center', mb: 6 }}>
-            Global Enterprise Transformations
-          </Typography>
-          <Grid container spacing={4}>
+      {/* Success Stories */}
+      <section className="py-20 surface">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Enterprise Client Success Stories</h2>
+            <p className="body-large text-on-surface-variant">
+              Complex transformations from global enterprise clients across different industries
+            </p>
+          </div>
+
+          <div className="space-y-12">
             {stories.map((story, index) => (
-              <Grid item xs={12} key={story.company}>
-                <MotionCard
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  sx={{ 
-                    transition: 'transform 0.3s ease',
-                    '&:hover': { transform: 'translateY(-4px)' }
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    {/* Company Header */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Avatar 
-                        sx={{ 
-                          width: 60, 
-                          height: 60, 
-                          bgcolor: 'secondary.main', 
-                          fontSize: '1.5rem',
-                          mr: 3 
-                        }}
+              <div key={index} className="card p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Company Info */}
+                  <div className="lg:col-span-1">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div 
+                        className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-on-primary"
+                        style={{ backgroundColor: 'var(--color-primary)' }}
                       >
                         {story.avatar}
-                      </Avatar>
-                      <Box sx={{ flexGrow: 1 }}>
-                        <Typography variant="h4" component="h3" sx={{ fontWeight: 600, mb: 1 }}>
-                          {story.company}
-                        </Typography>
-                        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1 }}>
-                          <Chip label={story.industry} color="secondary" variant="outlined" size="small" />
-                          <Chip label={story.size} color="primary" variant="outlined" size="small" />
-                          <Chip label={story.countries} color="info" variant="outlined" size="small" />
-                          <Chip 
-                            label={`${story.complexity} Complexity`} 
-                            color={getComplexityColor(story.complexity)} 
-                            variant="outlined" 
-                            size="small" 
-                          />
-                        </Box>
-                      </Box>
-                    </Box>
+                      </div>
+                      <div>
+                        <h3 className="headline-small text-on-surface">{story.company}</h3>
+                        <p className="body-medium text-on-surface-variant">{story.industry}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3 mb-6">
+                      <div className="flex justify-between">
+                        <span className="body-medium text-on-surface-variant">Size:</span>
+                        <span className="body-medium text-on-surface">{story.size}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="body-medium text-on-surface-variant">Countries:</span>
+                        <span className="body-medium text-on-surface">{story.location.split(',').length}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="body-medium text-on-surface-variant">Timeline:</span>
+                        <span className="body-medium text-on-surface">{story.metrics.implementation}</span>
+                      </div>
+                    </div>
 
-                    {/* Enterprise Metrics */}
-                    <Paper sx={{ p: 2, mb: 3, bgcolor: 'grey.50' }}>
-                      <Grid container spacing={2} sx={{ textAlign: 'center' }}>
-                        <Grid item xs={6} md={2}>
-                          <Typography variant="h6" color="secondary.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.employees}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Employees
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={6} md={2}>
-                          <Typography variant="h6" color="secondary.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.countries}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Countries
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={6} md={2}>
-                          <Typography variant="h6" color="success.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.timeSaved}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Time Saved
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={6} md={2}>
-                          <Typography variant="h6" color="success.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.costSavings}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Annual Savings
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                          <Typography variant="h6" color="info.main" sx={{ fontWeight: 700 }}>
-                            {story.metrics.implementation}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Implementation Timeline
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </Paper>
-
-                    <Grid container spacing={3}>
-                      <Grid item xs={12} md={4}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'error.main' }}>
-                          Enterprise Challenge
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {story.challenge}
-                        </Typography>
-                      </Grid>
-                      
-                      <Grid item xs={12} md={4}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'info.main' }}>
-                          Strategic Solution
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {story.solution}
-                        </Typography>
-                      </Grid>
-                      
-                      <Grid item xs={12} md={4}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'success.main' }}>
-                          Business Impact
-                        </Typography>
-                        <Box component="ul" sx={{ pl: 2, m: 0 }}>
-                          {story.results.map((result, idx) => (
-                            <Typography component="li" variant="body2" color="text.secondary" key={idx} sx={{ mb: 0.5 }}>
-                              {result}
-                            </Typography>
+                    {/* Metrics */}
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <div className="headline-small text-primary">{story.metrics.timeSaved}</div>
+                        <div className="body-small text-on-surface-variant">Time Saved</div>
+                      </div>
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <div className="headline-small text-primary">{story.metrics.costReduction}</div>
+                        <div className="body-small text-on-surface-variant">Cost Reduction</div>
+                      </div>
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <div className="flex justify-center gap-1">
+                          {[...Array(story.testimonial.rating)].map((_, i) => (
+                            <Star key={i} sx={{ fontSize: 16, color: 'var(--color-warning-60)' }} />
                           ))}
-                        </Box>
-                      </Grid>
-                    </Grid>
+                        </div>
+                        <div className="body-small text-on-surface-variant">Rating</div>
+                      </div>
+                    </div>
 
-                    <Divider sx={{ my: 3 }} />
+                    {/* Countries Badge */}
+                    <div className="mt-6">
+                      <div className="body-small text-on-surface-variant mb-2">Countries:</div>
+                      <div className="flex flex-wrap gap-2">
+                        {story.location.split(', ').map((country, idx) => (
+                          <span 
+                            key={idx}
+                            className="px-2 py-1 rounded-full text-xs"
+                            style={{ 
+                              backgroundColor: 'var(--color-primary-container)',
+                              color: 'var(--color-primary)'
+                            }}
+                          >
+                            {country}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
 
-                    {/* Executive Testimonial */}
-                    <Box sx={{ bgcolor: 'secondary.50', p: 3, borderRadius: 2, border: '1px solid', borderColor: 'secondary.100' }}>
-                      <Typography variant="body1" sx={{ fontStyle: 'italic', mb: 2, fontSize: '1.1rem' }}>
-                        "{story.quote}"
-                      </Typography>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Box>
-                          <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                            {story.testimonial.name}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {story.testimonial.role}
-                          </Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', gap: 0.5 }}>
-                          {[...Array(story.testimonial.rating)].map((_, idx) => (
-                            <Star key={idx} sx={{ color: '#F59E0B', fontSize: 24 }} />
+                  {/* Story Content */}
+                  <div className="lg:col-span-2">
+                    <div className="space-y-6">
+                      {/* Challenge */}
+                      <div>
+                        <h4 className="title-large mb-3 text-on-surface">Challenge</h4>
+                        <p className="body-large text-on-surface-variant">{story.challenge}</p>
+                      </div>
+
+                      {/* Solution */}
+                      <div>
+                        <h4 className="title-large mb-3 text-on-surface">Solution</h4>
+                        <p className="body-large text-on-surface-variant">{story.solution}</p>
+                      </div>
+
+                      {/* Results */}
+                      <div>
+                        <h4 className="title-large mb-3 text-on-surface">Results</h4>
+                        <ul className="space-y-2">
+                          {story.results.map((result, resultIndex) => (
+                            <li key={resultIndex} className="flex items-start gap-3">
+                              <CheckCircle sx={{ fontSize: 20, color: 'var(--color-success-60)', mt: 0.25 }} />
+                              <span className="body-medium text-on-surface-variant">{result}</span>
+                            </li>
                           ))}
-                        </Box>
-                      </Box>
-                    </Box>
-                  </CardContent>
-                </MotionCard>
-              </Grid>
+                        </ul>
+                      </div>
+
+                      {/* Testimonial */}
+                      <div className="p-6 rounded-lg" style={{ backgroundColor: 'var(--color-surface-container)' }}>
+                        <blockquote className="body-large text-on-surface-variant italic mb-4">
+                          "{story.quote}"
+                        </blockquote>
+                        <div className="flex items-center gap-3">
+                          <div 
+                            className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-on-primary"
+                            style={{ backgroundColor: 'var(--color-primary)' }}
+                          >
+                            {story.testimonial.name.split(' ').map(n => n[0]).join('')}
+                          </div>
+                          <div>
+                            <div className="title-medium text-on-surface">{story.testimonial.name}</div>
+                            <div className="body-small text-on-surface-variant">{story.testimonial.role}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
-          </Grid>
-        </MotionDiv>
+          </div>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <Card sx={{ 
-            background: 'linear-gradient(135deg, #FF3B30 0%, #FF9500 100%)',
-            color: 'white',
-            textAlign: 'center',
-            p: 4
+      {/* Benefits Section */}
+      <section className="py-20 surface-container">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Why Enterprises Choose Us</h2>
+            <p className="body-large text-on-surface-variant">
+              Specialized expertise for complex, multi-country enterprise transformations
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="card p-6">
+                <div className="flex items-start gap-6">
+                  <div 
+                    className="p-3 rounded-lg flex-shrink-0"
+                    style={{ backgroundColor: 'var(--color-primary-container)' }}
+                  >
+                    {benefit.icon}
+                  </div>
+                  <div>
+                    <h3 className="headline-small mb-3 text-on-surface">{benefit.title}</h3>
+                    <p className="body-medium text-on-surface-variant">{benefit.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 surface-variant">
+        <div className="container">
+          <div className="card p-12 text-center" style={{
+            background: 'linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-secondary-container) 100%)'
           }}>
-            <CardContent>
-              <Typography variant="h3" component="h2" sx={{ mb: 3, color: 'white' }}>
-                Transform Your Global Enterprise
-              </Typography>
-              <Typography variant="h6" sx={{ mb: 4, color: 'rgba(255,255,255,0.9)' }}>
-                Join these industry leaders in revolutionizing global payroll operations. 
-                Our enterprise specialists are ready to design your transformation strategy.
-              </Typography>
-              <Grid container spacing={3} justifyContent="center">
-                <Grid item>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    component={Link}
-                    to="/contact"
-                    sx={{ 
-                      bgcolor: 'white',
-                      color: 'secondary.main',
-                      px: 4,
-                      py: 1.5,
-                      '&:hover': { 
-                        bgcolor: 'grey.100',
-                        transform: 'translateY(-2px)'
-                      }
-                    }}
-                  >
-                    Schedule Enterprise Consultation
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    component={Link}
-                    to="/services/large-enterprise"
-                    sx={{ 
-                      borderColor: 'white',
-                      color: 'white',
-                      px: 4,
-                      py: 1.5,
-                      '&:hover': { 
-                        bgcolor: 'rgba(255,255,255,0.1)',
-                        borderColor: 'white',
-                        color: 'white',
-                        transform: 'translateY(-2px)'
-                      }
-                    }}
-                  >
-                    View Enterprise Solutions
-                  </Button>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </MotionDiv>
-      </Container>
-    </Box>
-    </AppleBackground>
+            <h2 className="display-medium mb-6 text-on-surface">
+              Ready for Your Enterprise Migration?
+            </h2>
+            <p className="body-large mb-8 text-on-surface-variant max-w-2xl mx-auto">
+              Join these successful enterprise clients who transformed their global payroll operations. 
+              Get a comprehensive consultation tailored to your enterprise requirements and complexity.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="btn-primary">
+                <Phone sx={{ fontSize: 20 }} />
+                Get Enterprise Consultation
+              </Link>
+              <Link to="/services/large-enterprise" className="btn-outlined">
+                <ArrowForward sx={{ fontSize: 20 }} />
+                Learn About Enterprise Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Success Stories */}
+      <section className="py-20 surface">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">More Success Stories</h2>
+            <p className="body-large text-on-surface-variant">
+              Explore success stories from different business segments
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8">
+            <div className="card-elevated p-8 text-center transition-all duration-300">
+              <div className="flex justify-center mb-6">
+                <Business sx={{ fontSize: 48, color: 'var(--color-primary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">SME Success Stories</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Tailored migration solutions for small to medium enterprises
+              </p>
+              <Link to="/success-stories/sme" className="btn-outlined w-full">
+                View SME Stories
+                <ArrowForward sx={{ fontSize: 18 }} />
+              </Link>
+            </div>
+            
+            <div className="card-elevated p-8 text-center transition-all duration-300">
+              <div className="flex justify-center mb-6">
+                <Support sx={{ fontSize: 48, color: 'var(--color-tertiary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Consultancy Stories</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Strategic guidance and optimization without full migration
+              </p>
+              <Link to="/success-stories/consultancy" className="btn-outlined w-full">
+                View Consultancy Stories
+                <ArrowForward sx={{ fontSize: 18 }} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

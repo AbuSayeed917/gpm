@@ -1,25 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import AppleBackground from '../components/AppleBackground';
 import {
-  Container,
   Grid,
   Typography,
-  TextField,
-  Button,
-  Select,
-  MenuItem,
   FormControl,
   InputLabel,
+  Select,
+  MenuItem,
+  TextField,
   Box,
-  Chip,
-  Alert,
-  LinearProgress,
-  Stepper,
-  Step,
-  StepLabel,
-  Paper
+  Chip
 } from '@mui/material';
 import {
   Business,
@@ -30,7 +21,6 @@ import {
   ArrowBack,
   ArrowForward
 } from '@mui/icons-material';
-import './QuotePage.css';
 
 const QuotePage = () => {
   const location = useLocation();
@@ -75,8 +65,8 @@ const QuotePage = () => {
   const serviceConfig = {
     sme: {
       title: 'SME Payroll Migration Quote',
-      icon: <Business sx={{ fontSize: 40, color: '#007AFF' }} />,
-      gradient: 'linear-gradient(135deg, #007AFF 0%, #5856D6 100%)',
+      icon: <Business sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      gradient: 'linear-gradient(135deg, var(--color-primary-40) 0%, var(--color-tertiary-40) 100%)',
       description: 'Get a tailored quote for your small to medium enterprise payroll migration',
       migrationOptions: [
         'Xero Payroll Migration',
@@ -103,8 +93,8 @@ const QuotePage = () => {
     },
     'large-enterprise': {
       title: 'Enterprise Payroll Migration Quote',
-      icon: <CorporateFare sx={{ fontSize: 40, color: '#FF3B30' }} />,
-      gradient: 'linear-gradient(135deg, #FF3B30 0%, #FF9500 100%)',
+      icon: <CorporateFare sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      gradient: 'linear-gradient(135deg, var(--color-primary-40) 0%, var(--color-tertiary-40) 100%)',
       description: 'Enterprise-grade payroll migration solutions for large organizations',
       migrationOptions: [
         'SAP Payroll Migration',
@@ -132,8 +122,8 @@ const QuotePage = () => {
     },
     consultancy: {
       title: 'Consultancy Partnership Quote',
-      icon: <Groups sx={{ fontSize: 40, color: '#34C759' }} />,
-      gradient: 'linear-gradient(135deg, #34C759 0%, #30DB5B 100%)',
+      icon: <Groups sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+      gradient: 'linear-gradient(135deg, var(--color-primary-40) 0%, var(--color-tertiary-40) 100%)',
       description: 'Partnership opportunities for consulting firms and professional services',
       migrationOptions: [
         'White-label Migration Services',
@@ -231,15 +221,16 @@ const QuotePage = () => {
                 <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 3 }}>
                   Service Selection
                 </Typography>
-                <FormControl fullWidth sx={{ mb: 3 }}>
-                  <InputLabel>Migration Type</InputLabel>
+                <FormControl fullWidth sx={{ mb: 4 }}>
+                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Migration Type</InputLabel>
                   <Select
                     value={formData.targetSystem}
                     onChange={(e) => handleInputChange('targetSystem', e.target.value)}
                     label="Migration Type"
+                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
                   >
                     {currentConfig.migrationOptions.map(option => (
-                      <MenuItem key={option} value={option}>{option}</MenuItem>
+                      <MenuItem key={option} value={option} sx={{ py: 1.5, fontSize: '1rem' }}>{option}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>
@@ -249,21 +240,23 @@ const QuotePage = () => {
                   label="Current Payroll System"
                   value={formData.currentSystem}
                   onChange={(e) => handleInputChange('currentSystem', e.target.value)}
-                  sx={{ mb: 3 }}
+                  sx={{ mb: 4, '& .MuiInputBase-root': { minHeight: '56px' } }}
                   placeholder="e.g., Legacy system, Excel, Current provider"
+                  InputLabelProps={{ sx: { fontSize: '1.1rem', fontWeight: 500 } }}
                 />
                 
-                <FormControl fullWidth sx={{ mb: 3 }}>
-                  <InputLabel>Migration Urgency</InputLabel>
+                <FormControl fullWidth sx={{ mb: 4 }}>
+                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Migration Urgency</InputLabel>
                   <Select
                     value={formData.migrationUrgency}
                     onChange={(e) => handleInputChange('migrationUrgency', e.target.value)}
                     label="Migration Urgency"
+                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
                   >
-                    <MenuItem value="immediate">Immediate (within 1 month)</MenuItem>
-                    <MenuItem value="soon">Soon (1-3 months)</MenuItem>
-                    <MenuItem value="planned">Planned (3-6 months)</MenuItem>
-                    <MenuItem value="future">Future consideration (6+ months)</MenuItem>
+                    <MenuItem value="immediate" sx={{ py: 1.5, fontSize: '1rem' }}>Immediate (within 1 month)</MenuItem>
+                    <MenuItem value="soon" sx={{ py: 1.5, fontSize: '1rem' }}>Soon (1-3 months)</MenuItem>
+                    <MenuItem value="planned" sx={{ py: 1.5, fontSize: '1rem' }}>Planned (3-6 months)</MenuItem>
+                    <MenuItem value="future" sx={{ py: 1.5, fontSize: '1rem' }}>Future consideration (6+ months)</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -278,10 +271,13 @@ const QuotePage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Grid container spacing={3}>
+            <Grid container spacing={4}>
               <Grid item xs={12}>
-                <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 3 }}>
+                <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 4, fontSize: '1.5rem' }}>
                   Company Information
+                </Typography>
+                <Typography variant="body1" sx={{ mb: 4, color: 'var(--color-on-surface-variant)' }}>
+                  Please provide your company details to help us tailor the perfect migration solution for your needs.
                 </Typography>
               </Grid>
               
@@ -292,19 +288,22 @@ const QuotePage = () => {
                   value={formData.companyName}
                   onChange={(e) => handleInputChange('companyName', e.target.value)}
                   required
+                  sx={{ '& .MuiInputBase-root': { minHeight: '56px' } }}
+                  InputLabelProps={{ sx: { fontSize: '1.1rem', fontWeight: 500 } }}
                 />
               </Grid>
               
               <Grid item xs={12} md={6}>
                 <FormControl fullWidth>
-                  <InputLabel>Industry</InputLabel>
+                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Industry Sector</InputLabel>
                   <Select
                     value={formData.industry}
                     onChange={(e) => handleInputChange('industry', e.target.value)}
-                    label="Industry"
+                    label="Industry Sector"
+                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
                   >
                     {currentConfig.industries.map(industry => (
-                      <MenuItem key={industry} value={industry}>{industry}</MenuItem>
+                      <MenuItem key={industry} value={industry} sx={{ py: 1.5, fontSize: '1rem' }}>{industry}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>
@@ -312,14 +311,15 @@ const QuotePage = () => {
               
               <Grid item xs={12} md={6}>
                 <FormControl fullWidth>
-                  <InputLabel>Number of Employees</InputLabel>
+                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Company Size (Employees)</InputLabel>
                   <Select
                     value={formData.employeeCount}
                     onChange={(e) => handleInputChange('employeeCount', e.target.value)}
-                    label="Number of Employees"
+                    label="Company Size (Employees)"
+                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
                   >
                     {currentConfig.employeeRanges.map(range => (
-                      <MenuItem key={range} value={range}>{range}</MenuItem>
+                      <MenuItem key={range} value={range} sx={{ py: 1.5, fontSize: '1rem' }}>{range}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>
@@ -327,16 +327,17 @@ const QuotePage = () => {
               
               <Grid item xs={12} md={6}>
                 <FormControl fullWidth>
-                  <InputLabel>Data Volume</InputLabel>
+                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Expected Data Volume</InputLabel>
                   <Select
                     value={formData.dataVolume}
                     onChange={(e) => handleInputChange('dataVolume', e.target.value)}
-                    label="Data Volume"
+                    label="Expected Data Volume"
+                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
                   >
-                    <MenuItem value="small">Small (&lt; 1GB)</MenuItem>
-                    <MenuItem value="medium">Medium (1-10GB)</MenuItem>
-                    <MenuItem value="large">Large (10-100GB)</MenuItem>
-                    <MenuItem value="enterprise">Enterprise (100GB+)</MenuItem>
+                    <MenuItem value="small" sx={{ py: 1.5, fontSize: '1rem' }}>Small (&lt; 1GB)</MenuItem>
+                    <MenuItem value="medium" sx={{ py: 1.5, fontSize: '1rem' }}>Medium (1-10GB)</MenuItem>
+                    <MenuItem value="large" sx={{ py: 1.5, fontSize: '1rem' }}>Large (10-100GB)</MenuItem>
+                    <MenuItem value="enterprise" sx={{ py: 1.5, fontSize: '1rem' }}>Enterprise (100GB+)</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -515,141 +516,183 @@ const QuotePage = () => {
 
   if (submitSuccess) {
     return (
-      <Container maxWidth="md" sx={{ py: 8 }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Paper className="glass-card-strong" sx={{ p: 6, textAlign: 'center' }}>
-            <CheckCircleOutline sx={{ fontSize: 80, color: 'success.main', mb: 3 }} />
-            <Typography variant="h3" gutterBottom sx={{ fontWeight: 600 }}>
-              Quote Request Submitted!
-            </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
-              Thank you for your interest. Our team will review your requirements 
-              and get back to you within 24 hours with a detailed quote.
-            </Typography>
-            <Button
-              variant="contained"
-              onClick={() => navigate('/')}
-              size="large"
-              sx={{ px: 6 }}
-            >
-              Return to Home
-            </Button>
-          </Paper>
-        </motion.div>
-      </Container>
+      <div className="surface min-h-screen py-16 md:py-20">
+        <div className="container max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="card p-8 md:p-12 text-center gradient-subtle">
+              <CheckCircleOutline sx={{ fontSize: 80, color: 'var(--color-success-60)', marginBottom: '24px' }} />
+              <h1 className="display-medium mb-6 text-on-surface">
+                Quote Request Submitted!
+              </h1>
+              <p className="headline-small text-on-surface-variant mb-8 max-w-lg mx-auto">
+                Thank you for your interest. Our team will review your requirements 
+                and get back to you within 24 hours with a detailed quote.
+              </p>
+              <button
+                onClick={() => navigate('/')}
+                className="btn-gradient px-8 py-3"
+              >
+                Return to Home
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
     );
   }
 
   return (
-    <AppleBackground>
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 3 }}>
-            {currentConfig.icon}
-            <Typography variant="h2" sx={{ fontWeight: 700 }}>
-              {currentConfig.title}
-            </Typography>
-          </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-            {currentConfig.description}
-          </Typography>
-        </Box>
+    <div className="surface min-h-screen py-16 md:py-20">
+      <div className="container max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              {currentConfig.icon}
+              <h1 className="display-medium text-on-surface">
+                {currentConfig.title}
+              </h1>
+            </div>
+            <p className="headline-small text-on-surface-variant max-w-2xl mx-auto">
+              {currentConfig.description}
+            </p>
+          </div>
 
-        {/* Progress Stepper */}
-        <Paper className="glass-card" sx={{ p: 4, mb: 4 }}>
-          <Stepper activeStep={activeStep} alternativeLabel>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel sx={{
-                  '& .MuiStepLabel-label': {
-                    fontFamily: 'var(--font-sf-text)',
-                    fontWeight: 500
-                  }
-                }}>
-                  {label}
-                </StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-        </Paper>
+          {/* Progress Stepper */}
+          <div className="card p-8 mb-8" style={{ background: 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-container-low) 100%)' }}>
+            <div className="flex justify-between items-start mb-4">
+              {steps.map((label, index) => (
+                <div key={label} className="flex flex-col items-center flex-1 relative">
+                  <div 
+                    className={`w-12 h-12 rounded-full flex items-center justify-center text-base font-semibold mb-3 transition-all duration-300 shadow-sm ${
+                      index <= activeStep 
+                        ? 'text-white' 
+                        : 'text-on-surface-variant'
+                    }`}
+                    style={{
+                      background: index <= activeStep 
+                        ? 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)'
+                        : 'var(--color-surface-container)',
+                      transform: index === activeStep ? 'scale(1.1)' : 'scale(1)'
+                    }}
+                  >
+                    {index + 1}
+                  </div>
+                  <span className={`text-sm text-center font-medium px-2 ${
+                    index <= activeStep ? 'text-on-surface' : 'text-on-surface-variant'
+                  }`}>
+                    {label}
+                  </span>
+                  {index < steps.length - 1 && (
+                    <div 
+                      className={`absolute top-6 left-1/2 w-full h-1 rounded-full transition-all duration-500 ${
+                        index < activeStep ? '' : ''
+                      }`}
+                      style={{
+                        background: index < activeStep 
+                          ? 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%)'
+                          : 'var(--color-outline-variant)',
+                        transform: 'translateX(50%)',
+                        zIndex: -1
+                      }}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
 
-        {/* Form Content */}
-        <Paper className="glass-card-strong" sx={{ p: 6 }}>
-          {renderStepContent(activeStep)}
+          {/* Form Content */}
+          <div className="card p-10 mb-10" style={{ background: 'var(--color-surface)', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
+            {renderStepContent(activeStep)}
+          </div>
           
           {/* Navigation Buttons */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 6 }}>
-            <Button
+          <div className="flex justify-between items-center mt-10 px-4">
+            <button
               onClick={handleBack}
               disabled={activeStep === 0}
-              startIcon={<ArrowBack />}
-              sx={{ visibility: activeStep === 0 ? 'hidden' : 'visible' }}
+              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 flex items-center gap-3 ${
+                activeStep === 0 
+                  ? 'invisible' 
+                  : 'bg-surface-container hover:bg-surface-container-high text-on-surface border border-outline-variant hover:shadow-md'
+              }`}
+              style={{
+                minWidth: '120px',
+                boxShadow: activeStep === 0 ? 'none' : '0 2px 8px rgba(0,0,0,0.1)'
+              }}
             >
-              Back
-            </Button>
+              <ArrowBack sx={{ fontSize: 20 }} />
+              <span>Back</span>
+            </button>
             
             {activeStep === steps.length - 1 ? (
-              <Button
+              <button
                 onClick={handleSubmit}
-                variant="contained"
-                endIcon={isSubmitting ? null : <Send />}
                 disabled={isSubmitting}
-                sx={{ px: 4 }}
+                className="px-8 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center gap-3 text-white shadow-lg hover:shadow-xl disabled:opacity-70"
+                style={{
+                  background: isSubmitting 
+                    ? 'var(--color-outline)' 
+                    : 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+                  minWidth: '200px',
+                  transform: isSubmitting ? 'none' : 'scale(1.02)',
+                  boxShadow: '0 4px 16px rgba(107, 62, 145, 0.3)'
+                }}
               >
                 {isSubmitting ? (
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <LinearProgress sx={{ width: 100 }} />
-                    Submitting...
-                  </Box>
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Submitting...</span>
+                  </div>
                 ) : (
-                  'Submit Quote Request'
+                  <>
+                    <span>Submit Quote Request</span>
+                    <Send sx={{ fontSize: 20 }} />
+                  </>
                 )}
-              </Button>
+              </button>
             ) : (
-              <Button
+              <button
                 onClick={handleNext}
-                variant="contained"
-                endIcon={<ArrowForward />}
+                className="px-8 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center gap-3 text-white hover:shadow-xl"
+                style={{
+                  background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+                  minWidth: '140px',
+                  transform: 'scale(1.02)',
+                  boxShadow: '0 4px 16px rgba(107, 62, 145, 0.3)'
+                }}
               >
-                Next
-              </Button>
+                <span>Next</span>
+                <ArrowForward sx={{ fontSize: 20 }} />
+              </button>
             )}
-          </Box>
-        </Paper>
+          </div>
 
-        {/* Service Type Auto-Detection Alert */}
-        <Alert 
-          severity="info" 
-          sx={{ 
-            mt: 3, 
-            background: 'var(--glass-bg)',
-            backdropFilter: 'var(--glass-blur)',
-            border: 'var(--glass-border)'
-          }}
-        >
-          Service type automatically detected: <strong>{currentConfig.title}</strong>
-          {' - '}
-          <Button 
-            size="small" 
-            onClick={() => navigate('/services')}
-            sx={{ textTransform: 'none' }}
-          >
-            Change service type
-          </Button>
-        </Alert>
-      </motion.div>
-      </Container>
-    </AppleBackground>
+          {/* Service Type Auto-Detection Alert */}
+          <div className="card p-4 mt-6 surface-container-low">
+            <p className="body-medium text-on-surface-variant">
+              Service type automatically detected: <span className="font-medium text-on-surface">{currentConfig.title}</span>
+              {' - '}
+              <button 
+                onClick={() => navigate('/services')}
+                className="text-primary hover:underline"
+              >
+                Change service type
+              </button>
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </div>
   );
 };
 
