@@ -192,7 +192,7 @@ const ProfessionalHome2025 = () => {
       {/* Stats Section */}
       <section className="py-16 surface-variant">
         <div className="container">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <div key={index} className="card text-center p-6">
                 <div className="flex justify-center mb-4">
@@ -218,7 +218,7 @@ const ProfessionalHome2025 = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div 
                 key={service.id} 
@@ -278,7 +278,7 @@ const ProfessionalHome2025 = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="card p-6">
                 <div className="flex items-start gap-6">
@@ -311,7 +311,7 @@ const ProfessionalHome2025 = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="card p-8">
                 <div className="flex items-center gap-1 mb-4">
