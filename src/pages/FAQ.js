@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   HelpOutline,
   ExpandMore,
-  ExpandLess
+  ExpandLess,
+  Phone,
+  Email,
+  Security,
+  Speed,
+  Support,
+  Analytics,
+  Business,
+  People,
+  Timeline,
+  ArrowForward,
+  CheckCircle
 } from '@mui/icons-material';
-import { 
-  ServiceCard, 
-  FeatureCard, 
-  StatsCard, 
-  CTACard,
-  getServiceIcon,
-  getFeatureIcon
-} from '../components/ProfessionalCards';
 
 
 const FAQ = () => {
@@ -140,101 +144,138 @@ const FAQ = () => {
   ];
 
   return (
-    <main className="page">
+    <div className="surface">
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="py-20 lg:py-32 surface-container">
         <div className="container">
-          <div className="hero-content">
-            <div className="badge">
-              <HelpOutline className="icon-sm" />
-              Expert Answers to Your Questions
+          <div className="text-center">
+            <div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+              style={{ backgroundColor: 'var(--color-primary-container)' }}
+            >
+              <HelpOutline sx={{ fontSize: 20, color: 'var(--color-primary)' }} />
+              <span className="body-small font-medium text-primary">Expert Answers</span>
             </div>
             
-            <h1 className="display-large">Frequently Asked Questions</h1>
+            <h1 className="display-large mb-6 text-on-surface">
+              Frequently Asked Questions
+            </h1>
             
-            <p className="body-large text-secondary hero-subtitle">
-              At GlobalPayrollMigration.com, we know payroll transformation can feel overwhelming. 
-              Here are answers to the most common questions our clients ask before starting a project.
+            <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
+              Everything you need to know about our payroll migration services, process, and approach. 
+              Get clear answers from our experts who have successfully completed 500+ migrations.
             </p>
           </div>
         </div>
       </section>
 
       {/* Quick Stats */}
-      <section className="section">
+      <section className="py-16 surface-variant">
         <div className="container">
-          <div className="section-header">
-            <h2 className="headline-large">Quick Facts</h2>
-            <p className="body-large text-secondary">
+          <div className="text-center mb-12">
+            <h2 className="display-medium mb-4 text-on-surface">Quick Facts</h2>
+            <p className="body-large text-on-surface-variant">
               Key information about our payroll migration services
             </p>
           </div>
 
-          <div className="stats-grid">
+          <div className="grid grid-cols-4 gap-6">
             {quickStats.map((stat, index) => (
-              <StatsCard
-                key={index}
-                value={stat.value}
-                label={stat.label}
-                description={stat.description}
-              />
+              <div key={index} className="card text-center p-6">
+                <div className="display-small mb-2 text-primary">{stat.value}</div>
+                <h3 className="title-medium mb-2 text-on-surface">{stat.label}</h3>
+                <p className="body-small text-on-surface-variant">{stat.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Key Features */}
-      <section className="section section-alt">
+      <section className="py-20 surface">
         <div className="container">
-          <div className="section-header">
-            <h2 className="headline-large">Why Choose Us</h2>
-            <p className="body-large text-secondary">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Why Choose Us</h2>
+            <p className="body-large text-on-surface-variant">
               Our expertise ensures successful payroll transformations
             </p>
           </div>
 
-          <div className="features-grid">
-            {keyFeatures.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                icon={getFeatureIcon(feature.type)}
-                title={feature.title}
-                description={feature.description}
-              />
-            ))}
+          <div className="grid grid-cols-2 gap-8">
+            {keyFeatures.map((feature, index) => {
+              const iconMap = {
+                speed: <Speed sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+                security: <Security sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+                support: <Support sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
+                analytics: <Analytics sx={{ fontSize: 40, color: 'var(--color-primary)' }} />
+              };
+              return (
+                <div key={index} className="card p-6">
+                  <div className="flex items-start gap-6">
+                    <div 
+                      className="p-3 rounded-lg flex-shrink-0"
+                      style={{ backgroundColor: 'var(--color-primary-container)' }}
+                    >
+                      {iconMap[feature.type]}
+                    </div>
+                    <div>
+                      <h3 className="headline-small mb-3 text-on-surface">{feature.title}</h3>
+                      <p className="body-medium text-on-surface-variant">{feature.description}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="section">
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <div className="section-header">
-            <h2 className="headline-large">Detailed Answers</h2>
-            <p className="body-large text-secondary">
+      <section className="py-20 surface-container">
+        <div className="container" style={{ maxWidth: '900px' }}>
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Detailed Answers</h2>
+            <p className="body-large text-on-surface-variant">
               Comprehensive responses to help you understand our process and approach
             </p>
           </div>
 
-          <div className="faq-container">
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="faq-item">
-                <div 
-                  className={`faq-question ${openFAQ === index ? 'active' : ''}`}
+              <div key={index} className="card overflow-hidden">
+                <button 
+                  className={`w-full text-left p-6 transition-colors ${
+                    openFAQ === index ? 'bg-surface-container' : ''
+                  }`}
                   onClick={() => toggleFAQ(index)}
+                  style={{
+                    backgroundColor: openFAQ === index ? 'var(--color-surface-container)' : 'transparent'
+                  }}
                 >
-                  <div className="faq-question-content">
-                    <span className="faq-category">{faq.category}</span>
-                    <h3 className="title-medium">{faq.question}</h3>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <div 
+                        className="inline-block px-3 py-1 rounded-full mb-3 text-xs font-medium uppercase tracking-wide"
+                        style={{ 
+                          backgroundColor: 'var(--color-primary-container)',
+                          color: 'var(--color-primary)'
+                        }}
+                      >
+                        {faq.category}
+                      </div>
+                      <h3 className="title-large text-on-surface">{faq.question}</h3>
+                    </div>
+                    <div className="flex-shrink-0 transition-transform" style={{
+                      transform: openFAQ === index ? 'rotate(180deg)' : 'rotate(0deg)'
+                    }}>
+                      <ExpandMore sx={{ fontSize: 24, color: 'var(--color-on-surface-variant)' }} />
+                    </div>
                   </div>
-                  <div className="faq-toggle">
-                    {openFAQ === index ? <ExpandLess /> : <ExpandMore />}
-                  </div>
-                </div>
+                </button>
                 
                 {openFAQ === index && (
-                  <div className="faq-answer">
-                    <p className="body-large text-secondary">{faq.answer}</p>
+                  <div className="px-6 pb-6">
+                    <p className="body-large text-on-surface-variant leading-relaxed">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -244,55 +285,87 @@ const FAQ = () => {
       </section>
 
       {/* Contact CTA */}
-      <CTACard
-        title="Still Have Questions?"
-        subtitle="Our payroll migration experts are here to help. Get personalized answers to your specific situation and requirements."
-        primaryAction={{
-          label: 'Schedule Consultation',
-          onClick: () => window.location.href = '/contact'
-        }}
-        secondaryAction={{
-          label: 'Send Message',
-          onClick: () => window.location.href = '/contact'
-        }}
-        gradient
-      />
+      <section className="py-20 surface-variant">
+        <div className="container">
+          <div className="card p-12 text-center" style={{
+            background: 'linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-secondary-container) 100%)'
+          }}>
+            <h2 className="display-medium mb-6 text-on-surface">
+              Still Have Questions?
+            </h2>
+            <p className="body-large mb-8 text-on-surface-variant max-w-2xl mx-auto">
+              Our payroll migration experts are here to help. Get personalized answers to your specific situation and requirements.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="btn-primary">
+                <Phone sx={{ fontSize: 20 }} />
+                Schedule Consultation
+              </Link>
+              <Link to="/contact" className="btn-outlined">
+                <Email sx={{ fontSize: 20 }} />
+                Send Message
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Related Resources */}
-      <section className="section section-alt">
+      <section className="py-20 surface">
         <div className="container">
-          <div className="section-header">
-            <h2 className="headline-large">Learn More</h2>
-            <p className="body-large text-secondary">
+          <div className="text-center mb-16">
+            <h2 className="display-medium mb-6 text-on-surface">Learn More</h2>
+            <p className="body-large text-on-surface-variant">
               Explore additional resources to understand our services and approach
             </p>
           </div>
 
-          <div className="services-grid">
-            <ServiceCard
-              icon={getServiceIcon('consultancy')}
-              title="Our Services"
-              description="Detailed overview of all our payroll migration and implementation services"
-              onLearnMore={() => window.location.href = '/services'}
-            />
+          <div className="grid grid-cols-3 gap-8">
+            <div className="card-elevated p-8 text-center transition-all duration-300">
+              <div className="flex justify-center mb-6">
+                <Timeline sx={{ fontSize: 48, color: 'var(--color-tertiary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Our Services</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Detailed overview of all our payroll migration and implementation services
+              </p>
+              <Link to="/services" className="btn-outlined w-full">
+                Learn More
+                <ArrowForward sx={{ fontSize: 18 }} />
+              </Link>
+            </div>
             
-            <ServiceCard
-              icon={getServiceIcon('enterprise')}
-              title="Success Stories"
-              description="Real examples of successful migrations across various industries and regions"
-              onLearnMore={() => window.location.href = '/success-stories'}
-            />
+            <div className="card-elevated p-8 text-center transition-all duration-300">
+              <div className="flex justify-center mb-6">
+                <People sx={{ fontSize: 48, color: 'var(--color-secondary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Success Stories</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Real examples of successful migrations across various industries and regions
+              </p>
+              <Link to="/success-stories" className="btn-outlined w-full">
+                Learn More
+                <ArrowForward sx={{ fontSize: 18 }} />
+              </Link>
+            </div>
             
-            <ServiceCard
-              icon={getServiceIcon('sme')}
-              title="Our Process"
-              description="Learn about our proven methodology and approach to payroll migrations"
-              onLearnMore={() => window.location.href = '/about'}
-            />
+            <div className="card-elevated p-8 text-center transition-all duration-300">
+              <div className="flex justify-center mb-6">
+                <Business sx={{ fontSize: 48, color: 'var(--color-primary)' }} />
+              </div>
+              <h3 className="headline-small mb-4 text-on-surface">Our Process</h3>
+              <p className="body-medium mb-6 text-on-surface-variant">
+                Learn about our proven methodology and approach to payroll migrations
+              </p>
+              <Link to="/about" className="btn-outlined w-full">
+                Learn More
+                <ArrowForward sx={{ fontSize: 18 }} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 
