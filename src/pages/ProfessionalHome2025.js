@@ -115,14 +115,14 @@ const ProfessionalHome2025 = () => {
   ];
 
   return (
-    <div className="surface" style={{minHeight: '100%'}}>
+    <div className="surface min-h-screen">
       {/* Hero Section */}
       <section className="py-16 md:py-20 lg:py-24 surface-container">
         <div className="container max-w-6xl">
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-24 lg:justify-between">
             {/* Hero Content */}
-            <div className="text-center lg:text-left w-full lg:w-96">
-              <h1 className="display-large mb-6 text-on-surface">
+            <div className="text-center lg:text-left w-full lg:w-auto lg:max-w-2xl">
+              <h1 className="display-large mb-6 text-on-surface" style={{wordBreak: 'keep-all', hyphens: 'none'}}>
                 Professional Payroll Migration Services
               </h1>
               <p className="body-large mb-8 text-on-surface-variant">

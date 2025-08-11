@@ -30,7 +30,7 @@ function App() {
           <Router>
             <div className="flex flex-col min-h-screen">
               <ProfessionalNavigation />
-              <main id="main-content" className="flex-1">
+              <main id="main-content" className="flex-1 w-full">
                 <Routes>
                   <Route path="/" element={<ProfessionalHome />} />
                   <Route path="/services" element={<Services />} />
