@@ -115,7 +115,7 @@ const ProfessionalHome2025 = () => {
   ];
 
   return (
-    <div className="surface" style={{minHeight: '80vh'}}>
+    <div className="surface" style={{minHeight: '100%'}}>
       {/* Hero Section */}
       <section className="py-16 md:py-20 lg:py-24 surface-container">
         <div className="container max-w-6xl">
