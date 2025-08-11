@@ -24,6 +24,20 @@ const ProfessionalNavigation2025 = () => {
     window.scrollTo(0, 0);
   }, [location]);
 
+  // Close mobile menu when screen size changes to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) { // lg breakpoint
+        setMobileMenuOpen(false);
+        setServicesOpen(false);
+        setSuccessStoriesOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -69,7 +83,7 @@ const ProfessionalNavigation2025 = () => {
   const navigationStyle = {
     position: 'sticky',
     top: 0,
-    zIndex: 'var(--z-sticky)',
+    zIndex: 1020, // Fixed z-index instead of CSS variable
     backgroundColor: 'var(--color-surface-container)',
     borderBottom: '1px solid var(--color-outline-variant)',
     backdropFilter: 'blur(8px)',
@@ -138,7 +152,7 @@ const ProfessionalNavigation2025 = () => {
     boxShadow: 'var(--elevation-3)',
     padding: 'var(--space-2)',
     minWidth: '280px',
-    zIndex: 'var(--z-dropdown)',
+    zIndex: 1050, // Fixed z-index instead of CSS variable
     border: '1px solid var(--color-outline-variant)'
   };
 
@@ -157,19 +171,28 @@ const ProfessionalNavigation2025 = () => {
     top: '100%',
     left: 0,
     right: 0,
-    backgroundColor: 'var(--color-surface-container)',
-    borderBottom: '1px solid var(--color-outline-variant)',
-    zIndex: 'var(--z-dropdown)',
-    padding: 'var(--space-4) 0'
+    backgroundColor: '#ffffff',
+    borderBottom: '1px solid #e5e5e5',
+    zIndex: 1000,
+    padding: '16px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+    border: '1px solid #e5e5e5',
+    maxHeight: '500px', // Fixed height instead of vh
+    overflowY: 'auto'
   };
 
   const mobileToggleStyle = {
     border: 'none',
     background: 'transparent',
     color: 'var(--color-on-surface)',
-    padding: 'var(--space-2)',
+    padding: 'var(--space-3)', /* FIXED: Larger touch target */
     borderRadius: 'var(--shape-medium)',
     cursor: 'pointer',
+    minHeight: '44px', /* FIXED: Proper touch target size */
+    minWidth: '44px',  /* FIXED: Proper touch target size */
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     transition: 'all var(--motion-duration-medium2) var(--motion-easing-standard)'
   };
 
@@ -183,7 +206,7 @@ const ProfessionalNavigation2025 = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-6">
           <ul style={navMenuStyle} role="menubar">
             {/* Services Dropdown */}
             <li style={{ position: 'relative' }} className="dropdown-container" role="none">
@@ -364,7 +387,7 @@ const ProfessionalNavigation2025 = () => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <button
             style={mobileToggleStyle}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -388,102 +411,116 @@ const ProfessionalNavigation2025 = () => {
           <div className="container">
             {/* Services Section */}
             <div className="mb-4">
-              <button
-                className="flex items-center justify-between w-full p-3 rounded-md"
+              <div
                 style={{
-                  backgroundColor: servicesOpen ? 'var(--color-surface-container-high)' : 'transparent',
-                  color: 'var(--color-on-surface)'
+                  color: 'var(--color-on-surface)',
+                  fontSize: 'var(--text-title-medium)',
+                  fontWeight: 'var(--weight-semibold)',
+                  padding: 'var(--space-3) 0 var(--space-2) 0',
+                  borderBottom: '1px solid var(--color-outline-variant)',
+                  marginBottom: 'var(--space-2)'
                 }}
-                onClick={() => setServicesOpen(!servicesOpen)}
-                aria-expanded={servicesOpen}
               >
-                <span className="title-medium">Services</span>
-                <KeyboardArrowDown 
-                  sx={{
-                    transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                    transition: 'transform var(--motion-duration-medium2) var(--motion-easing-standard)'
-                  }}
-                />
-              </button>
-              {servicesOpen && (
-                <div className="pl-4 mt-2 space-y-1">
-                  {services.map((service) => (
-                    <Link
-                      key={service.href}
-                      to={service.href}
-                      className="block p-3 rounded-sm transition-colors duration-200"
-                      style={{
-                        color: 'var(--color-on-surface-variant)',
-                        fontSize: 'var(--text-body-medium)'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = 'var(--color-surface-container-highest)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = 'transparent';
-                      }}
-                      role="menuitem"
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+                Services
+              </div>
+              <div style={{ paddingLeft: 'var(--space-2)' }}>
+                {services.map((service) => (
+                  <Link
+                    key={service.href}
+                    to={service.href}
+                    className="mobile-menu-link"
+                    style={{
+                      display: 'block',
+                      padding: 'var(--space-3)',
+                      color: 'var(--color-on-surface-variant)',
+                      fontSize: 'var(--text-body-medium)',
+                      textDecoration: 'none',
+                      borderRadius: 'var(--shape-small)',
+                      minHeight: '44px',
+                      marginBottom: 'var(--space-1)',
+                      transition: 'all var(--motion-duration-short) var(--motion-easing-standard)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = 'var(--color-surface-container-highest)';
+                      e.target.style.color = 'var(--color-on-surface)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'transparent';
+                      e.target.style.color = 'var(--color-on-surface-variant)';
+                    }}
+                    role="menuitem"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             {/* Success Stories Section */}
             <div className="mb-4">
-              <button
-                className="flex items-center justify-between w-full p-3 rounded-md"
+              <div
                 style={{
-                  backgroundColor: successStoriesOpen ? 'var(--color-surface-container-high)' : 'transparent',
-                  color: 'var(--color-on-surface)'
+                  color: 'var(--color-on-surface)',
+                  fontSize: 'var(--text-title-medium)',
+                  fontWeight: 'var(--weight-semibold)',
+                  padding: 'var(--space-3) 0 var(--space-2) 0',
+                  borderBottom: '1px solid var(--color-outline-variant)',
+                  marginBottom: 'var(--space-2)'
                 }}
-                onClick={() => setSuccessStoriesOpen(!successStoriesOpen)}
-                aria-expanded={successStoriesOpen}
               >
-                <span className="title-medium">Success Stories</span>
-                <KeyboardArrowDown 
-                  sx={{
-                    transform: successStoriesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                    transition: 'transform var(--motion-duration-medium2) var(--motion-easing-standard)'
-                  }}
-                />
-              </button>
-              {successStoriesOpen && (
-                <div className="pl-4 mt-2 space-y-1">
-                  {successStories.map((story) => (
-                    <Link
-                      key={story.href}
-                      to={story.href}
-                      className="block p-3 rounded-sm transition-colors duration-200"
-                      style={{
-                        color: 'var(--color-on-surface-variant)',
-                        fontSize: 'var(--text-body-medium)'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = 'var(--color-surface-container-highest)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = 'transparent';
-                      }}
-                      role="menuitem"
-                    >
-                      {story.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+                Success Stories
+              </div>
+              <div style={{ paddingLeft: 'var(--space-2)' }}>
+                {successStories.map((story) => (
+                  <Link
+                    key={story.href}
+                    to={story.href}
+                    className="mobile-menu-link"
+                    style={{
+                      display: 'block',
+                      padding: 'var(--space-3)',
+                      color: 'var(--color-on-surface-variant)',
+                      fontSize: 'var(--text-body-medium)',
+                      textDecoration: 'none',
+                      borderRadius: 'var(--shape-small)',
+                      minHeight: '44px',
+                      marginBottom: 'var(--space-1)',
+                      transition: 'all var(--motion-duration-short) var(--motion-easing-standard)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = 'var(--color-surface-container-highest)';
+                      e.target.style.color = 'var(--color-on-surface)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'transparent';
+                      e.target.style.color = 'var(--color-on-surface-variant)';
+                    }}
+                    role="menuitem"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {story.name}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             {/* Static Links */}
-            <div className="space-y-1 mb-6">
+            <div className="space-y-1 mb-6" style={{ marginBottom: 'var(--space-6)' }}>
               <Link 
                 to="/about" 
-                className="block p-3 rounded-md title-medium"
+                className="mobile-static-link"
                 style={{
+                  display: 'block',
+                  padding: 'var(--space-3)',
                   color: 'var(--color-on-surface)',
-                  backgroundColor: isActive('/about') ? 'var(--color-surface-container-high)' : 'transparent'
+                  textDecoration: 'none',
+                  borderRadius: 'var(--shape-medium)',
+                  fontSize: 'var(--text-title-medium)',
+                  fontWeight: 'var(--weight-medium)',
+                  minHeight: '44px',
+                  backgroundColor: isActive('/about') ? 'var(--color-surface-container-high)' : 'transparent',
+                  cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive('/about')) {
@@ -495,16 +532,25 @@ const ProfessionalNavigation2025 = () => {
                     e.target.style.backgroundColor = 'transparent';
                   }
                 }}
+                onClick={() => setMobileMenuOpen(false)}
                 role="menuitem"
               >
                 About
               </Link>
               <Link 
                 to="/faq" 
-                className="block p-3 rounded-md title-medium"
+                className="mobile-static-link"
                 style={{
+                  display: 'block',
+                  padding: 'var(--space-3)',
                   color: 'var(--color-on-surface)',
-                  backgroundColor: isActive('/faq') ? 'var(--color-surface-container-high)' : 'transparent'
+                  textDecoration: 'none',
+                  borderRadius: 'var(--shape-medium)',
+                  fontSize: 'var(--text-title-medium)',
+                  fontWeight: 'var(--weight-medium)',
+                  minHeight: '44px',
+                  backgroundColor: isActive('/faq') ? 'var(--color-surface-container-high)' : 'transparent',
+                  cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive('/faq')) {
@@ -516,16 +562,25 @@ const ProfessionalNavigation2025 = () => {
                     e.target.style.backgroundColor = 'transparent';
                   }
                 }}
+                onClick={() => setMobileMenuOpen(false)}
                 role="menuitem"
               >
                 FAQ
               </Link>
               <Link 
                 to="/contact" 
-                className="block p-3 rounded-md title-medium"
+                className="mobile-static-link"
                 style={{
+                  display: 'block',
+                  padding: 'var(--space-3)',
                   color: 'var(--color-on-surface)',
-                  backgroundColor: isActive('/contact') ? 'var(--color-surface-container-high)' : 'transparent'
+                  textDecoration: 'none',
+                  borderRadius: 'var(--shape-medium)',
+                  fontSize: 'var(--text-title-medium)',
+                  fontWeight: 'var(--weight-medium)',
+                  minHeight: '44px',
+                  backgroundColor: isActive('/contact') ? 'var(--color-surface-container-high)' : 'transparent',
+                  cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive('/contact')) {
@@ -537,6 +592,7 @@ const ProfessionalNavigation2025 = () => {
                     e.target.style.backgroundColor = 'transparent';
                   }
                 }}
+                onClick={() => setMobileMenuOpen(false)}
                 role="menuitem"
               >
                 Contact
@@ -544,8 +600,28 @@ const ProfessionalNavigation2025 = () => {
             </div>
             
             {/* Mobile CTA */}
-            <div className="pt-4 border-t border-outline-variant">
-              <Link to="/quote" className="btn-primary w-full mb-4">
+            <div className="pt-4 border-t border-outline-variant" style={{ 
+              paddingTop: 'var(--space-4)', 
+              borderTop: '1px solid var(--color-outline-variant)',
+              marginBottom: 'var(--space-4)'
+            }}>
+              <Link 
+                to="/quote" 
+                className="btn-primary" 
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  textAlign: 'center',
+                  marginBottom: 'var(--space-4)',
+                  padding: 'var(--space-3) var(--space-6)',
+                  textDecoration: 'none',
+                  borderRadius: 'var(--shape-large)',
+                  minHeight: '44px',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Get Free Quote
               </Link>
               <div className="flex flex-col gap-2">

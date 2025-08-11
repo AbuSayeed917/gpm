@@ -155,7 +155,7 @@ const ScrollCanvas = () => {
       style={{
         position: 'sticky',
         top: 0,
-        height: '100vh',
+        height: '100dvh',
         zIndex: 0,
         pointerEvents: 'none'
       }}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { LightMode, DarkMode, SettingsBrightness } from '@mui/icons-material';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -8,6 +8,32 @@ const ThemeToggle = ({
   className = ''
 }) => {
   const { theme, toggleTheme, setLightTheme, setDarkTheme, setSystemTheme } = useTheme();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    if (variant !== 'dropdown') return;
+
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.theme-dropdown')) {
+        setDropdownOpen(false);
+      }
+    };
+
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape') {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('keydown', handleEscapeKey);
+    
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [variant]);
 
   const iconSize = {
     small: 20,
@@ -84,7 +110,7 @@ const ThemeToggle = ({
     return (
       <div className={`theme-dropdown ${className}`} style={{ position: 'relative', display: 'inline-block' }}>
         <button
-          onClick={toggleTheme}
+          onClick={() => setDropdownOpen(!dropdownOpen)}
           style={buttonStyle}
           className="theme-dropdown-trigger"
           onMouseEnter={(e) => {
@@ -94,99 +120,118 @@ const ThemeToggle = ({
             e.target.style.backgroundColor = 'transparent';
           }}
           aria-label="Theme options"
+          aria-expanded={dropdownOpen}
+          aria-haspopup="true"
           title="Theme options"
         >
           {theme === 'light' ? (
             <LightMode sx={{ fontSize: iconSize }} />
-          ) : (
+          ) : theme === 'dark' ? (
             <DarkMode sx={{ fontSize: iconSize }} />
+          ) : (
+            <SettingsBrightness sx={{ fontSize: iconSize }} />
           )}
         </button>
         
-        <div 
-          className="theme-dropdown-menu"
-          style={{
-            position: 'absolute',
-            top: '100%',
-            right: 0,
-            marginTop: 'var(--space-1)',
-            backgroundColor: 'var(--color-surface-container)',
-            borderRadius: 'var(--shape-medium)',
-            boxShadow: 'var(--elevation-3)',
-            padding: 'var(--space-2)',
-            minWidth: '160px',
-            zIndex: 'var(--z-dropdown)',
-            opacity: 0,
-            visibility: 'hidden',
-            transform: 'translateY(-8px)',
-            transition: 'all var(--motion-duration-medium2) var(--motion-easing-standard)'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.opacity = '1';
-            e.target.style.visibility = 'visible';
-            e.target.style.transform = 'translateY(0)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.opacity = '0';
-            e.target.style.visibility = 'hidden';
-            e.target.style.transform = 'translateY(-8px)';
-          }}
-        >
-          <button
-            onClick={setLightTheme}
+        {dropdownOpen && (
+          <div 
+            className="theme-dropdown-menu"
             style={{
-              ...buttonStyle,
-              width: '100%',
-              justifyContent: 'flex-start',
-              gap: 'var(--space-2)',
-              padding: 'var(--space-2) var(--space-3)',
-              fontSize: 'var(--text-body-medium)'
-            }}
-            className={theme === 'light' ? 'active' : ''}
-          >
-            <LightMode sx={{ fontSize: 18 }} />
-            Light
-          </button>
-          
-          <button
-            onClick={setDarkTheme}
-            style={{
-              ...buttonStyle,
-              width: '100%',
-              justifyContent: 'flex-start',
-              gap: 'var(--space-2)',
-              padding: 'var(--space-2) var(--space-3)',
-              fontSize: 'var(--text-body-medium)'
-            }}
-            className={theme === 'dark' ? 'active' : ''}
-          >
-            <DarkMode sx={{ fontSize: 18 }} />
-            Dark
-          </button>
-          
-          <button
-            onClick={setSystemTheme}
-            style={{
-              ...buttonStyle,
-              width: '100%',
-              justifyContent: 'flex-start',
-              gap: 'var(--space-2)',
-              padding: 'var(--space-2) var(--space-3)',
-              fontSize: 'var(--text-body-medium)'
+              position: 'absolute',
+              top: '100%',
+              right: 0,
+              marginTop: 'var(--space-1)',
+              backgroundColor: 'var(--color-surface-container)',
+              borderRadius: 'var(--shape-medium)',
+              boxShadow: 'var(--elevation-3)',
+              padding: 'var(--space-2)',
+              minWidth: '160px',
+              zIndex: 1050,
+              border: '1px solid var(--color-outline-variant)'
             }}
           >
-            <SettingsBrightness sx={{ fontSize: 18 }} />
-            System
-          </button>
-        </div>
-        
-        <style jsx>{`
-          .theme-dropdown:hover .theme-dropdown-menu {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: translateY(0) !important;
-          }
-        `}</style>
+            <button
+              onClick={() => {
+                setLightTheme();
+                setDropdownOpen(false);
+              }}
+              style={{
+                ...buttonStyle,
+                width: '100%',
+                justifyContent: 'flex-start',
+                gap: 'var(--space-2)',
+                padding: 'var(--space-2) var(--space-3)',
+                fontSize: 'var(--text-body-medium)',
+                backgroundColor: theme === 'light' ? 'var(--color-primary-container)' : 'transparent'
+              }}
+              onMouseEnter={(e) => {
+                if (theme !== 'light') {
+                  Object.assign(e.target.style, buttonHoverStyle);
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = theme === 'light' ? 'var(--color-primary-container)' : 'transparent';
+              }}
+            >
+              <LightMode sx={{ fontSize: 18 }} />
+              Light
+            </button>
+            
+            <button
+              onClick={() => {
+                setDarkTheme();
+                setDropdownOpen(false);
+              }}
+              style={{
+                ...buttonStyle,
+                width: '100%',
+                justifyContent: 'flex-start',
+                gap: 'var(--space-2)',
+                padding: 'var(--space-2) var(--space-3)',
+                fontSize: 'var(--text-body-medium)',
+                backgroundColor: theme === 'dark' ? 'var(--color-primary-container)' : 'transparent'
+              }}
+              onMouseEnter={(e) => {
+                if (theme !== 'dark') {
+                  Object.assign(e.target.style, buttonHoverStyle);
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = theme === 'dark' ? 'var(--color-primary-container)' : 'transparent';
+              }}
+            >
+              <DarkMode sx={{ fontSize: 18 }} />
+              Dark
+            </button>
+            
+            <button
+              onClick={() => {
+                setSystemTheme();
+                setDropdownOpen(false);
+              }}
+              style={{
+                ...buttonStyle,
+                width: '100%',
+                justifyContent: 'flex-start',
+                gap: 'var(--space-2)',
+                padding: 'var(--space-2) var(--space-3)',
+                fontSize: 'var(--text-body-medium)',
+                backgroundColor: theme === 'system' ? 'var(--color-primary-container)' : 'transparent'
+              }}
+              onMouseEnter={(e) => {
+                if (theme !== 'system') {
+                  Object.assign(e.target.style, buttonHoverStyle);
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = theme === 'system' ? 'var(--color-primary-container)' : 'transparent';
+              }}
+            >
+              <SettingsBrightness sx={{ fontSize: 18 }} />
+              System
+            </button>
+          </div>
+        )}
       </div>
     );
   }

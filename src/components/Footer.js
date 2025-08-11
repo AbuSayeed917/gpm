@@ -19,9 +19,9 @@ const Footer = () => {
   return (
     <footer className="surface-container gradient-subtle py-12 md:py-16">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="footer-grid gap-8 lg:gap-12">
           {/* Company Section */}
-          <div className="lg:col-span-2">
+          <div className="footer-company">
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-4">
                 <Language sx={{ fontSize: 28, color: 'var(--color-primary)' }} />

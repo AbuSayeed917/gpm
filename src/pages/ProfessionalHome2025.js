@@ -119,7 +119,7 @@ const ProfessionalHome2025 = () => {
       {/* Hero Section */}
       <section className="py-16 md:py-20 lg:py-24 surface-container">
         <div className="container max-w-6xl">
-          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-24 lg:justify-between">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 md:gap-12 lg:gap-24 lg:justify-between">
             {/* Hero Content */}
             <div className="text-center lg:text-left w-full lg:w-auto lg:max-w-2xl">
               <h1 className="display-large mb-6 text-on-surface" style={{wordBreak: 'keep-all', hyphens: 'none'}}>
@@ -173,11 +173,11 @@ const ProfessionalHome2025 = () => {
             </p>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {services.map((service, index) => (
               <div 
                 key={service.id} 
-                className="card-elevated p-6 md:p-8 transition-all duration-300 flex-1 min-w-[280px] md:min-w-[320px] max-w-[400px]"
+                className="card-elevated p-6 md:p-8 transition-all duration-300 w-full"
                 style={{
                   background: `linear-gradient(135deg, ${service.color}20 0%, var(--color-surface) 100%)`
                 }}
@@ -192,7 +192,12 @@ const ProfessionalHome2025 = () => {
               >
                 <div className="flex items-center gap-4 mb-6">
                   {service.icon}
-                  <h3 className="headline-small text-on-surface">{service.title}</h3>
+                  <Link 
+                    to={service.href} 
+                    className="headline-small text-on-surface hover:text-primary transition-colors duration-200 no-underline"
+                  >
+                    {service.title}
+                  </Link>
                 </div>
                 
                 <p className="body-large mb-6 text-on-surface-variant">
@@ -233,7 +238,7 @@ const ProfessionalHome2025 = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
             {features.map((feature, index) => (
               <div key={index} className="card p-6">
                 <div className="flex items-start gap-6">
@@ -266,7 +271,7 @@ const ProfessionalHome2025 = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="card p-8">
                 <div className="flex items-center gap-1 mb-4">

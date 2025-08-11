@@ -67,6 +67,21 @@ const AppleNavigation = () => {
     handleClose();
   }, [location]);
 
+  // Close mobile menu when screen size changes to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 900) { // Material-UI 'md' breakpoint
+        setMobileOpen(false);
+        setMobileServicesOpen(false);
+        setMobileSuccessStoriesOpen(false);
+        handleClose();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const servicesItems = [
     { name: 'SME Solutions', href: '/services/sme' },
     { name: 'Large Enterprise', href: '/services/large-enterprise' },

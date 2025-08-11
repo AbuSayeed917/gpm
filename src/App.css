@@ -1,5 +1,5 @@
-/* Import Professional Design System */
-@import './styles/components.css';
+/* Import Unified Design System */
+@import './styles/components-unified.css';
 
 /* ===================================
    APPLICATION-SPECIFIC STYLES
@@ -13,31 +13,7 @@
   color: var(--color-text-primary);
 }
 
-/* Professional skip link */
-.skip-to-content {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.skip-to-content:focus {
-  position: fixed;
-  left: var(--space-4);
-  top: var(--space-4);
-  width: auto;
-  height: auto;
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-surface);
-  color: var(--color-text-primary);
-  border: 2px solid var(--color-border-focus);
-  border-radius: var(--radius);
-  z-index: var(--z-max);
-  box-shadow: var(--shadow-lg);
-  font-weight: var(--font-weight-medium);
-}
+/* Skip link handled in base-2025.css - removed duplicate */
 
 /* ===================================
    PROFESSIONAL HERO SECTION
@@ -394,14 +370,15 @@
 
 @media (max-width: 768px) {
   .service-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--space-4);
   }
   
   .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-4);
   }
+}
   
   .hero-section {
     padding: var(--space-12) 0;
@@ -417,6 +394,16 @@
 }
 
 @media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
   .hero-section {
     padding: var(--space-8) 0;
   }

@@ -3,8 +3,8 @@
    Modern, accessible, and responsive base styles
    ============================================================================= */
 
-/* Import the 2025 design system */
-@import './design-system-2025.css';
+/* Import the unified design system */
+@import './components-unified.css';
 
 /* =============================================================================
    MODERN CSS RESET - 2025 EDITION
@@ -287,159 +287,10 @@ p {
   color: var(--color-on-surface);
 }
 
-/* Card Component */
-.card {
-  background-color: var(--color-surface-container-low);
-  border-radius: var(--shape-medium);
-  padding: var(--space-4);
-  box-shadow: var(--elevation-1);
-  transition: box-shadow var(--motion-duration-medium2) var(--motion-easing-standard);
-}
-
-.card:hover {
-  box-shadow: var(--elevation-2);
-}
-
-.card-elevated {
-  box-shadow: var(--elevation-2);
-}
-
-.card-elevated:hover {
-  box-shadow: var(--elevation-3);
-}
-
-/* Button Components */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-6);
-  border: none;
-  border-radius: var(--shape-large);
-  font-family: var(--font-family-text);
-  font-size: var(--text-label-large);
-  font-weight: var(--weight-medium);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all var(--motion-duration-medium2) var(--motion-easing-standard);
-  min-height: 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn:disabled {
-  cursor: not-allowed;
-  opacity: 0.38;
-}
-
-/* Primary Button */
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-}
-
-.btn-primary:hover:not(:disabled) {
-  box-shadow: var(--elevation-2);
-  transform: translateY(-1px);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-/* Secondary Button */
-.btn-secondary {
-  background-color: var(--color-secondary-container);
-  color: var(--color-on-secondary-container);
-}
-
-.btn-secondary:hover:not(:disabled) {
-  box-shadow: var(--elevation-1);
-}
-
-/* Outlined Button */
-.btn-outlined {
-  background-color: transparent;
-  color: var(--color-primary);
-  border: 1px solid var(--color-outline);
-}
-
-.btn-outlined:hover:not(:disabled) {
-  background-color: rgba(var(--color-primary-rgb), 0.08);
-}
-
-/* Text Button */
-.btn-text {
-  background-color: transparent;
-  color: var(--color-primary);
-  padding: var(--space-3) var(--space-4);
-}
-
-.btn-text:hover:not(:disabled) {
-  background-color: rgba(var(--color-primary-rgb), 0.08);
-}
-
-/* Floating Action Button */
-.fab {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--shape-large);
-  background-color: var(--color-primary-container);
-  color: var(--color-on-primary-container);
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--elevation-3);
-  transition: all var(--motion-duration-medium2) var(--motion-easing-standard);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.fab:hover {
-  box-shadow: var(--elevation-4);
-}
-
 /* =============================================================================
-   FORM COMPONENTS - 2025 STANDARDS
+   COMPONENTS HANDLED BY UNIFIED SYSTEM
+   Card, Button, and Form components are defined in components-unified.css
    ============================================================================= */
-
-/* Input Fields */
-.input-field {
-  position: relative;
-  margin-bottom: var(--space-4);
-}
-
-.input {
-  width: 100%;
-  padding: var(--space-4);
-  border: 1px solid var(--color-outline);
-  border-radius: var(--shape-small);
-  background-color: var(--color-surface);
-  color: var(--color-on-surface);
-  font-size: var(--text-body-large);
-  transition: border-color var(--motion-duration-medium2) var(--motion-easing-standard);
-}
-
-.input:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  border-width: 2px;
-}
-
-.input::placeholder {
-  color: var(--color-on-surface-variant);
-  opacity: 0.6;
-}
-
-/* Label */
-.label {
-  display: block;
-  font-size: var(--text-label-medium);
-  font-weight: var(--weight-medium);
-  color: var(--color-on-surface);
-  margin-bottom: var(--space-1);
-}
 
 /* =============================================================================
    UTILITY CLASSES - 2025 EDITION

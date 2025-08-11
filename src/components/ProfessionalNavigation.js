@@ -15,12 +15,27 @@ const ProfessionalNavigation = () => {
   const [successStoriesOpen, setSuccessStoriesOpen] = useState(false);
   const location = useLocation();
 
-  // Close mobile menu on route change
+  // Close mobile menu on route change and scroll to top
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesOpen(false);
     setSuccessStoriesOpen(false);
+    window.scrollTo(0, 0);
   }, [location]);
+
+  // Close mobile menu when screen size changes to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) { // lg breakpoint
+        setMobileMenuOpen(false);
+        setServicesOpen(false);
+        setSuccessStoriesOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Close dropdowns when clicking outside
   useEffect(() => {

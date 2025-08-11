@@ -208,6 +208,24 @@ export const AppleDepthModal = ({
         mainContent.style.filter = `blur(${backgroundBlur}px)`;
         mainContent.style.transition = `filter ${animationDuration}s ease`;
       }
+
+      // Add escape key handler
+      const handleEscapeKey = (event) => {
+        if (event.key === 'Escape') {
+          onClose?.();
+        }
+      };
+
+      document.addEventListener('keydown', handleEscapeKey);
+
+      return () => {
+        document.body.style.overflow = 'auto';
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+          mainContent.style.filter = 'none';
+        }
+        document.removeEventListener('keydown', handleEscapeKey);
+      };
     } else {
       document.body.style.overflow = 'auto';
       // Remove blur from background content
@@ -216,15 +234,7 @@ export const AppleDepthModal = ({
         mainContent.style.filter = 'none';
       }
     }
-
-    return () => {
-      document.body.style.overflow = 'auto';
-      const mainContent = document.getElementById('main-content');
-      if (mainContent) {
-        mainContent.style.filter = 'none';
-      }
-    };
-  }, [isOpen, backgroundBlur, animationDuration]);
+  }, [isOpen, backgroundBlur, animationDuration, onClose]);
 
   if (!isOpen) return null;
 
@@ -271,8 +281,8 @@ export const AppleDepthModal = ({
       <motion.div
         style={{
           position: 'relative',
-          maxWidth: '90vw',
-          maxHeight: '90vh',
+          maxWidth: 'min(90vw, 1200px)',
+          maxHeight: 'min(90dvh, 800px)',
           overflow: 'auto',
           zIndex: 1
         }}
