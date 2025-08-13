@@ -1,83 +1,67 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
   MonetizationOn,
   Speed,
   Support,
   Security,
   CheckCircle,
-  ArrowForward
+  ArrowForward,
+  Assessment
 } from '@mui/icons-material';
-import { FeatureCard, StatsCard } from '../components/ProfessionalCards';
+import AppleBackground from '../components/AppleBackground';
+import { AppleFlipCard } from '../components/AppleCardSystem';
 
 const ProfessionalSMEServices = () => {
   const features = [
     {
       icon: <MonetizationOn />,
       title: "Cost-Effective Solutions",
-      description: "Affordable migration packages designed for SME budgets without compromising on quality or security."
+      description: "Affordable migration packages designed for SME budgets without compromising on quality or security.",
+      features: [
+        "Transparent pricing structure",
+        "No hidden fees or costs",
+        "Flexible payment options",
+        "ROI-focused solutions"
+      ]
     },
     {
       icon: <Speed />,
       title: "Quick Implementation",
-      description: "Streamlined processes ensure minimal downtime and faster go-live timelines for your business operations."
+      description: "Streamlined processes ensure minimal downtime and faster go-live timelines for your business operations.",
+      features: [
+        "4-8 week implementation",
+        "Minimal business disruption",
+        "Parallel system testing",
+        "Go-live support included"
+      ]
     },
     {
       icon: <Support />,
       title: "Dedicated Support",
-      description: "Personal migration specialist assigned to guide you through every step of the process."
+      description: "Personal migration specialist assigned to guide you through every step of the process.",
+      features: [
+        "Dedicated project manager",
+        "24/7 emergency support",
+        "Regular progress updates",
+        "Post-migration assistance"
+      ]
     },
     {
       icon: <Security />,
       title: "Data Security",
-      description: "Enterprise-grade security protocols to protect your sensitive payroll data throughout migration."
+      description: "Enterprise-grade security protocols to protect your sensitive payroll data throughout migration.",
+      features: [
+        "GDPR compliant processes",
+        "Encrypted data transfer",
+        "Audit trail logging",
+        "Risk assessment included"
+      ]
     }
   ];
 
-  const packages = [
-    {
-      name: "Essential",
-      price: "£15,000",
-      duration: "4-6 weeks",
-      employees: "Up to 50",
-      features: [
-        "Single payroll system migration",
-        "Basic data validation",
-        "Email support",
-        "1-month post-migration support",
-        "User training sessions"
-      ]
-    },
-    {
-      name: "Professional",
-      price: "£25,000",
-      duration: "6-8 weeks", 
-      employees: "51-150",
-      popular: true,
-      features: [
-        "Multiple system integration",
-        "Advanced data validation",
-        "Priority phone & email support",
-        "3-months post-migration support",
-        "Custom reporting setup",
-        "Dedicated project manager"
-      ]
-    },
-    {
-      name: "Enterprise",
-      price: "£45,000",
-      duration: "8-12 weeks",
-      employees: "151-500",
-      features: [
-        "Complex multi-system migration",
-        "Custom integration development",
-        "24/7 dedicated support line",
-        "6-months post-migration support",
-        "Advanced reporting & analytics",
-        "On-site training and support"
-      ]
-    }
-  ];
+
 
   const processSteps = [
     {
@@ -112,246 +96,2098 @@ const ProfessionalSMEServices = () => {
     }
   ];
 
-  const stats = [
-    { value: "200+", label: "SME Migrations", description: "Successfully completed" },
-    { value: "99.8%", label: "Success Rate", description: "Zero-downtime guarantee" },
-    { value: "£180K", label: "Average Savings", description: "Cost reduction per client" },
-    { value: "6 weeks", label: "Average Timeline", description: "From start to go-live" }
-  ];
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="container">
-          <h1 className="hero-title">
-            SME Payroll Migration Services
-          </h1>
-          <p className="hero-subtitle">
-            Affordable, efficient payroll migration solutions designed specifically 
-            for small to medium enterprises. Zero downtime guaranteed.
-          </p>
-          <div className="hero-actions">
-            <Link to="/contact" className="btn btn-primary btn-lg">
-              Get Free Quote
-            </Link>
-            <Link to="/success-stories/sme" className="btn btn-outline btn-lg">
-              View SME Success Stories
-            </Link>
-          </div>
-        </div>
-      </section>
+    <AppleBackground variant="primary">
+      {/* Apple Hero Section - 100% Authentic */}
+      <section style={{ 
+        background: '#1d1d1f',
+        padding: 'max(60px, 10vh) 0 max(80px, 12vh) 0',
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center'
+      }}>
+        {/* Apple-style ambient lighting - Enhanced */}
+        <div style={{
+          position: 'absolute',
+          top: '15%',
+          right: '5%',
+          width: '60%',
+          height: '60%',
+          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 65%)',
+          filter: 'blur(120px)',
+          opacity: 0.6,
+          pointerEvents: 'none'
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '10%',
+          left: '-10%',
+          width: '50%',
+          height: '50%',
+          background: 'radial-gradient(circle, rgba(88, 86, 214, 0.06) 0%, transparent 65%)',
+          filter: 'blur(100px)',
+          opacity: 0.4,
+          pointerEvents: 'none'
+        }} />
+        
+        {/* Content Container - Apple's signature max-width */}
+        <div style={{ 
+          position: 'relative', 
+          zIndex: 1, 
+          maxWidth: '95%', 
+          margin: '0 auto', 
+          padding: '0 22px',
+          width: '100%'
+        }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}
+          >
+            {/* Apple-style eyebrow text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              style={{
+                fontSize: '17px',
+                fontWeight: '600',
+                color: '#007aff',
+                marginBottom: '16px',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                letterSpacing: '-0.022em',
+                textTransform: 'uppercase',
+                textAlign: 'center'
+              }}
+            >
+              SME Solutions
+            </motion.div>
 
-      {/* Stats Section */}
-      <section className="section-sm" style={{ backgroundColor: 'var(--color-surface-secondary)' }}>
-        <div className="container">
-          <div className="stats-grid">
-            {stats.map((stat, index) => (
-              <StatsCard
-                key={index}
-                value={stat.value}
-                label={stat.label}
-                description={stat.description}
+            {/* Apple-style hero title */}
+            <motion.h1 
+              style={{
+                fontSize: 'clamp(48px, 7vw, 96px)',
+                fontWeight: '600',
+                color: '#f5f5f7',
+                marginBottom: '24px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.05',
+                letterSpacing: '-0.015em',
+                textAlign: 'center'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.0, delay: 0.2 }}
+            >
+              Payroll migration.
+              <br />
+              <span style={{ 
+                background: 'linear-gradient(90deg, #007aff 0%, #5856d6 100%)', 
+                backgroundClip: 'text', 
+                WebkitBackgroundClip: 'text', 
+                WebkitTextFillColor: 'transparent',
+                display: 'inline-block'
+              }}>
+                Remarkably simple.
+              </span>
+            </motion.h1>
+            
+            {/* Apple-style subtitle */}
+            <motion.p 
+              style={{
+                fontSize: '21px',
+                color: '#a1a1a6',
+                marginBottom: '48px',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.381',
+                fontWeight: '400',
+                letterSpacing: '.011em',
+                maxWidth: '640px',
+                margin: '0 auto 48px auto',
+                textAlign: 'center'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.0, delay: 0.4 }}
+            >
+              Transform your business with zero-downtime migration. Enterprise-grade security meets SME simplicity.
+            </motion.p>
+            
+            {/* Apple-style CTA buttons */}
+            <motion.div 
+              style={{ 
+                display: 'flex', 
+                gap: '24px', 
+                justifyContent: 'center', 
+                flexWrap: 'wrap',
+                alignItems: 'center'
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.0, delay: 0.6 }}
+            >
+              {/* Primary CTA - Apple Blue */}
+              <motion.div
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Link 
+                  to="/contact" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '17px 32px',
+                    background: '#007aff',
+                    border: 'none',
+                    borderRadius: '980px',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    fontWeight: '400',
+                    fontSize: '17px',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    userSelect: 'none',
+                    boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)'
+                  }}
+                >
+                  Get started
+                  <ArrowForward sx={{ fontSize: 16 }} />
+                </Link>
+              </motion.div>
+              
+              {/* Secondary CTA - Apple Link Style */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Link 
+                  to="/success-stories/sme" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '17px 8px',
+                    background: 'transparent',
+                    border: 'none',
+                    color: '#007aff',
+                    textDecoration: 'none',
+                    fontWeight: '400',
+                    fontSize: '17px',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    userSelect: 'none'
+                  }}
+                >
+                  Watch the film
+                  <ArrowForward sx={{ fontSize: 16 }} />
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            {/* Apple-style scroll indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.0, delay: 1.0 }}
+              style={{
+                position: 'absolute',
+                bottom: '40px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              <div style={{
+                width: '1px',
+                height: '40px',
+                background: 'linear-gradient(to bottom, transparent, #a1a1a6, transparent)',
+                opacity: 0.6
+              }} />
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: '#a1a1a6',
+                  opacity: 0.6
+                }}
               />
-            ))}
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Why SMEs Choose Us</h2>
-            <p className="section-subtitle">
-              Tailored solutions that understand the unique needs of growing businesses
-            </p>
-          </div>
 
-          <div className="grid grid-4">
+      {/* Apple Services Section */}
+      <section style={{ padding: '80px 0 60px 0', background: '#f5f5f7', position: 'relative' }}>
+        {/* Header - Centered */}
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: "-100px" }}
+            style={{ textAlign: 'center' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(2rem, 4vw, 2.75rem)',
+              fontWeight: '600',
+              color: '#1d1d1f',
+              marginBottom: '16px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.0625',
+              letterSpacing: '-0.009em',
+              textAlign: 'center'
+            }}>
+              Our Services.
+            </h2>
+            <p style={{
+              fontSize: '1.125rem',
+              color: '#86868b',
+              maxWidth: '700px',
+              margin: '0 auto',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              letterSpacing: '.011em',
+              fontWeight: '400'
+            }}>
+              Seamless integrations between all major accounting and payroll systems.
+            </p>
+          </motion.div>
+        </div>
+          
+        {/* Apple Product Grid - Responsive */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '12px',
+          width: '95%',
+          margin: '0 auto'
+        }}>
+            
+            {/* QuickBooks ↔ Xero */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.7, 
+                delay: 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <AppleFlipCard
+                frontContent={
+                  <div style={{
+                    background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
+                    borderRadius: '22px',
+                    padding: '48px 32px',
+                    color: '#1d1d1f',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '440px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    border: '1px solid rgba(0, 0, 0, 0.06)',
+                    backdropFilter: 'saturate(180%) blur(20px)',
+                    transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                  }}>
+                    {/* Apple Glass Morphism */}
+                    <div style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'linear-gradient(135deg, rgba(0, 122, 255, 0.025) 0%, rgba(88, 86, 214, 0.025) 100%)',
+                      backdropFilter: 'blur(40px)',
+                      WebkitBackdropFilter: 'blur(40px)',
+                      borderRadius: '22px'
+                    }} />
+                    
+                    {/* Content */}
+                    <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      {/* System Icons */}
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '24px',
+                        marginBottom: '40px'
+                      }}>
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                          borderRadius: '22px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '20px',
+                          fontWeight: '700',
+                          color: '#ffffff',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          boxShadow: '0 8px 32px rgba(0, 122, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                          position: 'relative',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          <div style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            fontSize: '16px',
+                            fontWeight: '700'
+                          }}>QB</div>
+                        </div>
+                        
+                        <div style={{
+                          fontSize: '28px',
+                          color: '#007aff',
+                          fontWeight: '300',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                        }}>
+                          ↔
+                        </div>
+                        
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                          borderRadius: '22px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '24px',
+                          fontWeight: '700',
+                          color: '#ffffff',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          boxShadow: '0 8px 32px rgba(0, 122, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          X
+                        </div>
+                      </div>
+                      
+                      {/* Typography */}
+                      <h3 style={{
+                        fontSize: '28px',
+                        fontWeight: '700',
+                        color: '#1d1d1f',
+                        marginBottom: '12px',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.07143',
+                        letterSpacing: '-0.005em'
+                      }}>
+                        QuickBooks ↔ Xero
+                      </h3>
+                      
+                      <p style={{
+                        fontSize: '19px',
+                        color: '#6E6E73',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.42105',
+                        letterSpacing: '.012em',
+                        fontWeight: '400',
+                        margin: '0',
+                        maxWidth: '280px'
+                      }}>
+                        Complete accounting system migration with enterprise-grade security
+                      </p>
+                    </div>
+                  </div>
+                }
+                
+                backContent={
+                  <div style={{
+                    background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                    borderRadius: '22px',
+                    padding: '48px 32px',
+                    color: '#ffffff',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '440px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    boxShadow: '0 20px 64px rgba(0, 122, 255, 0.4)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                  }}>
+                    {/* Apple Ambient Lighting */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '-30%',
+                      right: '-30%',
+                      width: '200px',
+                      height: '200px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                      filter: 'blur(60px)'
+                    }} />
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '-20%',
+                      left: '-20%',
+                      width: '150px',
+                      height: '150px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%)',
+                      filter: 'blur(40px)'
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <h4 style={{
+                        fontSize: '24px',
+                        fontWeight: '700',
+                        color: '#ffffff',
+                        marginBottom: '32px',
+                        textAlign: 'center',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.16667',
+                        letterSpacing: '.009em'
+                      }}>
+                        Migration Includes
+                      </h4>
+                      
+                      <div style={{ marginBottom: '0' }}>
+                        {[
+                          'Complete transaction history',
+                          'Chart of accounts mapping',
+                          'Customer & vendor data',
+                          'Zero downtime migration'
+                        ].map((feature, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              gap: '16px',
+                              marginBottom: '16px',
+                              fontSize: '17px',
+                              color: 'rgba(255, 255, 255, 0.95)',
+                              lineHeight: '1.47059',
+                              letterSpacing: '-0.022em',
+                              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                              fontWeight: '400'
+                            }}
+                          >
+                            <CheckCircle sx={{ 
+                              fontSize: 20, 
+                              marginTop: '2px', 
+                              flexShrink: 0, 
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
+                            }} />
+                            <span>{feature}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                }
+              />
+            </motion.div>
+
+            {/* Iris ↔ QuickBooks */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.7, 
+                delay: 0.2,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <AppleFlipCard
+                frontContent={
+                  <div style={{
+                    background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
+                    borderRadius: '22px',
+                    padding: '48px 32px',
+                    color: '#1d1d1f',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '440px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    border: '1px solid rgba(0, 0, 0, 0.06)',
+                    backdropFilter: 'saturate(180%) blur(20px)',
+                    transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'linear-gradient(135deg, rgba(48, 209, 88, 0.025) 0%, rgba(50, 215, 75, 0.025) 100%)',
+                      backdropFilter: 'blur(40px)',
+                      WebkitBackdropFilter: 'blur(40px)',
+                      borderRadius: '22px'
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '24px',
+                        marginBottom: '40px'
+                      }}>
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
+                          borderRadius: '22px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '16px',
+                          fontWeight: '700',
+                          color: '#ffffff',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          boxShadow: '0 8px 32px rgba(48, 209, 88, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          IRIS
+                        </div>
+                        
+                        <div style={{
+                          fontSize: '28px',
+                          color: '#30d158',
+                          fontWeight: '300',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                        }}>
+                          ↔
+                        </div>
+                        
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
+                          borderRadius: '22px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '18px',
+                          fontWeight: '700',
+                          color: '#ffffff',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          boxShadow: '0 8px 32px rgba(48, 209, 88, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          QB
+                        </div>
+                      </div>
+                      
+                      <h3 style={{
+                        fontSize: '28px',
+                        fontWeight: '700',
+                        color: '#1d1d1f',
+                        marginBottom: '12px',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.07143',
+                        letterSpacing: '-0.005em'
+                      }}>
+                        Iris ↔ QuickBooks
+                      </h3>
+                      
+                      <p style={{
+                        fontSize: '19px',
+                        color: '#6E6E73',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.42105',
+                        letterSpacing: '.012em',
+                        fontWeight: '400',
+                        margin: '0',
+                        maxWidth: '280px'
+                      }}>
+                        UK payroll system migration with HMRC compliance
+                      </p>
+                    </div>
+                  </div>
+                }
+                
+                backContent={
+                  <div style={{
+                    background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
+                    borderRadius: '22px',
+                    padding: '48px 32px',
+                    color: '#ffffff',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '440px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    boxShadow: '0 20px 64px rgba(48, 209, 88, 0.4)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      top: '-30%',
+                      right: '-30%',
+                      width: '200px',
+                      height: '200px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                      filter: 'blur(60px)'
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <h4 style={{
+                        fontSize: '24px',
+                        fontWeight: '700',
+                        color: '#ffffff',
+                        marginBottom: '32px',
+                        textAlign: 'center',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.16667',
+                        letterSpacing: '.009em'
+                      }}>
+                        Migration Includes
+                      </h4>
+                      
+                      <div style={{ marginBottom: '0' }}>
+                        {[
+                          'Employee payroll records',
+                          'HMRC RTI compliance',
+                          'Pension scheme data',
+                          'Historical P45/P60 data'
+                        ].map((feature, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              gap: '16px',
+                              marginBottom: '16px',
+                              fontSize: '17px',
+                              color: 'rgba(255, 255, 255, 0.95)',
+                              lineHeight: '1.47059',
+                              letterSpacing: '-0.022em',
+                              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                              fontWeight: '400'
+                            }}
+                          >
+                            <CheckCircle sx={{ 
+                              fontSize: 20, 
+                              marginTop: '2px', 
+                              flexShrink: 0, 
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
+                            }} />
+                            <span>{feature}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                }
+              />
+            </motion.div>
+
+            {/* ADP ↔ Any System */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.7, 
+                delay: 0.3,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <AppleFlipCard
+                frontContent={
+                  <div style={{
+                    background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
+                    borderRadius: '22px',
+                    padding: '48px 32px',
+                    color: '#1d1d1f',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '440px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    border: '1px solid rgba(0, 0, 0, 0.06)',
+                    backdropFilter: 'saturate(180%) blur(20px)',
+                    transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'linear-gradient(135deg, rgba(255, 59, 48, 0.025) 0%, rgba(255, 149, 0, 0.025) 100%)',
+                      backdropFilter: 'blur(40px)',
+                      WebkitBackdropFilter: 'blur(40px)',
+                      borderRadius: '22px'
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '24px',
+                        marginBottom: '40px'
+                      }}>
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          background: 'linear-gradient(135deg, #ff3b30 0%, #ff9500 100%)',
+                          borderRadius: '22px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '16px',
+                          fontWeight: '700',
+                          color: '#ffffff',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          boxShadow: '0 8px 32px rgba(255, 59, 48, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          ADP
+                        </div>
+                        
+                        <div style={{
+                          fontSize: '28px',
+                          color: '#ff3b30',
+                          fontWeight: '300',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                        }}>
+                          ↔
+                        </div>
+                        
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          background: 'linear-gradient(135deg, #ff3b30 0%, #ff9500 100%)',
+                          borderRadius: '22px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '16px',
+                          fontWeight: '700',
+                          color: '#ffffff',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          boxShadow: '0 8px 32px rgba(255, 59, 48, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          ANY
+                        </div>
+                      </div>
+                      
+                      <h3 style={{
+                        fontSize: '28px',
+                        fontWeight: '700',
+                        color: '#1d1d1f',
+                        marginBottom: '12px',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.07143',
+                        letterSpacing: '-0.005em'
+                      }}>
+                        ADP ↔ Any System
+                      </h3>
+                      
+                      <p style={{
+                        fontSize: '19px',
+                        color: '#6E6E73',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.42105',
+                        letterSpacing: '.012em',
+                        fontWeight: '400',
+                        margin: '0',
+                        maxWidth: '280px'
+                      }}>
+                        Enterprise payroll migration with multi-country support
+                      </p>
+                    </div>
+                  </div>
+                }
+                
+                backContent={
+                  <div style={{
+                    background: 'linear-gradient(135deg, #ff3b30 0%, #ff9500 100%)',
+                    borderRadius: '22px',
+                    padding: '48px 32px',
+                    color: '#ffffff',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '440px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    boxShadow: '0 20px 64px rgba(255, 59, 48, 0.4)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      top: '-30%',
+                      right: '-30%',
+                      width: '200px',
+                      height: '200px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                      filter: 'blur(60px)'
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <h4 style={{
+                        fontSize: '24px',
+                        fontWeight: '700',
+                        color: '#ffffff',
+                        marginBottom: '32px',
+                        textAlign: 'center',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.16667',
+                        letterSpacing: '.009em'
+                      }}>
+                        Migration Includes
+                      </h4>
+                      
+                      <div style={{ marginBottom: '0' }}>
+                        {[
+                          'Enterprise payroll data',
+                          'Benefits & compensation',
+                          'Custom data mapping',
+                          'Multi-country support'
+                        ].map((feature, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              gap: '16px',
+                              marginBottom: '16px',
+                              fontSize: '17px',
+                              color: 'rgba(255, 255, 255, 0.95)',
+                              lineHeight: '1.47059',
+                              letterSpacing: '-0.022em',
+                              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                              fontWeight: '400'
+                            }}
+                          >
+                            <CheckCircle sx={{ 
+                              fontSize: 20, 
+                              marginTop: '2px', 
+                              flexShrink: 0, 
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
+                            }} />
+                            <span>{feature}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                }
+              />
+            </motion.div>
+
+            {/* Any ↔ Any Integration */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.7, 
+                delay: 0.4,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <AppleFlipCard
+                frontContent={
+                  <div style={{
+                    background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
+                    borderRadius: '22px',
+                    padding: '48px 32px',
+                    color: '#1d1d1f',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '440px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    border: '1px solid rgba(0, 0, 0, 0.06)',
+                    backdropFilter: 'saturate(180%) blur(20px)',
+                    transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'linear-gradient(135deg, rgba(88, 86, 214, 0.025) 0%, rgba(175, 82, 222, 0.025) 100%)',
+                      backdropFilter: 'blur(40px)',
+                      WebkitBackdropFilter: 'blur(40px)',
+                      borderRadius: '22px'
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '24px',
+                        marginBottom: '40px'
+                      }}>
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          background: 'linear-gradient(135deg, #5856d6 0%, #af52de 100%)',
+                          borderRadius: '22px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '16px',
+                          fontWeight: '700',
+                          color: '#ffffff',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          boxShadow: '0 8px 32px rgba(88, 86, 214, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          ANY
+                        </div>
+                        
+                        <div style={{
+                          fontSize: '28px',
+                          color: '#5856d6',
+                          fontWeight: '300',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                        }}>
+                          ↔
+                        </div>
+                        
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          background: 'linear-gradient(135deg, #5856d6 0%, #af52de 100%)',
+                          borderRadius: '22px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '16px',
+                          fontWeight: '700',
+                          color: '#ffffff',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          boxShadow: '0 8px 32px rgba(88, 86, 214, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          ANY
+                        </div>
+                      </div>
+                      
+                      <h3 style={{
+                        fontSize: '28px',
+                        fontWeight: '700',
+                        color: '#1d1d1f',
+                        marginBottom: '12px',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.07143',
+                        letterSpacing: '-0.005em'
+                      }}>
+                        Any ↔ Any System
+                      </h3>
+                      
+                      <p style={{
+                        fontSize: '19px',
+                        color: '#6E6E73',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.42105',
+                        letterSpacing: '.012em',
+                        fontWeight: '400',
+                        margin: '0',
+                        maxWidth: '280px'
+                      }}>
+                        Universal migration solution for all major payroll systems
+                      </p>
+                    </div>
+                  </div>
+                }
+                
+                backContent={
+                  <div style={{
+                    background: 'linear-gradient(135deg, #5856d6 0%, #af52de 100%)',
+                    borderRadius: '22px',
+                    padding: '48px 32px',
+                    color: '#ffffff',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '440px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    boxShadow: '0 20px 64px rgba(88, 86, 214, 0.4)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      top: '-30%',
+                      right: '-30%',
+                      width: '200px',
+                      height: '200px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                      filter: 'blur(60px)'
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <h4 style={{
+                        fontSize: '24px',
+                        fontWeight: '700',
+                        color: '#ffffff',
+                        marginBottom: '32px',
+                        textAlign: 'center',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.16667',
+                        letterSpacing: '.009em'
+                      }}>
+                        Popular Combinations
+                      </h4>
+                      
+                      <div style={{ marginBottom: '0' }}>
+                        {[
+                          'Paychex ↔ QuickBooks',
+                          'Gusto ↔ Xero',
+                          'BambooHR ↔ NetSuite',
+                          'Workday ↔ Sage'
+                        ].map((feature, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              gap: '16px',
+                              marginBottom: '16px',
+                              fontSize: '17px',
+                              color: 'rgba(255, 255, 255, 0.95)',
+                              lineHeight: '1.47059',
+                              letterSpacing: '-0.022em',
+                              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                              fontWeight: '400'
+                            }}
+                          >
+                            <CheckCircle sx={{ 
+                              fontSize: 20, 
+                              marginTop: '2px', 
+                              flexShrink: 0, 
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
+                            }} />
+                            <span>{feature}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                }
+              />
+            </motion.div>
+        </div>
+      </section>
+
+      {/* Apple "Why SMEs Choose Us" Section - Authentic Apple Design */}
+      <section style={{ 
+        padding: '80px 0 60px 0', 
+        background: '#ffffff', 
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Subtle background gradient - Apple style */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'radial-gradient(ellipse 100% 40% at 50% 0%, rgba(0, 122, 255, 0.03), transparent)',
+          pointerEvents: 'none'
+        }} />
+
+        {/* Header - Centered */}
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: "-100px" }}
+            style={{ textAlign: 'center' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(40px, 5vw, 56px)',
+              fontWeight: '600',
+              color: '#1d1d1f',
+              marginBottom: '16px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.0625',
+              letterSpacing: '-0.009em'
+            }}>
+              Why SMEs choose us.
+            </h2>
+            <p style={{
+              fontSize: '21px',
+              color: '#86868b',
+              maxWidth: '650px',
+              margin: '0 auto',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              letterSpacing: '.011em',
+              fontWeight: '400'
+            }}>
+              Four pillars of excellence that make the difference for growing businesses.
+            </p>
+          </motion.div>
+        </div>
+          
+        {/* Apple Product Grid - Responsive */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '12px',
+          width: '95%',
+          margin: '0 auto'
+        }}>
             {features.map((feature, index) => (
-              <FeatureCard
+              <motion.div
                 key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-              />
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.15,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <AppleFlipCard
+                  frontContent={
+                    <div style={{
+                      background: '#ffffff',
+                      borderRadius: '22px',
+                      padding: '32px',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
+                      border: '1px solid rgba(0, 0, 0, 0.04)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}>
+                      {/* Apple-style Icon Container */}
+                      <div style={{
+                        width: '72px',
+                        height: '72px',
+                        borderRadius: '22px',
+                        background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '24px',
+                        boxShadow: '0 8px 32px rgba(0, 122, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                      }}>
+                        {React.cloneElement(feature.icon, { 
+                          sx: { 
+                            fontSize: 32, 
+                            color: '#ffffff',
+                            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
+                          } 
+                        })}
+                      </div>
+                      
+                      <h3 style={{
+                        fontSize: '24px',
+                        fontWeight: '600',
+                        color: '#1d1d1f',
+                        marginBottom: '16px',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.16667',
+                        letterSpacing: '-0.005em'
+                      }}>
+                        {feature.title}
+                      </h3>
+                      
+                      <p style={{
+                        fontSize: '17px',
+                        color: '#86868b',
+                        marginBottom: '24px',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.47059',
+                        letterSpacing: '-0.022em',
+                        fontWeight: '400',
+                        flex: 1
+                      }}>
+                        {feature.description}
+                      </p>
+                      
+                      <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginTop: 'auto'
+                      }}>
+                        <div style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          padding: '8px 16px',
+                          borderRadius: '20px',
+                          background: 'rgba(0, 122, 255, 0.1)',
+                          color: '#007aff',
+                          fontSize: '15px',
+                          fontWeight: '500',
+                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                        }}>
+                          Hover to learn more
+                        </div>
+                      </div>
+                    </div>
+                  }
+                  
+                  backContent={
+                    <div style={{
+                      background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                      borderRadius: '22px',
+                      padding: '32px',
+                      color: '#ffffff',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      textAlign: 'center',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      boxShadow: '0 20px 64px rgba(0, 122, 255, 0.4)'
+                    }}>
+                      {/* Apple Ambient Effects */}
+                      <div style={{
+                        position: 'absolute',
+                        top: '-30%',
+                        right: '-20%',
+                        width: '150px',
+                        height: '150px',
+                        background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                        filter: 'blur(40px)',
+                        pointerEvents: 'none'
+                      }} />
+                      
+                      <div style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                        {/* Icon */}
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          borderRadius: '22px',
+                          background: 'rgba(255, 255, 255, 0.2)',
+                          backdropFilter: 'blur(20px)',
+                          border: '1px solid rgba(255, 255, 255, 0.3)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          margin: '0 auto 24px',
+                          boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.3)'
+                        }}>
+                          {React.cloneElement(feature.icon, { 
+                            sx: { 
+                              fontSize: 32, 
+                              color: '#ffffff',
+                              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
+                            } 
+                          })}
+                        </div>
+                        
+                        <h3 style={{
+                          fontSize: '24px',
+                          fontWeight: '600',
+                          color: '#ffffff',
+                          marginBottom: '20px',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                        }}>
+                          {feature.title}
+                        </h3>
+                        
+                        {/* Features List */}
+                        <ul style={{
+                          listStyle: 'none',
+                          padding: 0,
+                          margin: '0 0 24px 0',
+                          flex: 1,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center',
+                          gap: '12px'
+                        }}>
+                          {feature.features.map((detailFeature, fIndex) => (
+                            <li key={fIndex} style={{ 
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '12px',
+                              fontSize: '15px',
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                              fontWeight: '400'
+                            }}>
+                              <div style={{
+                                width: '6px',
+                                height: '6px',
+                                borderRadius: '50%',
+                                background: 'rgba(255, 255, 255, 0.8)',
+                                flexShrink: 0
+                              }} />
+                              {detailFeature}
+                            </li>
+                          ))}
+                        </ul>
+                        
+                        {/* Apple Button */}
+                        <Link 
+                          to="/contact"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '8px',
+                            padding: '12px 24px',
+                            background: 'rgba(255, 255, 255, 0.2)',
+                            backdropFilter: 'blur(20px)',
+                            border: '1px solid rgba(255, 255, 255, 0.3)',
+                            borderRadius: '20px',
+                            color: '#ffffff',
+                            textDecoration: 'none',
+                            fontSize: '17px',
+                            fontWeight: '500',
+                            fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                            cursor: 'pointer',
+                            userSelect: 'none'
+                          }}
+                        >
+                          Get Started
+                          <ArrowForward sx={{ fontSize: 16 }} />
+                        </Link>
+                      </div>
+                    </div>
+                  }
+                />
+              </motion.div>
             ))}
           </div>
-        </div>
       </section>
 
-      {/* Service Packages */}
-      <section className="section" style={{ backgroundColor: 'var(--color-surface-secondary)' }}>
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">SME Migration Packages</h2>
-            <p className="section-subtitle">
-              Choose the package that best fits your business size and requirements
-            </p>
-          </div>
 
-          <div className="grid grid-3">
-            {packages.map((pkg, index) => (
-              <div key={index} className={`card ${pkg.popular ? 'card-bordered' : ''}`} style={{ position: 'relative' }}>
-                {pkg.popular && (
+      {/* Apple Process Section */}
+      <section style={{ padding: '80px 0 60px 0', background: '#ffffff', position: 'relative' }}>
+        <div className="container" style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: "-100px" }}
+            style={{ textAlign: 'center', marginBottom: '50px' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(2rem, 4vw, 2.75rem)',
+              fontWeight: '600',
+              color: '#1d1d1f',
+              marginBottom: '16px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.0625',
+              letterSpacing: '-0.009em'
+            }}>
+              How it works.
+            </h2>
+            <p style={{
+              fontSize: '1.125rem',
+              color: '#86868b',
+              maxWidth: '700px',
+              margin: '0 auto',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              letterSpacing: '.011em',
+              fontWeight: '400'
+            }}>
+              Five steps to transformation. Zero downtime. Maximum impact.
+            </p>
+          </motion.div>
+
+          {/* Apple Timeline Cards */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '40px',
+            maxWidth: '95%',
+            margin: '0 auto'
+          }}>
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '40px',
+                  flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
+                  '@media (max-width: 768px)': {
+                    flexDirection: 'column',
+                    textAlign: 'center',
+                    gap: '20px'
+                  }
+                }}
+                className={`migration-step-${index % 2 === 0 ? 'left' : 'right'}`}
+              >
+                {/* Step Number Circle */}
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="migration-step-circle"
+                  style={{
+                    width: '80px',
+                    height: '80px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 8px 32px rgba(0, 122, 255, 0.3)',
+                    flexShrink: 0
+                  }}
+                >
+                  <span style={{
+                    fontSize: '1.5rem',
+                    fontWeight: '600',
+                    color: '#ffffff',
+                    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                  }}>
+                    {step.step}
+                  </span>
+                </motion.div>
+
+                {/* Connecting Line */}
+                {index < processSteps.length - 1 && (
                   <div style={{
                     position: 'absolute',
-                    top: '-10px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    zIndex: 1
-                  }}>
-                    <div className="badge badge-primary">Most Popular</div>
-                  </div>
+                    left: '40px',
+                    top: '120px',
+                    width: '2px',
+                    height: '80px',
+                    background: 'linear-gradient(to bottom, #007aff, rgba(0, 122, 255, 0.2))',
+                    zIndex: 0
+                  }} />
                 )}
-                
-                <div className="card-body text-center">
-                  <h3 className="service-title">{pkg.name}</h3>
-                  <div className="text-4xl font-bold text-primary mb-2">{pkg.price}</div>
-                  <div className="text-sm text-secondary mb-4">
-                    {pkg.duration} • {pkg.employees} employees
-                  </div>
-                  
-                  <ul className="service-features mb-6">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start gap-2 mb-2">
-                        <CheckCircle 
-                          style={{ 
-                            fontSize: '16px', 
-                            color: 'var(--color-success-500)',
-                            marginTop: '2px',
-                            flexShrink: 0
-                          }} 
-                        />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <Link 
-                    to="/contact"
-                    className={`btn ${pkg.popular ? 'btn-primary' : 'btn-outline'} w-full`}
-                  >
-                    Get Started
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Migration Process */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Our SME Migration Process</h2>
-            <p className="section-subtitle">
-              A streamlined 5-step process designed for efficiency and minimal disruption
-            </p>
-          </div>
+                {/* Content Card */}
+                <motion.div
+                  whileHover={{
+                    y: -8,
+                    boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)'
+                  }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    flex: 1,
+                    background: '#ffffff',
+                    borderRadius: '18px',
+                    padding: '32px 40px',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                    border: '1px solid rgba(0, 0, 0, 0.06)',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                >
+                  {/* Background decoration */}
+                  <div style={{
+                    position: 'absolute',
+                    top: index % 2 === 0 ? '-30px' : 'auto',
+                    bottom: index % 2 === 0 ? 'auto' : '-30px',
+                    right: index % 2 === 0 ? '-30px' : 'auto',
+                    left: index % 2 === 0 ? 'auto' : '-30px',
+                    width: '100px',
+                    height: '100px',
+                    background: 'radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 70%)',
+                    filter: 'blur(20px)'
+                  }} />
 
-          <div className="grid grid-1" style={{ maxWidth: '800px', margin: '0 auto' }}>
-            {processSteps.map((step, index) => (
-              <div key={index} className="card">
-                <div className="card-body">
-                  <div className="flex items-center gap-4">
-                    <div className="service-icon flex-shrink-0">
-                      <span className="text-2xl font-bold">{step.step}</span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="service-title">{step.title}</h3>
-                        <div className="badge badge-success">{step.duration}</div>
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    {/* Header */}
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '16px'
+                    }}>
+                      <h3 style={{
+                        fontSize: '1.5rem',
+                        fontWeight: '600',
+                        color: '#1d1d1f',
+                        margin: 0,
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                      }}>
+                        {step.title}
+                      </h3>
+                      
+                      <div style={{
+                        background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
+                        color: '#ffffff',
+                        padding: '6px 16px',
+                        borderRadius: '12px',
+                        fontSize: '12px',
+                        fontWeight: '600',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px'
+                      }}>
+                        {step.duration}
                       </div>
-                      <p className="service-description">{step.description}</p>
+                    </div>
+
+                    {/* Description */}
+                    <p style={{
+                      fontSize: '1rem',
+                      lineHeight: '1.6',
+                      color: '#86868b',
+                      margin: 0,
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                    }}>
+                      {step.description}
+                    </p>
+
+                    {/* Progress indicator */}
+                    <div style={{
+                      marginTop: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px'
+                    }}>
+                      <div style={{
+                        flex: 1,
+                        height: '4px',
+                        background: 'rgba(0, 122, 255, 0.1)',
+                        borderRadius: '2px',
+                        overflow: 'hidden'
+                      }}>
+                        <motion.div
+                          initial={{ width: '0%' }}
+                          whileInView={{ width: `${((step.step) / processSteps.length) * 100}%` }}
+                          transition={{ duration: 1, delay: index * 0.2 }}
+                          viewport={{ once: true }}
+                          style={{
+                            height: '100%',
+                            background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                            borderRadius: '2px'
+                          }}
+                        />
+                      </div>
+                      <span style={{
+                        fontSize: '12px',
+                        color: '#86868b',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        fontWeight: '500'
+                      }}>
+                        Step {step.step} of {processSteps.length}
+                      </span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Success Story Preview */}
-      <section className="section" style={{ backgroundColor: 'var(--color-surface-secondary)' }}>
+      {/* Apple Success Story Section */}
+      <section style={{ padding: '80px 0 60px 0', background: '#ffffff' }}>
         <div className="container">
-          <div className="grid grid-2" style={{ gap: 'var(--space-8)', alignItems: 'center' }}>
-            <div>
-              <h2 className="text-3xl font-bold text-primary mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            style={{ 
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
+              gap: '64px',
+              alignItems: 'center'
+            }}
+          >
+            {/* Testimonial Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h2 style={{
+                fontSize: 'clamp(2rem, 4vw, 2.75rem)',
+                fontWeight: '600',
+                color: '#1d1d1f',
+                marginBottom: '24px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.08349',
+                letterSpacing: '-0.003em'
+              }}>
                 SME Success Story
               </h2>
-              <blockquote className="text-lg italic text-secondary mb-6">
+              
+              <blockquote style={{
+                fontSize: '1.25rem',
+                fontStyle: 'italic',
+                color: '#424245',
+                marginBottom: '32px',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.4705882353',
+                fontWeight: '400',
+                letterSpacing: '-0.008em',
+                position: 'relative'
+              }}>
+                <div style={{
+                  content: '""',
+                  position: 'absolute',
+                  left: '-24px',
+                  top: '0',
+                  width: '4px',
+                  height: '100%',
+                  background: 'linear-gradient(180deg, #007aff 0%, #5856d6 100%)',
+                  borderRadius: '2px'
+                }} />
                 "The migration was completed in just 5 weeks with zero disruption to our operations. 
                 Our payroll processing time has been cut in half, and the new system handles our 
                 complex commission structures perfectly."
               </blockquote>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="testimonial-avatar">M</div>
+              
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                marginBottom: '32px'
+              }}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  style={{
+                    width: '60px',
+                    height: '60px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '24px',
+                    fontWeight: '600',
+                    color: '#ffffff',
+                    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                  }}
+                >
+                  M
+                </motion.div>
                 <div>
-                  <h4 className="font-semibold text-primary">Mark Thompson</h4>
-                  <p className="text-sm text-secondary">Operations Director, TechStart Solutions</p>
+                  <h4 style={{
+                    fontSize: '17px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '4px',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                  }}>
+                    Mark Thompson
+                  </h4>
+                  <p style={{
+                    fontSize: '15px',
+                    color: '#86868b',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    fontWeight: '400'
+                  }}>
+                    Operations Director, TechStart Solutions
+                  </p>
                 </div>
               </div>
-              <Link to="/success-stories/sme" className="btn btn-outline">
-                Read Full Case Study
-                <ArrowForward size={16} />
-              </Link>
-            </div>
+              
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link 
+                  to="/success-stories/sme"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '12px 0px',
+                    background: 'transparent',
+                    border: 'none',
+                    borderRadius: '0px',
+                    color: '#007aff',
+                    textDecoration: 'none',
+                    fontWeight: '400',
+                    fontSize: '17px',
+                    lineHeight: '1.23536',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    userSelect: 'none'
+                  }}
+                >
+                  Read Full Case Study
+                  <ArrowForward sx={{ fontSize: 16, marginLeft: '4px' }} />
+                </Link>
+              </motion.div>
+            </motion.div>
             
-            <div className="card">
-              <div className="card-body">
-                <h3 className="service-title text-center mb-4">Key Results</h3>
-                <div className="grid grid-2 gap-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-success-700">50%</div>
-                    <div className="text-sm text-secondary">Time Savings</div>
+            {/* Results Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                whileHover={{
+                  y: -8,
+                  boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)'
+                }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
+                  borderRadius: '20px',
+                  padding: '40px 32px',
+                  color: '#ffffff',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  minHeight: '400px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  boxShadow: '0 8px 32px rgba(48, 209, 88, 0.3)'
+                }}
+              >
+                {/* Background decoration */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-30px',
+                  right: '-30px',
+                  width: '120px',
+                  height: '120px',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  borderRadius: '50%',
+                  filter: 'blur(60px)'
+                }} />
+                
+                <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  {/* Icon and Title */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
+                    marginBottom: '32px'
+                  }}>
+                    <Assessment sx={{ fontSize: 40, color: '#ffffff', opacity: 0.9 }} />
+                    <h3 style={{
+                      fontSize: '1.75rem',
+                      fontWeight: '600',
+                      color: '#ffffff',
+                      margin: 0,
+                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                    }}>
+                      Key Results
+                    </h3>
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-success-700">£95K</div>
-                    <div className="text-sm text-secondary">Annual Savings</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-success-700">5 weeks</div>
-                    <div className="text-sm text-secondary">Migration Time</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-success-700">120</div>
-                    <div className="text-sm text-secondary">Employees</div>
+                  
+                  {/* Results Grid */}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, 1fr)',
+                    gap: '24px',
+                    flex: 1
+                  }}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      viewport={{ once: true }}
+                      style={{ 
+                        textAlign: 'center',
+                        padding: '20px',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        borderRadius: '16px',
+                        backdropFilter: 'blur(10px)'
+                      }}
+                    >
+                      <div style={{
+                        fontSize: '2.5rem',
+                        fontWeight: '600',
+                        color: '#ffffff',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        marginBottom: '8px'
+                      }}>
+                        50%
+                      </div>
+                      <div style={{
+                        fontSize: '14px',
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        fontWeight: '500'
+                      }}>
+                        Time Savings
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.5 }}
+                      viewport={{ once: true }}
+                      style={{ 
+                        textAlign: 'center',
+                        padding: '20px',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        borderRadius: '16px',
+                        backdropFilter: 'blur(10px)'
+                      }}
+                    >
+                      <div style={{
+                        fontSize: '2.5rem',
+                        fontWeight: '600',
+                        color: '#ffffff',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        marginBottom: '8px'
+                      }}>
+                        £95K
+                      </div>
+                      <div style={{
+                        fontSize: '14px',
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        fontWeight: '500'
+                      }}>
+                        Annual Savings
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                      viewport={{ once: true }}
+                      style={{ 
+                        textAlign: 'center',
+                        padding: '20px',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        borderRadius: '16px',
+                        backdropFilter: 'blur(10px)'
+                      }}
+                    >
+                      <div style={{
+                        fontSize: '2.5rem',
+                        fontWeight: '600',
+                        color: '#ffffff',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        marginBottom: '8px'
+                      }}>
+                        5 weeks
+                      </div>
+                      <div style={{
+                        fontSize: '14px',
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        fontWeight: '500'
+                      }}>
+                        Migration Time
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.7 }}
+                      viewport={{ once: true }}
+                      style={{ 
+                        textAlign: 'center',
+                        padding: '20px',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        borderRadius: '16px',
+                        backdropFilter: 'blur(10px)'
+                      }}
+                    >
+                      <div style={{
+                        fontSize: '2.5rem',
+                        fontWeight: '600',
+                        color: '#ffffff',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        marginBottom: '8px'
+                      }}>
+                        120
+                      </div>
+                      <div style={{
+                        fontSize: '14px',
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        fontWeight: '500'
+                      }}>
+                        Employees
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-sm">
-        <div className="container">
-          <div className="cta-section">
-            <div className="cta-content">
-              <h2>Ready to Transform Your Payroll?</h2>
-              <p className="text-lg mb-6">
-                Join 200+ SMEs that have successfully migrated with our proven methodology.
-              </p>
-              
-              <div className="flex justify-center gap-4" style={{ flexWrap: 'wrap' }}>
-                <Link to="/contact" className="btn btn-secondary btn-lg">
+      {/* Apple CTA Section */}
+      <section style={{ 
+        background: '#1d1d1f', 
+        padding: '80px 0 60px 0',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Background Elements */}
+        <div style={{
+          position: 'absolute',
+          top: '20%',
+          left: '-10%',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.1) 0%, transparent 70%)',
+          filter: 'blur(100px)'
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '20%',
+          right: '-10%',
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(circle, rgba(88, 86, 214, 0.1) 0%, transparent 70%)',
+          filter: 'blur(100px)'
+        }} />
+        
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              fontWeight: '600',
+              color: '#ffffff',
+              marginBottom: '24px',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+              lineHeight: '1.1'
+            }}>
+              Ready to get started?
+            </h2>
+            
+            <p style={{
+              fontSize: '1.25rem',
+              color: 'rgba(255, 255, 255, 0.8)',
+              marginBottom: '48px',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              lineHeight: '1.6'
+            }}>
+              Join 200+ SMEs that have successfully migrated with our proven methodology. 
+              Zero downtime, maximum results.
+            </p>
+            
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link 
+                  to="/contact" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '17px 44px',
+                    background: '#007aff',
+                    border: 'none',
+                    borderRadius: '980px',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    fontWeight: '400',
+                    fontSize: '17px',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    userSelect: 'none'
+                  }}
+                >
                   Get Free Consultation
+                  <ArrowForward sx={{ fontSize: 18 }} />
                 </Link>
-                <Link to="/quote" className="btn btn-ghost btn-lg">
+              </motion.div>
+              
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link 
+                  to="/quote" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '17px 44px',
+                    background: 'transparent',
+                    border: '1px solid rgba(255, 255, 255, 0.28)',
+                    borderRadius: '980px',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    fontWeight: '400',
+                    fontSize: '17px',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    userSelect: 'none'
+                  }}
+                >
                   Request Quote
-                  <ArrowForward size={20} />
+                  <ArrowForward sx={{ fontSize: 18 }} />
                 </Link>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
-    </div>
+    </AppleBackground>
   );
 };
 

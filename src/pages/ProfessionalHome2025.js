@@ -1,16 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Phone,
-  Email,
   Speed,
-  Support,
   Analytics,
   Business,
-  TrendingUp,
-  CheckCircle,
-  ArrowForward,
-  Star,
   People,
   Shield,
   Timeline
@@ -21,205 +14,268 @@ const ProfessionalHome2025 = () => {
     {
       id: 'sme',
       title: 'SME Solutions',
-      description: 'Tailored migration solutions for small to medium enterprises with focus on cost-effectiveness and minimal disruption.',
-      icon: <Business sx={{ fontSize: 32, color: 'var(--color-primary)' }} />,
-      features: [
-        'Zero downtime migration',
-        'Data validation and testing',
-        'Staff training and support',
-        '3 months post-migration support'
-      ],
-      href: '/services/sme',
-      color: 'var(--color-primary-container)'
+      description: 'Tailored migration solutions for small to medium enterprises.',
+      icon: <Business sx={{ fontSize: 24, color: '#007AFF' }} />,
+      href: '/services/sme'
     },
     {
       id: 'enterprise',
       title: 'Large Enterprise',
-      description: 'Complex multi-system migrations for large organizations with extensive compliance and integration requirements.',
-      icon: <People sx={{ fontSize: 32, color: 'var(--color-secondary)' }} />,
-      features: [
-        'Multi-system integration',
-        'Compliance management',
-        '24/7 dedicated support',
-        'Dedicated project manager'
-      ],
-      href: '/services/large-enterprise',
-      color: 'var(--color-secondary-container)'
+      description: 'Complex multi-system migrations for large organizations.',
+      icon: <People sx={{ fontSize: 24, color: '#007AFF' }} />,
+      href: '/services/large-enterprise'
     },
     {
       id: 'consultancy',
       title: 'Expert Consultancy',
-      description: 'Strategic guidance and optimization of existing payroll systems without full migration requirements.',
-      icon: <Timeline sx={{ fontSize: 32, color: 'var(--color-tertiary)' }} />,
-      features: [
-        'Comprehensive system audit',
-        'Process optimization',
-        'Compliance review',
-        'Best practice guidance'
-      ],
-      href: '/services/consultancy',
-      color: 'var(--color-tertiary-container)'
+      description: 'Strategic guidance and system optimization.',
+      icon: <Timeline sx={{ fontSize: 24, color: '#007AFF' }} />,
+      href: '/services/consultancy'
     }
   ];
 
   const features = [
     {
-      icon: <Shield sx={{ fontSize: 40 }} />,
-      title: 'Zero Downtime Guarantee',
-      description: 'Our proven migration process ensures your payroll operations continue uninterrupted throughout the entire migration.'
+      icon: <Shield sx={{ fontSize: 32 }} />,
+      title: 'Secure',
+      description: 'Enterprise-grade security with zero downtime guarantee.'
     },
     {
-      icon: <Speed sx={{ fontSize: 40 }} />,
-      title: 'Fast Implementation',
-      description: 'Streamlined processes and expert methodology that get you up and running quickly without compromising quality.'
+      icon: <Speed sx={{ fontSize: 32 }} />,
+      title: 'Fast',
+      description: 'Streamlined implementation. Get up and running quickly.'
     },
     {
-      icon: <Support sx={{ fontSize: 40 }} />,
-      title: '24/7 Expert Support',
-      description: 'Round-the-clock support from our UK-based payroll migration specialists with guaranteed 2-hour response time.'
-    },
-    {
-      icon: <Analytics sx={{ fontSize: 40 }} />,
-      title: 'Proven Track Record',
-      description: '500+ successful migrations with 99.9% success rate and average savings of £2.5M per client engagement.'
+      icon: <Analytics sx={{ fontSize: 32 }} />,
+      title: 'Proven',
+      description: '500+ successful migrations. 99.9% success rate.'
     }
   ];
 
 
-  const testimonials = [
-    {
-      quote: 'The migration was seamless and completed ahead of schedule. Their expertise saved us months of work.',
-      author: 'Sarah Johnson',
-      title: 'HR Director',
-      company: 'TechFlow Solutions',
-      rating: 5
-    },
-    {
-      quote: 'Outstanding service from start to finish. Zero downtime as promised and excellent ongoing support.',
-      author: 'David Chen',
-      title: 'CFO',
-      company: 'Global Manufacturing Inc',
-      rating: 5
-    },
-    {
-      quote: 'Professional, knowledgeable team that delivered exactly what they promised. Highly recommended.',
-      author: 'Emma Williams',
-      title: 'Operations Manager',
-      company: 'Retail Excellence Ltd',
-      rating: 5
-    }
-  ];
-
-  const clientLogos = [
-    'Microsoft', 'Amazon', 'Google', 'Apple', 'Meta', 'Netflix', 'Tesla', 'Samsung'
-  ];
 
   return (
-    <div className="surface min-h-screen">
-      {/* Hero Section */}
-      <section className="py-16 md:py-20 lg:py-24 surface-container">
-        <div className="container max-w-6xl">
-          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 md:gap-12 lg:gap-24 lg:justify-between">
-            {/* Hero Content */}
-            <div className="text-center lg:text-left w-full lg:w-auto lg:max-w-2xl">
-              <h1 className="display-large mb-6 text-on-surface" style={{wordBreak: 'keep-all', hyphens: 'none'}}>
-                Professional Payroll Migration Services
-              </h1>
-              <p className="body-large mb-8 text-on-surface-variant">
-                Seamless payroll migration with zero downtime guarantee. 
-                Expert UK-based team with proven track record of successful migrations 
-                across industries and system complexities.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link to="/quote" className="btn-primary">
-                  Get Free Consultation
-                  <ArrowForward sx={{ fontSize: 20 }} />
-                </Link>
-                <Link to="/success-stories" className="btn-outlined">
-                  View Success Stories
-                </Link>
-              </div>
-            </div>
-            
-            {/* Hero Visual - Company Goal */}
-            <div className="flex justify-center lg:justify-center w-full lg:w-auto">
-              <div className="text-center">
-                <div className="animate-bounce-slow mb-6">
-                  <TrendingUp 
-                    sx={{ 
-                      fontSize: 72, 
-                      color: 'var(--color-primary)', 
-                      filter: 'drop-shadow(0 4px 8px rgba(107, 62, 145, 0.3))'
-                    }} 
-                  />
-                </div>
-                <h3 className="headline-large animate-fade-in-up gradient-text">
-                  Helping You To Succeed
-                </h3>
-              </div>
-            </div>
+    <div style={{ 
+      backgroundColor: '#F5F5F7', 
+      minHeight: '100vh', 
+      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif',
+      color: '#1d1d1f'
+    }}>
+      {/* Hero Section - Apple Style */}
+      <section style={{ 
+        padding: '80px 20px', 
+        textAlign: 'left',
+        backgroundColor: '#F5F5F7',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Background Glass Effect */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '95%',
+          height: '800px',
+          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.1) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(60px)',
+          zIndex: 0
+        }} />
+        
+        <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <h1 style={{ 
+            fontSize: 'clamp(28px, 5vw, 44px)',
+            fontWeight: '700',
+            lineHeight: '1.05',
+            color: '#1d1d1f',
+            marginBottom: '20px',
+            letterSpacing: '-0.04em',
+            textShadow: '0 2px 4px rgba(255, 255, 255, 0.3)'
+          }}>
+            Professional Payroll <span style={{ 
+              background: 'linear-gradient(90deg, #007AFF 0%, #5AC8FA 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              Migration Services
+            </span>
+          </h1>
+          <p style={{ 
+            fontSize: '17px',
+            lineHeight: '1.3',
+            color: '#333333',
+            fontWeight: '400',
+            marginBottom: '40px'
+          }}>
+            Seamlessly migrate your payroll system with zero downtime.<br />
+            Expert team with proven track record.
+          </p>
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+            <Link 
+              to="/quote" 
+              style={{
+                background: 'linear-gradient(135deg, #007AFF 0%, #0056CC 100%)',
+                color: 'white',
+                padding: '16px 32px',
+                borderRadius: '25px',
+                textDecoration: 'none',
+                fontSize: '15px',
+                fontWeight: '600',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                border: 'none',
+                boxShadow: '0 4px 20px rgba(0, 122, 255, 0.3)',
+                backdropFilter: 'blur(10px)'
+              }}
+              onMouseEnter={(e) => { 
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 8px 30px rgba(0, 122, 255, 0.4)';
+              }}
+              onMouseLeave={(e) => { 
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 20px rgba(0, 122, 255, 0.3)';
+              }}
+            >
+              Get Started
+            </Link>
+            <Link 
+              to="/success-stories"
+              style={{
+                color: '#007AFF',
+                padding: '16px 32px',
+                borderRadius: '25px',
+                textDecoration: 'none',
+                fontSize: '15px',
+                fontWeight: '600',
+                border: '2px solid rgba(0, 122, 255, 0.3)',
+                background: 'rgba(0, 122, 255, 0.05)',
+                backdropFilter: 'blur(10px)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+              onMouseEnter={(e) => { 
+                e.target.style.borderColor = 'rgba(0, 122, 255, 0.6)';
+                e.target.style.background = 'rgba(0, 122, 255, 0.1)';
+              }}
+              onMouseLeave={(e) => { 
+                e.target.style.borderColor = 'rgba(0, 122, 255, 0.3)';
+                e.target.style.background = 'rgba(0, 122, 255, 0.05)';
+              }}
+            >
+              Learn More
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-12 md:py-16 lg:py-20 surface">
-        <div className="container">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="display-medium mb-6 text-on-surface">Our Migration Services</h2>
-            <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
-              Comprehensive payroll migration solutions tailored to your organization's size, 
-              complexity, and industry requirements. Every migration backed by our zero-downtime guarantee.
-            </p>
-          </div>
+      {/* Services Section - Apple Style */}
+      <section style={{ 
+        padding: '40px 20px 80px 20px', 
+        backgroundColor: '#F5F5F7',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)'
+      }}>
+        <div style={{ width: '95%', margin: '0 auto', textAlign: 'left' }}>
+          <h2 style={{ 
+            fontSize: 'clamp(20px, 3.5vw, 32px)',
+            fontWeight: '700',
+            color: '#1d1d1f',
+            marginBottom: '20px',
+            letterSpacing: '-0.03em'
+          }}>
+            Our Services
+          </h2>
+          <p style={{ 
+            fontSize: '15px',
+            color: '#333333',
+            marginBottom: '60px',
+            lineHeight: '1.4'
+          }}>
+            Tailored solutions for your organization.
+          </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+            gap: '32px'
+          }}>
             {services.map((service, index) => (
               <div 
                 key={service.id} 
-                className="card-elevated p-6 md:p-8 transition-all duration-300 w-full"
                 style={{
-                  background: `linear-gradient(135deg, ${service.color}20 0%, var(--color-surface) 100%)`
+                  background: '#FFFFFF',
+                  borderRadius: '18px',
+                  padding: '32px 24px',
+                  textAlign: 'left',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = 'var(--elevation-4)';
+                  e.currentTarget.style.background = '#FFFFFF';
+                  e.currentTarget.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                  e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.15)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'var(--elevation-2)';
+                  e.currentTarget.style.background = '#FFFFFF';
+                  e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.06)';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
                 }}
               >
-                <div className="flex items-center gap-4 mb-6">
-                  {service.icon}
-                  <Link 
-                    to={service.href} 
-                    className="headline-small text-on-surface hover:text-primary transition-colors duration-200 no-underline"
-                  >
-                    {service.title}
-                  </Link>
+                <div style={{ 
+                  marginBottom: '24px',
+                  padding: '20px',
+                  borderRadius: '16px',
+                  background: 'rgba(0, 122, 255, 0.1)',
+                  display: 'inline-block'
+                }}>
+                  {React.cloneElement(service.icon, { 
+                    sx: { fontSize: 32, color: '#007AFF' } 
+                  })}
                 </div>
-                
-                <p className="body-large mb-6 text-on-surface-variant">
+                <h3 style={{ 
+                  fontSize: '15px',
+                  fontWeight: '600',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  letterSpacing: '-0.02em'
+                }}>
+                  {service.title}
+                </h3>
+                <p style={{ 
+                  fontSize: '15px',
+                  color: '#333333',
+                  lineHeight: '1.5',
+                  marginBottom: '32px'
+                }}>
                   {service.description}
                 </p>
-                
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle sx={{ fontSize: 20, color: 'var(--color-success-60)', mt: 0.25 }} />
-                      <span className="body-medium text-on-surface-variant">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
                 <Link 
                   to={service.href} 
-                  className="btn-outlined w-full"
-                  style={{ justifyContent: 'center' }}
+                  style={{
+                    color: '#5AC8FA',
+                    textDecoration: 'none',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => { 
+                    e.target.style.color = '#007AFF';
+                    e.target.style.transform = 'translateX(4px)';
+                  }}
+                  onMouseLeave={(e) => { 
+                    e.target.style.color = '#5AC8FA';
+                    e.target.style.transform = 'translateX(0)';
+                  }}
                 >
-                  Learn More
-                  <ArrowForward sx={{ fontSize: 18 }} />
+                  Learn more <span style={{ fontSize: '16px' }}>→</span>
                 </Link>
               </div>
             ))}
@@ -227,135 +283,185 @@ const ProfessionalHome2025 = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-12 md:py-16 lg:py-20 surface-container">
-        <div className="container">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="display-medium mb-6 text-on-surface">Why Choose Us</h2>
-            <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
-              Industry-leading expertise, proven methodologies, and unwavering commitment 
-              to your success make us the trusted choice for payroll migration.
-            </p>
-          </div>
+      {/* Features Section - Apple Style */}
+      <section style={{ 
+        padding: '120px 20px', 
+        backgroundColor: '#F5F5F7',
+        borderTop: '1px solid rgba(0, 0, 0, 0.05)'
+      }}>
+        <div style={{ width: '95%', margin: '0 auto', textAlign: 'left' }}>
+          <h2 style={{ 
+            fontSize: 'clamp(20px, 3.5vw, 32px)',
+            fontWeight: '700',
+            color: '#1d1d1f',
+            marginBottom: '20px',
+            letterSpacing: '-0.03em'
+          }}>
+            Why Choose Us
+          </h2>
+          <p style={{ 
+            fontSize: '15px',
+            color: '#86868b',
+            marginBottom: '80px',
+            lineHeight: '1.4'
+          }}>
+            Industry-leading expertise with proven results.
+          </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+            gap: '64px'
+          }}>
             {features.map((feature, index) => (
-              <div key={index} className="card p-6">
-                <div className="flex items-start gap-6">
-                  <div 
-                    className="p-3 rounded-lg flex-shrink-0"
-                    style={{ backgroundColor: 'var(--color-primary-container)' }}
-                  >
-                    {React.cloneElement(feature.icon, { 
-                      sx: { fontSize: 40, color: 'var(--color-primary)' } 
-                    })}
-                  </div>
-                  <div>
-                    <h3 className="headline-small mb-3 text-on-surface">{feature.title}</h3>
-                    <p className="body-medium text-on-surface-variant">{feature.description}</p>
-                  </div>
+              <div key={index} style={{ 
+                textAlign: 'left',
+                padding: '32px',
+                borderRadius: '18px',
+                background: '#FFFFFF',
+                border: '1px solid rgba(0, 0, 0, 0.06)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.15)';
+                e.currentTarget.style.background = '#FFFFFF';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                e.currentTarget.style.background = '#FFFFFF';
+              }}>
+                <div style={{ 
+                  marginBottom: '32px',
+                  padding: '24px',
+                  borderRadius: '20px',
+                  background: 'linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(90, 200, 250, 0.1) 100%)',
+                  display: 'inline-block'
+                }}>
+                  {React.cloneElement(feature.icon, { 
+                    sx: { fontSize: 56, color: '#007AFF' } 
+                  })}
                 </div>
+                <h3 style={{ 
+                  fontSize: '18px',
+                  fontWeight: '700',
+                  color: '#1d1d1f',
+                  marginBottom: '20px',
+                  letterSpacing: '-0.02em'
+                }}>
+                  {feature.title}
+                </h3>
+                <p style={{ 
+                  fontSize: '15px',
+                  color: '#86868b',
+                  lineHeight: '1.5',
+                  fontWeight: '400'
+                }}>
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-12 md:py-16 lg:py-20 surface-variant">
-        <div className="container">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="display-medium mb-6 text-on-surface">What Our Clients Say</h2>
-            <p className="body-large text-on-surface-variant">
-              Hear from organizations who have transformed their payroll operations with our services.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="card p-8">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, starIndex) => (
-                    <Star 
-                      key={starIndex} 
-                      sx={{ fontSize: 20, color: 'var(--color-warning-60)' }} 
-                    />
-                  ))}
-                </div>
-                
-                <blockquote className="body-large mb-6 text-on-surface-variant italic">
-                  "{testimonial.quote}"
-                </blockquote>
-                
-                <div>
-                  <div className="title-medium text-on-surface">{testimonial.author}</div>
-                  <div className="body-small text-on-surface-variant">
-                    {testimonial.title}, {testimonial.company}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Client Logos Section */}
-      <section className="py-10 md:py-12 lg:py-16 surface">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="headline-large mb-4 text-on-surface">Trusted by Industry Leaders</h2>
-            <p className="body-medium text-on-surface-variant">
-              Join hundreds of organizations who have successfully migrated with our expertise.
-            </p>
-          </div>
-          
-          <div className="relative overflow-hidden">
-            <div 
-              className="flex items-center gap-8 animate-flow"
+      {/* CTA Section - Apple Style */}
+      <section style={{ 
+        padding: '160px 20px', 
+        backgroundColor: '#F5F5F7',
+        textAlign: 'left',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Background Effects */}
+        <div style={{
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          right: '0',
+          bottom: '0',
+          background: 'radial-gradient(circle at 30% 50%, rgba(0, 122, 255, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(90, 200, 250, 0.1) 0%, transparent 50%)',
+          zIndex: 0
+        }} />
+        
+        <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <h2 style={{ 
+            fontSize: 'clamp(24px, 4vw, 36px)',
+            fontWeight: '700',
+            color: '#1d1d1f',
+            marginBottom: '32px',
+            letterSpacing: '-0.04em',
+            lineHeight: '1.05'
+          }}>
+            Ready to get started?
+          </h2>
+          <p style={{ 
+            fontSize: '15px',
+            color: '#333333',
+            lineHeight: '1.3',
+            marginBottom: '64px',
+            fontWeight: '400'
+          }}>
+            Get a free consultation. Our experts will assess your system and provide a detailed migration plan.
+          </p>
+          <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link 
+              to="/quote" 
               style={{
-                animation: 'flow 20s linear infinite',
-                width: 'fit-content'
+                background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                color: 'white',
+                padding: '20px 40px',
+                borderRadius: '30px',
+                textDecoration: 'none',
+                fontSize: '15px',
+                fontWeight: '600',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                boxShadow: '0 8px 32px rgba(0, 122, 255, 0.3)',
+                border: 'none',
+                backdropFilter: 'blur(10px)'
+              }}
+              onMouseEnter={(e) => { 
+                e.target.style.transform = 'translateY(-4px) scale(1.05)';
+                e.target.style.boxShadow = '0 16px 48px rgba(0, 122, 255, 0.4)';
+              }}
+              onMouseLeave={(e) => { 
+                e.target.style.transform = 'translateY(0) scale(1)';
+                e.target.style.boxShadow = '0 8px 32px rgba(0, 122, 255, 0.3)';
               }}
             >
-              {[...clientLogos, ...clientLogos].map((logo, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-center justify-center p-4 rounded-lg flex-shrink-0 min-w-[160px]"
-                  style={{ backgroundColor: 'var(--color-surface-container-low)' }}
-                >
-                  <span className="body-medium text-on-surface-variant font-medium whitespace-nowrap">
-                    {logo}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 md:py-16 lg:py-20 surface-container">
-        <div className="container">
-          <div className="card p-12 text-center" style={{
-            background: 'linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-secondary-container) 100%)'
-          }}>
-            <h2 className="display-medium mb-6 text-on-surface">
-              Ready to Migrate Your Payroll System?
-            </h2>
-            <p className="body-large mb-8 text-on-surface-variant max-w-2xl mx-auto">
-              Get started with a free consultation. Our experts will assess your current system 
-              and provide a detailed migration plan with timeline and costs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/quote" className="btn-primary">
-                <Phone sx={{ fontSize: 20 }} />
-                Get Free Consultation
-              </Link>
-              <a href="mailto:info@globalpayrollmigration.com" className="btn-outlined">
-                <Email sx={{ fontSize: 20 }} />
-                Email Us
-              </a>
-            </div>
+              Get Free Consultation
+            </Link>
+            <a 
+              href="mailto:info@globalpayrollmigration.com"
+              style={{
+                color: '#5AC8FA',
+                padding: '20px 40px',
+                borderRadius: '30px',
+                textDecoration: 'none',
+                fontSize: '15px',
+                fontWeight: '600',
+                border: '2px solid rgba(90, 200, 250, 0.3)',
+                background: 'rgba(90, 200, 250, 0.05)',
+                backdropFilter: 'blur(10px)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+              onMouseEnter={(e) => { 
+                e.target.style.borderColor = 'rgba(90, 200, 250, 0.6)';
+                e.target.style.background = 'rgba(90, 200, 250, 0.1)';
+                e.target.style.transform = 'translateY(-4px)';
+                e.target.style.boxShadow = '0 16px 32px rgba(90, 200, 250, 0.2)';
+              }}
+              onMouseLeave={(e) => { 
+                e.target.style.borderColor = 'rgba(90, 200, 250, 0.3)';
+                e.target.style.background = 'rgba(90, 200, 250, 0.05)';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = 'none';
+              }}
+            >
+              Email Us
+            </a>
           </div>
         </div>
       </section>

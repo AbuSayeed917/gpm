@@ -17,6 +17,74 @@ import {
   Analytics
 } from '@mui/icons-material';
 
+// Apple Flip Card with stunning 3D animations
+export const AppleFlipCard = ({
+  frontContent,
+  backContent,
+  className = '',
+  style = {},
+  ...props
+}) => {
+  const [isFlipped, setIsFlipped] = React.useState(false);
+
+  return (
+    <div
+      className={`apple-flip-card ${className}`}
+      style={{
+        perspective: '1000px',
+        width: '100%',
+        height: '100%',
+        minHeight: '400px',
+        ...style
+      }}
+      onMouseEnter={() => setIsFlipped(true)}
+      onMouseLeave={() => setIsFlipped(false)}
+      {...props}
+    >
+      <motion.div
+        className="apple-flip-card-inner"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          transformStyle: 'preserve-3d'
+        }}
+      >
+        {/* Front Side */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backfaceVisibility: 'hidden',
+            borderRadius: '20px',
+            overflow: 'hidden'
+          }}
+        >
+          {frontContent}
+        </div>
+
+        {/* Back Side */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+            borderRadius: '20px',
+            overflow: 'hidden'
+          }}
+        >
+          {backContent}
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 // Modern Apple Card with consistent sizing and beautiful icons
 export const AppleCard = ({
   title,
@@ -32,6 +100,8 @@ export const AppleCard = ({
   style = {},
   size = 'default', // compact, default, large
   variant = 'glass', // glass, solid, gradient
+  flipCard = false,
+  backContent,
   ...props
 }) => {
   const sizeStyles = {
@@ -418,6 +488,7 @@ export const AppleStatsCard = ({
 const AppleCardComponents = {
   AppleCard,
   AppleCardGrid,
+  AppleFlipCard,
   AppleServiceCard,
   AppleFeatureCard,
   AppleSuccessCard,

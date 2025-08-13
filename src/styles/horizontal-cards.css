@@ -1,0 +1,192 @@
+/* Apple-style Horizontal Cards for Migration Process */
+
+.horizontal-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.horizontal-card-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+}
+
+.horizontal-card-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.step-number-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 122, 255, 0.3);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.step-number-circle:hover {
+  transform: scale(1.1);
+}
+
+.horizontal-card-content {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.horizontal-card-content:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.15);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(0, 122, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  border-radius: 2px;
+  transition: width 1s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .horizontal-card-container {
+    gap: 24px;
+  }
+  
+  .horizontal-card-row {
+    flex-direction: column !important;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .horizontal-card-row.reverse {
+    flex-direction: column !important;
+  }
+  
+  .step-number-circle {
+    width: 64px;
+    height: 64px;
+    order: -1;
+  }
+  
+  .horizontal-card-content {
+    padding: 24px;
+    width: 100%;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 12px;
+  }
+  
+  .card-header h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  .progress-container {
+    margin-top: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .horizontal-card-container {
+    gap: 20px;
+    padding: 0 16px;
+  }
+  
+  .horizontal-card-content {
+    padding: 20px 16px;
+  }
+  
+  .step-number-circle {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .card-header h3 {
+    font-size: 1.125rem !important;
+  }
+  
+  .card-description {
+    font-size: 0.875rem !important;
+  }
+  
+  .duration-badge {
+    font-size: 10px !important;
+    padding: 4px 12px !important;
+  }
+}
+
+/* Animation enhancements */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease forwards;
+}
+
+/* Apple-style focus states */
+.horizontal-card-content:focus,
+.step-number-circle:focus {
+  outline: 2px solid #007AFF;
+  outline-offset: 4px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .horizontal-card-content,
+  .step-number-circle,
+  .progress-fill {
+    transition: none;
+  }
+  
+  .slide-in-left,
+  .slide-in-right {
+    animation: none;
+  }
+}

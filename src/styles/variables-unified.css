@@ -9,13 +9,35 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
+/* Apple's Authentic San Francisco Font System */
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 100 900;
+  src: url('https://sf.abarba.me/SF-Pro-Display.ttf') format('truetype-variations');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 100 900;
+  src: url('https://sf.abarba.me/SF-Pro-Text.ttf') format('truetype-variations');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Mono';
+  font-weight: 100 900;
+  src: url('https://sf.abarba.me/SF-Mono.ttf') format('truetype-variations');
+  font-display: swap;
+}
+
 :root {
   /* =============================================================================
      TYPOGRAPHY SYSTEM - MATERIAL DESIGN 3.0 SCALE
      ============================================================================= */
-  --font-family-display: 'Playfair Display', 'Times New Roman', Georgia, serif;
-  --font-family-text: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --font-family-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  --font-family-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-text: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-mono: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
 
   /* Typography Scale - Material Design 3.0 */
   --text-display-large: 3.5625rem;    /* 57px */
@@ -205,7 +227,7 @@
   --container-padding-mobile: 1rem;
   --container-padding-tablet: 2rem;
   --container-padding-desktop: 2rem;
-  --container-max-width: 1400px; /* FIXED: Prevent content from being too wide on large screens */
+  --container-max-width: 95vw; /* FIXED: Allow full screen width utilization */
 }
 
 /* =============================================================================

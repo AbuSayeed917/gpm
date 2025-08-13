@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
-import ProfessionalNavigation from './components/ProfessionalNavigation2025';
+import AppleNavigation from './components/AppleNavigation';
 import Footer from './components/Footer';
 import ProfessionalHome from './pages/ProfessionalHome2025';
 import Services from './pages/Services2025';
@@ -29,7 +29,7 @@ function App() {
           <a href="#main-content" className="skip-link">Skip to main content</a>
           <Router>
             <div className="flex flex-col min-h-screen">
-              <ProfessionalNavigation />
+              <AppleNavigation />
               <main id="main-content" className="flex-1 w-full">
                 <Routes>
                   <Route path="/" element={<ProfessionalHome />} />

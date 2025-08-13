@@ -1,0 +1,116 @@
+/* Apple-style enhancements for SME Services page */
+.sme-services-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+}
+
+/* Apple-style hero animations */
+@keyframes appleSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Enhanced Apple-style buttons */
+.apple-button-primary {
+  background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  border-radius: 12px;
+  padding: 16px 32px;
+  border: none;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 122, 255, 0.3);
+}
+
+.apple-button-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 48px rgba(0, 122, 255, 0.4);
+}
+
+/* Apple-style card enhancements */
+.apple-card-enhanced {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.apple-card-enhanced:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.25);
+}
+
+/* Apple-style text shadows for better readability */
+.apple-text-shadow {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Apple-style glassmorphism effects */
+.apple-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced typography */
+.apple-heading {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.apple-body-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .apple-button-primary {
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+  
+  .apple-card-enhanced {
+    padding: 24px 20px;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Apple-style focus states */
+.apple-button-primary:focus,
+.apple-card-enhanced:focus {
+  outline: 2px solid #007AFF;
+  outline-offset: 4px;
+}
+
+/* Performance optimizations */
+.apple-card-enhanced,
+.apple-button-primary {
+  will-change: transform, box-shadow;
+}

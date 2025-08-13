@@ -1,0 +1,377 @@
+/* =============================================================================
+   ULTRA GLOSSY EFFECTS - PREMIUM WEBSITE STYLING
+   Advanced shine, glow, and reflection effects
+   ============================================================================= */
+
+/* =============================================================================
+   ANIMATED SHINE EFFECTS
+   ============================================================================= */
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-150%) translateY(-150%) rotate(45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(150%) translateY(150%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px rgba(65, 105, 225, 0.1),
+      0 0 10px rgba(65, 105, 225, 0.05),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+  50% {
+    box-shadow: 
+      0 0 8px rgba(65, 105, 225, 0.15),
+      0 0 16px rgba(65, 105, 225, 0.08),
+      inset 0 1px 0 rgba(255,255,255,1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* =============================================================================
+   GLOSSY INTERACTIVE ELEMENTS
+   ============================================================================= */
+.glossy-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.glossy-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.1) 30%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.1) 70%,
+    transparent 80%
+  );
+  transform: translateX(-150%) translateY(-150%) rotate(45deg);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.glossy-shine:hover::after {
+  animation: shine-sweep 1.2s ease-in-out;
+}
+
+/* =============================================================================
+   PREMIUM GLOW EFFECTS
+   ============================================================================= */
+.glow-primary {
+  /* All glow effects disabled - keeping only glassmorphism */
+}
+
+.glow-soft {
+  /* All glow effects disabled - keeping only glassmorphism */
+}
+
+/* =============================================================================
+   GLASS MORPHISM ENHANCEMENTS
+   ============================================================================= */
+.glass-ultra {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px) saturate(120%) brightness(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(120%) brightness(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-ultra::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* =============================================================================
+   REFLECTIVE SURFACES
+   ============================================================================= */
+.reflective {
+  position: relative;
+  background: 
+    linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.8) 100%),
+    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(255,255,255,0.6) 0%, transparent 50%);
+}
+
+.reflective::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(135deg, 
+      rgba(255,255,255,0.9) 0%, 
+      rgba(135,206,250,0.7) 15%,
+      rgba(255,255,255,0.6) 25%, 
+      transparent 35%,
+      transparent 65%, 
+      rgba(255,255,255,0.4) 75%, 
+      rgba(173,216,230,0.8) 85%,
+      rgba(255,255,255,0.9) 100%
+    );
+  opacity: 0.8;
+  pointer-events: none;
+  border-radius: inherit;
+  animation: shimmer 4s linear infinite;
+  background-size: 300% 100%;
+  z-index: 5;
+}
+
+/* =============================================================================
+   PREMIUM NAVIGATION EFFECTS
+   ============================================================================= */
+.nav-glossy {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px) saturate(120%) brightness(1.05);
+  -webkit-backdrop-filter: blur(12px) saturate(120%) brightness(1.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    0 2px 12px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* =============================================================================
+   INTERACTIVE HOVER ENHANCEMENTS
+   ============================================================================= */
+.interactive-glossy {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.interactive-glossy:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.1),
+    0 3px 10px rgba(0, 0, 0, 0.05),
+    0 0 8px rgba(65, 105, 225, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  border-color: rgba(65, 105, 225, 0.3);
+}
+
+/* =============================================================================
+   PREMIUM TEXT EFFECTS
+   ============================================================================= */
+.text-glossy {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #87ceeb 15%,
+    #4169e1 30%,
+    #ffffff 50%,
+    #add8e6 70%,
+    #4169e1 85%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 100%;
+  animation: shimmer 4s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.text-chrome {
+  background: linear-gradient(
+    145deg,
+    #e6e6fa 0%,
+    #ffffff 15%,
+    #87ceeb 30%,
+    #ffffff 50%,
+    #add8e6 70%,
+    #ffffff 85%,
+    #d8bfd8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 250% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  filter: 
+    drop-shadow(0 1px 3px rgba(0,0,0,0.3))
+    drop-shadow(0 2px 6px rgba(65,105,225,0.2));
+}
+
+/* =============================================================================
+   FLOATING ELEMENTS WITH GLOW
+   ============================================================================= */
+.float-glow {
+  /* All glow effects disabled - keeping only glassmorphism */
+}
+
+@keyframes float-glow {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    box-shadow: 
+      0 4px 16px rgba(65, 105, 225, 0.08),
+      0 2px 8px rgba(65, 105, 225, 0.05);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 
+      0 8px 24px rgba(65, 105, 225, 0.12),
+      0 4px 12px rgba(65, 105, 225, 0.08);
+  }
+}
+
+/* =============================================================================
+   ADDITIONAL VIBRANT EFFECTS
+   ============================================================================= */
+.rainbow-glow {
+  animation: rainbow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes rainbow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(255, 0, 0, 0.3),
+      0 0 60px rgba(255, 165, 0, 0.2),
+      0 0 90px rgba(255, 255, 0, 0.1);
+  }
+  16% {
+    box-shadow: 
+      0 0 30px rgba(255, 165, 0, 0.3),
+      0 0 60px rgba(255, 255, 0, 0.2),
+      0 0 90px rgba(0, 255, 0, 0.1);
+  }
+  33% {
+    box-shadow: 
+      0 0 30px rgba(0, 255, 0, 0.3),
+      0 0 60px rgba(0, 255, 255, 0.2),
+      0 0 90px rgba(0, 0, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(0, 0, 255, 0.3),
+      0 0 60px rgba(75, 0, 130, 0.2),
+      0 0 90px rgba(238, 130, 238, 0.1);
+  }
+  66% {
+    box-shadow: 
+      0 0 30px rgba(75, 0, 130, 0.3),
+      0 0 60px rgba(238, 130, 238, 0.2),
+      0 0 90px rgba(255, 0, 0, 0.1);
+  }
+  83% {
+    box-shadow: 
+      0 0 30px rgba(238, 130, 238, 0.3),
+      0 0 60px rgba(255, 0, 0, 0.2),
+      0 0 90px rgba(255, 165, 0, 0.1);
+  }
+}
+
+.electric-blue-glow {
+  /* All glow effects disabled - keeping only glassmorphism */
+}
+
+@keyframes electric-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 6px rgba(0, 191, 255, 0.1),
+      0 0 12px rgba(65, 105, 225, 0.05);
+  }
+  50% {
+    box-shadow: 
+      0 0 8px rgba(0, 191, 255, 0.15),
+      0 0 16px rgba(65, 105, 225, 0.08);
+  }
+}
+
+/* Enhanced shine for buttons */
+.btn-super-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 10%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(135, 206, 250, 0.6) 40%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(173, 216, 230, 0.6) 60%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent 90%
+  );
+  transform: translateX(-150%) translateY(-150%) rotate(45deg);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.btn-super-shine:hover::after {
+  transform: translateX(150%) translateY(150%) rotate(45deg);
+}
+
+/* =============================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================================================= */
+.glossy-optimized {
+  will-change: transform, box-shadow, backdrop-filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .glossy-shine::after,
+  .reflective::after,
+  .float-glow,
+  .glow-primary {
+    animation: none !important;
+  }
+  
+  .interactive-glossy:hover {
+    transform: none;
+  }
+}

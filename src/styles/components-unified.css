@@ -1306,3 +1306,168 @@ button:focus-visible {
     transition: none;
   }
 }
+
+/* =============================================================================
+   HORIZONTAL TIMELINE CARDS - APPLE STYLE
+   ============================================================================= */
+
+/* Migration step responsive design */
+.migration-step-left,
+.migration-step-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.migration-step-right {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+  .migration-step-left,
+  .migration-step-right {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  /* Horizontal card content adjustments for mobile */
+  .migration-card-content {
+    padding: 24px !important;
+    width: 100%;
+  }
+  
+  .migration-card-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 12px;
+  }
+  
+  .migration-step-circle {
+    width: 64px !important;
+    height: 64px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .migration-step-left,
+  .migration-step-right {
+    gap: 16px;
+  }
+  
+  .migration-card-content {
+    padding: 20px 16px !important;
+  }
+  
+  .migration-step-circle {
+    width: 56px !important;
+    height: 56px !important;
+  }
+}
+
+/* Apple-style timeline connecting lines */
+.timeline-connector {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(to bottom, #007AFF, rgba(0, 122, 255, 0.2));
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline-connector {
+    display: none;
+  }
+}
+
+/* =============================================================================
+   APPLE AUTHENTIC BUTTON SYSTEM
+   ============================================================================= */
+
+/* Apple-style button system with exact hover colors */
+.apple-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 17px 44px;
+  border-radius: 980px;
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: -0.022em;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.apple-button-primary {
+  background: #007AFF;
+  color: #FFFFFF;
+  border: none;
+}
+
+.apple-button-primary:hover {
+  background: #0056D6;
+  transform: scale(1.02);
+}
+
+.apple-button-secondary {
+  background: transparent;
+  color: #007AFF;
+  border: 1px solid rgba(0, 122, 255, 0.28);
+}
+
+.apple-button-secondary:hover {
+  background: rgba(0, 122, 255, 0.08);
+  border-color: #007AFF;
+  transform: scale(1.02);
+}
+
+.apple-button-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+}
+
+.apple-button-glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);
+}
+
+/* Apple card system with exact shadows */
+.apple-card-system {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.apple-card-system:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Apple typography system */
+.apple-title-large {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  color: #1d1d1f;
+}
+
+.apple-body-large {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  letter-spacing: -0.022em;
+  color: #86868b;
+}

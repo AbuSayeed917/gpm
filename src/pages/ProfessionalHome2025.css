@@ -1,0 +1,501 @@
+/* =============================================================================
+   PROFESSIONAL HOME 2025 PAGE STYLES
+   ============================================================================= */
+
+/* Hero Section - Ultra Glossy */
+.professional-home-hero {
+  padding: 1rem 0 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .professional-home-hero {
+    padding: 1.5rem 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-hero {
+    padding: 2rem 0;
+  }
+}
+
+/* Hero Content Layout */
+.professional-home-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .professional-home-hero-content {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-hero-content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+}
+
+/* Hero Text Content */
+.professional-home-hero-text {
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .professional-home-hero-text {
+    text-align: left;
+    width: auto;
+    max-width: 32rem;
+  }
+}
+
+/* Hero Visual */
+.professional-home-hero-visual {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .professional-home-hero-visual {
+    justify-content: center;
+    width: auto;
+  }
+}
+
+.professional-home-hero-visual-content {
+  text-align: center;
+}
+
+/* Services Section */
+.professional-home-services {
+  padding: 1.5rem 0 2.5rem;
+  background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0%, transparent 18%),
+              radial-gradient(circle at 20% 80%, rgba(65,105,225,0.03) 0%, transparent 22%),
+              var(--color-surface);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .professional-home-services {
+    padding: 2.5rem 0 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-services {
+    padding: 3.5rem 0;
+  }
+}
+
+.professional-home-services-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .professional-home-services-header {
+    margin-bottom: 3rem;
+  }
+}
+
+.professional-home-services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .professional-home-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* Service Card Styling */
+.professional-home-service-card {
+  padding: 2rem 2.5rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .professional-home-service-card {
+    padding: 2.5rem;
+  }
+}
+
+.professional-home-service-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, rgba(252,252,253,0.15) 0%, transparent 50%);
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.professional-home-service-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.professional-home-service-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.professional-home-service-card-description {
+  margin-bottom: 1.5rem;
+}
+
+.professional-home-service-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.professional-home-service-card-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.professional-home-service-card-link {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Features Section */
+.professional-home-features {
+  padding: 3rem 0 4rem;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18) 0%, transparent 16%),
+              radial-gradient(circle at 70% 70%, rgba(65,105,225,0.04) 0%, transparent 20%),
+              radial-gradient(circle at 50% 10%, rgba(248,250,252,0.1) 0%, transparent 25%),
+              var(--color-surface-container);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .professional-home-features {
+    padding: 4rem 0 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-features {
+    padding: 5rem 0;
+  }
+}
+
+.professional-home-features-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .professional-home-features-header {
+    margin-bottom: 4rem;
+  }
+}
+
+.professional-home-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .professional-home-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-features-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* Feature Card */
+.professional-home-feature-card {
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.professional-home-feature-card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.professional-home-feature-card-icon {
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  flex-shrink: 0;
+  margin: 0 auto 1.5rem auto;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-container);
+  box-shadow: var(--elevation-1);
+}
+
+.professional-home-feature-card-title {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Testimonials Section */
+.professional-home-testimonials {
+  padding: 3rem 0 4rem;
+  background: radial-gradient(circle at 60% 20%, rgba(255,255,255,0.12) 0%, transparent 18%),
+              radial-gradient(circle at 20% 60%, rgba(65,105,225,0.03) 0%, transparent 24%),
+              radial-gradient(circle at 80% 80%, rgba(248,250,252,0.08) 0%, transparent 20%),
+              var(--color-surface-variant);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .professional-home-testimonials {
+    padding: 4rem 0 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-testimonials {
+    padding: 5rem 0;
+  }
+}
+
+.professional-home-testimonials-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .professional-home-testimonials-header {
+    margin-bottom: 4rem;
+  }
+}
+
+.professional-home-testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .professional-home-testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* Testimonial Card */
+.professional-home-testimonial-card {
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.professional-home-testimonial-card-accent {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  height: 4px;
+  background: linear-gradient(90deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+  border-radius: 20px 20px 0 0;
+}
+
+.professional-home-testimonial-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.professional-home-testimonial-quote {
+  margin-bottom: 2rem;
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.professional-home-testimonial-author {
+  text-align: center;
+}
+
+.professional-home-testimonial-author-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.professional-home-testimonial-author-title {
+  margin-bottom: 0.25rem;
+}
+
+.professional-home-testimonial-author-company {
+  font-weight: 500;
+}
+
+/* Client Logos Section */
+.professional-home-clients {
+  padding: 2.5rem 0 3rem;
+}
+
+@media (min-width: 768px) {
+  .professional-home-clients {
+    padding: 3rem 0 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-clients {
+    padding: 4rem 0;
+  }
+}
+
+.professional-home-clients-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.professional-home-clients-scroll {
+  position: relative;
+  overflow: hidden;
+}
+
+.professional-home-clients-flow {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  animation: flow 20s linear infinite;
+  width: fit-content;
+}
+
+.professional-home-client-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  min-width: 160px;
+  background-color: var(--color-surface-container-low);
+}
+
+.professional-home-client-logo-text {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* CTA Section */
+.professional-home-cta {
+  padding: 3rem 0 4rem;
+  background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.2) 0%, transparent 15%),
+              radial-gradient(circle at 80% 20%, rgba(65,105,225,0.06) 0%, transparent 22%),
+              radial-gradient(circle at 20% 80%, rgba(248,250,252,0.12) 0%, transparent 18%),
+              var(--color-surface-container);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .professional-home-cta {
+    padding: 4rem 0 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .professional-home-cta {
+    padding: 5rem 0;
+  }
+}
+
+.professional-home-cta-container {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.professional-home-cta-card {
+  padding: 4rem;
+  text-align: left;
+}
+
+.professional-home-cta-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(252,252,253,0.2) 0%, transparent 50%, rgba(65,105,225,0.05) 100%);
+  pointer-events: none;
+  border-radius: 28px;
+}
+
+.professional-home-cta-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.professional-home-cta-title {
+  margin-bottom: 1.5rem;
+}
+
+.professional-home-cta-description {
+  margin-bottom: 2rem;
+  max-width: 32rem;
+}
+
+.professional-home-cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* Animation Keyframes */
+@keyframes flow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

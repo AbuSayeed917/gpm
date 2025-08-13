@@ -1,265 +1,665 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Box,
-  Container,
-  Menu,
-  MenuItem,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Collapse,
-  useScrollTrigger,
-  Slide
-} from '@mui/material';
-import {
-  Menu as MenuIcon,
-  KeyboardArrowDown,
-  ExpandLess,
-  ExpandMore,
-  Language
-} from '@mui/icons-material';
 
-function HideOnScroll({ children }) {
-  const trigger = useScrollTrigger();
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
 
 const AppleNavigation = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesAnchor, setServicesAnchor] = useState(null);
-  const [successStoriesAnchor, setSuccessStoriesAnchor] = useState(null);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [mobileSuccessStoriesOpen, setMobileSuccessStoriesOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [successStoriesOpen, setSuccessStoriesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  const handleServicesClick = (event) => {
-    setServicesAnchor(event.currentTarget);
-  };
-
-  const handleSuccessStoriesClick = (event) => {
-    setSuccessStoriesAnchor(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setServicesAnchor(null);
-    setSuccessStoriesAnchor(null);
-  };
-
+  // Handle scroll effect
   useEffect(() => {
-    setMobileOpen(false);
-    setMobileServicesOpen(false);
-    setMobileSuccessStoriesOpen(false);
-    handleClose();
-  }, [location]);
-
-  // Close mobile menu when screen size changes to desktop
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 900) { // Material-UI 'md' breakpoint
-        setMobileOpen(false);
-        setMobileServicesOpen(false);
-        setMobileSuccessStoriesOpen(false);
-        handleClose();
-      }
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
     };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle responsive breakpoints
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  // Close menus on route change
+  useEffect(() => {
+    setMobileOpen(false);
+    setServicesOpen(false);
+    setSuccessStoriesOpen(false);
+  }, [location]);
+
   const servicesItems = [
-    { name: 'SME Solutions', href: '/services/sme' },
-    { name: 'Large Enterprise', href: '/services/large-enterprise' },
-    { name: 'Expert Consultancy', href: '/services/consultancy' }
+    { name: 'SME Solutions', path: '/services/sme', description: 'Specialized solutions for small and medium enterprises' },
+    { name: 'Large Enterprise', path: '/services/large-enterprise', description: 'Comprehensive services for enterprise organizations' },
+    { name: 'Expert Consultancy', path: '/services/consultancy', description: 'Professional guidance and strategic planning' }
   ];
 
   const successStoriesItems = [
-    { name: 'SME Success Stories', href: '/success-stories/sme' },
-    { name: 'Enterprise Stories', href: '/success-stories/large-enterprise' },
-    { name: 'Consultancy Results', href: '/success-stories/consultancy' }
+    { name: 'SME Success Stories', path: '/success-stories/sme', description: 'Real results from small business migrations' },
+    { name: 'Enterprise Stories', path: '/success-stories/large-enterprise', description: 'Large-scale transformation case studies' },
+    { name: 'Consultancy Results', path: '/success-stories/consultancy', description: 'Strategic consulting outcomes' }
   ];
 
-  const drawer = (
-    <Box sx={{ width: 250 }} onClick={handleDrawerToggle}>
-      <Box sx={{ p: 2 }}>
-        <Typography variant="h6" sx={{ fontWeight: 600, color: 'primary.main' }}>
-          Global Payroll Migration
-        </Typography>
-      </Box>
-      <List>
-        <ListItem button onClick={() => setMobileServicesOpen(!mobileServicesOpen)}>
-          <ListItemText primary="Services" />
-          {mobileServicesOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={mobileServicesOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            {servicesItems.map((item) => (
-              <ListItem key={item.href} button sx={{ pl: 4 }} component={Link} to={item.href}>
-                <ListItemText primary={item.name} />
-              </ListItem>
-            ))}
-          </List>
-        </Collapse>
-        
-        <ListItem button onClick={() => setMobileSuccessStoriesOpen(!mobileSuccessStoriesOpen)}>
-          <ListItemText primary="Success Stories" />
-          {mobileSuccessStoriesOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={mobileSuccessStoriesOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            {successStoriesItems.map((item) => (
-              <ListItem key={item.href} button sx={{ pl: 4 }} component={Link} to={item.href}>
-                <ListItemText primary={item.name} />
-              </ListItem>
-            ))}
-          </List>
-        </Collapse>
-        
-        <ListItem button component={Link} to="/about">
-          <ListItemText primary="About" />
-        </ListItem>
-        <ListItem button component={Link} to="/faq">
-          <ListItemText primary="FAQ" />
-        </ListItem>
-        <ListItem button component={Link} to="/contact">
-          <ListItemText primary="Contact" />
-        </ListItem>
-      </List>
-    </Box>
-  );
+  const isActiveLink = (path) => location.pathname === path;
 
   return (
     <>
-      <HideOnScroll>
-        <AppBar 
-          position="fixed" 
-          sx={{ 
-            background: 'rgba(255, 255, 255, 0.95)',
-            backdropFilter: 'blur(20px)',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
-            borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
-          }}
-        >
-          <Container maxWidth="lg">
-            <Toolbar sx={{ justifyContent: 'space-between' }}>
-              {/* Logo */}
-              <Box component={Link} to="/" sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                <Language sx={{ color: 'primary.main', mr: 1 }} />
-                <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 600 }}>
-                  Global Payroll Migration
-                </Typography>
-              </Box>
-
-              {/* Desktop Navigation */}
-              <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
-                <Button
-                  onClick={handleServicesClick}
-                  endIcon={<KeyboardArrowDown />}
-                  sx={{ color: 'text.primary' }}
-                >
-                  Services
-                </Button>
-                <Menu
-                  anchorEl={servicesAnchor}
-                  open={Boolean(servicesAnchor)}
-                  onClose={handleClose}
-                  sx={{ mt: 1 }}
-                >
-                  {servicesItems.map((item) => (
-                    <MenuItem key={item.href} onClick={handleClose} component={Link} to={item.href}>
-                      {item.name}
-                    </MenuItem>
-                  ))}
-                </Menu>
-
-                <Button
-                  onClick={handleSuccessStoriesClick}
-                  endIcon={<KeyboardArrowDown />}
-                  sx={{ color: 'text.primary' }}
-                >
-                  Success Stories
-                </Button>
-                <Menu
-                  anchorEl={successStoriesAnchor}
-                  open={Boolean(successStoriesAnchor)}
-                  onClose={handleClose}
-                  sx={{ mt: 1 }}
-                >
-                  {successStoriesItems.map((item) => (
-                    <MenuItem key={item.href} onClick={handleClose} component={Link} to={item.href}>
-                      {item.name}
-                    </MenuItem>
-                  ))}
-                </Menu>
-
-                <Button component={Link} to="/about" sx={{ color: 'text.primary' }}>
-                  About
-                </Button>
-                <Button component={Link} to="/faq" sx={{ color: 'text.primary' }}>
-                  FAQ
-                </Button>
-                <Button component={Link} to="/contact" sx={{ color: 'text.primary' }}>
-                  Contact
-                </Button>
-
-                <Button 
-                  variant="contained" 
-                  component={Link} 
-                  to="/quote"
-                  sx={{ ml: 2 }}
-                >
-                  Get Free Quote
-                </Button>
-              </Box>
-
-              {/* Mobile Menu Button */}
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerToggle}
-                sx={{ display: { md: 'none' }, color: 'text.primary' }}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Toolbar>
-          </Container>
-        </AppBar>
-      </HideOnScroll>
-
-      {/* Mobile Drawer */}
-      <Drawer
-        variant="temporary"
-        anchor="right"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true
-        }}
-        sx={{
-          display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 250 }
+      {/* Apple Navigation Bar */}
+      <nav 
+        className={`apple-navigation ${scrolled ? 'apple-navigation-scrolled' : ''}`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          background: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: `0.5px solid ${scrolled ? 'rgba(0, 0, 0, 0.15)' : 'rgba(0, 0, 0, 0.1)'}`,
+          transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
         }}
       >
-        {drawer}
-      </Drawer>
+        <div 
+          className="apple-navigation-content"
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '0 24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            height: '64px'
+          }}
+        >
+          {/* Logo */}
+          <Link 
+            to="/" 
+            className="apple-navigation-logo"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              textDecoration: 'none',
+              fontSize: '18px',
+              fontWeight: 700,
+              color: '#1d1d1f',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+            }}
+          >
+            <span 
+              className="apple-navigation-logo-icon"
+              style={{
+                fontSize: '24px',
+                color: '#007AFF'
+              }}
+            >
+              🌍
+            </span>
+            <span className="apple-navigation-logo-text">
+              Global Payroll Migration
+            </span>
+          </Link>
 
-      {/* Spacer for fixed AppBar */}
-      <Toolbar />
+          {/* Desktop Navigation */}
+          <div 
+            className="apple-navigation-desktop"
+            style={{
+              display: !isMobile ? 'flex' : 'none',
+              alignItems: 'center',
+              gap: '48px'
+            }}
+          >
+            <ul 
+              className="apple-navigation-menu"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '32px',
+                listStyle: 'none',
+                margin: 0,
+                padding: 0
+              }}
+            >
+              {/* Services Dropdown */}
+              <li 
+                className="apple-navigation-item apple-navigation-dropdown"
+                style={{ position: 'relative' }}
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <button
+                  className={`apple-navigation-link ${isActiveLink('/services') ? 'apple-navigation-link-active' : ''}`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    fontSize: '17px',
+                    fontWeight: 400,
+                    color: isActiveLink('/services') ? '#007AFF' : '#1d1d1f',
+                    textDecoration: 'none',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                  }}
+                >
+                  Services
+                  <span 
+                    className="apple-navigation-chevron"
+                    style={{
+                      transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                      color: '#86868b'
+                    }}
+                  >
+                    ▼
+                  </span>
+                </button>
+                
+                {/* Services Dropdown Menu */}
+                <div
+                  className={`apple-navigation-dropdown-menu ${servicesOpen ? 'apple-navigation-dropdown-menu-open' : ''}`}
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: '50%',
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    borderRadius: '12px',
+                    boxShadow: '0 4px 24px rgba(0, 0, 0, 0.1)',
+                    border: '0.5px solid rgba(0, 0, 0, 0.1)',
+                    minWidth: '280px',
+                    padding: '8px',
+                    opacity: servicesOpen ? 1 : 0,
+                    visibility: servicesOpen ? 'visible' : 'hidden',
+                    transform: servicesOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-10px)',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)'
+                  }}
+                >
+                  {servicesItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className="apple-navigation-dropdown-item"
+                      style={{
+                        display: 'block',
+                        padding: '12px 16px',
+                        borderRadius: '8px',
+                        textDecoration: 'none',
+                        color: '#1d1d1f',
+                        transition: 'all 0.2s ease',
+                        marginBottom: '4px'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.background = 'rgba(0, 0, 0, 0.05)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.background = 'transparent';
+                      }}
+                    >
+                      <div 
+                        className="apple-navigation-dropdown-item-name"
+                        style={{
+                          fontSize: '17px',
+                          fontWeight: 500,
+                          marginBottom: '2px',
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                        }}
+                      >
+                        {item.name}
+                      </div>
+                      <div 
+                        className="apple-navigation-dropdown-item-description"
+                        style={{
+                          fontSize: '14px',
+                          color: '#86868b',
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                        }}
+                      >
+                        {item.description}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </li>
+
+              {/* Success Stories Dropdown */}
+              <li 
+                className="apple-navigation-item apple-navigation-dropdown"
+                style={{ position: 'relative' }}
+                onMouseEnter={() => setSuccessStoriesOpen(true)}
+                onMouseLeave={() => setSuccessStoriesOpen(false)}
+              >
+                <button
+                  className={`apple-navigation-link ${isActiveLink('/success-stories') ? 'apple-navigation-link-active' : ''}`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    fontSize: '17px',
+                    fontWeight: 400,
+                    color: isActiveLink('/success-stories') ? '#007AFF' : '#1d1d1f',
+                    textDecoration: 'none',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                  }}
+                >
+                  Success Stories
+                  <span 
+                    className="apple-navigation-chevron"
+                    style={{
+                      transform: successStoriesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                      color: '#86868b'
+                    }}
+                  >
+                    ▼
+                  </span>
+                </button>
+                
+                {/* Success Stories Dropdown Menu */}
+                <div
+                  className={`apple-navigation-dropdown-menu ${successStoriesOpen ? 'apple-navigation-dropdown-menu-open' : ''}`}
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: '50%',
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    borderRadius: '12px',
+                    boxShadow: '0 4px 24px rgba(0, 0, 0, 0.1)',
+                    border: '0.5px solid rgba(0, 0, 0, 0.1)',
+                    minWidth: '280px',
+                    padding: '8px',
+                    opacity: successStoriesOpen ? 1 : 0,
+                    visibility: successStoriesOpen ? 'visible' : 'hidden',
+                    transform: successStoriesOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-10px)',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)'
+                  }}
+                >
+                  {successStoriesItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className="apple-navigation-dropdown-item"
+                      style={{
+                        display: 'block',
+                        padding: '12px 16px',
+                        borderRadius: '8px',
+                        textDecoration: 'none',
+                        color: '#1d1d1f',
+                        transition: 'all 0.2s ease',
+                        marginBottom: '4px'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.background = 'rgba(0, 0, 0, 0.05)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.background = 'transparent';
+                      }}
+                    >
+                      <div 
+                        className="apple-navigation-dropdown-item-name"
+                        style={{
+                          fontSize: '17px',
+                          fontWeight: 500,
+                          marginBottom: '2px',
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                        }}
+                      >
+                        {item.name}
+                      </div>
+                      <div 
+                        className="apple-navigation-dropdown-item-description"
+                        style={{
+                          fontSize: '14px',
+                          color: '#86868b',
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                        }}
+                      >
+                        {item.description}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </li>
+
+              {/* Direct Links */}
+              <li className="apple-navigation-item">
+                <Link
+                  to="/about"
+                  className={`apple-navigation-link ${isActiveLink('/about') ? 'apple-navigation-link-active' : ''}`}
+                  style={{
+                    fontSize: '17px',
+                    fontWeight: 400,
+                    color: isActiveLink('/about') ? '#007AFF' : '#1d1d1f',
+                    textDecoration: 'none',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                    background: isActiveLink('/about') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActiveLink('/about')) {
+                      e.target.style.background = 'rgba(0, 0, 0, 0.05)';
+                      e.target.style.color = '#007AFF';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActiveLink('/about')) {
+                      e.target.style.background = 'transparent';
+                      e.target.style.color = '#1d1d1f';
+                    }
+                  }}
+                >
+                  About
+                </Link>
+              </li>
+
+              <li className="apple-navigation-item">
+                <Link
+                  to="/faq"
+                  className={`apple-navigation-link ${isActiveLink('/faq') ? 'apple-navigation-link-active' : ''}`}
+                  style={{
+                    fontSize: '17px',
+                    fontWeight: 400,
+                    color: isActiveLink('/faq') ? '#007AFF' : '#1d1d1f',
+                    textDecoration: 'none',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                    background: isActiveLink('/faq') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActiveLink('/faq')) {
+                      e.target.style.background = 'rgba(0, 0, 0, 0.05)';
+                      e.target.style.color = '#007AFF';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActiveLink('/faq')) {
+                      e.target.style.background = 'transparent';
+                      e.target.style.color = '#1d1d1f';
+                    }
+                  }}
+                >
+                  FAQ
+                </Link>
+              </li>
+            </ul>
+
+            {/* CTA Button */}
+            <div className="apple-navigation-actions">
+              <Link
+                to="/quote"
+                className="apple-navigation-cta"
+                style={{
+                  display: 'inline-block',
+                  padding: '8px 20px',
+                  background: '#007AFF',
+                  color: 'white',
+                  textDecoration: 'none',
+                  borderRadius: '20px',
+                  fontSize: '17px',
+                  fontWeight: 500,
+                  transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = '#0056CC';
+                  e.target.style.transform = 'scale(1.02)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = '#007AFF';
+                  e.target.style.transform = 'scale(1)';
+                }}
+              >
+                Get Free Quote
+              </Link>
+            </div>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className={`apple-navigation-mobile-toggle ${mobileOpen ? 'apple-navigation-mobile-toggle-open' : ''}`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            style={{
+              display: isMobile ? 'flex' : 'none',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '24px',
+              height: '24px',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0
+            }}
+          >
+            <span 
+              className="apple-navigation-mobile-line"
+              style={{
+                width: '18px',
+                height: '2px',
+                background: '#1d1d1f',
+                borderRadius: '1px',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                transform: mobileOpen ? 'rotate(45deg) translateY(6px)' : 'rotate(0deg) translateY(0)',
+                marginBottom: mobileOpen ? 0 : '4px'
+              }}
+            />
+            <span 
+              className="apple-navigation-mobile-line"
+              style={{
+                width: '18px',
+                height: '2px',
+                background: '#1d1d1f',
+                borderRadius: '1px',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                opacity: mobileOpen ? 0 : 1,
+                marginBottom: mobileOpen ? 0 : '4px'
+              }}
+            />
+            <span 
+              className="apple-navigation-mobile-line"
+              style={{
+                width: '18px',
+                height: '2px',
+                background: '#1d1d1f',
+                borderRadius: '1px',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                transform: mobileOpen ? 'rotate(-45deg) translateY(-6px)' : 'rotate(0deg) translateY(0)'
+              }}
+            />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div
+        className={`apple-navigation-mobile ${mobileOpen ? 'apple-navigation-mobile-open' : ''}`}
+        style={{
+          position: 'fixed',
+          top: '64px',
+          left: 0,
+          right: 0,
+          background: 'rgba(255, 255, 255, 0.95)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: '0.5px solid rgba(0, 0, 0, 0.1)',
+          transform: mobileOpen ? 'translateY(0)' : 'translateY(-100%)',
+          transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
+          zIndex: 999,
+          maxHeight: 'calc(100vh - 64px)',
+          overflowY: 'auto'
+        }}
+      >
+        <div 
+          className="apple-navigation-mobile-content"
+          style={{
+            padding: '20px 24px'
+          }}
+        >
+          <ul 
+            className="apple-navigation-mobile-menu"
+            style={{
+              listStyle: 'none',
+              margin: 0,
+              padding: 0
+            }}
+          >
+            {/* Mobile Services */}
+            <li className="apple-navigation-mobile-item" style={{ marginBottom: '20px' }}>
+              <div 
+                style={{
+                  fontSize: '19px',
+                  fontWeight: 600,
+                  color: '#1d1d1f',
+                  marginBottom: '8px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                }}
+              >
+                Services
+              </div>
+              <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                {servicesItems.map((item) => (
+                  <li key={item.path} style={{ marginBottom: '8px' }}>
+                    <Link
+                      to={item.path}
+                      style={{
+                        display: 'block',
+                        fontSize: '17px',
+                        color: '#1d1d1f',
+                        textDecoration: 'none',
+                        padding: '8px 0',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+
+            {/* Mobile Success Stories */}
+            <li className="apple-navigation-mobile-item" style={{ marginBottom: '20px' }}>
+              <div 
+                style={{
+                  fontSize: '19px',
+                  fontWeight: 600,
+                  color: '#1d1d1f',
+                  marginBottom: '8px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                }}
+              >
+                Success Stories
+              </div>
+              <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                {successStoriesItems.map((item) => (
+                  <li key={item.path} style={{ marginBottom: '8px' }}>
+                    <Link
+                      to={item.path}
+                      style={{
+                        display: 'block',
+                        fontSize: '17px',
+                        color: '#1d1d1f',
+                        textDecoration: 'none',
+                        padding: '8px 0',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+
+            {/* Mobile Direct Links */}
+            <li className="apple-navigation-mobile-item" style={{ marginBottom: '12px' }}>
+              <Link
+                to="/about"
+                style={{
+                  display: 'block',
+                  fontSize: '19px',
+                  fontWeight: 500,
+                  color: '#1d1d1f',
+                  textDecoration: 'none',
+                  padding: '12px 0',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                }}
+              >
+                About
+              </Link>
+            </li>
+
+            <li className="apple-navigation-mobile-item" style={{ marginBottom: '12px' }}>
+              <Link
+                to="/faq"
+                style={{
+                  display: 'block',
+                  fontSize: '19px',
+                  fontWeight: 500,
+                  color: '#1d1d1f',
+                  textDecoration: 'none',
+                  padding: '12px 0',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                }}
+              >
+                FAQ
+              </Link>
+            </li>
+
+            {/* Mobile CTA */}
+            <li className="apple-navigation-mobile-item" style={{ marginTop: '24px' }}>
+              <Link
+                to="/quote"
+                style={{
+                  display: 'inline-block',
+                  padding: '12px 24px',
+                  background: '#007AFF',
+                  color: 'white',
+                  textDecoration: 'none',
+                  borderRadius: '24px',
+                  fontSize: '17px',
+                  fontWeight: 500,
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                }}
+              >
+                Get Free Quote
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Spacer for fixed navigation */}
+      <div style={{ height: '64px' }} />
     </>
   );
 };
