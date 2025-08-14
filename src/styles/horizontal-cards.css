@@ -23,7 +23,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +63,7 @@
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 100%);
   border-radius: 2px;
   transition: width 1s ease;
 }
@@ -173,7 +173,7 @@
 /* Apple-style focus states */
 .horizontal-card-content:focus,
 .step-number-circle:focus {
-  outline: 2px solid #007AFF;
+  outline: 2px solid #87ceeb;
   outline-offset: 4px;
 }
 

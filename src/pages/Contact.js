@@ -14,7 +14,7 @@ const Contact = () => {
     {
       icon: "✉️",
       title: "Email",
-      primary: "hello@globalpayrollmigration.com",
+      primary: "info@globalpayrollmigration.com",
       secondary: "Response within 2 hours",
       description: "Send us your requirements"
     },
@@ -59,7 +59,7 @@ const Contact = () => {
       transition={{ duration: 0.6 }}
       style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #E8F6FF 0%, #F0FAFF 50%, #FFFFFF 100%)',
+        background: 'linear-gradient(135deg, #E8F6FF 0%, #F0FAFF 50%, #ccebff 100%)',
         fontFamily: '"SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
       }}
     >
@@ -103,7 +103,7 @@ const Contact = () => {
               marginBottom: '2rem',
               letterSpacing: '-0.02em'
             }}>
-              Get Started with Your <span style={{ color: '#5DADE2' }}>Payroll Migration</span>
+              Get Started with Your <span style={{ color: '#87ceeb' }}>Payroll Migration</span>
             </h1>
             
             <p style={{
@@ -140,7 +140,7 @@ const Contact = () => {
               color: '#1a1a1a',
               letterSpacing: '-0.02em'
             }}>
-              How to <span style={{ color: '#5DADE2' }}>Reach Us</span>
+              How to <span style={{ color: '#87ceeb' }}>Reach Us</span>
             </h2>
             <p style={{
               fontSize: '1.125rem',
@@ -207,7 +207,7 @@ const Contact = () => {
                 }}>{method.title}</h3>
                 <p style={{
                   fontSize: '1.125rem',
-                  color: '#5DADE2',
+                  color: '#87ceeb',
                   fontWeight: '600',
                   marginBottom: '0.5rem'
                 }}>{method.primary}</p>
@@ -228,9 +228,9 @@ const Contact = () => {
                   width: '100%',
                   padding: '14px 24px',
                   backgroundColor: 'transparent',
-                  border: '2px solid #87CEEB',
+                  border: '2px solid #00bfff',
                   borderRadius: '12px',
-                  color: '#5DADE2',
+                  color: '#87ceeb',
                   fontSize: '1rem',
                   fontWeight: '600',
                   cursor: 'pointer',
@@ -238,12 +238,12 @@ const Contact = () => {
                   fontFamily: 'inherit'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#87CEEB';
-                  e.target.style.color = '#ffffff';
+                  e.target.style.backgroundColor = '#00bfff';
+                  e.target.style.color = '#ccebff';
                 }}
                 onMouseLeave={(e) => {
                   e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = '#5DADE2';
+                  e.target.style.color = '#87ceeb';
                 }}>
                   Contact Now
                 </button>
@@ -269,7 +269,7 @@ const Contact = () => {
               color: '#1a1a1a',
               letterSpacing: '-0.02em'
             }}>
-              Why <span style={{ color: '#5DADE2' }}>Contact Us</span>?
+              Why <span style={{ color: '#87ceeb' }}>Contact Us</span>?
             </h2>
           </motion.div>
           
@@ -380,7 +380,7 @@ const Contact = () => {
                       fontSize: '1.25rem',
                       fontWeight: '700',
                       marginBottom: '1rem',
-                      color: '#ffffff',
+                      color: '#ccebff',
                       letterSpacing: '-0.01em'
                     }}>{reason.title}</h3>
                     <p style={{

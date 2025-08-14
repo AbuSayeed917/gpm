@@ -99,7 +99,7 @@ const ProfessionalAbout = () => {
     <AppleBackground variant="primary">
       {/* Apple Hero Section - 100% Authentic */}
       <section style={{ 
-        background: '#F5F5F7',
+        background: '#f0f9ff',
         padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden',
@@ -144,7 +144,7 @@ const ProfessionalAbout = () => {
               style={{
                 fontSize: '17px',
                 fontWeight: '600',
-                color: '#007AFF',
+                color: '#00bfff',
                 marginBottom: '16px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 letterSpacing: '-0.022em',
@@ -160,7 +160,7 @@ const ProfessionalAbout = () => {
               style={{
                 fontSize: 'clamp(48px, 5vw, 64px)',
                 fontWeight: '600',
-                color: '#1d1d1f',
+                color: '#000000',
                 marginBottom: '20px',
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.1',
@@ -174,7 +174,7 @@ const ProfessionalAbout = () => {
               Payroll migration.
               <br />
               <span style={{ 
-                background: 'linear-gradient(90deg, #007AFF 0%, #5AC8FA 100%)', 
+                background: 'linear-gradient(90deg, #00bfff 0%, #87ceeb 100%)', 
                 backgroundClip: 'text', 
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
@@ -188,7 +188,7 @@ const ProfessionalAbout = () => {
             <motion.p 
               style={{
                 fontSize: '18px',
-                color: '#6b7280',
+                color: '#000000',
                 marginBottom: '32px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.5',
@@ -232,10 +232,10 @@ const ProfessionalAbout = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '14px 28px',
-                    background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '16px',
@@ -267,7 +267,7 @@ const ProfessionalAbout = () => {
                     padding: '14px 8px',
                     background: 'transparent',
                     border: 'none',
-                    color: '#007AFF',
+                    color: '#00bfff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '16px',
@@ -313,7 +313,7 @@ const ProfessionalAbout = () => {
                   width: '8px',
                   height: '8px',
                   borderRadius: '50%',
-                  background: '#007AFF',
+                  background: '#00bfff',
                   opacity: 0.6
                 }}
               />
@@ -323,7 +323,7 @@ const ProfessionalAbout = () => {
       </section>
 
       {/* Apple About Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#FFFFFF', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#e6f7ff', position: 'relative' }}>
         {/* Apple-style subtle background */}
         <div style={{
           position: 'absolute',
@@ -346,7 +346,7 @@ const ProfessionalAbout = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -356,7 +356,7 @@ const ProfessionalAbout = () => {
             </h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '95%',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -389,7 +389,7 @@ const ProfessionalAbout = () => {
             }}
             transition={{ duration: 0.3 }}
             style={{
-              background: '#ffffff',
+              background: '#ccebff',
               borderRadius: '22px',
               padding: '60px 50px',
               border: '1px solid rgba(0, 0, 0, 0.06)',
@@ -414,14 +414,14 @@ const ProfessionalAbout = () => {
               <p style={{
                 fontSize: '19px',
                 lineHeight: '1.6',
-                color: '#1d1d1f',
+                color: '#000000',
                 marginBottom: '30px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 fontWeight: '400'
               }}>
                 Every payroll migration is a{' '}
                 <strong style={{ 
-                  color: '#1d1d1f',
+                  color: '#000000',
                   fontWeight: '600'
                 }}>
                   high-stakes event
@@ -432,14 +432,14 @@ const ProfessionalAbout = () => {
               <p style={{
                 fontSize: '19px',
                 lineHeight: '1.6',
-                color: '#1d1d1f',
+                color: '#000000',
                 marginBottom: '30px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 fontWeight: '400'
               }}>
                 At GlobalPayrollMigration.com, we{' '}
                 <strong style={{ 
-                  color: '#007AFF',
+                  color: '#00bfff',
                   fontWeight: '600'
                 }}>
                   remove that risk entirely
@@ -450,21 +450,21 @@ const ProfessionalAbout = () => {
               <p style={{
                 fontSize: '19px',
                 lineHeight: '1.6',
-                color: '#1d1d1f',
+                color: '#000000',
                 marginBottom: '30px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 fontWeight: '400'
               }}>
                 Whether you're moving to Dayforce, Workday, ADP, or another payroll platform, we deliver an{' '}
                 <strong style={{ 
-                  color: '#1d1d1f',
+                  color: '#000000',
                   fontWeight: '600'
                 }}>
                   audit-ready, compliant, and disruption-free
                 </strong>
                 {' '}transition — so your people get paid{' '}
                 <strong style={{
-                  color: '#1d1d1f',
+                  color: '#000000',
                   fontWeight: '600'
                 }}>
                   right, on time, every time
@@ -475,21 +475,21 @@ const ProfessionalAbout = () => {
               <p style={{
                 fontSize: '19px',
                 lineHeight: '1.6',
-                color: '#1d1d1f',
+                color: '#000000',
                 margin: '0',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 fontWeight: '400'
               }}>
                 We've successfully migrated payrolls for SMEs and multinationals across every sector, tailoring our approach to your size, structure, and strategic goals. With a proven track record of{' '}
                 <strong style={{ 
-                  color: '#007AFF',
+                  color: '#00bfff',
                   fontWeight: '600'
                 }}>
                   zero compliance failures
                 </strong>
                 , we make payroll migration not just stress-free — but a{' '}
                 <strong style={{ 
-                  color: '#1d1d1f',
+                  color: '#000000',
                   fontWeight: '600'
                 }}>
                   competitive advantage
@@ -504,7 +504,7 @@ const ProfessionalAbout = () => {
       {/* Apple "Why Choose Us" Section */}
       <section style={{ 
         padding: '80px 0 60px 0', 
-        background: '#ffffff', 
+        background: '#ccebff', 
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -520,7 +520,7 @@ const ProfessionalAbout = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -530,7 +530,7 @@ const ProfessionalAbout = () => {
             </h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '95%',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -571,7 +571,7 @@ const ProfessionalAbout = () => {
                     }}
                     transition={{ duration: 0.3 }}
                     style={{
-                      background: '#ffffff',
+                      background: '#ccebff',
                       borderRadius: '22px',
                       padding: '32px',
                       height: '100%',
@@ -600,7 +600,7 @@ const ProfessionalAbout = () => {
                       width: '72px',
                       height: '72px',
                       borderRadius: '22px',
-                      background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                      background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -610,7 +610,7 @@ const ProfessionalAbout = () => {
                       {React.cloneElement(feature.icon, { 
                         sx: { 
                           fontSize: 32, 
-                          color: '#ffffff',
+                          color: '#ccebff',
                           filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
                         } 
                       })}
@@ -619,7 +619,7 @@ const ProfessionalAbout = () => {
                     <h3 style={{
                       fontSize: '24px',
                       fontWeight: '600',
-                      color: '#1d1d1f',
+                      color: '#000000',
                       marginBottom: '16px',
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                       lineHeight: '1.16667',
@@ -630,7 +630,7 @@ const ProfessionalAbout = () => {
                     
                     <p style={{
                       fontSize: '16px',
-                      color: '#86868b',
+                      color: '#000000',
                       marginBottom: '24px',
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                       lineHeight: '1.47059',
@@ -652,7 +652,7 @@ const ProfessionalAbout = () => {
                         padding: '8px 16px',
                         borderRadius: '20px',
                         background: 'rgba(168, 85, 247, 0.1)',
-                        color: '#007AFF',
+                        color: '#00bfff',
                         fontSize: '15px',
                         fontWeight: '500',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
@@ -666,10 +666,10 @@ const ProfessionalAbout = () => {
                 
                 backContent={
                   <div style={{
-                    background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                     borderRadius: '22px',
                     padding: '32px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -706,7 +706,7 @@ const ProfessionalAbout = () => {
                         {React.cloneElement(feature.icon, { 
                           sx: { 
                             fontSize: 32, 
-                            color: '#ffffff',
+                            color: '#ccebff',
                             filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
                           } 
                         })}
@@ -715,7 +715,7 @@ const ProfessionalAbout = () => {
                       <h3 style={{
                         fontSize: '24px',
                         fontWeight: '600',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '20px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
@@ -767,7 +767,7 @@ const ProfessionalAbout = () => {
                           backdropFilter: 'blur(20px)',
                           border: '1px solid rgba(255, 255, 255, 0.3)',
                           borderRadius: '20px',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           textDecoration: 'none',
                           fontSize: '16px',
                           fontWeight: '500',
@@ -792,7 +792,7 @@ const ProfessionalAbout = () => {
       {/* Apple Team Section */}
       <section style={{ 
         padding: '80px 0 60px 0', 
-        background: '#F5F5F7', 
+        background: '#f0f9ff', 
         position: 'relative' 
       }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
@@ -806,7 +806,7 @@ const ProfessionalAbout = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -816,7 +816,7 @@ const ProfessionalAbout = () => {
             </h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '95%',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -854,10 +854,10 @@ const ProfessionalAbout = () => {
                   }}
                   transition={{ duration: 0.3 }}
                   style={{
-                    background: '#ffffff',
+                    background: '#ccebff',
                     borderRadius: '22px',
                     padding: '40px 32px',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -882,7 +882,7 @@ const ProfessionalAbout = () => {
                     <h3 style={{
                       fontSize: '24px',
                       fontWeight: '600',
-                      color: '#1d1d1f',
+                      color: '#000000',
                       marginBottom: '8px',
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                     }}>
@@ -891,7 +891,7 @@ const ProfessionalAbout = () => {
                     
                     <p style={{
                       fontSize: '16px',
-                      color: '#007AFF',
+                      color: '#00bfff',
                       fontWeight: '500',
                       marginBottom: '8px',
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
@@ -901,7 +901,7 @@ const ProfessionalAbout = () => {
                     
                     <p style={{
                       fontSize: '15px',
-                      color: '#86868b',
+                      color: '#000000',
                       marginBottom: '16px',
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                     }}>
@@ -911,7 +911,7 @@ const ProfessionalAbout = () => {
                     <p style={{
                       fontSize: '16px',
                       lineHeight: '1.5',
-                      color: '#1d1d1f',
+                      color: '#000000',
                       marginBottom: '20px',
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                     }}>
@@ -922,7 +922,7 @@ const ProfessionalAbout = () => {
                       <p style={{
                         fontSize: '15px',
                         fontWeight: '600',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '12px',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                       }}>
@@ -933,8 +933,8 @@ const ProfessionalAbout = () => {
                           <span
                             key={sIndex}
                             style={{
-                              background: '#007AFF',
-                              color: '#ffffff',
+                              background: '#00bfff',
+                              color: '#ccebff',
                               padding: '6px 12px',
                               borderRadius: '12px',
                               fontSize: '13px',
@@ -956,7 +956,7 @@ const ProfessionalAbout = () => {
       </section>
 
       {/* Apple Global Reach Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', position: 'relative', zIndex: 1 }}>
           <motion.div
@@ -969,7 +969,7 @@ const ProfessionalAbout = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -979,7 +979,7 @@ const ProfessionalAbout = () => {
             </h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '95%',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1019,8 +1019,8 @@ const ProfessionalAbout = () => {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05, y: -2 }}
                   style={{
-                    background: '#ffffff',
-                    color: '#1d1d1f',
+                    background: '#ccebff',
+                    color: '#000000',
                     padding: '12px 20px',
                     borderRadius: '20px',
                     fontSize: '15px',
@@ -1042,7 +1042,7 @@ const ProfessionalAbout = () => {
 
       {/* Apple CTA Section */}
       <section style={{ 
-        background: '#1d1d1f', 
+        background: '#000000', 
         padding: '100px 0',
         position: 'relative',
         overflow: 'hidden'
@@ -1070,7 +1070,7 @@ const ProfessionalAbout = () => {
             <h2 style={{
               fontSize: 'clamp(48px, 6vw, 72px)',
               fontWeight: '600',
-              color: '#ffffff',
+              color: '#ccebff',
               marginBottom: '24px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.1',
@@ -1102,10 +1102,10 @@ const ProfessionalAbout = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '18px 36px',
-                    background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '16px',
@@ -1136,7 +1136,7 @@ const ProfessionalAbout = () => {
                     background: 'rgba(255, 255, 255, 0.1)',
                     border: '1px solid rgba(255, 255, 255, 0.2)',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '16px',

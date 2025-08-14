@@ -93,7 +93,7 @@ const ProfessionalLargeEnterpriseServices = () => {
     <AppleBackground variant="primary">
       {/* Apple Hero Section */}
       <section style={{ 
-        background: '#1d1d1f',
+        background: '#000000',
         padding: 'max(60px, 10vh) 0 max(80px, 12vh) 0',
         position: 'relative',
         overflow: 'hidden',
@@ -232,7 +232,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     background: '#007aff',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -297,7 +297,7 @@ const ProfessionalLargeEnterpriseServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -308,7 +308,7 @@ const ProfessionalLargeEnterpriseServices = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -347,7 +347,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '400px',
@@ -384,13 +384,13 @@ const ProfessionalLargeEnterpriseServices = () => {
                         margin: '0 auto 24px',
                         boxShadow: `0 8px 32px ${index % 3 === 0 ? 'rgba(0, 122, 255, 0.3)' : index % 3 === 1 ? 'rgba(48, 209, 88, 0.3)' : 'rgba(255, 59, 48, 0.3)'}, inset 0 1px 0 rgba(255, 255, 255, 0.2)`
                       }}>
-                        {React.cloneElement(type.icon, { sx: { fontSize: 32, color: '#ffffff' } })}
+                        {React.cloneElement(type.icon, { sx: { fontSize: 32, color: '#ccebff' } })}
                       </div>
                       
                       <h3 style={{
                         fontSize: '28px',
                         fontWeight: '700',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '12px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.07143',
@@ -420,7 +420,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     background: `linear-gradient(135deg, ${index % 3 === 0 ? '#007aff' : index % 3 === 1 ? '#30d158' : '#ff3b30'} 0%, ${index % 3 === 0 ? '#5856d6' : index % 3 === 1 ? '#32d74b' : '#ff9500'} 100%)`,
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '400px',
@@ -443,7 +443,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                       <h4 style={{
                         fontSize: '24px',
                         fontWeight: '700',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '32px',
                         textAlign: 'center',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
@@ -473,7 +473,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                         </p>
                         <p style={{
                           fontSize: '15px',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                           margin: 0,
                           fontWeight: '500',
@@ -495,7 +495,7 @@ const ProfessionalLargeEnterpriseServices = () => {
       {/* Apple "Why Large Enterprises Choose Us" Section */}
       <section style={{ 
         padding: '80px 0 60px 0', 
-        background: '#ffffff', 
+        background: '#ccebff', 
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -520,7 +520,7 @@ const ProfessionalLargeEnterpriseServices = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -530,7 +530,7 @@ const ProfessionalLargeEnterpriseServices = () => {
             </h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '650px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -610,7 +610,7 @@ const ProfessionalLargeEnterpriseServices = () => {
               <AppleFlipCard
                 frontContent={
                   <div style={{
-                    background: '#ffffff',
+                    background: '#ccebff',
                     borderRadius: '22px',
                     padding: '32px',
                     height: '100%',
@@ -634,7 +634,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                       {React.cloneElement(feature.icon, { 
                         sx: { 
                           fontSize: 32, 
-                          color: '#ffffff',
+                          color: '#ccebff',
                           filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
                         } 
                       })}
@@ -643,7 +643,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     <h3 style={{
                       fontSize: '24px',
                       fontWeight: '600',
-                      color: '#1d1d1f',
+                      color: '#000000',
                       marginBottom: '16px',
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                       lineHeight: '1.16667',
@@ -654,7 +654,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     
                     <p style={{
                       fontSize: '17px',
-                      color: '#86868b',
+                      color: '#000000',
                       marginBottom: '24px',
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                       lineHeight: '1.47059',
@@ -692,7 +692,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                     borderRadius: '22px',
                     padding: '32px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -729,7 +729,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                         {React.cloneElement(feature.icon, { 
                           sx: { 
                             fontSize: 32, 
-                            color: '#ffffff',
+                            color: '#ccebff',
                             filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
                           } 
                         })}
@@ -738,7 +738,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                       <h3 style={{
                         fontSize: '24px',
                         fontWeight: '600',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '20px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
@@ -790,7 +790,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                           backdropFilter: 'blur(20px)',
                           border: '1px solid rgba(255, 255, 255, 0.3)',
                           borderRadius: '20px',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           textDecoration: 'none',
                           fontSize: '17px',
                           fontWeight: '500',
@@ -813,7 +813,7 @@ const ProfessionalLargeEnterpriseServices = () => {
       </section>
 
       {/* Apple Process Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ffffff', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -825,7 +825,7 @@ const ProfessionalLargeEnterpriseServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -835,7 +835,7 @@ const ProfessionalLargeEnterpriseServices = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -885,7 +885,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                   <span style={{
                     fontSize: '1.5rem',
                     fontWeight: '600',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                   }}>
                     {step.step}
@@ -900,7 +900,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                   transition={{ duration: 0.3 }}
                   style={{
                     flex: 1,
-                    background: '#ffffff',
+                    background: '#ccebff',
                     borderRadius: '18px',
                     padding: '32px 40px',
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
@@ -918,7 +918,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     <h3 style={{
                       fontSize: '1.5rem',
                       fontWeight: '600',
-                      color: '#1d1d1f',
+                      color: '#000000',
                       margin: 0,
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                     }}>
@@ -927,7 +927,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     
                     <div style={{
                       background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
-                      color: '#ffffff',
+                      color: '#ccebff',
                       padding: '6px 16px',
                       borderRadius: '12px',
                       fontSize: '12px',
@@ -943,7 +943,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                   <p style={{
                     fontSize: '1rem',
                     lineHeight: '1.6',
-                    color: '#86868b',
+                    color: '#000000',
                     margin: 0,
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                   }}>
@@ -957,7 +957,7 @@ const ProfessionalLargeEnterpriseServices = () => {
       </section>
 
       {/* Apple Success Story Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ffffff' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -980,7 +980,7 @@ const ProfessionalLargeEnterpriseServices = () => {
               <h2 style={{
                 fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                 fontWeight: '600',
-                color: '#1d1d1f',
+                color: '#000000',
                 marginBottom: '24px',
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.08349',
@@ -992,7 +992,7 @@ const ProfessionalLargeEnterpriseServices = () => {
               <blockquote style={{
                 fontSize: '1.25rem',
                 fontStyle: 'italic',
-                color: '#424245',
+                color: '#000000',
                 marginBottom: '32px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.4705882353',
@@ -1031,7 +1031,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     justifyContent: 'center',
                     fontSize: '24px',
                     fontWeight: '600',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                   }}
                 >
@@ -1041,7 +1041,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                   <h4 style={{
                     fontSize: '17px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '4px',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                   }}>
@@ -1049,7 +1049,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                   </h4>
                   <p style={{
                     fontSize: '15px',
-                    color: '#86868b',
+                    color: '#000000',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     fontWeight: '400'
                   }}>
@@ -1106,7 +1106,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                   background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                   borderRadius: '20px',
                   padding: '40px 32px',
-                  color: '#ffffff',
+                  color: '#ccebff',
                   position: 'relative',
                   overflow: 'hidden',
                   minHeight: '400px',
@@ -1133,11 +1133,11 @@ const ProfessionalLargeEnterpriseServices = () => {
                     gap: '16px',
                     marginBottom: '32px'
                   }}>
-                    <Assessment sx={{ fontSize: 40, color: '#ffffff', opacity: 0.9 }} />
+                    <Assessment sx={{ fontSize: 40, color: '#ccebff', opacity: 0.9 }} />
                     <h3 style={{
                       fontSize: '1.75rem',
                       fontWeight: '600',
-                      color: '#ffffff',
+                      color: '#ccebff',
                       margin: 0,
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                     }}>
@@ -1174,7 +1174,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                         <div style={{
                           fontSize: '2.5rem',
                           fontWeight: '600',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           marginBottom: '8px'
                         }}>
@@ -1200,7 +1200,7 @@ const ProfessionalLargeEnterpriseServices = () => {
 
       {/* Apple CTA Section */}
       <section style={{ 
-        background: '#1d1d1f', 
+        background: '#000000', 
         padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden'
@@ -1235,7 +1235,7 @@ const ProfessionalLargeEnterpriseServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               fontWeight: '600',
-              color: '#ffffff',
+              color: '#ccebff',
               marginBottom: '24px',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
               lineHeight: '1.1'
@@ -1268,7 +1268,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     background: '#007aff',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -1298,7 +1298,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     background: 'transparent',
                     border: '1px solid rgba(255, 255, 255, 0.28)',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',

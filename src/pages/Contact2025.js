@@ -45,7 +45,7 @@ const Contact2025 = () => {
     {
       icon: <Email sx={{ fontSize: 28 }} />,
       title: "Email",
-      primary: "hello@globalpayrollmigration.com",
+      primary: "info@globalpayrollmigration.com",
       secondary: "Response within 2 hours",
       description: "Send us your requirements",
       action: "Send Email"

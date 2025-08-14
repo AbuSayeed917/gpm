@@ -155,7 +155,7 @@ const FAQ = () => {
     <AppleBackground variant="primary">
       {/* Apple Hero Section */}
       <section style={{ 
-        background: '#F5F5F7',
+        background: '#f0f9ff',
         padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden'
@@ -197,11 +197,11 @@ const FAQ = () => {
                 border: '1px solid rgba(0, 122, 255, 0.2)'
               }}
             >
-              <HelpOutline sx={{ fontSize: 20, color: '#007AFF' }} />
+              <HelpOutline sx={{ fontSize: 20, color: '#00bfff' }} />
               <span style={{
                 fontSize: '14px',
                 fontWeight: '600',
-                color: '#007AFF',
+                color: '#00bfff',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
@@ -212,7 +212,7 @@ const FAQ = () => {
               style={{
                 fontSize: 'clamp(48px, 5vw, 64px)',
                 fontWeight: '600',
-                color: '#1d1d1f',
+                color: '#000000',
                 marginBottom: '24px',
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.1',
@@ -226,7 +226,7 @@ const FAQ = () => {
               Frequently Asked
               <br />
               <span style={{ 
-                background: 'linear-gradient(90deg, #007AFF 0%, #5AC8FA 100%)', 
+                background: 'linear-gradient(90deg, #00bfff 0%, #87ceeb 100%)', 
                 backgroundClip: 'text', 
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
@@ -239,7 +239,7 @@ const FAQ = () => {
             <motion.p 
               style={{
                 fontSize: '18px',
-                color: '#6b7280',
+                color: '#000000',
                 marginBottom: '32px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.5',
@@ -261,7 +261,7 @@ const FAQ = () => {
       </section>
 
       {/* Apple Quick Stats */}
-      <section style={{ padding: '80px 0 60px 0', background: '#FFFFFF', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -273,7 +273,7 @@ const FAQ = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -281,7 +281,7 @@ const FAQ = () => {
             }}>Quick facts.</h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '95%',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -319,7 +319,7 @@ const FAQ = () => {
                   }}
                   transition={{ duration: 0.3 }}
                   style={{
-                    background: '#ffffff',
+                    background: '#ccebff',
                     borderRadius: '22px',
                     padding: '40px 32px',
                     textAlign: 'center',
@@ -345,7 +345,7 @@ const FAQ = () => {
                     <div style={{
                       fontSize: 'clamp(32px, 4vw, 48px)',
                       fontWeight: '700',
-                      color: '#007AFF',
+                      color: '#00bfff',
                       marginBottom: '16px',
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                       lineHeight: '1.1'
@@ -353,13 +353,13 @@ const FAQ = () => {
                     <h3 style={{
                       fontSize: '20px',
                       fontWeight: '600',
-                      color: '#1d1d1f',
+                      color: '#000000',
                       marginBottom: '12px',
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                     }}>{stat.label}</h3>
                     <p style={{
                       fontSize: '15px',
-                      color: '#86868b',
+                      color: '#000000',
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                       lineHeight: '1.4',
                       fontWeight: '400'
@@ -373,7 +373,7 @@ const FAQ = () => {
       </section>
 
       {/* Apple Key Features */}
-      <section style={{ padding: '80px 0 60px 0', background: '#F5F5F7', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#f0f9ff', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -385,7 +385,7 @@ const FAQ = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -393,7 +393,7 @@ const FAQ = () => {
             }}>Why choose us.</h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '95%',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -414,10 +414,10 @@ const FAQ = () => {
           }}>
             {keyFeatures.map((feature, index) => {
               const iconMap = {
-                speed: <Speed sx={{ fontSize: 40, color: '#ffffff' }} />,
-                security: <Security sx={{ fontSize: 40, color: '#ffffff' }} />,
-                support: <Support sx={{ fontSize: 40, color: '#ffffff' }} />,
-                analytics: <Analytics sx={{ fontSize: 40, color: '#ffffff' }} />
+                speed: <Speed sx={{ fontSize: 40, color: '#ccebff' }} />,
+                security: <Security sx={{ fontSize: 40, color: '#ccebff' }} />,
+                support: <Support sx={{ fontSize: 40, color: '#ccebff' }} />,
+                analytics: <Analytics sx={{ fontSize: 40, color: '#ccebff' }} />
               };
               return (
                 <motion.div
@@ -438,7 +438,7 @@ const FAQ = () => {
                     }}
                     transition={{ duration: 0.3 }}
                     style={{
-                      background: '#ffffff',
+                      background: '#ccebff',
                       borderRadius: '22px',
                       padding: '32px',
                       border: '1px solid rgba(0, 0, 0, 0.06)',
@@ -465,7 +465,7 @@ const FAQ = () => {
                           width: '72px',
                           height: '72px',
                           borderRadius: '22px',
-                          background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                          background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -478,7 +478,7 @@ const FAQ = () => {
                           <h3 style={{
                             fontSize: '24px',
                             fontWeight: '600',
-                            color: '#1d1d1f',
+                            color: '#000000',
                             marginBottom: '12px',
                             fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                             lineHeight: '1.16667',
@@ -486,7 +486,7 @@ const FAQ = () => {
                           }}>{feature.title}</h3>
                           <p style={{
                             fontSize: '16px',
-                            color: '#86868b',
+                            color: '#000000',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                             lineHeight: '1.47059',
                             letterSpacing: '-0.022em',
@@ -504,7 +504,7 @@ const FAQ = () => {
       </section>
 
       {/* Apple FAQ Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#FFFFFF', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -516,7 +516,7 @@ const FAQ = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -524,7 +524,7 @@ const FAQ = () => {
             }}>Detailed answers.</h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '95%',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -545,7 +545,7 @@ const FAQ = () => {
                 transition={{ duration: 0.6, delay: index * 0.05 }}
                 viewport={{ once: true }}
                 style={{
-                  background: '#ffffff',
+                  background: '#ccebff',
                   borderRadius: '18px',
                   border: '1px solid rgba(0, 0, 0, 0.06)',
                   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
@@ -558,13 +558,13 @@ const FAQ = () => {
                     width: '100%',
                     textAlign: 'left',
                     padding: '28px',
-                    background: openFAQ === index ? '#F5F5F7' : 'transparent',
+                    background: openFAQ === index ? '#f0f9ff' : 'transparent',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
                   onClick={() => toggleFAQ(index)}
-                  whileHover={{ backgroundColor: openFAQ === index ? '#F5F5F7' : 'rgba(0, 122, 255, 0.02)' }}
+                  whileHover={{ backgroundColor: openFAQ === index ? '#f0f9ff' : 'rgba(0, 122, 255, 0.02)' }}
                 >
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '24px' }}>
                     <div style={{ flex: 1 }}>
@@ -578,7 +578,7 @@ const FAQ = () => {
                         textTransform: 'uppercase',
                         letterSpacing: '1px',
                         backgroundColor: 'rgba(0, 122, 255, 0.1)',
-                        color: '#007AFF',
+                        color: '#00bfff',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                       }}>
                         {faq.category}
@@ -586,7 +586,7 @@ const FAQ = () => {
                       <h3 style={{
                         fontSize: '20px',
                         fontWeight: '600',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.3',
                         letterSpacing: '-0.022em',
@@ -598,7 +598,7 @@ const FAQ = () => {
                       animate={{ rotate: openFAQ === index ? 180 : 0 }}
                       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      <ExpandMore sx={{ fontSize: 24, color: '#86868b' }} />
+                      <ExpandMore sx={{ fontSize: 24, color: '#000000' }} />
                     </motion.div>
                   </div>
                 </motion.button>
@@ -615,7 +615,7 @@ const FAQ = () => {
                       <div style={{ padding: '0 28px 28px 28px' }}>
                         <p style={{
                           fontSize: '17px',
-                          color: '#6b7280',
+                          color: '#000000',
                           lineHeight: '1.6',
                           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                           fontWeight: '400',
@@ -633,7 +633,7 @@ const FAQ = () => {
       </section>
 
       {/* Apple Contact CTA */}
-      <section style={{ padding: '100px 0', background: '#1d1d1f', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '100px 0', background: '#000000', position: 'relative', overflow: 'hidden' }}>
         {/* Apple-style subtle background */}
         <div style={{
           position: 'absolute',
@@ -657,7 +657,7 @@ const FAQ = () => {
             <h2 style={{
               fontSize: 'clamp(48px, 6vw, 72px)',
               fontWeight: '600',
-              color: '#ffffff',
+              color: '#ccebff',
               marginBottom: '24px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.1',
@@ -688,10 +688,10 @@ const FAQ = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '16px 32px',
-                    background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '16px',
@@ -722,7 +722,7 @@ const FAQ = () => {
                     background: 'rgba(255, 255, 255, 0.1)',
                     border: '1px solid rgba(255, 255, 255, 0.2)',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '16px',
@@ -743,7 +743,7 @@ const FAQ = () => {
       </section>
 
       {/* Apple Related Resources */}
-      <section style={{ padding: '80px 0 60px 0', background: '#F5F5F7', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#f0f9ff', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -755,7 +755,7 @@ const FAQ = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -763,7 +763,7 @@ const FAQ = () => {
             }}>Learn more.</h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '95%',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -792,7 +792,7 @@ const FAQ = () => {
                 whileHover={{ y: -8, boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)' }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  background: '#ffffff',
+                  background: '#ccebff',
                   borderRadius: '22px',
                   padding: '40px 32px',
                   textAlign: 'center',
@@ -804,18 +804,18 @@ const FAQ = () => {
                 }}
               >
                 <div style={{ marginBottom: '32px' }}>
-                  <Timeline sx={{ fontSize: 48, color: '#007AFF' }} />
+                  <Timeline sx={{ fontSize: 48, color: '#00bfff' }} />
                 </div>
                 <h3 style={{
                   fontSize: '24px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>Our Services</h3>
                 <p style={{
                   fontSize: '16px',
-                  color: '#86868b',
+                  color: '#000000',
                   marginBottom: '32px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.5',
@@ -833,7 +833,7 @@ const FAQ = () => {
                     padding: '12px 24px',
                     border: '2px solid rgba(0, 122, 255, 0.3)',
                     borderRadius: '25px',
-                    color: '#007AFF',
+                    color: '#00bfff',
                     textDecoration: 'none',
                     fontSize: '15px',
                     fontWeight: '600',
@@ -859,7 +859,7 @@ const FAQ = () => {
                 whileHover={{ y: -8, boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)' }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  background: '#ffffff',
+                  background: '#ccebff',
                   borderRadius: '22px',
                   padding: '40px 32px',
                   textAlign: 'center',
@@ -871,18 +871,18 @@ const FAQ = () => {
                 }}
               >
                 <div style={{ marginBottom: '32px' }}>
-                  <People sx={{ fontSize: 48, color: '#007AFF' }} />
+                  <People sx={{ fontSize: 48, color: '#00bfff' }} />
                 </div>
                 <h3 style={{
                   fontSize: '24px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>Success Stories</h3>
                 <p style={{
                   fontSize: '16px',
-                  color: '#86868b',
+                  color: '#000000',
                   marginBottom: '32px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.5',
@@ -900,7 +900,7 @@ const FAQ = () => {
                     padding: '12px 24px',
                     border: '2px solid rgba(0, 122, 255, 0.3)',
                     borderRadius: '25px',
-                    color: '#007AFF',
+                    color: '#00bfff',
                     textDecoration: 'none',
                     fontSize: '15px',
                     fontWeight: '600',
@@ -926,7 +926,7 @@ const FAQ = () => {
                 whileHover={{ y: -8, boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)' }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  background: '#ffffff',
+                  background: '#ccebff',
                   borderRadius: '22px',
                   padding: '40px 32px',
                   textAlign: 'center',
@@ -938,18 +938,18 @@ const FAQ = () => {
                 }}
               >
                 <div style={{ marginBottom: '32px' }}>
-                  <Business sx={{ fontSize: 48, color: '#007AFF' }} />
+                  <Business sx={{ fontSize: 48, color: '#00bfff' }} />
                 </div>
                 <h3 style={{
                   fontSize: '24px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>Our Process</h3>
                 <p style={{
                   fontSize: '16px',
-                  color: '#86868b',
+                  color: '#000000',
                   marginBottom: '32px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.5',
@@ -967,7 +967,7 @@ const FAQ = () => {
                     padding: '12px 24px',
                     border: '2px solid rgba(0, 122, 255, 0.3)',
                     borderRadius: '25px',
-                    color: '#007AFF',
+                    color: '#00bfff',
                     textDecoration: 'none',
                     fontSize: '15px',
                     fontWeight: '600',

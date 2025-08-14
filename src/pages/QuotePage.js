@@ -57,8 +57,8 @@ const QuotePage = () => {
   const serviceConfig = {
     sme: {
       title: 'SME Payroll Migration Quote',
-      icon: <Business sx={{ fontSize: 40, color: '#5DADE2' }} />,
-      gradient: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+      icon: <Business sx={{ fontSize: 40, color: '#87ceeb' }} />,
+      gradient: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
       description: 'Get a tailored quote for your small to medium enterprise payroll migration',
       migrationOptions: [
         'Sage to Xero Migration',
@@ -87,8 +87,8 @@ const QuotePage = () => {
     },
     'large-enterprise': {
       title: 'Enterprise Payroll Migration Quote',
-      icon: <CorporateFare sx={{ fontSize: 40, color: '#5DADE2' }} />,
-      gradient: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+      icon: <CorporateFare sx={{ fontSize: 40, color: '#87ceeb' }} />,
+      gradient: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
       description: 'Enterprise-grade payroll migration solutions for large organizations',
       migrationOptions: [
         'SAP to Workday Migration',
@@ -119,8 +119,8 @@ const QuotePage = () => {
     },
     consultancy: {
       title: 'Consultancy Partnership Quote',
-      icon: <Groups sx={{ fontSize: 40, color: '#5DADE2' }} />,
-      gradient: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+      icon: <Groups sx={{ fontSize: 40, color: '#87ceeb' }} />,
+      gradient: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
       description: 'Partnership opportunities for consulting firms and professional services',
       migrationOptions: [
         'Payroll System Assessment',
@@ -221,7 +221,7 @@ const QuotePage = () => {
                 <h3 style={{ 
                   fontSize: '28px',
                   fontWeight: '700',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
                   letterSpacing: '-0.02em'
@@ -241,7 +241,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -271,7 +271,7 @@ const QuotePage = () => {
                       cursor: 'pointer'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -290,7 +290,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -320,7 +320,7 @@ const QuotePage = () => {
                       cursor: 'pointer'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -341,7 +341,7 @@ const QuotePage = () => {
                       display: 'block',
                       fontSize: '15px',
                       fontWeight: '600',
-                      color: '#1d1d1f',
+                      color: '#000000',
                       marginBottom: '8px',
                       fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                     }}>
@@ -368,7 +368,7 @@ const QuotePage = () => {
                       }}
                       placeholder="e.g., Custom system to Workday, Internal tool to SAP, etc."
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#87CEEB';
+                        e.target.style.borderColor = '#00bfff';
                         e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                       }}
                       onBlur={(e) => {
@@ -384,7 +384,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -410,7 +410,7 @@ const QuotePage = () => {
                     }}
                     placeholder="e.g., Legacy system, Excel, Current provider"
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -425,7 +425,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -450,7 +450,7 @@ const QuotePage = () => {
                       cursor: 'pointer'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -482,7 +482,7 @@ const QuotePage = () => {
                 <h3 style={{ 
                   fontSize: '28px',
                   fontWeight: '700',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
                   letterSpacing: '-0.02em'
@@ -511,7 +511,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -538,7 +538,7 @@ const QuotePage = () => {
                     }}
                     placeholder="Enter your company name"
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -553,7 +553,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -578,7 +578,7 @@ const QuotePage = () => {
                       cursor: 'pointer'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -598,7 +598,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -623,7 +623,7 @@ const QuotePage = () => {
                       cursor: 'pointer'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -643,7 +643,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -668,7 +668,7 @@ const QuotePage = () => {
                       cursor: 'pointer'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -700,7 +700,7 @@ const QuotePage = () => {
                 <h3 style={{ 
                   fontSize: '28px',
                   fontWeight: '700',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
                   letterSpacing: '-0.02em'
@@ -713,7 +713,7 @@ const QuotePage = () => {
                 <h4 style={{
                   fontSize: '20px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                 }}>
@@ -750,12 +750,12 @@ const QuotePage = () => {
                         padding: '12px 20px',
                         borderRadius: '20px',
                         border: formData.migrationScope.includes(scope) 
-                          ? '2px solid #87CEEB'
+                          ? '2px solid #00bfff'
                           : '2px solid rgba(173, 216, 230, 0.4)',
                         backgroundColor: formData.migrationScope.includes(scope)
                           ? 'rgba(135, 206, 250, 0.1)'
                           : 'rgba(255, 255, 255, 0.8)',
-                        color: formData.migrationScope.includes(scope) ? '#5DADE2' : '#1d1d1f',
+                        color: formData.migrationScope.includes(scope) ? '#87ceeb' : '#000000',
                         fontSize: '15px',
                         fontWeight: '500',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
@@ -765,7 +765,7 @@ const QuotePage = () => {
                       }}
                       onMouseEnter={(e) => {
                         if (!formData.migrationScope.includes(scope)) {
-                          e.target.style.borderColor = '#87CEEB';
+                          e.target.style.borderColor = '#00bfff';
                           e.target.style.backgroundColor = 'rgba(135, 206, 250, 0.05)';
                         }
                       }}
@@ -786,7 +786,7 @@ const QuotePage = () => {
                 <h4 style={{
                   fontSize: '20px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                 }}>
@@ -821,12 +821,12 @@ const QuotePage = () => {
                         padding: '12px 20px',
                         borderRadius: '20px',
                         border: formData.complianceRequirements.includes(compliance) 
-                          ? '2px solid #87CEEB'
+                          ? '2px solid #00bfff'
                           : '2px solid rgba(173, 216, 230, 0.4)',
                         backgroundColor: formData.complianceRequirements.includes(compliance)
                           ? 'rgba(135, 206, 250, 0.1)'
                           : 'rgba(255, 255, 255, 0.8)',
-                        color: formData.complianceRequirements.includes(compliance) ? '#5DADE2' : '#1d1d1f',
+                        color: formData.complianceRequirements.includes(compliance) ? '#87ceeb' : '#000000',
                         fontSize: '15px',
                         fontWeight: '500',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
@@ -836,7 +836,7 @@ const QuotePage = () => {
                       }}
                       onMouseEnter={(e) => {
                         if (!formData.complianceRequirements.includes(compliance)) {
-                          e.target.style.borderColor = '#87CEEB';
+                          e.target.style.borderColor = '#00bfff';
                           e.target.style.backgroundColor = 'rgba(135, 206, 250, 0.05)';
                         }
                       }}
@@ -868,7 +868,7 @@ const QuotePage = () => {
                 <h3 style={{ 
                   fontSize: '28px',
                   fontWeight: '700',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
                   letterSpacing: '-0.02em'
@@ -888,7 +888,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -915,7 +915,7 @@ const QuotePage = () => {
                     }}
                     placeholder="Enter your full name"
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -930,7 +930,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -956,7 +956,7 @@ const QuotePage = () => {
                     }}
                     placeholder="Enter your job title"
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -971,7 +971,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -998,7 +998,7 @@ const QuotePage = () => {
                     }}
                     placeholder="Enter your email address"
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -1013,7 +1013,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -1039,7 +1039,7 @@ const QuotePage = () => {
                     }}
                     placeholder="Enter your phone number"
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -1054,7 +1054,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -1079,7 +1079,7 @@ const QuotePage = () => {
                       cursor: 'pointer'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -1101,7 +1101,7 @@ const QuotePage = () => {
                     display: 'block',
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '8px',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
@@ -1126,7 +1126,7 @@ const QuotePage = () => {
                       cursor: 'pointer'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.borderColor = '#00bfff';
                       e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                     }}
                     onBlur={(e) => {
@@ -1150,7 +1150,7 @@ const QuotePage = () => {
                   display: 'block',
                   fontSize: '15px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '8px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                 }}>
@@ -1177,7 +1177,7 @@ const QuotePage = () => {
                   }}
                   placeholder="Please describe any specific requirements, challenges, or questions you have..."
                   onFocus={(e) => {
-                    e.target.style.borderColor = '#87CEEB';
+                    e.target.style.borderColor = '#00bfff';
                     e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
                   }}
                   onBlur={(e) => {
@@ -1199,7 +1199,7 @@ const QuotePage = () => {
     return (
       <AppleBackground variant="primary">
         <section style={{ 
-          background: '#1d1d1f',
+          background: '#000000',
           padding: '100px 0',
           minHeight: '100vh',
           display: 'flex',
@@ -1243,7 +1243,7 @@ const QuotePage = () => {
                 style={{
                   fontSize: 'clamp(48px, 6vw, 64px)',
                   fontWeight: '600',
-                  color: '#ffffff',
+                  color: '#ccebff',
                   marginBottom: '24px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.1',
@@ -1285,10 +1285,10 @@ const QuotePage = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '16px 32px',
-                    background: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '16px',
@@ -1326,7 +1326,7 @@ const QuotePage = () => {
       
     <AppleBackground variant="primary">
       <section style={{ 
-        background: '#F5F5F7',
+        background: '#f0f9ff',
         padding: '80px 0',
         minHeight: '100vh',
         position: 'relative'
@@ -1363,7 +1363,7 @@ const QuotePage = () => {
                 <h1 style={{
                   fontSize: 'clamp(32px, 4vw, 48px)',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.1',
                   letterSpacing: '-0.015em',
@@ -1374,7 +1374,7 @@ const QuotePage = () => {
               </div>
               <p style={{
                 fontSize: '21px',
-                color: '#86868b',
+                color: '#000000',
                 maxWidth: '600px',
                 margin: '0 auto',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1392,7 +1392,7 @@ const QuotePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               style={{
-                background: '#ffffff',
+                background: '#ccebff',
                 borderRadius: '22px',
                 padding: '40px 32px',
                 marginBottom: '32px',
@@ -1417,10 +1417,10 @@ const QuotePage = () => {
                         fontSize: '16px',
                         fontWeight: '600',
                         marginBottom: '12px',
-                        color: index <= activeStep ? '#ffffff' : '#86868b',
+                        color: index <= activeStep ? '#ccebff' : '#000000',
                         background: index <= activeStep 
-                          ? 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)'
-                          : '#F5F5F7',
+                          ? 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)'
+                          : '#f0f9ff',
                         boxShadow: index <= activeStep ? '0 4px 16px rgba(135, 206, 250, 0.4)' : 'none',
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
@@ -1433,7 +1433,7 @@ const QuotePage = () => {
                       textAlign: 'center',
                       fontWeight: '500',
                       padding: '0 8px',
-                      color: index <= activeStep ? '#1d1d1f' : '#86868b',
+                      color: index <= activeStep ? '#000000' : '#000000',
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                     }}>
                       {label}
@@ -1448,7 +1448,7 @@ const QuotePage = () => {
                           height: '2px',
                           borderRadius: '1px',
                           background: index < activeStep 
-                            ? 'linear-gradient(90deg, #87CEEB 0%, #5DADE2 100%)'
+                            ? 'linear-gradient(90deg, #00bfff 0%, #87ceeb 100%)'
                             : 'rgba(0, 0, 0, 0.1)',
                           transform: 'translateX(50%)',
                           zIndex: -1,
@@ -1467,7 +1467,7 @@ const QuotePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               style={{
-                background: '#ffffff',
+                background: '#ccebff',
                 borderRadius: '22px',
                 padding: '48px 40px',
                 marginBottom: '40px',
@@ -1511,7 +1511,7 @@ const QuotePage = () => {
                 <h4 style={{
                   fontSize: '20px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '8px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
                 }}>
@@ -1539,10 +1539,10 @@ const QuotePage = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '16px 28px',
-                    background: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                     border: 'none',
                     borderRadius: '24px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     fontSize: '16px',
                     fontWeight: '600',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
@@ -1563,7 +1563,7 @@ const QuotePage = () => {
               
               <p style={{
                 fontSize: '14px',
-                color: '#86868b',
+                color: '#000000',
                 margin: '12px 0 0 0',
                 fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
               }}>
@@ -1588,7 +1588,7 @@ const QuotePage = () => {
                     background: 'rgba(135, 206, 250, 0.08)',
                     border: '2px solid rgba(135, 206, 250, 0.4)',
                     borderRadius: '25px',
-                    color: '#5DADE2',
+                    color: '#87ceeb',
                     textDecoration: 'none',
                     fontSize: '15px',
                     fontWeight: '600',
@@ -1615,11 +1615,11 @@ const QuotePage = () => {
                     gap: '8px',
                     padding: '16px 32px',
                     background: isSubmitting 
-                      ? '#86868b'
-                      : 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                      ? '#000000'
+                      : 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     fontSize: '16px',
                     fontWeight: '600',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1635,7 +1635,7 @@ const QuotePage = () => {
                       <div style={{
                         width: '20px',
                         height: '20px',
-                        border: '2px solid #ffffff',
+                        border: '2px solid #ccebff',
                         borderTop: '2px solid transparent',
                         borderRadius: '50%',
                         animation: 'spin 1s linear infinite'
@@ -1659,10 +1659,10 @@ const QuotePage = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '16px 32px',
-                    background: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     fontSize: '16px',
                     fontWeight: '600',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1693,12 +1693,12 @@ const QuotePage = () => {
             >
               <p style={{
                 fontSize: '15px',
-                color: '#86868b',
+                color: '#000000',
                 margin: 0,
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 textAlign: 'center'
               }}>
-                Current service: <span style={{ fontWeight: '600', color: '#1d1d1f' }}>{currentConfig.title}</span>
+                Current service: <span style={{ fontWeight: '600', color: '#000000' }}>{currentConfig.title}</span>
                 {' — '}
                 You can change the service type in the form above if needed.
               </p>

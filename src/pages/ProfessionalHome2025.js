@@ -15,7 +15,7 @@ const ProfessionalHome2025 = () => {
       id: 'sme',
       title: 'SME Payroll Migration',
       description: 'Complete payroll system migration for small to medium businesses with minimal disruption.',
-      icon: <Business sx={{ fontSize: 24, color: '#5DADE2' }} />,
+      icon: <Business sx={{ fontSize: 24, color: '#00bfff' }} />,
       href: '/services/sme',
       features: [
         '4-8 week implementation',
@@ -30,7 +30,7 @@ const ProfessionalHome2025 = () => {
       id: 'enterprise',
       title: 'Enterprise Solutions',
       description: 'Large-scale payroll migrations with complex integrations and multi-jurisdictional support.',
-      icon: <People sx={{ fontSize: 24, color: '#5DADE2' }} />,
+      icon: <People sx={{ fontSize: 24, color: '#00bfff' }} />,
       href: '/services/large-enterprise',
       features: [
         'Multi-country deployments',
@@ -45,7 +45,7 @@ const ProfessionalHome2025 = () => {
       id: 'consultancy',
       title: 'Payroll Consultancy',
       description: 'Expert advisory services for payroll optimization and compliance requirements.',
-      icon: <Timeline sx={{ fontSize: 24, color: '#5DADE2' }} />,
+      icon: <Timeline sx={{ fontSize: 24, color: '#00bfff' }} />,
       href: '/services/consultancy',
       features: [
         'Strategic payroll planning',
@@ -80,16 +80,16 @@ const ProfessionalHome2025 = () => {
 
   return (
     <div style={{ 
-      backgroundColor: '#F0F8FF', 
+      backgroundColor: '#e6f7ff', 
       minHeight: '100vh', 
       fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif',
-      color: '#1d1d1f'
+      color: '#000000'
     }}>
       {/* Hero Section - Apple Style */}
       <section style={{ 
         padding: '120px 20px', 
         textAlign: 'left',
-        background: 'linear-gradient(180deg, #E6F3FF 0%, #F0F8FF 100%)',
+        background: 'linear-gradient(180deg, #ccebff 0%, #e6f7ff 100%)',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -112,17 +112,18 @@ const ProfessionalHome2025 = () => {
             fontSize: 'clamp(32px, 5.5vw, 56px)',
             fontWeight: '800',
             lineHeight: '1.02',
-            color: '#1d1d1f',
+            color: '#000000',
             marginBottom: '24px',
             letterSpacing: '-0.06em',
             textShadow: '0 2px 8px rgba(255, 255, 255, 0.4)',
             fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
           }}>
             UK based <span style={{ 
-              background: 'linear-gradient(90deg, #87CEEB 0%, #5DADE2 100%)',
+              background: 'linear-gradient(90deg, #30d158 0%, #ff3b30 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+              backgroundClip: 'text',
+              display: 'inline-block'
             }}>
               payroll migration experts
             </span>
@@ -130,7 +131,7 @@ const ProfessionalHome2025 = () => {
           <p style={{ 
             fontSize: '19px',
             lineHeight: '1.35',
-            color: '#424245',
+            color: '#000000',
             fontWeight: '500',
             marginBottom: '48px',
             fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
@@ -142,7 +143,7 @@ const ProfessionalHome2025 = () => {
             <Link 
               to="/quote" 
               style={{
-                background: 'linear-gradient(135deg, #87CEEB 0%, #4682B4 100%)',
+                background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                 color: 'white',
                 padding: '16px 32px',
                 borderRadius: '25px',
@@ -171,7 +172,7 @@ const ProfessionalHome2025 = () => {
             <Link 
               to="/success-stories"
               style={{
-                color: '#5DADE2',
+                color: '#00bfff',
                 padding: '16px 32px',
                 borderRadius: '25px',
                 textDecoration: 'none',
@@ -200,14 +201,18 @@ const ProfessionalHome2025 = () => {
       {/* Services Section - Apple Style */}
       <section style={{ 
         padding: '60px 20px 100px 20px', 
-        backgroundColor: '#F0F8FF',
-        borderTop: '1px solid rgba(173, 216, 230, 0.2)'
+        backgroundColor: '#f0f9ff',
+        borderTop: '1px solid rgba(135, 206, 235, 0.2)'
       }}>
         <div style={{ width: '95%', margin: '0 auto', textAlign: 'left' }}>
           <h2 style={{ 
             fontSize: 'clamp(20px, 3.5vw, 32px)',
             fontWeight: '700',
-            color: '#1d1d1f',
+            background: 'linear-gradient(90deg, #30d158 0%, #ff3b30 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            display: 'inline-block',
             marginBottom: '20px',
             letterSpacing: '-0.03em'
           }}>
@@ -215,7 +220,7 @@ const ProfessionalHome2025 = () => {
           </h2>
           <p style={{ 
             fontSize: '15px',
-            color: '#333333',
+            color: '#000000',
             marginBottom: '60px',
             lineHeight: '1.4'
           }}>
@@ -277,13 +282,13 @@ const ProfessionalHome2025 = () => {
                         display: 'inline-block'
                       }}>
                         {React.cloneElement(service.icon, { 
-                          sx: { fontSize: 36, color: '#5DADE2' } 
+                          sx: { fontSize: 36, color: '#00bfff' } 
                         })}
                       </div>
                       <h3 style={{ 
                         fontSize: '24px',
                         fontWeight: '700',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '12px',
                         letterSpacing: '-0.02em',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
@@ -292,7 +297,7 @@ const ProfessionalHome2025 = () => {
                       </h3>
                       <p style={{
                         fontSize: '15px',
-                        color: '#87CEEB',
+                        color: '#87ceeb',
                         fontWeight: '600',
                         marginBottom: '16px',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
@@ -301,7 +306,7 @@ const ProfessionalHome2025 = () => {
                       </p>
                       <p style={{ 
                         fontSize: '16px',
-                        color: '#424245',
+                        color: '#000000',
                         lineHeight: '1.5',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                       }}>
@@ -313,7 +318,7 @@ const ProfessionalHome2025 = () => {
                       padding: '12px 20px',
                       borderRadius: '16px',
                       background: 'rgba(173, 216, 230, 0.1)',
-                      color: '#5DADE2',
+                      color: '#00bfff',
                       fontSize: '14px',
                       fontWeight: '600',
                       fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
@@ -329,13 +334,13 @@ const ProfessionalHome2025 = () => {
                     height: '100%',
                     backfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)',
-                    background: `linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)`,
+                    background: `linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)`,
                     borderRadius: '24px',
                     padding: '40px 32px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     boxShadow: '0 20px 64px rgba(135, 206, 250, 0.4)',
                     border: '1px solid rgba(255, 255, 255, 0.2)'
                   }}>
@@ -362,14 +367,14 @@ const ProfessionalHome2025 = () => {
                         display: 'inline-block'
                       }}>
                         {React.cloneElement(service.icon, { 
-                          sx: { fontSize: 32, color: '#ffffff' } 
+                          sx: { fontSize: 32, color: '#ccebff' } 
                         })}
                       </div>
                       
                       <h3 style={{
                         fontSize: '20px',
                         fontWeight: '700',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '20px',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
                       }}>
@@ -415,7 +420,7 @@ const ProfessionalHome2025 = () => {
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.3)',
                         borderRadius: '24px',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         textDecoration: 'none',
                         fontSize: '16px',
                         fontWeight: '600',
@@ -446,7 +451,7 @@ const ProfessionalHome2025 = () => {
       {/* Book Discovery Call Section - Apple Style */}
       <section style={{ 
         padding: '80px 20px', 
-        backgroundColor: '#F0F8FF',
+        backgroundColor: '#f0f9ff',
         borderTop: '1px solid rgba(0, 0, 0, 0.05)',
         position: 'relative',
         overflow: 'hidden'
@@ -483,7 +488,7 @@ const ProfessionalHome2025 = () => {
             <h2 style={{ 
               fontSize: 'clamp(24px, 4vw, 36px)',
               fontWeight: '700',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '24px',
               letterSpacing: '-0.03em',
               lineHeight: '1.1'
@@ -492,7 +497,7 @@ const ProfessionalHome2025 = () => {
             </h2>
             <p style={{ 
               fontSize: '17px',
-              color: '#333333',
+              color: '#000000',
               lineHeight: '1.4',
               marginBottom: '40px',
               fontWeight: '400',
@@ -504,7 +509,7 @@ const ProfessionalHome2025 = () => {
             <Link 
               to="/quote" 
               style={{
-                background: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+                background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                 color: 'white',
                 padding: '18px 36px',
                 borderRadius: '28px',
@@ -537,14 +542,14 @@ const ProfessionalHome2025 = () => {
       {/* Features Section - Apple Style */}
       <section style={{ 
         padding: '120px 20px', 
-        backgroundColor: '#F0F8FF',
+        backgroundColor: '#f0f9ff',
         borderTop: '1px solid rgba(0, 0, 0, 0.05)'
       }}>
         <div style={{ width: '95%', margin: '0 auto', textAlign: 'left' }}>
           <h2 style={{ 
             fontSize: 'clamp(20px, 3.5vw, 32px)',
             fontWeight: '700',
-            color: '#1d1d1f',
+            color: '#000000',
             marginBottom: '20px',
             letterSpacing: '-0.03em'
           }}>
@@ -552,7 +557,7 @@ const ProfessionalHome2025 = () => {
           </h2>
           <p style={{ 
             fontSize: '15px',
-            color: '#86868b',
+            color: '#000000',
             marginBottom: '80px',
             lineHeight: '1.4'
           }}>
@@ -577,12 +582,12 @@ const ProfessionalHome2025 = () => {
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-4px)';
                 e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.15)';
-                e.currentTarget.style.background = '#FFFFFF';
+                e.currentTarget.style.background = '#ccebff';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
-                e.currentTarget.style.background = '#FFFFFF';
+                e.currentTarget.style.background = '#ccebff';
               }}>
                 <div style={{ 
                   marginBottom: '32px',
@@ -592,13 +597,13 @@ const ProfessionalHome2025 = () => {
                   display: 'inline-block'
                 }}>
                   {React.cloneElement(feature.icon, { 
-                    sx: { fontSize: 56, color: '#5DADE2' } 
+                    sx: { fontSize: 56, color: '#00bfff' } 
                   })}
                 </div>
                 <h3 style={{ 
                   fontSize: '18px',
                   fontWeight: '700',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '20px',
                   letterSpacing: '-0.02em'
                 }}>
@@ -606,7 +611,7 @@ const ProfessionalHome2025 = () => {
                 </h3>
                 <p style={{ 
                   fontSize: '15px',
-                  color: '#86868b',
+                  color: '#000000',
                   lineHeight: '1.5',
                   fontWeight: '400'
                 }}>
@@ -621,14 +626,14 @@ const ProfessionalHome2025 = () => {
       {/* Migration Process Section - Apple Style */}
       <section style={{ 
         padding: '80px 20px', 
-        backgroundColor: '#F0F8FF',
+        backgroundColor: '#f0f9ff',
         borderTop: '1px solid rgba(0, 0, 0, 0.05)'
       }}>
         <div style={{ width: '95%', margin: '0 auto', textAlign: 'left' }}>
           <h2 style={{ 
             fontSize: 'clamp(20px, 3.5vw, 32px)',
             fontWeight: '700',
-            color: '#1d1d1f',
+            color: '#000000',
             marginBottom: '20px',
             letterSpacing: '-0.03em',
             textAlign: 'center'
@@ -637,7 +642,7 @@ const ProfessionalHome2025 = () => {
           </h2>
           <p style={{ 
             fontSize: '15px',
-            color: '#86868b',
+            color: '#000000',
             marginBottom: '60px',
             lineHeight: '1.4',
             textAlign: 'center'
@@ -705,7 +710,7 @@ const ProfessionalHome2025 = () => {
                 <h3 style={{ 
                   fontSize: '18px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   letterSpacing: '-0.02em'
                 }}>
@@ -713,7 +718,7 @@ const ProfessionalHome2025 = () => {
                 </h3>
                 <p style={{ 
                   fontSize: '15px',
-                  color: '#333333',
+                  color: '#000000',
                   lineHeight: '1.5'
                 }}>
                   {process.description}
@@ -727,14 +732,14 @@ const ProfessionalHome2025 = () => {
       {/* Client Success Stories Section - Apple Style */}
       <section style={{ 
         padding: '80px 20px', 
-        backgroundColor: '#F0F8FF',
+        backgroundColor: '#f0f9ff',
         borderTop: '1px solid rgba(0, 0, 0, 0.05)'
       }}>
         <div style={{ width: '95%', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ 
             fontSize: 'clamp(20px, 3.5vw, 32px)',
             fontWeight: '700',
-            color: '#1d1d1f',
+            color: '#000000',
             marginBottom: '60px',
             letterSpacing: '-0.03em'
           }}>
@@ -785,14 +790,14 @@ const ProfessionalHome2025 = () => {
               >
                 <div style={{ 
                   fontSize: '24px',
-                  color: '#5DADE2',
+                  color: '#00bfff',
                   marginBottom: '20px'
                 }}>
                   "
                 </div>
                 <p style={{ 
                   fontSize: '16px',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   lineHeight: '1.5',
                   marginBottom: '24px',
                   fontStyle: 'italic'
@@ -803,14 +808,14 @@ const ProfessionalHome2025 = () => {
                   <p style={{ 
                     fontSize: '15px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '4px'
                   }}>
                     {testimonial.company}
                   </p>
                   <p style={{ 
                     fontSize: '14px',
-                    color: '#86868b'
+                    color: '#000000'
                   }}>
                     {testimonial.industry}
                   </p>
@@ -824,7 +829,7 @@ const ProfessionalHome2025 = () => {
       {/* CTA Section - Apple Style */}
       <section style={{ 
         padding: '160px 20px', 
-        backgroundColor: '#F0F8FF',
+        backgroundColor: '#f0f9ff',
         textAlign: 'left',
         position: 'relative',
         overflow: 'hidden'
@@ -844,7 +849,7 @@ const ProfessionalHome2025 = () => {
           <h2 style={{ 
             fontSize: 'clamp(24px, 4vw, 36px)',
             fontWeight: '700',
-            color: '#1d1d1f',
+            color: '#000000',
             marginBottom: '32px',
             letterSpacing: '-0.04em',
             lineHeight: '1.05'
@@ -853,7 +858,7 @@ const ProfessionalHome2025 = () => {
           </h2>
           <p style={{ 
             fontSize: '15px',
-            color: '#333333',
+            color: '#000000',
             lineHeight: '1.3',
             marginBottom: '64px',
             fontWeight: '400'
@@ -864,7 +869,7 @@ const ProfessionalHome2025 = () => {
             <Link 
               to="/quote" 
               style={{
-                background: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+                background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                 color: 'white',
                 padding: '20px 40px',
                 borderRadius: '30px',
@@ -890,7 +895,7 @@ const ProfessionalHome2025 = () => {
             <a 
               href="mailto:info@globalpayrollmigration.com"
               style={{
-                color: '#87CEEB',
+                color: '#87ceeb',
                 padding: '20px 40px',
                 borderRadius: '30px',
                 textDecoration: 'none',

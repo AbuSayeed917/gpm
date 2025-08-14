@@ -160,7 +160,7 @@ const ConsultancySuccessStories = () => {
     <AppleBackground variant="primary">
       {/* Apple Hero Section - 100% Authentic */}
       <section style={{ 
-        background: '#1d1d1f',
+        background: '#000000',
         padding: 'max(60px, 10vh) 0 max(80px, 12vh) 0',
         position: 'relative',
         overflow: 'hidden',
@@ -305,7 +305,7 @@ const ConsultancySuccessStories = () => {
                     background: '#ff9500',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -370,7 +370,7 @@ const ConsultancySuccessStories = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -381,7 +381,7 @@ const ConsultancySuccessStories = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -414,7 +414,7 @@ const ConsultancySuccessStories = () => {
               viewport={{ once: true, margin: "-100px" }}
             >
               <div style={{
-                background: '#ffffff',
+                background: '#ccebff',
                 borderRadius: '22px',
                 padding: '32px',
                 height: '100%',
@@ -440,7 +440,7 @@ const ConsultancySuccessStories = () => {
                   {React.cloneElement(stat.icon, { 
                     sx: { 
                       fontSize: 32, 
-                      color: '#ffffff',
+                      color: '#ccebff',
                       filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
                     } 
                   })}
@@ -449,7 +449,7 @@ const ConsultancySuccessStories = () => {
                 <div style={{
                   fontSize: '48px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '8px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.0625',
@@ -461,7 +461,7 @@ const ConsultancySuccessStories = () => {
                 <h3 style={{
                   fontSize: '20px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '8px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.16667',
@@ -472,7 +472,7 @@ const ConsultancySuccessStories = () => {
                 
                 <p style={{
                   fontSize: '15px',
-                  color: '#86868b',
+                  color: '#000000',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.47059',
                   letterSpacing: '-0.022em',
@@ -489,7 +489,7 @@ const ConsultancySuccessStories = () => {
       </section>
 
       {/* Apple Success Stories Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ffffff', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -501,7 +501,7 @@ const ConsultancySuccessStories = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -511,7 +511,7 @@ const ConsultancySuccessStories = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -532,7 +532,7 @@ const ConsultancySuccessStories = () => {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 style={{
-                  background: '#ffffff',
+                  background: '#ccebff',
                   borderRadius: '22px',
                   padding: '48px',
                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
@@ -580,7 +580,7 @@ const ConsultancySuccessStories = () => {
                         justifyContent: 'center',
                         fontSize: '24px',
                         fontWeight: '600',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         boxShadow: '0 8px 32px rgba(255, 149, 0, 0.3)',
                         letterSpacing: '-0.01em'
@@ -591,7 +591,7 @@ const ConsultancySuccessStories = () => {
                         <h3 style={{
                           fontSize: '24px',
                           fontWeight: '600',
-                          color: '#1d1d1f',
+                          color: '#000000',
                           marginBottom: '4px',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                         }}>
@@ -599,7 +599,7 @@ const ConsultancySuccessStories = () => {
                         </h3>
                         <p style={{
                           fontSize: '17px',
-                          color: '#86868b',
+                          color: '#000000',
                           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                           fontWeight: '400'
                         }}>
@@ -623,7 +623,7 @@ const ConsultancySuccessStories = () => {
                         }}>
                           <span style={{
                             fontSize: '15px',
-                            color: '#86868b',
+                            color: '#000000',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                             fontWeight: '400'
                           }}>
@@ -631,7 +631,7 @@ const ConsultancySuccessStories = () => {
                           </span>
                           <span style={{
                             fontSize: '15px',
-                            color: '#1d1d1f',
+                            color: '#000000',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                             fontWeight: '500'
                           }}>
@@ -678,7 +678,7 @@ const ConsultancySuccessStories = () => {
                           )}
                           <div style={{
                             fontSize: '12px',
-                            color: '#86868b',
+                            color: '#000000',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                             fontWeight: '500'
                           }}>
@@ -700,7 +700,7 @@ const ConsultancySuccessStories = () => {
                           <h4 style={{
                             fontSize: '20px',
                             fontWeight: '600',
-                            color: '#1d1d1f',
+                            color: '#000000',
                             marginBottom: '12px',
                             fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                           }}>
@@ -708,7 +708,7 @@ const ConsultancySuccessStories = () => {
                           </h4>
                           <p style={{
                             fontSize: '17px',
-                            color: '#86868b',
+                            color: '#000000',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                             lineHeight: '1.47059',
                             fontWeight: '400'
@@ -724,7 +724,7 @@ const ConsultancySuccessStories = () => {
                       <h4 style={{
                         fontSize: '20px',
                         fontWeight: '600',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '16px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                       }}>
@@ -738,7 +738,7 @@ const ConsultancySuccessStories = () => {
                             gap: '12px',
                             marginBottom: '12px',
                             fontSize: '15px',
-                            color: '#86868b',
+                            color: '#000000',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                             lineHeight: '1.47059',
                             fontWeight: '400'
@@ -764,7 +764,7 @@ const ConsultancySuccessStories = () => {
                     }}>
                       <blockquote style={{
                         fontSize: '17px',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.47059',
                         fontStyle: 'italic',
@@ -788,7 +788,7 @@ const ConsultancySuccessStories = () => {
                           justifyContent: 'center',
                           fontSize: '16px',
                           fontWeight: '600',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                         }}>
                           {story.testimonial.name.split(' ').map(n => n[0]).join('')}
@@ -797,14 +797,14 @@ const ConsultancySuccessStories = () => {
                           <div style={{
                             fontSize: '15px',
                             fontWeight: '600',
-                            color: '#1d1d1f',
+                            color: '#000000',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                           }}>
                             {story.testimonial.name}
                           </div>
                           <div style={{
                             fontSize: '13px',
-                            color: '#86868b',
+                            color: '#000000',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                             fontWeight: '400'
                           }}>
@@ -824,7 +824,7 @@ const ConsultancySuccessStories = () => {
       {/* Apple Benefits Section */}
       <section style={{ 
         padding: '80px 0 60px 0', 
-        background: '#ffffff', 
+        background: '#ccebff', 
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -851,7 +851,7 @@ const ConsultancySuccessStories = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -861,7 +861,7 @@ const ConsultancySuccessStories = () => {
             </h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '650px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -895,7 +895,7 @@ const ConsultancySuccessStories = () => {
                 viewport={{ once: true, margin: "-50px" }}
               >
                 <div style={{
-                  background: '#ffffff',
+                  background: '#ccebff',
                   borderRadius: '22px',
                   padding: '32px',
                   height: '100%',
@@ -920,7 +920,7 @@ const ConsultancySuccessStories = () => {
                     {React.cloneElement(benefit.icon, { 
                       sx: { 
                         fontSize: 32, 
-                        color: '#ffffff',
+                        color: '#ccebff',
                         filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
                       } 
                     })}
@@ -929,7 +929,7 @@ const ConsultancySuccessStories = () => {
                   <h3 style={{
                     fontSize: '24px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '16px',
                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                     lineHeight: '1.16667',
@@ -940,7 +940,7 @@ const ConsultancySuccessStories = () => {
                   
                   <p style={{
                     fontSize: '17px',
-                    color: '#86868b',
+                    color: '#000000',
                     marginBottom: '24px',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     lineHeight: '1.47059',
@@ -959,7 +959,7 @@ const ConsultancySuccessStories = () => {
 
       {/* Apple CTA Section */}
       <section style={{ 
-        background: '#1d1d1f', 
+        background: '#000000', 
         padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden'
@@ -995,7 +995,7 @@ const ConsultancySuccessStories = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               fontWeight: '600',
-              color: '#ffffff',
+              color: '#ccebff',
               marginBottom: '24px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.1'
@@ -1029,7 +1029,7 @@ const ConsultancySuccessStories = () => {
                     background: '#ff9500',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -1059,7 +1059,7 @@ const ConsultancySuccessStories = () => {
                     background: 'transparent',
                     border: '1px solid rgba(255, 255, 255, 0.28)',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -1092,7 +1092,7 @@ const ConsultancySuccessStories = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -1102,7 +1102,7 @@ const ConsultancySuccessStories = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1121,14 +1121,14 @@ const ConsultancySuccessStories = () => {
           }}>
             {[
               {
-                icon: <Business sx={{ fontSize: 48, color: '#ffffff' }} />,
+                icon: <Business sx={{ fontSize: 48, color: '#ccebff' }} />,
                 title: 'SME Success Stories',
                 description: 'Tailored migration solutions for small to medium enterprises',
                 link: '/success-stories/sme',
                 gradient: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)'
               },
               {
-                icon: <Groups sx={{ fontSize: 48, color: '#ffffff' }} />,
+                icon: <Groups sx={{ fontSize: 48, color: '#ccebff' }} />,
                 title: 'Enterprise Stories', 
                 description: 'Complex multi-country migrations for large organizations',
                 link: '/success-stories/large-enterprise',
@@ -1151,7 +1151,7 @@ const ConsultancySuccessStories = () => {
                   background: item.gradient,
                   borderRadius: '22px',
                   padding: '48px 32px',
-                  color: '#ffffff',
+                  color: '#ccebff',
                   position: 'relative',
                   overflow: 'hidden',
                   height: '320px',
@@ -1202,7 +1202,7 @@ const ConsultancySuccessStories = () => {
                     <h3 style={{
                       fontSize: '24px',
                       fontWeight: '600',
-                      color: '#ffffff',
+                      color: '#ccebff',
                       marginBottom: '16px',
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                       textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
@@ -1233,7 +1233,7 @@ const ConsultancySuccessStories = () => {
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.3)',
                         borderRadius: '20px',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         textDecoration: 'none',
                         fontSize: '17px',
                         fontWeight: '500',

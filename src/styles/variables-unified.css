@@ -78,42 +78,42 @@
      COLOR SYSTEM - WCAG AA COMPLIANT
      ============================================================================= */
   
-  /* Primary Colors - High Contrast */
-  --color-primary: #6b3e91;
-  --color-primary-rgb: 107, 62, 145;
-  --color-primary-container: #f0d1ff;
-  --color-on-primary: #ffffff;
-  --color-on-primary-container: #1a0d2e;
+  /* Primary Colors - Top Sky Blue */
+  --color-primary: #00bfff;
+  --color-primary-rgb: 0, 191, 255;
+  --color-primary-container: #e6f7ff;
+  --color-on-primary: #000000;
+  --color-on-primary-container: #000000;
 
-  /* Secondary Colors */
-  --color-secondary: #605d62;
-  --color-secondary-rgb: 96, 93, 98;
-  --color-secondary-container: #e6e1e6;
-  --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #1c1b1f;
+  /* Secondary Colors - Light Sky Blue */
+  --color-secondary: #87ceeb;
+  --color-secondary-rgb: 135, 206, 235;
+  --color-secondary-container: #d6eeff;
+  --color-on-secondary: #000000;
+  --color-on-secondary-container: #000000;
 
-  /* Tertiary Colors */
-  --color-tertiary: #006972;
-  --color-tertiary-rgb: 0, 105, 114;
-  --color-tertiary-container: #9ef4ff;
-  --color-on-tertiary: #ffffff;
-  --color-on-tertiary-container: #001f24;
+  /* Tertiary Colors - Sky Blue Variants */
+  --color-tertiary: #5dade2;
+  --color-tertiary-rgb: 93, 173, 226;
+  --color-tertiary-container: #b8dff2;
+  --color-on-tertiary: #000000;
+  --color-on-tertiary-container: #000000;
 
-  /* Surface Colors */
-  --color-background: #fffbff;
-  --color-on-background: #1c1b1f;
-  --color-surface: #fffbff;
-  --color-surface-variant: #f4eff4;
-  --color-surface-container: #f0ebf0;
-  --color-surface-container-low: #faf5fa;
-  --color-surface-container-high: #ebe6eb;
-  --color-surface-container-highest: #e5e0e5;
-  --color-on-surface: #1c1b1f;
-  --color-on-surface-variant: #334155; /* FIXED: Improved from 3.8:1 to 7.2:1 contrast ratio */
+  /* Surface Colors - Sky Blue Tinted */
+  --color-background: #e6f7ff;
+  --color-on-background: #000000;
+  --color-surface: #f0f9ff;
+  --color-surface-variant: #ddeeff;
+  --color-surface-container: #ccebff;
+  --color-surface-container-low: #e6f7ff;
+  --color-surface-container-high: #b8dff2;
+  --color-surface-container-highest: #a3d5f0;
+  --color-on-surface: #000000;
+  --color-on-surface-variant: #000000;
 
-  /* Outline Colors */
-  --color-outline: #6b7280; /* FIXED: Better contrast for borders */
-  --color-outline-variant: #9ca3af;
+  /* Outline Colors - Sky Blue */
+  --color-outline: #87ceeb;
+  --color-outline-variant: #00bfff;
 
   /* State Colors - WCAG AA Compliant */
   --color-error: #dc2626; /* FIXED: Better contrast */
@@ -122,10 +122,14 @@
   --color-success-60: #16a34a; /* FIXED: Better contrast */
   --color-warning-60: #d97706; /* FIXED: Better contrast */
   
-  /* Additional accessible text colors */
-  --color-text-secondary: #374151; /* FIXED: 4.9:1 contrast ratio */
-  --color-text-muted: #4b5563; /* FIXED: 4.6:1 contrast ratio */
-  --color-text-placeholder: #6b7280; /* FIXED: 4.5:1 contrast ratio */
+  /* Additional accessible text colors - Black Theme */
+  --color-text-secondary: #000000; /* Black secondary text */
+  --color-text-muted: #333333; /* Dark gray muted text */
+  --color-text-placeholder: #666666; /* Gray placeholder text */
+  
+  /* Signature Gradient - Global Excellence */
+  --gradient-global-excellence: linear-gradient(90deg, #30d158 0%, #ff3b30 100%);
+  --gradient-sky-blue: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   
   /* Legacy compatibility - map old tokens to new system */
   --color-text-primary: var(--color-on-surface);

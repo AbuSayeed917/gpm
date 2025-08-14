@@ -458,7 +458,7 @@
   align-items: center;
   gap: var(--space-3);
   text-decoration: none;
-  background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 100%);
   color: white;
   border: none;
   box-shadow: 

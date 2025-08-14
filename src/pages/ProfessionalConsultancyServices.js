@@ -143,7 +143,7 @@ const ProfessionalConsultancyServices = () => {
     <AppleBackground variant="primary">
       {/* Apple Hero Section - Consultancy Theme */}
       <section style={{ 
-        background: '#1d1d1f',
+        background: '#000000',
         padding: 'max(60px, 10vh) 0 max(80px, 12vh) 0',
         position: 'relative',
         overflow: 'hidden',
@@ -287,7 +287,7 @@ const ProfessionalConsultancyServices = () => {
                     background: '#ff9500',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -399,7 +399,7 @@ const ProfessionalConsultancyServices = () => {
                 viewport={{ once: true }}
                 whileHover={{ y: -8, scale: 1.02 }}
                 style={{
-                  background: '#ffffff',
+                  background: '#ccebff',
                   borderRadius: '22px',
                   padding: '32px 24px',
                   textAlign: 'center',
@@ -423,7 +423,7 @@ const ProfessionalConsultancyServices = () => {
                 <div style={{
                   fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '8px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.1'
@@ -433,7 +433,7 @@ const ProfessionalConsultancyServices = () => {
                 <h3 style={{
                   fontSize: '18px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '8px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>
@@ -441,7 +441,7 @@ const ProfessionalConsultancyServices = () => {
                 </h3>
                 <p style={{
                   fontSize: '15px',
-                  color: '#86868b',
+                  color: '#000000',
                   margin: 0,
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>
@@ -454,7 +454,7 @@ const ProfessionalConsultancyServices = () => {
       </section>
 
       {/* Apple Features Section - Consultancy Theme */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ffffff', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
         {/* Header - Centered */}
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
           <motion.div
@@ -467,7 +467,7 @@ const ProfessionalConsultancyServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -478,7 +478,7 @@ const ProfessionalConsultancyServices = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -517,7 +517,7 @@ const ProfessionalConsultancyServices = () => {
                     background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -557,14 +557,14 @@ const ProfessionalConsultancyServices = () => {
                         margin: '0 auto 24px',
                         boxShadow: '0 8px 32px rgba(255, 149, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                       }}>
-                        {React.cloneElement(feature.icon, { sx: { fontSize: 32, color: '#ffffff' } })}
+                        {React.cloneElement(feature.icon, { sx: { fontSize: 32, color: '#ccebff' } })}
                       </div>
                       
                       {/* Typography */}
                       <h3 style={{
                         fontSize: '28px',
                         fontWeight: '700',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '12px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.07143',
@@ -594,7 +594,7 @@ const ProfessionalConsultancyServices = () => {
                     background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -628,7 +628,7 @@ const ProfessionalConsultancyServices = () => {
                       <h4 style={{
                         fontSize: '24px',
                         fontWeight: '700',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '32px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.16667',
@@ -687,7 +687,7 @@ const ProfessionalConsultancyServices = () => {
                           backdropFilter: 'blur(20px)',
                           border: '1px solid rgba(255, 255, 255, 0.3)',
                           borderRadius: '20px',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           textDecoration: 'none',
                           fontSize: '17px',
                           fontWeight: '500',
@@ -723,7 +723,7 @@ const ProfessionalConsultancyServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -734,7 +734,7 @@ const ProfessionalConsultancyServices = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -769,7 +769,7 @@ const ProfessionalConsultancyServices = () => {
               viewport={{ once: true, margin: "-50px" }}
               whileHover={{ y: -8, scale: 1.02 }}
               style={{
-                background: '#ffffff',
+                background: '#ccebff',
                 borderRadius: '24px',
                 padding: '40px 32px',
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1)',
@@ -801,7 +801,7 @@ const ProfessionalConsultancyServices = () => {
                 <h3 style={{
                   fontSize: '24px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   margin: 0,
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   flex: 1,
@@ -811,7 +811,7 @@ const ProfessionalConsultancyServices = () => {
                 </h3>
                 <div style={{
                   background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)',
-                  color: '#ffffff',
+                  color: '#ccebff',
                   padding: '8px 16px',
                   borderRadius: '12px',
                   fontSize: '13px',
@@ -827,7 +827,7 @@ const ProfessionalConsultancyServices = () => {
               {/* Description */}
               <p style={{
                 fontSize: '17px',
-                color: '#86868b',
+                color: '#000000',
                 marginBottom: '24px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.47059',
@@ -841,7 +841,7 @@ const ProfessionalConsultancyServices = () => {
                 <h4 style={{
                   fontSize: '18px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '16px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>
@@ -860,7 +860,7 @@ const ProfessionalConsultancyServices = () => {
                         alignItems: 'flex-start',
                         gap: '12px',
                         fontSize: '15px',
-                        color: '#424245',
+                        color: '#000000',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.4'
                       }}
@@ -910,7 +910,7 @@ const ProfessionalConsultancyServices = () => {
                       background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)',
                       border: 'none',
                       borderRadius: '20px',
-                      color: '#ffffff',
+                      color: '#ccebff',
                       textDecoration: 'none',
                       fontSize: '16px',
                       fontWeight: '500',
@@ -931,7 +931,7 @@ const ProfessionalConsultancyServices = () => {
       </section>
 
       {/* Apple Process Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ffffff', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -943,7 +943,7 @@ const ProfessionalConsultancyServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -953,7 +953,7 @@ const ProfessionalConsultancyServices = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -986,7 +986,7 @@ const ProfessionalConsultancyServices = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ y: -8, scale: 1.02 }}
                 style={{
-                  background: '#ffffff',
+                  background: '#ccebff',
                   borderRadius: '22px',
                   padding: '32px 24px',
                   textAlign: 'center',
@@ -1013,7 +1013,7 @@ const ProfessionalConsultancyServices = () => {
                   <span style={{
                     fontSize: '24px',
                     fontWeight: '600',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                   }}>
                     {index + 1}
@@ -1024,7 +1024,7 @@ const ProfessionalConsultancyServices = () => {
                 <h3 style={{
                   fontSize: '24px',
                   fontWeight: '600',
-                  color: '#1d1d1f',
+                  color: '#000000',
                   marginBottom: '12px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>
@@ -1125,7 +1125,7 @@ const ProfessionalConsultancyServices = () => {
               <h2 style={{
                 fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                 fontWeight: '600',
-                color: '#1d1d1f',
+                color: '#000000',
                 marginBottom: '32px',
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.08349',
@@ -1175,7 +1175,7 @@ const ProfessionalConsultancyServices = () => {
                       <h4 style={{
                         fontSize: '18px',
                         fontWeight: '600',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '8px',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                       }}>
@@ -1183,7 +1183,7 @@ const ProfessionalConsultancyServices = () => {
                       </h4>
                       <p style={{
                         fontSize: '16px',
-                        color: '#86868b',
+                        color: '#000000',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.4',
                         margin: 0
@@ -1213,7 +1213,7 @@ const ProfessionalConsultancyServices = () => {
                   background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)',
                   borderRadius: '24px',
                   padding: '40px 32px',
-                  color: '#ffffff',
+                  color: '#ccebff',
                   position: 'relative',
                   overflow: 'hidden',
                   minHeight: '400px',
@@ -1238,7 +1238,7 @@ const ProfessionalConsultancyServices = () => {
                   <h3 style={{
                     fontSize: '24px',
                     fontWeight: '600',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     marginBottom: '24px',
                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                     textAlign: 'center'
@@ -1280,7 +1280,7 @@ const ProfessionalConsultancyServices = () => {
                         justifyContent: 'center',
                         fontSize: '20px',
                         fontWeight: '600',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                       }}
                     >
@@ -1290,7 +1290,7 @@ const ProfessionalConsultancyServices = () => {
                       <h4 style={{
                         fontSize: '17px',
                         fontWeight: '600',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '4px',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                       }}>
@@ -1324,7 +1324,7 @@ const ProfessionalConsultancyServices = () => {
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.3)',
                         borderRadius: '20px',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         textDecoration: 'none',
                         fontSize: '16px',
                         fontWeight: '500',
@@ -1348,7 +1348,7 @@ const ProfessionalConsultancyServices = () => {
 
       {/* Apple CTA Section */}
       <section style={{ 
-        background: '#1d1d1f', 
+        background: '#000000', 
         padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden'
@@ -1384,7 +1384,7 @@ const ProfessionalConsultancyServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               fontWeight: '600',
-              color: '#ffffff',
+              color: '#ccebff',
               marginBottom: '24px',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
               lineHeight: '1.1'
@@ -1417,7 +1417,7 @@ const ProfessionalConsultancyServices = () => {
                     background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -1448,7 +1448,7 @@ const ProfessionalConsultancyServices = () => {
                     background: 'transparent',
                     border: '1px solid rgba(255, 255, 255, 0.28)',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',

@@ -442,7 +442,7 @@
 }
 
 .apple-hero-accent {
-  background: linear-gradient(135deg, #007AFF 0%, #5856D6 50%, #FF2D92 100%);
+  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 50%, #4fc3f7 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1387,7 +1387,7 @@
 }
 
 .apple-cta-accent {
-  background: linear-gradient(135deg, #007AFF 0%, #5856D6 50%, #FF2D92 100%);
+  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 50%, #4fc3f7 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

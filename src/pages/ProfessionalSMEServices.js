@@ -101,7 +101,7 @@ const ProfessionalSMEServices = () => {
     <AppleBackground variant="primary">
       {/* Apple Hero Section - 100% Authentic */}
       <section style={{ 
-        background: '#1d1d1f',
+        background: '#000000',
         padding: 'max(60px, 10vh) 0 max(80px, 12vh) 0',
         position: 'relative',
         overflow: 'hidden',
@@ -246,7 +246,7 @@ const ProfessionalSMEServices = () => {
                     background: '#007aff',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -348,7 +348,7 @@ const ProfessionalSMEServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -359,7 +359,7 @@ const ProfessionalSMEServices = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -398,7 +398,7 @@ const ProfessionalSMEServices = () => {
                     background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -444,7 +444,7 @@ const ProfessionalSMEServices = () => {
                           justifyContent: 'center',
                           fontSize: '20px',
                           fontWeight: '700',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           boxShadow: '0 8px 32px rgba(0, 122, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                           position: 'relative',
@@ -479,7 +479,7 @@ const ProfessionalSMEServices = () => {
                           justifyContent: 'center',
                           fontSize: '24px',
                           fontWeight: '700',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           boxShadow: '0 8px 32px rgba(0, 122, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                           letterSpacing: '-0.01em'
@@ -492,7 +492,7 @@ const ProfessionalSMEServices = () => {
                       <h3 style={{
                         fontSize: '28px',
                         fontWeight: '700',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '12px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.07143',
@@ -522,7 +522,7 @@ const ProfessionalSMEServices = () => {
                     background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -556,7 +556,7 @@ const ProfessionalSMEServices = () => {
                       <h4 style={{
                         fontSize: '24px',
                         fontWeight: '700',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '32px',
                         textAlign: 'center',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -625,7 +625,7 @@ const ProfessionalSMEServices = () => {
                     background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -668,7 +668,7 @@ const ProfessionalSMEServices = () => {
                           justifyContent: 'center',
                           fontSize: '16px',
                           fontWeight: '700',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           boxShadow: '0 8px 32px rgba(48, 209, 88, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                           letterSpacing: '-0.01em'
@@ -695,7 +695,7 @@ const ProfessionalSMEServices = () => {
                           justifyContent: 'center',
                           fontSize: '18px',
                           fontWeight: '700',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           boxShadow: '0 8px 32px rgba(48, 209, 88, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                           letterSpacing: '-0.01em'
@@ -707,7 +707,7 @@ const ProfessionalSMEServices = () => {
                       <h3 style={{
                         fontSize: '28px',
                         fontWeight: '700',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '12px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.07143',
@@ -737,7 +737,7 @@ const ProfessionalSMEServices = () => {
                     background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -761,7 +761,7 @@ const ProfessionalSMEServices = () => {
                       <h4 style={{
                         fontSize: '24px',
                         fontWeight: '700',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '32px',
                         textAlign: 'center',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -830,7 +830,7 @@ const ProfessionalSMEServices = () => {
                     background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -873,7 +873,7 @@ const ProfessionalSMEServices = () => {
                           justifyContent: 'center',
                           fontSize: '16px',
                           fontWeight: '700',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           boxShadow: '0 8px 32px rgba(255, 59, 48, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                           letterSpacing: '-0.01em'
@@ -900,7 +900,7 @@ const ProfessionalSMEServices = () => {
                           justifyContent: 'center',
                           fontSize: '16px',
                           fontWeight: '700',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           boxShadow: '0 8px 32px rgba(255, 59, 48, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                           letterSpacing: '-0.01em'
@@ -912,7 +912,7 @@ const ProfessionalSMEServices = () => {
                       <h3 style={{
                         fontSize: '28px',
                         fontWeight: '700',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '12px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.07143',
@@ -942,7 +942,7 @@ const ProfessionalSMEServices = () => {
                     background: 'linear-gradient(135deg, #ff3b30 0%, #ff9500 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -966,7 +966,7 @@ const ProfessionalSMEServices = () => {
                       <h4 style={{
                         fontSize: '24px',
                         fontWeight: '700',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '32px',
                         textAlign: 'center',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1035,7 +1035,7 @@ const ProfessionalSMEServices = () => {
                     background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -1078,7 +1078,7 @@ const ProfessionalSMEServices = () => {
                           justifyContent: 'center',
                           fontSize: '16px',
                           fontWeight: '700',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           boxShadow: '0 8px 32px rgba(88, 86, 214, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                           letterSpacing: '-0.01em'
@@ -1105,7 +1105,7 @@ const ProfessionalSMEServices = () => {
                           justifyContent: 'center',
                           fontSize: '16px',
                           fontWeight: '700',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           boxShadow: '0 8px 32px rgba(88, 86, 214, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                           letterSpacing: '-0.01em'
@@ -1117,7 +1117,7 @@ const ProfessionalSMEServices = () => {
                       <h3 style={{
                         fontSize: '28px',
                         fontWeight: '700',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '12px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.07143',
@@ -1147,7 +1147,7 @@ const ProfessionalSMEServices = () => {
                     background: 'linear-gradient(135deg, #5856d6 0%, #af52de 100%)',
                     borderRadius: '22px',
                     padding: '48px 32px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
                     height: '440px',
@@ -1171,7 +1171,7 @@ const ProfessionalSMEServices = () => {
                       <h4 style={{
                         fontSize: '24px',
                         fontWeight: '700',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         marginBottom: '32px',
                         textAlign: 'center',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1228,7 +1228,7 @@ const ProfessionalSMEServices = () => {
       {/* Apple "Why SMEs Choose Us" Section - Authentic Apple Design */}
       <section style={{ 
         padding: '80px 0 60px 0', 
-        background: '#ffffff', 
+        background: '#ccebff', 
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -1255,7 +1255,7 @@ const ProfessionalSMEServices = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -1265,7 +1265,7 @@ const ProfessionalSMEServices = () => {
             </h2>
             <p style={{
               fontSize: '21px',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '650px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1301,7 +1301,7 @@ const ProfessionalSMEServices = () => {
                 <AppleFlipCard
                   frontContent={
                     <div style={{
-                      background: '#ffffff',
+                      background: '#ccebff',
                       borderRadius: '22px',
                       padding: '32px',
                       height: '100%',
@@ -1326,7 +1326,7 @@ const ProfessionalSMEServices = () => {
                         {React.cloneElement(feature.icon, { 
                           sx: { 
                             fontSize: 32, 
-                            color: '#ffffff',
+                            color: '#ccebff',
                             filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
                           } 
                         })}
@@ -1335,7 +1335,7 @@ const ProfessionalSMEServices = () => {
                       <h3 style={{
                         fontSize: '24px',
                         fontWeight: '600',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         marginBottom: '16px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.16667',
@@ -1346,7 +1346,7 @@ const ProfessionalSMEServices = () => {
                       
                       <p style={{
                         fontSize: '17px',
-                        color: '#86868b',
+                        color: '#000000',
                         marginBottom: '24px',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.47059',
@@ -1384,7 +1384,7 @@ const ProfessionalSMEServices = () => {
                       background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                       borderRadius: '22px',
                       padding: '32px',
-                      color: '#ffffff',
+                      color: '#ccebff',
                       height: '100%',
                       display: 'flex',
                       flexDirection: 'column',
@@ -1423,7 +1423,7 @@ const ProfessionalSMEServices = () => {
                           {React.cloneElement(feature.icon, { 
                             sx: { 
                               fontSize: 32, 
-                              color: '#ffffff',
+                              color: '#ccebff',
                               filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
                             } 
                           })}
@@ -1432,7 +1432,7 @@ const ProfessionalSMEServices = () => {
                         <h3 style={{
                           fontSize: '24px',
                           fontWeight: '600',
-                          color: '#ffffff',
+                          color: '#ccebff',
                           marginBottom: '20px',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                           textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
@@ -1486,7 +1486,7 @@ const ProfessionalSMEServices = () => {
                             backdropFilter: 'blur(20px)',
                             border: '1px solid rgba(255, 255, 255, 0.3)',
                             borderRadius: '20px',
-                            color: '#ffffff',
+                            color: '#ccebff',
                             textDecoration: 'none',
                             fontSize: '17px',
                             fontWeight: '500',
@@ -1510,7 +1510,7 @@ const ProfessionalSMEServices = () => {
 
 
       {/* Apple Process Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ffffff', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
         <div className="container" style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -1522,7 +1522,7 @@ const ProfessionalSMEServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '600',
-              color: '#1d1d1f',
+              color: '#000000',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -1532,7 +1532,7 @@ const ProfessionalSMEServices = () => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#86868b',
+              color: '#000000',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1591,7 +1591,7 @@ const ProfessionalSMEServices = () => {
                   <span style={{
                     fontSize: '1.5rem',
                     fontWeight: '600',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                   }}>
                     {step.step}
@@ -1620,7 +1620,7 @@ const ProfessionalSMEServices = () => {
                   transition={{ duration: 0.3 }}
                   style={{
                     flex: 1,
-                    background: '#ffffff',
+                    background: '#ccebff',
                     borderRadius: '18px',
                     padding: '32px 40px',
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
@@ -1653,7 +1653,7 @@ const ProfessionalSMEServices = () => {
                       <h3 style={{
                         fontSize: '1.5rem',
                         fontWeight: '600',
-                        color: '#1d1d1f',
+                        color: '#000000',
                         margin: 0,
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                       }}>
@@ -1662,7 +1662,7 @@ const ProfessionalSMEServices = () => {
                       
                       <div style={{
                         background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         padding: '6px 16px',
                         borderRadius: '12px',
                         fontSize: '12px',
@@ -1679,7 +1679,7 @@ const ProfessionalSMEServices = () => {
                     <p style={{
                       fontSize: '1rem',
                       lineHeight: '1.6',
-                      color: '#86868b',
+                      color: '#000000',
                       margin: 0,
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                     }}>
@@ -1714,7 +1714,7 @@ const ProfessionalSMEServices = () => {
                       </div>
                       <span style={{
                         fontSize: '12px',
-                        color: '#86868b',
+                        color: '#000000',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                         fontWeight: '500'
                       }}>
@@ -1730,7 +1730,7 @@ const ProfessionalSMEServices = () => {
       </section>
 
       {/* Apple Success Story Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ffffff' }}>
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff' }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1754,7 +1754,7 @@ const ProfessionalSMEServices = () => {
               <h2 style={{
                 fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                 fontWeight: '600',
-                color: '#1d1d1f',
+                color: '#000000',
                 marginBottom: '24px',
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.08349',
@@ -1766,7 +1766,7 @@ const ProfessionalSMEServices = () => {
               <blockquote style={{
                 fontSize: '1.25rem',
                 fontStyle: 'italic',
-                color: '#424245',
+                color: '#000000',
                 marginBottom: '32px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.4705882353',
@@ -1807,7 +1807,7 @@ const ProfessionalSMEServices = () => {
                     justifyContent: 'center',
                     fontSize: '24px',
                     fontWeight: '600',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                   }}
                 >
@@ -1817,7 +1817,7 @@ const ProfessionalSMEServices = () => {
                   <h4 style={{
                     fontSize: '17px',
                     fontWeight: '600',
-                    color: '#1d1d1f',
+                    color: '#000000',
                     marginBottom: '4px',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                   }}>
@@ -1825,7 +1825,7 @@ const ProfessionalSMEServices = () => {
                   </h4>
                   <p style={{
                     fontSize: '15px',
-                    color: '#86868b',
+                    color: '#000000',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     fontWeight: '400'
                   }}>
@@ -1883,7 +1883,7 @@ const ProfessionalSMEServices = () => {
                   background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
                   borderRadius: '20px',
                   padding: '40px 32px',
-                  color: '#ffffff',
+                  color: '#ccebff',
                   position: 'relative',
                   overflow: 'hidden',
                   minHeight: '400px',
@@ -1912,11 +1912,11 @@ const ProfessionalSMEServices = () => {
                     gap: '16px',
                     marginBottom: '32px'
                   }}>
-                    <Assessment sx={{ fontSize: 40, color: '#ffffff', opacity: 0.9 }} />
+                    <Assessment sx={{ fontSize: 40, color: '#ccebff', opacity: 0.9 }} />
                     <h3 style={{
                       fontSize: '1.75rem',
                       fontWeight: '600',
-                      color: '#ffffff',
+                      color: '#ccebff',
                       margin: 0,
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                     }}>
@@ -1947,7 +1947,7 @@ const ProfessionalSMEServices = () => {
                       <div style={{
                         fontSize: '2.5rem',
                         fontWeight: '600',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         marginBottom: '8px'
                       }}>
@@ -1979,7 +1979,7 @@ const ProfessionalSMEServices = () => {
                       <div style={{
                         fontSize: '2.5rem',
                         fontWeight: '600',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         marginBottom: '8px'
                       }}>
@@ -2011,7 +2011,7 @@ const ProfessionalSMEServices = () => {
                       <div style={{
                         fontSize: '2.5rem',
                         fontWeight: '600',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         marginBottom: '8px'
                       }}>
@@ -2043,7 +2043,7 @@ const ProfessionalSMEServices = () => {
                       <div style={{
                         fontSize: '2.5rem',
                         fontWeight: '600',
-                        color: '#ffffff',
+                        color: '#ccebff',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         marginBottom: '8px'
                       }}>
@@ -2068,7 +2068,7 @@ const ProfessionalSMEServices = () => {
 
       {/* Apple CTA Section */}
       <section style={{ 
-        background: '#1d1d1f', 
+        background: '#000000', 
         padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden'
@@ -2104,7 +2104,7 @@ const ProfessionalSMEServices = () => {
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               fontWeight: '600',
-              color: '#ffffff',
+              color: '#ccebff',
               marginBottom: '24px',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
               lineHeight: '1.1'
@@ -2138,7 +2138,7 @@ const ProfessionalSMEServices = () => {
                     background: '#007aff',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -2168,7 +2168,7 @@ const ProfessionalSMEServices = () => {
                     background: 'transparent',
                     border: '1px solid rgba(255, 255, 255, 0.28)',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',

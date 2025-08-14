@@ -28,7 +28,7 @@
 
 /* Enhanced Apple-style buttons */
 .apple-button-primary {
-  background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 100%);
   border-radius: 12px;
   padding: 16px 32px;
   border: none;
@@ -105,7 +105,7 @@ html {
 /* Apple-style focus states */
 .apple-button-primary:focus,
 .apple-card-enhanced:focus {
-  outline: 2px solid #007AFF;
+  outline: 2px solid #87ceeb;
   outline-offset: 4px;
 }
 
