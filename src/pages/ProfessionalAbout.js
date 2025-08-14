@@ -99,35 +99,25 @@ const ProfessionalAbout = () => {
     <AppleBackground variant="primary">
       {/* Apple Hero Section - 100% Authentic */}
       <section style={{ 
-        background: 'linear-gradient(135deg, #f8f6ff 0%, #e8f4f8 50%, #f0f8ff 100%)',
-        padding: '60px 0 40px 0',
+        background: '#F5F5F7',
+        padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden',
         minHeight: 'auto',
         display: 'flex',
         alignItems: 'center'
       }}>
-        {/* Apple-style ambient lighting - Enhanced */}
+        {/* Apple-style ambient lighting */}
         <div style={{
           position: 'absolute',
-          top: '15%',
-          right: '5%',
-          width: '60%',
-          height: '60%',
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 65%)',
-          filter: 'blur(120px)',
-          opacity: 0.6,
-          pointerEvents: 'none'
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '10%',
-          left: '-10%',
-          width: '50%',
-          height: '50%',
-          background: 'radial-gradient(circle, rgba(129, 140, 248, 0.08) 0%, transparent 65%)',
-          filter: 'blur(100px)',
-          opacity: 0.4,
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '80%',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.05) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(80px)',
           pointerEvents: 'none'
         }} />
         
@@ -154,7 +144,7 @@ const ProfessionalAbout = () => {
               style={{
                 fontSize: '17px',
                 fontWeight: '600',
-                color: '#a855f7',
+                color: '#007AFF',
                 marginBottom: '16px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 letterSpacing: '-0.022em',
@@ -168,9 +158,9 @@ const ProfessionalAbout = () => {
             {/* Apple-style hero title */}
             <motion.h1 
               style={{
-                fontSize: 'clamp(32px, 5vw, 56px)',
+                fontSize: 'clamp(48px, 5vw, 64px)',
                 fontWeight: '600',
-                color: '#4c1d95',
+                color: '#1d1d1f',
                 marginBottom: '20px',
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.1',
@@ -184,7 +174,7 @@ const ProfessionalAbout = () => {
               Payroll migration.
               <br />
               <span style={{ 
-                background: 'linear-gradient(90deg, #a855f7 0%, #ec4899 100%)', 
+                background: 'linear-gradient(90deg, #007AFF 0%, #5AC8FA 100%)', 
                 backgroundClip: 'text', 
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
@@ -242,7 +232,7 @@ const ProfessionalAbout = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '14px 28px',
-                    background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
+                    background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
                     border: 'none',
                     borderRadius: '980px',
                     color: '#ffffff',
@@ -254,7 +244,7 @@ const ProfessionalAbout = () => {
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
                     userSelect: 'none',
-                    boxShadow: '0 4px 20px rgba(168, 85, 247, 0.3)'
+                    boxShadow: '0 4px 20px rgba(0, 122, 255, 0.3)'
                   }}
                 >
                   Get started
@@ -277,7 +267,7 @@ const ProfessionalAbout = () => {
                     padding: '14px 8px',
                     background: 'transparent',
                     border: 'none',
-                    color: '#a855f7',
+                    color: '#007AFF',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '16px',
@@ -323,7 +313,7 @@ const ProfessionalAbout = () => {
                   width: '8px',
                   height: '8px',
                   borderRadius: '50%',
-                  background: '#d8b4fe',
+                  background: '#007AFF',
                   opacity: 0.6
                 }}
               />
@@ -333,42 +323,16 @@ const ProfessionalAbout = () => {
       </section>
 
       {/* Apple About Section */}
-      <section style={{ padding: '80px 0 60px 0', background: 'linear-gradient(180deg, #fefcff 0%, #f8fafc 100%)', position: 'relative' }}>
-        {/* Apple-style background pattern */}
+      <section style={{ padding: '80px 0 60px 0', background: '#FFFFFF', position: 'relative' }}>
+        {/* Apple-style subtle background */}
         <div style={{
           position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: 'radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.03) 0%, transparent 50%), radial-gradient(circle at 40% 60%, rgba(129, 140, 248, 0.02) 0%, transparent 50%)',
+          backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(0, 122, 255, 0.02) 0%, transparent 50%)',
           pointerEvents: 'none'
-        }} />
-        
-        {/* Floating geometric shapes - Apple style */}
-        <div style={{
-          position: 'absolute',
-          top: '15%',
-          left: '10%',
-          width: '120px',
-          height: '120px',
-          background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(236, 72, 153, 0.04))',
-          borderRadius: '30px',
-          transform: 'rotate(15deg)',
-          filter: 'blur(1px)',
-          opacity: 0.6
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '20%',
-          right: '15%',
-          width: '80px',
-          height: '80px',
-          background: 'linear-gradient(135deg, rgba(129, 140, 248, 0.06), rgba(168, 85, 247, 0.03))',
-          borderRadius: '20px',
-          transform: 'rotate(-20deg)',
-          filter: 'blur(1px)',
-          opacity: 0.5
         }} />
         
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px', position: 'relative', zIndex: 1 }}>
@@ -447,231 +411,91 @@ const ProfessionalAbout = () => {
             }} />
 
             <div style={{ position: 'relative', zIndex: 1 }}>
-              {/* Dynamic Opening Question */}
               <p style={{
                 fontSize: '19px',
                 lineHeight: '1.6',
                 color: '#1d1d1f',
-                marginBottom: '32px',
+                marginBottom: '30px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                fontWeight: '500'
+                fontWeight: '400'
               }}>
                 Every payroll migration is a{' '}
-                <span style={{ 
-                  background: 'linear-gradient(90deg, #dc2626 0%, #ef4444 100%)', 
-                  backgroundClip: 'text', 
-                  WebkitBackgroundClip: 'text', 
-                  WebkitTextFillColor: 'transparent',
+                <strong style={{ 
+                  color: '#1d1d1f',
                   fontWeight: '600'
                 }}>
                   high-stakes event
-                </span>
-                {' '}— and mistakes can cost you{' '}
-                <span style={{
-                  color: '#dc2626',
-                  fontWeight: '600'
-                }}>
-                  compliance penalties
-                </span>
-                ,{' '}
-                <span style={{
-                  color: '#dc2626',
-                  fontWeight: '600'
-                }}>
-                  employee trust
-                </span>
-                , and{' '}
-                <span style={{
-                  color: '#dc2626',
-                  fontWeight: '600'
-                }}>
-                  sleepless nights
-                </span>
-                .
+                </strong>
+                {' '}— and mistakes can cost you compliance penalties, employee trust, and sleepless nights.
               </p>
               
-              {/* Solution Statement */}
               <p style={{
                 fontSize: '19px',
                 lineHeight: '1.6',
                 color: '#1d1d1f',
-                marginBottom: '32px',
+                marginBottom: '30px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 fontWeight: '400'
               }}>
                 At GlobalPayrollMigration.com, we{' '}
-                <span style={{ 
-                  background: 'linear-gradient(90deg, #a855f7 0%, #ec4899 100%)', 
-                  backgroundClip: 'text', 
-                  WebkitBackgroundClip: 'text', 
-                  WebkitTextFillColor: 'transparent',
+                <strong style={{ 
+                  color: '#007AFF',
                   fontWeight: '600'
                 }}>
                   remove that risk entirely
-                </span>
-                . Our expert UK-based team takes{' '}
-                <span style={{
-                  color: '#7c3aed',
-                  fontWeight: '600'
-                }}>
-                  full ownership
-                </span>
-                {' '}of your migration, from{' '}
-                <span style={{
-                  padding: '2px 6px',
-                  background: 'rgba(168, 85, 247, 0.1)',
-                  borderRadius: '4px',
-                  fontSize: '18px',
-                  fontWeight: '500'
-                }}>
-                  cleansing and validating your data
-                </span>
-                {' '}to{' '}
-                <span style={{
-                  padding: '2px 6px',
-                  background: 'rgba(168, 85, 247, 0.1)',
-                  borderRadius: '4px',
-                  fontSize: '18px',
-                  fontWeight: '500'
-                }}>
-                  configuring statutory rules
-                </span>
-                ,{' '}
-                <span style={{
-                  padding: '2px 6px',
-                  background: 'rgba(168, 85, 247, 0.1)',
-                  borderRadius: '4px',
-                  fontSize: '18px',
-                  fontWeight: '500'
-                }}>
-                  running test cycles
-                </span>
-                , and{' '}
-                <span style={{
-                  padding: '2px 6px',
-                  background: 'rgba(168, 85, 247, 0.1)',
-                  borderRadius: '4px',
-                  fontSize: '18px',
-                  fontWeight: '500'
-                }}>
-                  guiding you through go-live
-                </span>
-                .
+                </strong>
+                . Our expert UK-based team takes full ownership of your migration, from cleansing and validating your data to configuring statutory rules, running test cycles, reconciling results, and guiding you through go-live.
               </p>
               
-              {/* Promise Statement */}
               <p style={{
                 fontSize: '19px',
                 lineHeight: '1.6',
                 color: '#1d1d1f',
-                marginBottom: '32px',
+                marginBottom: '30px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 fontWeight: '400'
               }}>
-                Whether you're moving to{' '}
-                <span style={{
-                  color: '#7c3aed',
-                  fontWeight: '600'
-                }}>
-                  Dayforce
-                </span>
-                ,{' '}
-                <span style={{
-                  color: '#7c3aed',
-                  fontWeight: '600'
-                }}>
-                  Workday
-                </span>
-                ,{' '}
-                <span style={{
-                  color: '#7c3aed',
-                  fontWeight: '600'
-                }}>
-                  ADP
-                </span>
-                , or another payroll platform, we deliver an{' '}
-                <span style={{ 
-                  background: 'linear-gradient(90deg, #16a34a 0%, #22c55e 100%)', 
-                  backgroundClip: 'text', 
-                  WebkitBackgroundClip: 'text', 
-                  WebkitTextFillColor: 'transparent',
+                Whether you're moving to Dayforce, Workday, ADP, or another payroll platform, we deliver an{' '}
+                <strong style={{ 
+                  color: '#1d1d1f',
                   fontWeight: '600'
                 }}>
                   audit-ready, compliant, and disruption-free
-                </span>
+                </strong>
                 {' '}transition — so your people get paid{' '}
-                <span style={{
-                  background: 'linear-gradient(90deg, #16a34a 0%, #22c55e 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  fontWeight: '700'
+                <strong style={{
+                  color: '#1d1d1f',
+                  fontWeight: '600'
                 }}>
                   right, on time, every time
-                </span>
+                </strong>
                 .
               </p>
               
-              {/* Credibility Statement */}
-              <div style={{
-                padding: '24px',
-                background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(236, 72, 153, 0.03))',
-                borderRadius: '16px',
-                border: '1px solid rgba(168, 85, 247, 0.1)',
-                position: 'relative',
-                overflow: 'hidden'
+              <p style={{
+                fontSize: '19px',
+                lineHeight: '1.6',
+                color: '#1d1d1f',
+                margin: '0',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                fontWeight: '400'
               }}>
-                {/* Subtle pattern overlay */}
-                <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  backgroundImage: 'radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.03) 0%, transparent 50%)',
-                  opacity: 0.6
-                }} />
-                
-                <p style={{
-                  fontSize: '19px',
-                  lineHeight: '1.6',
-                  color: '#1d1d1f',
-                  margin: '0',
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                  fontWeight: '400',
-                  position: 'relative',
-                  zIndex: 1
+                We've successfully migrated payrolls for SMEs and multinationals across every sector, tailoring our approach to your size, structure, and strategic goals. With a proven track record of{' '}
+                <strong style={{ 
+                  color: '#007AFF',
+                  fontWeight: '600'
                 }}>
-                  We've successfully migrated payrolls for{' '}
-                  <span style={{
-                    color: '#7c3aed',
-                    fontWeight: '600'
-                  }}>
-                    SMEs and multinationals
-                  </span>
-                  {' '}across every sector, tailoring our approach to your size, structure, and strategic goals. With a proven track record of{' '}
-                  <span style={{ 
-                    background: 'linear-gradient(90deg, #16a34a 0%, #22c55e 100%)', 
-                    backgroundClip: 'text', 
-                    WebkitBackgroundClip: 'text', 
-                    WebkitTextFillColor: 'transparent',
-                    fontWeight: '700'
-                  }}>
-                    zero compliance failures
-                  </span>
-                  , we make payroll migration not just stress-free — but a{' '}
-                  <span style={{ 
-                    background: 'linear-gradient(90deg, #a855f7 0%, #ec4899 100%)', 
-                    backgroundClip: 'text', 
-                    WebkitBackgroundClip: 'text', 
-                    WebkitTextFillColor: 'transparent',
-                    fontWeight: '700'
-                  }}>
-                    competitive advantage
-                  </span>
-                  .
-                </p>
-              </div>
+                  zero compliance failures
+                </strong>
+                , we make payroll migration not just stress-free — but a{' '}
+                <strong style={{ 
+                  color: '#1d1d1f',
+                  fontWeight: '600'
+                }}>
+                  competitive advantage
+                </strong>
+                .
+              </p>
             </div>
           </motion.div>
         </motion.div>
@@ -684,40 +508,6 @@ const ProfessionalAbout = () => {
         position: 'relative',
         overflow: 'hidden'
       }}>
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(ellipse 100% 40% at 50% 0%, rgba(168, 85, 247, 0.04), transparent)',
-          pointerEvents: 'none'
-        }} />
-        
-        {/* Apple-style decorative dots pattern */}
-        <div style={{
-          position: 'absolute',
-          top: '20%',
-          left: '15%',
-          width: '4px',
-          height: '4px',
-          background: 'rgba(168, 85, 247, 0.2)',
-          borderRadius: '50%',
-          boxShadow: '20px 20px 0 rgba(236, 72, 153, 0.15), 40px 0px 0 rgba(129, 140, 248, 0.1), 0px 40px 0 rgba(168, 85, 247, 0.1)',
-          animation: 'pulse-glow 4s ease-in-out infinite'
-        }} />
-        
-        <div style={{
-          position: 'absolute',
-          bottom: '25%',
-          right: '20%',
-          width: '3px',
-          height: '3px',
-          background: 'rgba(236, 72, 153, 0.2)',
-          borderRadius: '50%',
-          boxShadow: '15px 15px 0 rgba(168, 85, 247, 0.15), 30px 0px 0 rgba(129, 140, 248, 0.1)',
-          animation: 'pulse-glow 5s ease-in-out infinite reverse'
-        }} />
 
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
           <motion.div
@@ -810,7 +600,7 @@ const ProfessionalAbout = () => {
                       width: '72px',
                       height: '72px',
                       borderRadius: '22px',
-                      background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
+                      background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -862,7 +652,7 @@ const ProfessionalAbout = () => {
                         padding: '8px 16px',
                         borderRadius: '20px',
                         background: 'rgba(168, 85, 247, 0.1)',
-                        color: '#a855f7',
+                        color: '#007AFF',
                         fontSize: '15px',
                         fontWeight: '500',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
@@ -876,7 +666,7 @@ const ProfessionalAbout = () => {
                 
                 backContent={
                   <div style={{
-                    background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
+                    background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
                     borderRadius: '22px',
                     padding: '32px',
                     color: '#ffffff',
@@ -1002,7 +792,7 @@ const ProfessionalAbout = () => {
       {/* Apple Team Section */}
       <section style={{ 
         padding: '80px 0 60px 0', 
-        background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #fbbf24 100%)', 
+        background: '#F5F5F7', 
         position: 'relative' 
       }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
@@ -1016,18 +806,17 @@ const ProfessionalAbout = () => {
             <h2 style={{
               fontSize: 'clamp(40px, 5vw, 56px)',
               fontWeight: '600',
-              color: '#ffffff',
+              color: '#1d1d1f',
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
-              letterSpacing: '-0.009em',
-              textShadow: '0 2px 20px rgba(0, 0, 0, 0.3)'
+              letterSpacing: '-0.009em'
             }}>
               Meet our team.
             </h2>
             <p style={{
               fontSize: '21px',
-              color: 'rgba(255, 255, 255, 0.9)',
+              color: '#86868b',
               maxWidth: '95%',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1065,7 +854,7 @@ const ProfessionalAbout = () => {
                   }}
                   transition={{ duration: 0.3 }}
                   style={{
-                    background: 'linear-gradient(135deg, #ffffff 0%, #fbfbfd 100%)',
+                    background: '#ffffff',
                     borderRadius: '22px',
                     padding: '40px 32px',
                     color: '#1d1d1f',
@@ -1076,7 +865,7 @@ const ProfessionalAbout = () => {
                     backdropFilter: 'saturate(180%) blur(20px)',
                     position: 'relative',
                     overflow: 'hidden',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)'
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
                   }}
                 >
                   <div style={{
@@ -1102,7 +891,7 @@ const ProfessionalAbout = () => {
                     
                     <p style={{
                       fontSize: '16px',
-                      color: '#a855f7',
+                      color: '#007AFF',
                       fontWeight: '500',
                       marginBottom: '8px',
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
@@ -1144,7 +933,7 @@ const ProfessionalAbout = () => {
                           <span
                             key={sIndex}
                             style={{
-                              background: index % 2 === 0 ? '#a855f7' : '#f59e0b',
+                              background: '#007AFF',
                               color: '#ffffff',
                               padding: '6px 12px',
                               borderRadius: '12px',
@@ -1168,45 +957,6 @@ const ProfessionalAbout = () => {
 
       {/* Apple Global Reach Section */}
       <section style={{ padding: '80px 0 60px 0', background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
-        {/* Apple-style mesh background */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundImage: `
-            linear-gradient(90deg, rgba(168, 85, 247, 0.02) 1px, transparent 1px),
-            linear-gradient(rgba(168, 85, 247, 0.02) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-          opacity: 0.3,
-          pointerEvents: 'none'
-        }} />
-        
-        {/* Floating circles - Apple's signature style */}
-        <div style={{
-          position: 'absolute',
-          top: '10%',
-          right: '5%',
-          width: '200px',
-          height: '200px',
-          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.06) 0%, transparent 70%)',
-          borderRadius: '50%',
-          filter: 'blur(60px)',
-          animation: 'float 6s ease-in-out infinite'
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '15%',
-          left: '8%',
-          width: '150px',
-          height: '150px',
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%)',
-          borderRadius: '50%',
-          filter: 'blur(40px)',
-          animation: 'float 8s ease-in-out infinite reverse'
-        }} />
         
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', position: 'relative', zIndex: 1 }}>
           <motion.div
@@ -1292,29 +1042,21 @@ const ProfessionalAbout = () => {
 
       {/* Apple CTA Section */}
       <section style={{ 
-        background: 'linear-gradient(135deg, #312e81 0%, #553c9a 50%, #7c3aed 100%)', 
+        background: '#1d1d1f', 
         padding: '100px 0',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Elements */}
+        {/* Apple-style subtle background */}
         <div style={{
           position: 'absolute',
-          top: '20%',
-          left: '-10%',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%)',
-          filter: 'blur(100px)'
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '20%',
-          right: '-10%',
-          width: '500px',
-          height: '500px',
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%)',
-          filter: 'blur(100px)'
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '60%',
+          height: '400px',
+          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 70%)',
+          filter: 'blur(80px)'
         }} />
         
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
@@ -1360,7 +1102,7 @@ const ProfessionalAbout = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '18px 36px',
-                    background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
+                    background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
                     border: 'none',
                     borderRadius: '980px',
                     color: '#ffffff',
@@ -1372,7 +1114,7 @@ const ProfessionalAbout = () => {
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
                     userSelect: 'none',
-                    boxShadow: '0 8px 32px rgba(168, 85, 247, 0.4)'
+                    boxShadow: '0 8px 32px rgba(0, 122, 255, 0.4)'
                   }}
                 >
                   Book a Free Discovery Call

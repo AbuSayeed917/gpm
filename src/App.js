@@ -4,9 +4,8 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import AppleNavigation from './components/AppleNavigation';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import ProfessionalHome from './pages/ProfessionalHome2025';
-import Services from './pages/Services2025';
-import ProfessionalSuccessStories from './pages/ProfessionalSuccessStories';
 import ProfessionalAbout from './pages/ProfessionalAbout';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
@@ -28,16 +27,15 @@ function App() {
         <div className="app-container surface min-h-screen">
           <a href="#main-content" className="skip-link">Skip to main content</a>
           <Router>
+            <ScrollToTop />
             <div className="flex flex-col min-h-screen">
               <AppleNavigation />
               <main id="main-content" className="flex-1 w-full">
                 <Routes>
                   <Route path="/" element={<ProfessionalHome />} />
-                  <Route path="/services" element={<Services />} />
                   <Route path="/services/sme" element={<ProfessionalSMEServices />} />
                   <Route path="/services/large-enterprise" element={<ProfessionalLargeEnterpriseServices />} />
                   <Route path="/services/consultancy" element={<ProfessionalConsultancyServices />} />
-                  <Route path="/success-stories" element={<ProfessionalSuccessStories />} />
                   <Route path="/success-stories/sme" element={<SMESuccessStories />} />
                   <Route path="/success-stories/large-enterprise" element={<LargeEnterpriseSuccessStories />} />
                   <Route path="/success-stories/consultancy" element={<ConsultancySuccessStories />} />

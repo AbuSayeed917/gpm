@@ -237,7 +237,7 @@ const ProfessionalSMEServices = () => {
                 transition={{ duration: 0.2 }}
               >
                 <Link 
-                  to="/contact" 
+                  to="/quote" 
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -1475,7 +1475,7 @@ const ProfessionalSMEServices = () => {
                         
                         {/* Apple Button */}
                         <Link 
-                          to="/contact"
+                          to="/quote"
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
@@ -2129,7 +2129,7 @@ const ProfessionalSMEServices = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Link 
-                  to="/contact" 
+                  to="/quote" 
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',

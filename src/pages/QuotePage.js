@@ -1,17 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import {
-  Grid,
-  Typography,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  TextField,
-  Box,
-  Chip
-} from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
+// Custom Apple-style form components - no Material-UI needed
 import {
   Business,
   CorporateFare,
@@ -21,6 +11,7 @@ import {
   ArrowBack,
   ArrowForward
 } from '@mui/icons-material';
+import AppleBackground from '../components/AppleBackground';
 
 const QuotePage = () => {
   const location = useLocation();
@@ -59,21 +50,24 @@ const QuotePage = () => {
     // Additional Details
     timeline: '',
     budget: '',
-    additionalRequirements: ''
+    additionalRequirements: '',
+    customMigrationType: ''
   });
 
   const serviceConfig = {
     sme: {
       title: 'SME Payroll Migration Quote',
-      icon: <Business sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
-      gradient: 'linear-gradient(135deg, var(--color-primary-40) 0%, var(--color-tertiary-40) 100%)',
+      icon: <Business sx={{ fontSize: 40, color: '#5DADE2' }} />,
+      gradient: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
       description: 'Get a tailored quote for your small to medium enterprise payroll migration',
       migrationOptions: [
-        'Xero Payroll Migration',
-        'QuickBooks to Xero Migration',
-        'Any-to-Any Payroll Migration',
-        'BrightPay Integration',
-        'IRIS Integration'
+        'Sage to Xero Migration',
+        'QuickBooks to Xero Migration', 
+        'BrightPay to Xero Migration',
+        'IRIS to Xero Migration',
+        'Excel/Manual to Payroll System',
+        'Legacy System Migration',
+        'Other'
       ],
       industries: [
         'Technology',
@@ -93,15 +87,18 @@ const QuotePage = () => {
     },
     'large-enterprise': {
       title: 'Enterprise Payroll Migration Quote',
-      icon: <CorporateFare sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
-      gradient: 'linear-gradient(135deg, var(--color-primary-40) 0%, var(--color-tertiary-40) 100%)',
+      icon: <CorporateFare sx={{ fontSize: 40, color: '#5DADE2' }} />,
+      gradient: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
       description: 'Enterprise-grade payroll migration solutions for large organizations',
       migrationOptions: [
-        'SAP Payroll Migration',
-        'Workday Integration',
-        'Oracle HCM Cloud Migration',
-        'Global Payroll Consolidation',
-        'Multi-Country Implementation'
+        'SAP to Workday Migration',
+        'ADP to Dayforce Migration',
+        'Oracle HCM to CloudPay Migration',
+        'Legacy to SAP SuccessFactors',
+        'Multi-Country Payroll Consolidation',
+        'Global Payroll Platform Migration',
+        'On-Premise to Cloud Migration',
+        'Other'
       ],
       industries: [
         'Financial Services',
@@ -122,15 +119,18 @@ const QuotePage = () => {
     },
     consultancy: {
       title: 'Consultancy Partnership Quote',
-      icon: <Groups sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
-      gradient: 'linear-gradient(135deg, var(--color-primary-40) 0%, var(--color-tertiary-40) 100%)',
+      icon: <Groups sx={{ fontSize: 40, color: '#5DADE2' }} />,
+      gradient: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
       description: 'Partnership opportunities for consulting firms and professional services',
       migrationOptions: [
-        'White-label Migration Services',
-        'Strategic Advisory Partnership',
-        'Joint Venture Opportunities',
-        'Training & Certification',
-        'Custom Solutions Development'
+        'Payroll System Assessment',
+        'Migration Strategy Consulting',
+        'Compliance Review & Audit',
+        'System Selection Advisory',
+        'Process Optimization',
+        'Staff Training & Support',
+        'Post-Migration Support',
+        'Other'
       ],
       industries: [
         'Management Consulting',
@@ -150,7 +150,7 @@ const QuotePage = () => {
     }
   };
 
-  const currentConfig = serviceConfig[serviceType];
+  const currentConfig = serviceConfig[formData.serviceCategory];
   
   const steps = [
     'Service Details',
@@ -216,51 +216,257 @@ const QuotePage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Grid container spacing={4}>
-              <Grid item xs={12}>
-                <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 3 }}>
+            <div style={{ maxWidth: '100%' }}>
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ 
+                  fontSize: '28px',
+                  fontWeight: '700',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                  letterSpacing: '-0.02em'
+                }}>
                   Service Selection
-                </Typography>
-                <FormControl fullWidth sx={{ mb: 4 }}>
-                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Migration Type</InputLabel>
-                  <Select
-                    value={formData.targetSystem}
-                    onChange={(e) => handleInputChange('targetSystem', e.target.value)}
-                    label="Migration Type"
-                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
+                </h3>
+              </div>
+              
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: '1fr', 
+                gap: '24px',
+                marginBottom: '32px'
+              }}>
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Service Type *
+                  </label>
+                  <select
+                    value={formData.serviceCategory}
+                    onChange={(e) => {
+                      const newServiceType = e.target.value;
+                      handleInputChange('serviceCategory', newServiceType);
+                      window.history.replaceState({}, '', `/quote?type=${newServiceType}`);
+                      handleInputChange('targetSystem', '');
+                    }}
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
                   >
+                    <option value="sme">SME Payroll Migration</option>
+                    <option value="large-enterprise">Large Enterprise Solutions</option>
+                    <option value="consultancy">Payroll Consultancy</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Migration Type *
+                  </label>
+                  <select
+                    value={formData.targetSystem}
+                    onChange={(e) => {
+                      handleInputChange('targetSystem', e.target.value);
+                      if (e.target.value !== 'Other') {
+                        handleInputChange('customMigrationType', '');
+                      }
+                    }}
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  >
+                    <option value="">Select migration type</option>
                     {currentConfig.migrationOptions.map(option => (
-                      <MenuItem key={option} value={option} sx={{ py: 1.5, fontSize: '1rem' }}>{option}</MenuItem>
+                      <option key={option} value={option}>{option}</option>
                     ))}
-                  </Select>
-                </FormControl>
+                  </select>
+                </div>
                 
-                <TextField
-                  fullWidth
-                  label="Current Payroll System"
-                  value={formData.currentSystem}
-                  onChange={(e) => handleInputChange('currentSystem', e.target.value)}
-                  sx={{ mb: 4, '& .MuiInputBase-root': { minHeight: '56px' } }}
-                  placeholder="e.g., Legacy system, Excel, Current provider"
-                  InputLabelProps={{ sx: { fontSize: '1.1rem', fontWeight: 500 } }}
-                />
+                {formData.targetSystem === 'Other' && (
+                  <div>
+                    <label style={{
+                      display: 'block',
+                      fontSize: '15px',
+                      fontWeight: '600',
+                      color: '#1d1d1f',
+                      marginBottom: '8px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                    }}>
+                      Please specify migration type *
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.customMigrationType}
+                      onChange={(e) => handleInputChange('customMigrationType', e.target.value)}
+                      required={formData.targetSystem === 'Other'}
+                      style={{
+                        width: '100%',
+                        height: '56px',
+                        padding: '16px 20px',
+                        border: '1px solid rgba(173, 216, 230, 0.3)',
+                        borderRadius: '16px',
+                        fontSize: '17px',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        backdropFilter: 'blur(10px)',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        outline: 'none',
+                        boxSizing: 'border-box'
+                      }}
+                      placeholder="e.g., Custom system to Workday, Internal tool to SAP, etc."
+                      onFocus={(e) => {
+                        e.target.style.borderColor = '#87CEEB';
+                        e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                        e.target.style.boxShadow = 'none';
+                      }}
+                    />
+                  </div>
+                )}
                 
-                <FormControl fullWidth sx={{ mb: 4 }}>
-                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Migration Urgency</InputLabel>
-                  <Select
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Current Payroll System
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.currentSystem}
+                    onChange={(e) => handleInputChange('currentSystem', e.target.value)}
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                    placeholder="e.g., Legacy system, Excel, Current provider"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+                
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Migration Urgency
+                  </label>
+                  <select
                     value={formData.migrationUrgency}
                     onChange={(e) => handleInputChange('migrationUrgency', e.target.value)}
-                    label="Migration Urgency"
-                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
                   >
-                    <MenuItem value="immediate" sx={{ py: 1.5, fontSize: '1rem' }}>Immediate (within 1 month)</MenuItem>
-                    <MenuItem value="soon" sx={{ py: 1.5, fontSize: '1rem' }}>Soon (1-3 months)</MenuItem>
-                    <MenuItem value="planned" sx={{ py: 1.5, fontSize: '1rem' }}>Planned (3-6 months)</MenuItem>
-                    <MenuItem value="future" sx={{ py: 1.5, fontSize: '1rem' }}>Future consideration (6+ months)</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-            </Grid>
+                    <option value="">Select migration urgency</option>
+                    <option value="immediate">Immediate (within 1 month)</option>
+                    <option value="soon">Soon (1-3 months)</option>
+                    <option value="planned">Planned (3-6 months)</option>
+                    <option value="future">Future consideration (6+ months)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </motion.div>
         );
       
@@ -271,77 +477,214 @@ const QuotePage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Grid container spacing={4}>
-              <Grid item xs={12}>
-                <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 4, fontSize: '1.5rem' }}>
+            <div style={{ maxWidth: '100%' }}>
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ 
+                  fontSize: '28px',
+                  fontWeight: '700',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                  letterSpacing: '-0.02em'
+                }}>
                   Company Information
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 4, color: 'var(--color-on-surface-variant)' }}>
+                </h3>
+                <p style={{ 
+                  fontSize: '17px',
+                  color: '#6e6e73',
+                  lineHeight: '1.47',
+                  marginBottom: '0',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                }}>
                   Please provide your company details to help us tailor the perfect migration solution for your needs.
-                </Typography>
-              </Grid>
+                </p>
+              </div>
               
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label="Company Name"
-                  value={formData.companyName}
-                  onChange={(e) => handleInputChange('companyName', e.target.value)}
-                  required
-                  sx={{ '& .MuiInputBase-root': { minHeight: '56px' } }}
-                  InputLabelProps={{ sx: { fontSize: '1.1rem', fontWeight: 500 } }}
-                />
-              </Grid>
-              
-              <Grid item xs={12} md={6}>
-                <FormControl fullWidth>
-                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Industry Sector</InputLabel>
-                  <Select
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+                gap: '24px',
+                marginBottom: '32px'
+              }}>
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Company Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.companyName}
+                    onChange={(e) => handleInputChange('companyName', e.target.value)}
+                    required
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                    placeholder="Enter your company name"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Industry Sector
+                  </label>
+                  <select
                     value={formData.industry}
                     onChange={(e) => handleInputChange('industry', e.target.value)}
-                    label="Industry Sector"
-                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
                   >
+                    <option value="">Select industry sector</option>
                     {currentConfig.industries.map(industry => (
-                      <MenuItem key={industry} value={industry} sx={{ py: 1.5, fontSize: '1rem' }}>{industry}</MenuItem>
+                      <option key={industry} value={industry}>{industry}</option>
                     ))}
-                  </Select>
-                </FormControl>
-              </Grid>
-              
-              <Grid item xs={12} md={6}>
-                <FormControl fullWidth>
-                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Company Size (Employees)</InputLabel>
-                  <Select
+                  </select>
+                </div>
+                
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Company Size (Employees)
+                  </label>
+                  <select
                     value={formData.employeeCount}
                     onChange={(e) => handleInputChange('employeeCount', e.target.value)}
-                    label="Company Size (Employees)"
-                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
                   >
+                    <option value="">Select company size</option>
                     {currentConfig.employeeRanges.map(range => (
-                      <MenuItem key={range} value={range} sx={{ py: 1.5, fontSize: '1rem' }}>{range}</MenuItem>
+                      <option key={range} value={range}>{range}</option>
                     ))}
-                  </Select>
-                </FormControl>
-              </Grid>
-              
-              <Grid item xs={12} md={6}>
-                <FormControl fullWidth>
-                  <InputLabel sx={{ fontSize: '1.1rem', fontWeight: 500 }}>Expected Data Volume</InputLabel>
-                  <Select
+                  </select>
+                </div>
+                
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Expected Data Volume
+                  </label>
+                  <select
                     value={formData.dataVolume}
                     onChange={(e) => handleInputChange('dataVolume', e.target.value)}
-                    label="Expected Data Volume"
-                    sx={{ minHeight: '56px', '& .MuiSelect-select': { py: 2 } }}
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
                   >
-                    <MenuItem value="small" sx={{ py: 1.5, fontSize: '1rem' }}>Small (&lt; 1GB)</MenuItem>
-                    <MenuItem value="medium" sx={{ py: 1.5, fontSize: '1rem' }}>Medium (1-10GB)</MenuItem>
-                    <MenuItem value="large" sx={{ py: 1.5, fontSize: '1rem' }}>Large (10-100GB)</MenuItem>
-                    <MenuItem value="enterprise" sx={{ py: 1.5, fontSize: '1rem' }}>Enterprise (100GB+)</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-            </Grid>
+                    <option value="">Select expected data volume</option>
+                    <option value="small">Small (&lt; 1GB)</option>
+                    <option value="medium">Medium (1-10GB)</option>
+                    <option value="large">Large (10-100GB)</option>
+                    <option value="enterprise">Enterprise (100GB+)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </motion.div>
         );
       
@@ -352,57 +695,164 @@ const QuotePage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 3 }}>
-              Technical Requirements
-            </Typography>
-            
-            <Typography variant="subtitle1" gutterBottom sx={{ mb: 2, fontWeight: 600 }}>
-              Migration Scope (select all that apply)
-            </Typography>
-            <Box sx={{ mb: 3 }}>
-              {[
-                'Employee Data Migration',
-                'Historical Payroll Data',
-                'Tax Information',
-                'Benefits Integration',
-                'Time Tracking Integration',
-                'Reporting Setup',
-                'Custom Calculations',
-                'Multi-Currency Support'
-              ].map(scope => (
-                <Chip
-                  key={scope}
-                  label={scope}
-                  onClick={() => handleArrayFieldChange('migrationScope', scope)}
-                  color={formData.migrationScope.includes(scope) ? 'primary' : 'default'}
-                  variant={formData.migrationScope.includes(scope) ? 'filled' : 'outlined'}
-                  sx={{ mr: 1, mb: 1, cursor: 'pointer' }}
-                />
-              ))}
-            </Box>
-            
-            <Typography variant="subtitle1" gutterBottom sx={{ mb: 2, fontWeight: 600 }}>
-              Compliance Requirements
-            </Typography>
-            <Box sx={{ mb: 3 }}>
-              {[
-                'GDPR Compliance',
-                'SOX Compliance',
-                'ISO 27001',
-                'Local Tax Regulations',
-                'Industry-Specific Requirements',
-                'Data Residency Requirements'
-              ].map(compliance => (
-                <Chip
-                  key={compliance}
-                  label={compliance}
-                  onClick={() => handleArrayFieldChange('complianceRequirements', compliance)}
-                  color={formData.complianceRequirements.includes(compliance) ? 'secondary' : 'default'}
-                  variant={formData.complianceRequirements.includes(compliance) ? 'filled' : 'outlined'}
-                  sx={{ mr: 1, mb: 1, cursor: 'pointer' }}
-                />
-              ))}
-            </Box>
+            <div style={{ maxWidth: '100%' }}>
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ 
+                  fontSize: '28px',
+                  fontWeight: '700',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                  letterSpacing: '-0.02em'
+                }}>
+                  Technical Requirements
+                </h3>
+              </div>
+              
+              <div style={{ marginBottom: '40px' }}>
+                <h4 style={{
+                  fontSize: '20px',
+                  fontWeight: '600',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                }}>
+                  Migration Scope
+                </h4>
+                <p style={{
+                  fontSize: '15px',
+                  color: '#6e6e73',
+                  marginBottom: '20px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                }}>
+                  Select all services that apply to your migration:
+                </p>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '12px'
+                }}>
+                  {[
+                    'Employee Data Migration',
+                    'Historical Payroll Data',
+                    'Tax Information',
+                    'Benefits Integration',
+                    'Time Tracking Integration',
+                    'Reporting Setup',
+                    'Custom Calculations',
+                    'Multi-Currency Support'
+                  ].map(scope => (
+                    <button
+                      key={scope}
+                      type="button"
+                      onClick={() => handleArrayFieldChange('migrationScope', scope)}
+                      style={{
+                        padding: '12px 20px',
+                        borderRadius: '20px',
+                        border: formData.migrationScope.includes(scope) 
+                          ? '2px solid #87CEEB'
+                          : '2px solid rgba(173, 216, 230, 0.4)',
+                        backgroundColor: formData.migrationScope.includes(scope)
+                          ? 'rgba(135, 206, 250, 0.1)'
+                          : 'rgba(255, 255, 255, 0.8)',
+                        color: formData.migrationScope.includes(scope) ? '#5DADE2' : '#1d1d1f',
+                        fontSize: '15px',
+                        fontWeight: '500',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        backdropFilter: 'blur(10px)'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!formData.migrationScope.includes(scope)) {
+                          e.target.style.borderColor = '#87CEEB';
+                          e.target.style.backgroundColor = 'rgba(135, 206, 250, 0.05)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!formData.migrationScope.includes(scope)) {
+                          e.target.style.borderColor = 'rgba(173, 216, 230, 0.4)';
+                          e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+                        }
+                      }}
+                    >
+                      {scope}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              <div style={{ marginBottom: '32px' }}>
+                <h4 style={{
+                  fontSize: '20px',
+                  fontWeight: '600',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                }}>
+                  Compliance Requirements
+                </h4>
+                <p style={{
+                  fontSize: '15px',
+                  color: '#6e6e73',
+                  marginBottom: '20px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                }}>
+                  Select all compliance requirements that apply:
+                </p>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '12px'
+                }}>
+                  {[
+                    'GDPR Compliance',
+                    'SOX Compliance',
+                    'ISO 27001',
+                    'Local Tax Regulations',
+                    'Industry-Specific Requirements',
+                    'Data Residency Requirements'
+                  ].map(compliance => (
+                    <button
+                      key={compliance}
+                      type="button"
+                      onClick={() => handleArrayFieldChange('complianceRequirements', compliance)}
+                      style={{
+                        padding: '12px 20px',
+                        borderRadius: '20px',
+                        border: formData.complianceRequirements.includes(compliance) 
+                          ? '2px solid #87CEEB'
+                          : '2px solid rgba(173, 216, 230, 0.4)',
+                        backgroundColor: formData.complianceRequirements.includes(compliance)
+                          ? 'rgba(135, 206, 250, 0.1)'
+                          : 'rgba(255, 255, 255, 0.8)',
+                        color: formData.complianceRequirements.includes(compliance) ? '#5DADE2' : '#1d1d1f',
+                        fontSize: '15px',
+                        fontWeight: '500',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        backdropFilter: 'blur(10px)'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!formData.complianceRequirements.includes(compliance)) {
+                          e.target.style.borderColor = '#87CEEB';
+                          e.target.style.backgroundColor = 'rgba(135, 206, 250, 0.05)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!formData.complianceRequirements.includes(compliance)) {
+                          e.target.style.borderColor = 'rgba(173, 216, 230, 0.4)';
+                          e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+                        }
+                      }}
+                    >
+                      {compliance}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
           </motion.div>
         );
       
@@ -413,99 +863,330 @@ const QuotePage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 3 }}>
+            <div style={{ maxWidth: '100%' }}>
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ 
+                  fontSize: '28px',
+                  fontWeight: '700',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                  letterSpacing: '-0.02em'
+                }}>
                   Contact Information & Timeline
-                </Typography>
-              </Grid>
+                </h3>
+              </div>
               
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label="Contact Name"
-                  value={formData.contactName}
-                  onChange={(e) => handleInputChange('contactName', e.target.value)}
-                  required
-                />
-              </Grid>
-              
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label="Job Title"
-                  value={formData.jobTitle}
-                  onChange={(e) => handleInputChange('jobTitle', e.target.value)}
-                />
-              </Grid>
-              
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label="Email Address"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
-                  required
-                />
-              </Grid>
-              
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label="Phone Number"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange('phone', e.target.value)}
-                />
-              </Grid>
-              
-              <Grid item xs={12} md={6}>
-                <FormControl fullWidth>
-                  <InputLabel>Preferred Timeline</InputLabel>
-                  <Select
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+                gap: '24px',
+                marginBottom: '32px'
+              }}>
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Contact Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.contactName}
+                    onChange={(e) => handleInputChange('contactName', e.target.value)}
+                    required
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                    placeholder="Enter your full name"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Job Title
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.jobTitle}
+                    onChange={(e) => handleInputChange('jobTitle', e.target.value)}
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                    placeholder="Enter your job title"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    required
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                    placeholder="Enter your email address"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                    placeholder="Enter your phone number"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Preferred Timeline
+                  </label>
+                  <select
                     value={formData.timeline}
                     onChange={(e) => handleInputChange('timeline', e.target.value)}
-                    label="Preferred Timeline"
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
                   >
-                    <MenuItem value="asap">ASAP</MenuItem>
-                    <MenuItem value="1-2months">1-2 months</MenuItem>
-                    <MenuItem value="3-6months">3-6 months</MenuItem>
-                    <MenuItem value="6-12months">6-12 months</MenuItem>
-                    <MenuItem value="flexible">Flexible</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              
-              <Grid item xs={12} md={6}>
-                <FormControl fullWidth>
-                  <InputLabel>Budget Range</InputLabel>
-                  <Select
+                    <option value="">Select preferred timeline</option>
+                    <option value="asap">ASAP</option>
+                    <option value="1-2months">1-2 months</option>
+                    <option value="3-6months">3-6 months</option>
+                    <option value="6-12months">6-12 months</option>
+                    <option value="flexible">Flexible</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#1d1d1f',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}>
+                    Budget Range
+                  </label>
+                  <select
                     value={formData.budget}
                     onChange={(e) => handleInputChange('budget', e.target.value)}
-                    label="Budget Range"
+                    style={{
+                      width: '100%',
+                      height: '56px',
+                      padding: '16px 20px',
+                      border: '1px solid rgba(173, 216, 230, 0.3)',
+                      borderRadius: '16px',
+                      fontSize: '17px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#87CEEB';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                      e.target.style.boxShadow = 'none';
+                    }}
                   >
-                    <MenuItem value="under-10k">Under £10,000</MenuItem>
-                    <MenuItem value="10k-25k">£10,000 - £25,000</MenuItem>
-                    <MenuItem value="25k-50k">£25,000 - £50,000</MenuItem>
-                    <MenuItem value="50k-100k">£50,000 - £100,000</MenuItem>
-                    <MenuItem value="100k-plus">£100,000+</MenuItem>
-                    <MenuItem value="discuss">Prefer to discuss</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  label="Additional Requirements"
-                  multiline
-                  rows={4}
+                    <option value="">Select budget range</option>
+                    <option value="under-10k">Under £10,000</option>
+                    <option value="10k-25k">£10,000 - £25,000</option>
+                    <option value="25k-50k">£25,000 - £50,000</option>
+                    <option value="50k-100k">£50,000 - £100,000</option>
+                    <option value="100k-plus">£100,000+</option>
+                    <option value="discuss">Prefer to discuss</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '24px' }}>
+                <label style={{
+                  display: 'block',
+                  fontSize: '15px',
+                  fontWeight: '600',
+                  color: '#1d1d1f',
+                  marginBottom: '8px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                }}>
+                  Additional Requirements
+                </label>
+                <textarea
                   value={formData.additionalRequirements}
                   onChange={(e) => handleInputChange('additionalRequirements', e.target.value)}
+                  rows={4}
+                  style={{
+                    width: '100%',
+                    padding: '16px 20px',
+                    border: '1px solid rgba(173, 216, 230, 0.3)',
+                    borderRadius: '16px',
+                    fontSize: '17px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    backdropFilter: 'blur(10px)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    outline: 'none',
+                    boxSizing: 'border-box',
+                    resize: 'vertical',
+                    minHeight: '120px'
+                  }}
                   placeholder="Please describe any specific requirements, challenges, or questions you have..."
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#87CEEB';
+                    e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                    e.target.style.boxShadow = 'none';
+                  }}
                 />
-              </Grid>
-            </Grid>
+              </div>
+            </div>
           </motion.div>
         );
       
@@ -516,183 +1197,517 @@ const QuotePage = () => {
 
   if (submitSuccess) {
     return (
-      <div className="surface min-h-screen py-16 md:py-20">
-        <div className="container max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="card p-8 md:p-12 text-center gradient-subtle">
-              <CheckCircleOutline sx={{ fontSize: 80, color: 'var(--color-success-60)', marginBottom: '24px' }} />
-              <h1 className="display-medium mb-6 text-on-surface">
-                Quote Request Submitted!
-              </h1>
-              <p className="headline-small text-on-surface-variant mb-8 max-w-lg mx-auto">
+      <AppleBackground variant="primary">
+        <section style={{ 
+          background: '#1d1d1f',
+          padding: '100px 0',
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          {/* Apple-style background */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '60%',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 70%)',
+            filter: 'blur(80px)'
+          }} />
+          
+          <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 22px', position: 'relative', zIndex: 1 }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              style={{ textAlign: 'center' }}
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 200 }}
+                style={{ marginBottom: '32px' }}
+              >
+                <CheckCircleOutline sx={{ fontSize: 80, color: '#34C759' }} />
+              </motion.div>
+              
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                style={{
+                  fontSize: 'clamp(48px, 6vw, 64px)',
+                  fontWeight: '600',
+                  color: '#ffffff',
+                  marginBottom: '24px',
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.015em'
+                }}
+              >
+                Request submitted.
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                style={{
+                  fontSize: '21px',
+                  color: 'rgba(255, 255, 255, 0.8)',
+                  marginBottom: '48px',
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  lineHeight: '1.381',
+                  maxWidth: '500px',
+                  margin: '0 auto 48px auto'
+                }}
+              >
                 Thank you for your interest. Our team will review your requirements 
                 and get back to you within 24 hours with a detailed quote.
-              </p>
-              <button
-                onClick={() => navigate('/')}
-                className="btn-gradient px-8 py-3"
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Return to Home
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+                <button
+                  onClick={() => navigate('/')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '16px 32px',
+                    background: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+                    border: 'none',
+                    borderRadius: '980px',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    fontWeight: '400',
+                    fontSize: '16px',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    userSelect: 'none',
+                    boxShadow: '0 8px 32px rgba(135, 206, 250, 0.4)'
+                  }}
+                >
+                  Return to Home
+                </button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+      </AppleBackground>
     );
   }
 
   return (
-    <div className="surface min-h-screen py-16 md:py-20">
-      <div className="container max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              {currentConfig.icon}
-              <h1 className="display-medium text-on-surface">
-                {currentConfig.title}
-              </h1>
-            </div>
-            <p className="headline-small text-on-surface-variant max-w-2xl mx-auto">
-              {currentConfig.description}
-            </p>
-          </div>
+    <>
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
+      
+    <AppleBackground variant="primary">
+      <section style={{ 
+        background: '#F5F5F7',
+        padding: '80px 0',
+        minHeight: '100vh',
+        position: 'relative'
+      }}>
+        {/* Apple-style ambient lighting */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '80%',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.05) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(80px)',
+          pointerEvents: 'none'
+        }} />
+        
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 22px', position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Apple Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              style={{ textAlign: 'center', marginBottom: '60px' }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '24px' }}>
+                {currentConfig.icon}
+                <h1 style={{
+                  fontSize: 'clamp(32px, 4vw, 48px)',
+                  fontWeight: '600',
+                  color: '#1d1d1f',
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.015em',
+                  margin: 0
+                }}>
+                  {currentConfig.title}
+                </h1>
+              </div>
+              <p style={{
+                fontSize: '21px',
+                color: '#86868b',
+                maxWidth: '600px',
+                margin: '0 auto',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.381',
+                letterSpacing: '.011em',
+                fontWeight: '400'
+              }}>
+                {currentConfig.description}
+              </p>
+            </motion.div>
 
-          {/* Progress Stepper */}
-          <div className="card p-8 mb-8" style={{ background: 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-container-low) 100%)' }}>
-            <div className="flex justify-between items-start mb-4">
-              {steps.map((label, index) => (
-                <div key={label} className="flex flex-col items-center flex-1 relative">
-                  <div 
-                    className={`w-12 h-12 rounded-full flex items-center justify-center text-base font-semibold mb-3 transition-all duration-300 shadow-sm ${
-                      index <= activeStep 
-                        ? 'text-white' 
-                        : 'text-on-surface-variant'
-                    }`}
-                    style={{
-                      background: index <= activeStep 
-                        ? 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)'
-                        : 'var(--color-surface-container)',
-                      transform: index === activeStep ? 'scale(1.1)' : 'scale(1)'
-                    }}
-                  >
-                    {index + 1}
-                  </div>
-                  <span className={`text-sm text-center font-medium px-2 ${
-                    index <= activeStep ? 'text-on-surface' : 'text-on-surface-variant'
-                  }`}>
-                    {label}
-                  </span>
-                  {index < steps.length - 1 && (
-                    <div 
-                      className={`absolute top-6 left-1/2 w-full h-1 rounded-full transition-all duration-500 ${
-                        index < activeStep ? '' : ''
-                      }`}
-                      style={{
-                        background: index < activeStep 
-                          ? 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%)'
-                          : 'var(--color-outline-variant)',
-                        transform: 'translateX(50%)',
-                        zIndex: -1
-                      }}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Form Content */}
-          <div className="card p-10 mb-10" style={{ background: 'var(--color-surface)', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
-            {renderStepContent(activeStep)}
-          </div>
-          
-          {/* Navigation Buttons */}
-          <div className="flex justify-between items-center mt-10 px-4">
-            <button
-              onClick={handleBack}
-              disabled={activeStep === 0}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 flex items-center gap-3 ${
-                activeStep === 0 
-                  ? 'invisible' 
-                  : 'bg-surface-container hover:bg-surface-container-high text-on-surface border border-outline-variant hover:shadow-md'
-              }`}
+            {/* Apple Progress Stepper */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               style={{
-                minWidth: '120px',
-                boxShadow: activeStep === 0 ? 'none' : '0 2px 8px rgba(0,0,0,0.1)'
+                background: '#ffffff',
+                borderRadius: '22px',
+                padding: '40px 32px',
+                marginBottom: '32px',
+                border: '1px solid rgba(0, 0, 0, 0.06)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                backdropFilter: 'saturate(180%) blur(20px)'
               }}
             >
-              <ArrowBack sx={{ fontSize: 20 }} />
-              <span>Back</span>
-            </button>
-            
-            {activeStep === steps.length - 1 ? (
-              <button
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-                className="px-8 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center gap-3 text-white shadow-lg hover:shadow-xl disabled:opacity-70"
-                style={{
-                  background: isSubmitting 
-                    ? 'var(--color-outline)' 
-                    : 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
-                  minWidth: '200px',
-                  transform: isSubmitting ? 'none' : 'scale(1.02)',
-                  boxShadow: '0 4px 16px rgba(107, 62, 145, 0.3)'
-                }}
-              >
-                {isSubmitting ? (
-                  <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Submitting...</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+                {steps.map((label, index) => (
+                  <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, position: 'relative' }}>
+                    <motion.div 
+                      animate={{ scale: index === activeStep ? 1.1 : 1 }}
+                      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '16px',
+                        fontWeight: '600',
+                        marginBottom: '12px',
+                        color: index <= activeStep ? '#ffffff' : '#86868b',
+                        background: index <= activeStep 
+                          ? 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)'
+                          : '#F5F5F7',
+                        boxShadow: index <= activeStep ? '0 4px 16px rgba(135, 206, 250, 0.4)' : 'none',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                      }}
+                    >
+                      {index + 1}
+                    </motion.div>
+                    <span style={{
+                      fontSize: '14px',
+                      textAlign: 'center',
+                      fontWeight: '500',
+                      padding: '0 8px',
+                      color: index <= activeStep ? '#1d1d1f' : '#86868b',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                    }}>
+                      {label}
+                    </span>
+                    {index < steps.length - 1 && (
+                      <div 
+                        style={{
+                          position: 'absolute',
+                          top: '24px',
+                          left: '50%',
+                          width: 'calc(100% - 48px)',
+                          height: '2px',
+                          borderRadius: '1px',
+                          background: index < activeStep 
+                            ? 'linear-gradient(90deg, #87CEEB 0%, #5DADE2 100%)'
+                            : 'rgba(0, 0, 0, 0.1)',
+                          transform: 'translateX(50%)',
+                          zIndex: -1,
+                          transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                      />
+                    )}
                   </div>
-                ) : (
-                  <>
-                    <span>Submit Quote Request</span>
-                    <Send sx={{ fontSize: 20 }} />
-                  </>
-                )}
-              </button>
-            ) : (
-              <button
-                onClick={handleNext}
-                className="px-8 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center gap-3 text-white hover:shadow-xl"
-                style={{
-                  background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
-                  minWidth: '140px',
-                  transform: 'scale(1.02)',
-                  boxShadow: '0 4px 16px rgba(107, 62, 145, 0.3)'
-                }}
-              >
-                <span>Next</span>
-                <ArrowForward sx={{ fontSize: 20 }} />
-              </button>
-            )}
-          </div>
+                ))}
+              </div>
+            </motion.div>
 
-          {/* Service Type Auto-Detection Alert */}
-          <div className="card p-4 mt-6 surface-container-low">
-            <p className="body-medium text-on-surface-variant">
-              Service type automatically detected: <span className="font-medium text-on-surface">{currentConfig.title}</span>
-              {' - '}
-              <button 
-                onClick={() => navigate('/services')}
-                className="text-primary hover:underline"
+            {/* Apple Form Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              style={{
+                background: '#ffffff',
+                borderRadius: '22px',
+                padding: '48px 40px',
+                marginBottom: '40px',
+                border: '1px solid rgba(0, 0, 0, 0.06)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                backdropFilter: 'saturate(180%) blur(20px)'
+              }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeStep}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                >
+                  {renderStepContent(activeStep)}
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+
+            {/* Not Sure? Discovery Call Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              style={{
+                marginTop: '48px',
+                marginBottom: '32px',
+                padding: '32px',
+                background: 'rgba(135, 206, 250, 0.08)',
+                borderRadius: '20px',
+                border: '1px solid rgba(135, 206, 250, 0.2)',
+                backdropFilter: 'blur(20px)',
+                textAlign: 'center'
+              }}
+            >
+              <div style={{
+                marginBottom: '20px'
+              }}>
+                <h4 style={{
+                  fontSize: '20px',
+                  fontWeight: '600',
+                  color: '#1d1d1f',
+                  marginBottom: '8px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+                }}>
+                  Not sure which option is right for you?
+                </h4>
+                <p style={{
+                  fontSize: '16px',
+                  color: '#6e6e73',
+                  margin: '0',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                  lineHeight: '1.47'
+                }}>
+                  Speak with our experts to find the perfect migration solution for your needs.
+                </p>
+              </div>
+              
+              <motion.div
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Change service type
-              </button>
-            </p>
-          </div>
-        </motion.div>
-      </div>
-    </div>
+                <button
+                  onClick={() => navigate('/contact')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '16px 28px',
+                    background: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+                    border: 'none',
+                    borderRadius: '24px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    boxShadow: '0 6px 20px rgba(135, 206, 250, 0.4)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.boxShadow = '0 8px 28px rgba(135, 206, 250, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.boxShadow = '0 6px 20px rgba(135, 206, 250, 0.4)';
+                  }}
+                >
+                  Book a Free Discovery Call
+                </button>
+              </motion.div>
+              
+              <p style={{
+                fontSize: '14px',
+                color: '#86868b',
+                margin: '12px 0 0 0',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+              }}>
+                15-minute consultation • No obligation • Expert guidance
+              </p>
+            </motion.div>
+          
+            {/* Apple Navigation Buttons */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '40px', padding: '0 16px' }}>
+              {activeStep === 0 ? (
+                <div style={{ width: '120px' }} />
+              ) : (
+                <motion.button
+                  onClick={handleBack}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '12px 24px',
+                    background: 'rgba(135, 206, 250, 0.08)',
+                    border: '2px solid rgba(135, 206, 250, 0.4)',
+                    borderRadius: '25px',
+                    color: '#5DADE2',
+                    textDecoration: 'none',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    minWidth: '120px'
+                  }}
+                >
+                  <ArrowBack sx={{ fontSize: 18 }} />
+                  <span>Back</span>
+                </motion.button>
+              )}
+              
+              {activeStep === steps.length - 1 ? (
+                <motion.button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  whileHover={!isSubmitting ? { scale: 1.05, y: -2 } : {}}
+                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '16px 32px',
+                    background: isSubmitting 
+                      ? '#86868b'
+                      : 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                    border: 'none',
+                    borderRadius: '980px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: isSubmitting ? 'default' : 'pointer',
+                    minWidth: '200px',
+                    boxShadow: isSubmitting ? 'none' : '0 8px 32px rgba(0, 122, 255, 0.4)',
+                    opacity: isSubmitting ? 0.7 : 1
+                  }}
+                >
+                  {isSubmitting ? (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div style={{
+                        width: '20px',
+                        height: '20px',
+                        border: '2px solid #ffffff',
+                        borderTop: '2px solid transparent',
+                        borderRadius: '50%',
+                        animation: 'spin 1s linear infinite'
+                      }}></div>
+                      <span>Submitting...</span>
+                    </div>
+                  ) : (
+                    <>
+                      <span>Submit Quote Request</span>
+                      <Send sx={{ fontSize: 18 }} />
+                    </>
+                  )}
+                </motion.button>
+              ) : (
+                <motion.button
+                  onClick={handleNext}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '16px 32px',
+                    background: 'linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%)',
+                    border: 'none',
+                    borderRadius: '980px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    minWidth: '140px',
+                    boxShadow: '0 8px 32px rgba(135, 206, 250, 0.4)'
+                  }}
+                >
+                  <span>Next</span>
+                  <ArrowForward sx={{ fontSize: 18 }} />
+                </motion.button>
+              )}
+            </div>
+
+            {/* Apple Service Type Alert */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              style={{
+                background: 'rgba(135, 206, 250, 0.08)',
+                borderRadius: '16px',
+                padding: '20px',
+                marginTop: '24px',
+                border: '1px solid rgba(135, 206, 250, 0.2)'
+              }}
+            >
+              <p style={{
+                fontSize: '15px',
+                color: '#86868b',
+                margin: 0,
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                textAlign: 'center'
+              }}>
+                Current service: <span style={{ fontWeight: '600', color: '#1d1d1f' }}>{currentConfig.title}</span>
+                {' — '}
+                You can change the service type in the form above if needed.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+    </AppleBackground>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   HelpOutline,
   ExpandMore,
@@ -14,6 +15,7 @@ import {
   Timeline,
   ArrowForward
 } from '@mui/icons-material';
+import AppleBackground from '../components/AppleBackground';
 
 
 const FAQ = () => {
@@ -142,228 +144,849 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="surface">
-      {/* Hero Section */}
-      <section className="py-20 lg:py-32 surface-container">
-        <div className="container">
-          <div className="text-center">
-            <div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-              style={{ backgroundColor: 'var(--color-primary-container)' }}
+    <>
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+      `}</style>
+      
+    <AppleBackground variant="primary">
+      {/* Apple Hero Section */}
+      <section style={{ 
+        background: '#F5F5F7',
+        padding: '80px 0 60px 0',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Apple-style ambient lighting */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '80%',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.05) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(80px)',
+          pointerEvents: 'none'
+        }} />
+        
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ textAlign: 'center', maxWidth: '95%', margin: '0 auto' }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 20px',
+                background: 'rgba(0, 122, 255, 0.1)',
+                borderRadius: '20px',
+                marginBottom: '24px',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(0, 122, 255, 0.2)'
+              }}
             >
-              <HelpOutline sx={{ fontSize: 20, color: 'var(--color-primary)' }} />
-              <span className="body-small font-medium text-primary">Expert Answers</span>
-            </div>
+              <HelpOutline sx={{ fontSize: 20, color: '#007AFF' }} />
+              <span style={{
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#007AFF',
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+              }}>Expert Answers</span>
+            </motion.div>
             
-            <h1 className="display-large mb-6 text-on-surface">
-              Frequently Asked Questions
-            </h1>
+            <motion.h1 
+              style={{
+                fontSize: 'clamp(48px, 5vw, 64px)',
+                fontWeight: '600',
+                color: '#1d1d1f',
+                marginBottom: '24px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.1',
+                letterSpacing: '-0.015em',
+                textAlign: 'center'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.0, delay: 0.2 }}
+            >
+              Frequently Asked
+              <br />
+              <span style={{ 
+                background: 'linear-gradient(90deg, #007AFF 0%, #5AC8FA 100%)', 
+                backgroundClip: 'text', 
+                WebkitBackgroundClip: 'text', 
+                WebkitTextFillColor: 'transparent',
+                display: 'inline-block'
+              }}>
+                Questions
+              </span>
+            </motion.h1>
             
-            <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
+            <motion.p 
+              style={{
+                fontSize: '18px',
+                color: '#6b7280',
+                marginBottom: '32px',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.5',
+                fontWeight: '400',
+                letterSpacing: '.011em',
+                maxWidth: '95%',
+                margin: '0 auto 32px auto',
+                textAlign: 'center'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.0, delay: 0.4 }}
+            >
               Everything you need to know about our payroll migration services, process, and approach. 
               Get clear answers from our experts who have successfully completed 500+ migrations.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Quick Stats */}
-      <section className="py-16 surface-variant">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="display-medium mb-4 text-on-surface">Quick Facts</h2>
-            <p className="body-large text-on-surface-variant">
+      {/* Apple Quick Stats */}
+      <section style={{ padding: '80px 0 60px 0', background: '#FFFFFF', position: 'relative' }}>
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: "-100px" }}
+            style={{ textAlign: 'center', marginBottom: '60px' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(40px, 5vw, 56px)',
+              fontWeight: '600',
+              color: '#1d1d1f',
+              marginBottom: '16px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.0625',
+              letterSpacing: '-0.009em'
+            }}>Quick facts.</h2>
+            <p style={{
+              fontSize: '21px',
+              color: '#86868b',
+              maxWidth: '95%',
+              margin: '0 auto',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              letterSpacing: '.011em',
+              fontWeight: '400'
+            }}>
               Key information about our payroll migration services
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-4 gap-6">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '24px',
+            width: '95%',
+            margin: '0 auto'
+          }}>
             {quickStats.map((stat, index) => (
-              <div key={index} className="card text-center p-6">
-                <div className="display-small mb-2 text-primary">{stat.value}</div>
-                <h3 className="title-medium mb-2 text-on-surface">{stat.label}</h3>
-                <p className="body-small text-on-surface-variant">{stat.description}</p>
-              </div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.1,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <motion.div
+                  whileHover={{
+                    y: -8,
+                    boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)'
+                  }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    background: '#ffffff',
+                    borderRadius: '22px',
+                    padding: '40px 32px',
+                    textAlign: 'center',
+                    border: '1px solid rgba(0, 0, 0, 0.06)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                    backdropFilter: 'saturate(180%) blur(20px)',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                >
+                  {/* Background decoration */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '-20%',
+                    right: '-20%',
+                    width: '200px',
+                    height: '200px',
+                    background: 'radial-gradient(circle, rgba(0, 122, 255, 0.04) 0%, transparent 70%)',
+                    filter: 'blur(40px)'
+                  }} />
+                  
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{
+                      fontSize: 'clamp(32px, 4vw, 48px)',
+                      fontWeight: '700',
+                      color: '#007AFF',
+                      marginBottom: '16px',
+                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                      lineHeight: '1.1'
+                    }}>{stat.value}</div>
+                    <h3 style={{
+                      fontSize: '20px',
+                      fontWeight: '600',
+                      color: '#1d1d1f',
+                      marginBottom: '12px',
+                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                    }}>{stat.label}</h3>
+                    <p style={{
+                      fontSize: '15px',
+                      color: '#86868b',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      lineHeight: '1.4',
+                      fontWeight: '400'
+                    }}>{stat.description}</p>
+                  </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className="py-20 surface">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="display-medium mb-6 text-on-surface">Why Choose Us</h2>
-            <p className="body-large text-on-surface-variant">
+      {/* Apple Key Features */}
+      <section style={{ padding: '80px 0 60px 0', background: '#F5F5F7', position: 'relative' }}>
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: "-100px" }}
+            style={{ textAlign: 'center', marginBottom: '60px' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(40px, 5vw, 56px)',
+              fontWeight: '600',
+              color: '#1d1d1f',
+              marginBottom: '16px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.0625',
+              letterSpacing: '-0.009em'
+            }}>Why choose us.</h2>
+            <p style={{
+              fontSize: '21px',
+              color: '#86868b',
+              maxWidth: '95%',
+              margin: '0 auto',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              letterSpacing: '.011em',
+              fontWeight: '400'
+            }}>
               Our expertise ensures successful payroll transformations
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-2 gap-8">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gap: '24px',
+            width: '95%',
+            margin: '0 auto'
+          }}>
             {keyFeatures.map((feature, index) => {
               const iconMap = {
-                speed: <Speed sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
-                security: <Security sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
-                support: <Support sx={{ fontSize: 40, color: 'var(--color-primary)' }} />,
-                analytics: <Analytics sx={{ fontSize: 40, color: 'var(--color-primary)' }} />
+                speed: <Speed sx={{ fontSize: 40, color: '#ffffff' }} />,
+                security: <Security sx={{ fontSize: 40, color: '#ffffff' }} />,
+                support: <Support sx={{ fontSize: 40, color: '#ffffff' }} />,
+                analytics: <Analytics sx={{ fontSize: 40, color: '#ffffff' }} />
               };
               return (
-                <div key={index} className="card p-6">
-                  <div className="flex items-start gap-6">
-                    <div 
-                      className="p-3 rounded-lg flex-shrink-0"
-                      style={{ backgroundColor: 'var(--color-primary-container)' }}
-                    >
-                      {iconMap[feature.type]}
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: index * 0.1,
+                    ease: [0.25, 0.46, 0.45, 0.94]
+                  }}
+                  viewport={{ once: true, margin: "-50px" }}
+                >
+                  <motion.div
+                    whileHover={{
+                      y: -8,
+                      boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)'
+                    }}
+                    transition={{ duration: 0.3 }}
+                    style={{
+                      background: '#ffffff',
+                      borderRadius: '22px',
+                      padding: '32px',
+                      border: '1px solid rgba(0, 0, 0, 0.06)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                      backdropFilter: 'saturate(180%) blur(20px)',
+                      position: 'relative',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    {/* Background decoration */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '-20%',
+                      right: '-20%',
+                      width: '200px',
+                      height: '200px',
+                      background: 'radial-gradient(circle, rgba(0, 122, 255, 0.04) 0%, transparent 70%)',
+                      filter: 'blur(40px)'
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '24px' }}>
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          borderRadius: '22px',
+                          background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                          boxShadow: '0 8px 32px rgba(0, 122, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                        }}>
+                          {iconMap[feature.type]}
+                        </div>
+                        <div>
+                          <h3 style={{
+                            fontSize: '24px',
+                            fontWeight: '600',
+                            color: '#1d1d1f',
+                            marginBottom: '12px',
+                            fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                            lineHeight: '1.16667',
+                            letterSpacing: '-0.005em'
+                          }}>{feature.title}</h3>
+                          <p style={{
+                            fontSize: '16px',
+                            color: '#86868b',
+                            fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                            lineHeight: '1.47059',
+                            letterSpacing: '-0.022em',
+                            fontWeight: '400'
+                          }}>{feature.description}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="headline-small mb-3 text-on-surface">{feature.title}</h3>
-                      <p className="body-medium text-on-surface-variant">{feature.description}</p>
-                    </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 surface-container">
-        <div className="container" style={{ maxWidth: '900px' }}>
-          <div className="text-center mb-16">
-            <h2 className="display-medium mb-6 text-on-surface">Detailed Answers</h2>
-            <p className="body-large text-on-surface-variant">
+      {/* Apple FAQ Section */}
+      <section style={{ padding: '80px 0 60px 0', background: '#FFFFFF', position: 'relative' }}>
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: "-100px" }}
+            style={{ textAlign: 'center', marginBottom: '60px' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(40px, 5vw, 56px)',
+              fontWeight: '600',
+              color: '#1d1d1f',
+              marginBottom: '16px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.0625',
+              letterSpacing: '-0.009em'
+            }}>Detailed answers.</h2>
+            <p style={{
+              fontSize: '21px',
+              color: '#86868b',
+              maxWidth: '95%',
+              margin: '0 auto',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              letterSpacing: '.011em',
+              fontWeight: '400'
+            }}>
               Comprehensive responses to help you understand our process and approach
             </p>
-          </div>
+          </motion.div>
 
-          <div className="space-y-4">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '900px', margin: '0 auto' }}>
             {faqs.map((faq, index) => (
-              <div key={index} className="card overflow-hidden">
-                <button 
-                  className={`w-full text-left p-6 transition-colors ${
-                    openFAQ === index ? 'bg-surface-container' : ''
-                  }`}
-                  onClick={() => toggleFAQ(index)}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                style={{
+                  background: '#ffffff',
+                  borderRadius: '18px',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+              >
+                <motion.button 
                   style={{
-                    backgroundColor: openFAQ === index ? 'var(--color-surface-container)' : 'transparent'
+                    width: '100%',
+                    textAlign: 'left',
+                    padding: '28px',
+                    background: openFAQ === index ? '#F5F5F7' : 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
+                  onClick={() => toggleFAQ(index)}
+                  whileHover={{ backgroundColor: openFAQ === index ? '#F5F5F7' : 'rgba(0, 122, 255, 0.02)' }}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <div 
-                        className="inline-block px-3 py-1 rounded-full mb-3 text-xs font-medium uppercase tracking-wide"
-                        style={{ 
-                          backgroundColor: 'var(--color-primary-container)',
-                          color: 'var(--color-primary)'
-                        }}
-                      >
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '24px' }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{
+                        display: 'inline-block',
+                        padding: '6px 12px',
+                        borderRadius: '12px',
+                        marginBottom: '12px',
+                        fontSize: '12px',
+                        fontWeight: '600',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                        backgroundColor: 'rgba(0, 122, 255, 0.1)',
+                        color: '#007AFF',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                      }}>
                         {faq.category}
                       </div>
-                      <h3 className="title-large text-on-surface">{faq.question}</h3>
+                      <h3 style={{
+                        fontSize: '20px',
+                        fontWeight: '600',
+                        color: '#1d1d1f',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.3',
+                        letterSpacing: '-0.022em',
+                        margin: 0
+                      }}>{faq.question}</h3>
                     </div>
-                    <div className="flex-shrink-0 transition-transform" style={{
-                      transform: openFAQ === index ? 'rotate(180deg)' : 'rotate(0deg)'
-                    }}>
-                      <ExpandMore sx={{ fontSize: 24, color: 'var(--color-on-surface-variant)' }} />
-                    </div>
+                    <motion.div 
+                      style={{ flexShrink: 0 }}
+                      animate={{ rotate: openFAQ === index ? 180 : 0 }}
+                      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                    >
+                      <ExpandMore sx={{ fontSize: 24, color: '#86868b' }} />
+                    </motion.div>
                   </div>
-                </button>
+                </motion.button>
                 
-                {openFAQ === index && (
-                  <div className="px-6 pb-6">
-                    <p className="body-large text-on-surface-variant leading-relaxed">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
+                <AnimatePresence>
+                  {openFAQ === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <div style={{ padding: '0 28px 28px 28px' }}>
+                        <p style={{
+                          fontSize: '17px',
+                          color: '#6b7280',
+                          lineHeight: '1.6',
+                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                          fontWeight: '400',
+                          letterSpacing: '.011em',
+                          margin: 0
+                        }}>{faq.answer}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="py-20 surface-variant">
-        <div className="container">
-          <div className="card p-12 text-center" style={{
-            background: 'linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-secondary-container) 100%)'
-          }}>
-            <h2 className="display-medium mb-6 text-on-surface">
-              Still Have Questions?
+      {/* Apple Contact CTA */}
+      <section style={{ padding: '100px 0', background: '#1d1d1f', position: 'relative', overflow: 'hidden' }}>
+        {/* Apple-style subtle background */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '60%',
+          height: '400px',
+          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 70%)',
+          filter: 'blur(80px)'
+        }} />
+        
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', maxWidth: '95%', margin: '0 auto' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(48px, 6vw, 72px)',
+              fontWeight: '600',
+              color: '#ffffff',
+              marginBottom: '24px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.1',
+              letterSpacing: '-0.015em'
+            }}>
+              Still have questions?
             </h2>
-            <p className="body-large mb-8 text-on-surface-variant max-w-2xl mx-auto">
+            <p style={{
+              fontSize: '21px',
+              color: 'rgba(255, 255, 255, 0.8)',
+              marginBottom: '48px',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              maxWidth: '600px',
+              margin: '0 auto 48px auto'
+            }}>
               Our payroll migration experts are here to help. Get personalized answers to your specific situation and requirements.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn-primary">
-                <Phone sx={{ fontSize: 20 }} />
-                Schedule Consultation
-              </Link>
-              <Link to="/contact" className="btn-outlined">
-                <Email sx={{ fontSize: 20 }} />
-                Send Message
-              </Link>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link 
+                  to="/contact" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '16px 32px',
+                    background: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
+                    border: 'none',
+                    borderRadius: '980px',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    fontWeight: '400',
+                    fontSize: '16px',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    userSelect: 'none',
+                    boxShadow: '0 8px 32px rgba(0, 122, 255, 0.4)'
+                  }}
+                >
+                  <Phone sx={{ fontSize: 18 }} />
+                  Schedule Consultation
+                </Link>
+              </motion.div>
+              
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link 
+                  to="/contact" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '16px 32px',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '980px',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    fontWeight: '400',
+                    fontSize: '16px',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    userSelect: 'none'
+                  }}
+                >
+                  <Email sx={{ fontSize: 18 }} />
+                  Send Message
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Related Resources */}
-      <section className="py-20 surface">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="display-medium mb-6 text-on-surface">Learn More</h2>
-            <p className="body-large text-on-surface-variant">
+      {/* Apple Related Resources */}
+      <section style={{ padding: '80px 0 60px 0', background: '#F5F5F7', position: 'relative' }}>
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: "-100px" }}
+            style={{ textAlign: 'center', marginBottom: '60px' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(40px, 5vw, 56px)',
+              fontWeight: '600',
+              color: '#1d1d1f',
+              marginBottom: '16px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.0625',
+              letterSpacing: '-0.009em'
+            }}>Learn more.</h2>
+            <p style={{
+              fontSize: '21px',
+              color: '#86868b',
+              maxWidth: '95%',
+              margin: '0 auto',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              letterSpacing: '.011em',
+              fontWeight: '400'
+            }}>
               Explore additional resources to understand our services and approach
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-3 gap-8">
-            <div className="card-elevated p-8 text-center transition-all duration-300">
-              <div className="flex justify-center mb-6">
-                <Timeline sx={{ fontSize: 48, color: 'var(--color-tertiary)' }} />
-              </div>
-              <h3 className="headline-small mb-4 text-on-surface">Our Services</h3>
-              <p className="body-medium mb-6 text-on-surface-variant">
-                Detailed overview of all our payroll migration and implementation services
-              </p>
-              <Link to="/services" className="btn-outlined w-full">
-                Learn More
-                <ArrowForward sx={{ fontSize: 18 }} />
-              </Link>
-            </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '32px',
+            width: '95%',
+            margin: '0 auto'
+          }}>
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <motion.div
+                whileHover={{ y: -8, boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)' }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  background: '#ffffff',
+                  borderRadius: '22px',
+                  padding: '40px 32px',
+                  textAlign: 'center',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                <div style={{ marginBottom: '32px' }}>
+                  <Timeline sx={{ fontSize: 48, color: '#007AFF' }} />
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                }}>Our Services</h3>
+                <p style={{
+                  fontSize: '16px',
+                  color: '#86868b',
+                  marginBottom: '32px',
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  lineHeight: '1.5',
+                  flex: 1
+                }}>
+                  Detailed overview of all our payroll migration and implementation services
+                </p>
+                <Link 
+                  to="/services" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    padding: '12px 24px',
+                    border: '2px solid rgba(0, 122, 255, 0.3)',
+                    borderRadius: '25px',
+                    color: '#007AFF',
+                    textDecoration: 'none',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    background: 'rgba(0, 122, 255, 0.05)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    width: '100%'
+                  }}
+                >
+                  Learn More
+                  <ArrowForward sx={{ fontSize: 16 }} />
+                </Link>
+              </motion.div>
+            </motion.div>
             
-            <div className="card-elevated p-8 text-center transition-all duration-300">
-              <div className="flex justify-center mb-6">
-                <People sx={{ fontSize: 48, color: 'var(--color-secondary)' }} />
-              </div>
-              <h3 className="headline-small mb-4 text-on-surface">Success Stories</h3>
-              <p className="body-medium mb-6 text-on-surface-variant">
-                Real examples of successful migrations across various industries and regions
-              </p>
-              <Link to="/success-stories" className="btn-outlined w-full">
-                Learn More
-                <ArrowForward sx={{ fontSize: 18 }} />
-              </Link>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <motion.div
+                whileHover={{ y: -8, boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)' }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  background: '#ffffff',
+                  borderRadius: '22px',
+                  padding: '40px 32px',
+                  textAlign: 'center',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                <div style={{ marginBottom: '32px' }}>
+                  <People sx={{ fontSize: 48, color: '#007AFF' }} />
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                }}>Success Stories</h3>
+                <p style={{
+                  fontSize: '16px',
+                  color: '#86868b',
+                  marginBottom: '32px',
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  lineHeight: '1.5',
+                  flex: 1
+                }}>
+                  Real examples of successful migrations across various industries and regions
+                </p>
+                <Link 
+                  to="/success-stories" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    padding: '12px 24px',
+                    border: '2px solid rgba(0, 122, 255, 0.3)',
+                    borderRadius: '25px',
+                    color: '#007AFF',
+                    textDecoration: 'none',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    background: 'rgba(0, 122, 255, 0.05)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    width: '100%'
+                  }}
+                >
+                  Learn More
+                  <ArrowForward sx={{ fontSize: 16 }} />
+                </Link>
+              </motion.div>
+            </motion.div>
             
-            <div className="card-elevated p-8 text-center transition-all duration-300">
-              <div className="flex justify-center mb-6">
-                <Business sx={{ fontSize: 48, color: 'var(--color-primary)' }} />
-              </div>
-              <h3 className="headline-small mb-4 text-on-surface">Our Process</h3>
-              <p className="body-medium mb-6 text-on-surface-variant">
-                Learn about our proven methodology and approach to payroll migrations
-              </p>
-              <Link to="/about" className="btn-outlined w-full">
-                Learn More
-                <ArrowForward sx={{ fontSize: 18 }} />
-              </Link>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <motion.div
+                whileHover={{ y: -8, boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)' }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  background: '#ffffff',
+                  borderRadius: '22px',
+                  padding: '40px 32px',
+                  textAlign: 'center',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                <div style={{ marginBottom: '32px' }}>
+                  <Business sx={{ fontSize: 48, color: '#007AFF' }} />
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  color: '#1d1d1f',
+                  marginBottom: '16px',
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                }}>Our Process</h3>
+                <p style={{
+                  fontSize: '16px',
+                  color: '#86868b',
+                  marginBottom: '32px',
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  lineHeight: '1.5',
+                  flex: 1
+                }}>
+                  Learn about our proven methodology and approach to payroll migrations
+                </p>
+                <Link 
+                  to="/about" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    padding: '12px 24px',
+                    border: '2px solid rgba(0, 122, 255, 0.3)',
+                    borderRadius: '25px',
+                    color: '#007AFF',
+                    textDecoration: 'none',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    background: 'rgba(0, 122, 255, 0.05)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    width: '100%'
+                  }}
+                >
+                  Learn More
+                  <ArrowForward sx={{ fontSize: 16 }} />
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
-    </div>
+    </AppleBackground>
+    </>
   );
 };
 

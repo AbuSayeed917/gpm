@@ -779,7 +779,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                       </ul>
                       
                       <Link 
-                        to="/contact"
+                        to="/quote"
                         style={{
                           display: 'inline-flex',
                           alignItems: 'center',
@@ -1259,7 +1259,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Link 
-                  to="/contact" 
+                  to="/quote" 
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
