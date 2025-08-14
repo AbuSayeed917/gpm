@@ -19,11 +19,11 @@ const Footer = () => {
     <footer 
       style={{
         background: '#e3f2fd',
-        borderTop: '2px solid rgba(26, 35, 126, 0.15)',
+        borderTop: '3px solid transparent',
+        borderImage: 'linear-gradient(90deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%) 1',
         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
         position: 'relative',
-        overflow: 'hidden',
-        marginTop: '60px'
+        overflow: 'hidden'
       }}
     >
       {/* Floating Background Elements */}
