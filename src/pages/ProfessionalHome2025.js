@@ -10,12 +10,63 @@ import {
 } from '@mui/icons-material';
 
 const ProfessionalHome2025 = () => {
+  // Add CSS animations
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-20px) rotate(1deg); }
+        66% { transform: translateY(-10px) rotate(-1deg); }
+      }
+      
+      @keyframes pulse-glow {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.8; }
+      }
+      
+      @media (max-width: 768px) {
+        .hero-title { font-size: clamp(26px, 6vw, 36px) !important; }
+        .hero-subtitle { font-size: 18px !important; }
+        .section-title { font-size: clamp(32px, 6vw, 40px) !important; }
+        .section-description { font-size: 19px !important; }
+        .card-title { font-size: 22px !important; }
+        .card-description { font-size: 16px !important; }
+        .float-bg { display: none !important; }
+      }
+      
+      @media (max-width: 1024px) {
+        .services-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+        .migration-process-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+      }
+      
+      .trusted-organizations-grid > div:nth-child(3) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc(50% - 20px);
+      }
+      
+      @media (max-width: 1024px) {
+        .trusted-organizations-grid { grid-template-columns: 1fr !important; }
+        .trusted-organizations-grid > div:nth-child(3) { grid-column: auto !important; width: auto !important; }
+      }
+      
+      @media (max-width: 480px) {
+        .hero-buttons { flex-direction: column !important; align-items: center !important; }
+        .grid-layout { grid-template-columns: 1fr !important; }
+        .services-grid { grid-template-columns: 1fr !important; }
+        .migration-process-grid { grid-template-columns: 1fr !important; }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
   const services = [
     {
       id: 'sme',
       title: 'SME Payroll Migration',
       description: 'Complete payroll system migration for small to medium businesses with minimal disruption.',
-      icon: <Business sx={{ fontSize: 24, color: '#00bfff' }} />,
+      icon: <Business sx={{ fontSize: 24, color: '#3b82f6' }} />,
       href: '/services/sme',
       features: [
         '4-8 week implementation',
@@ -30,7 +81,7 @@ const ProfessionalHome2025 = () => {
       id: 'enterprise',
       title: 'Enterprise Solutions',
       description: 'Large-scale payroll migrations with complex integrations and multi-jurisdictional support.',
-      icon: <People sx={{ fontSize: 24, color: '#00bfff' }} />,
+      icon: <People sx={{ fontSize: 24, color: '#3b82f6' }} />,
       href: '/services/large-enterprise',
       features: [
         'Multi-country deployments',
@@ -45,7 +96,7 @@ const ProfessionalHome2025 = () => {
       id: 'consultancy',
       title: 'Payroll Consultancy',
       description: 'Expert advisory services for payroll optimization and compliance requirements.',
-      icon: <Timeline sx={{ fontSize: 24, color: '#00bfff' }} />,
+      icon: <Timeline sx={{ fontSize: 24, color: '#3b82f6' }} />,
       href: '/services/consultancy',
       features: [
         'Strategic payroll planning',
@@ -80,119 +131,125 @@ const ProfessionalHome2025 = () => {
 
   return (
     <div style={{ 
-      backgroundColor: '#e6f7ff', 
+      background: '#e3f2fd', 
       minHeight: '100vh', 
       fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif',
-      color: '#000000'
+      color: '#1a237e'
     }}>
       {/* Hero Section - Apple Style */}
       <section style={{ 
-        padding: '120px 20px', 
-        textAlign: 'left',
-        background: 'linear-gradient(180deg, #ccebff 0%, #e6f7ff 100%)',
+        padding: '50px 20px 40px 20px', 
+        textAlign: 'center',
+        background: '#e3f2fd',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Glass Effect */}
+        {/* Enhanced Liquid Glass Background - Sky Blue Harmony */}
         <div style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '95%',
-          height: '800px',
-          background: 'radial-gradient(circle, rgba(135, 206, 250, 0.15) 0%, rgba(173, 216, 230, 0.08) 50%, transparent 80%)',
+          top: '30%',
+          left: '30%',
+          width: '40%',
+          height: '300px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.25) 0%, rgba(240, 248, 255, 0.15) 40%, transparent 70%)',
           borderRadius: '50%',
-          filter: 'blur(60px)',
+          filter: 'blur(80px)',
+          animation: 'float 6s ease-in-out infinite',
+          zIndex: 0
+        }} />
+        <div style={{
+          position: 'absolute',
+          top: '10%',
+          right: '20%',
+          width: '50%',
+          height: '250px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.2) 0%, rgba(230, 244, 252, 0.1) 40%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(90px)',
+          animation: 'float 8s ease-in-out infinite reverse',
+          zIndex: 0
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '20%',
+          left: '10%',
+          width: '35%',
+          height: '200px',
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, rgba(225, 239, 254, 0.08) 50%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(70px)',
+          animation: 'float 10s ease-in-out infinite',
           zIndex: 0
         }} />
         
         <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <h1 style={{ 
-            fontSize: 'clamp(32px, 5.5vw, 56px)',
-            fontWeight: '800',
-            lineHeight: '1.02',
-            color: '#000000',
-            marginBottom: '24px',
-            letterSpacing: '-0.06em',
-            textShadow: '0 2px 8px rgba(255, 255, 255, 0.4)',
+          <h1 className="hero-title" style={{ 
+            fontSize: 'clamp(38px, 4.5vw, 50px)',
+            fontWeight: '600',
+            lineHeight: '1.05',
+            color: '#1a237e',
+            marginBottom: '16px',
+            letterSpacing: '-0.025em',
+            textShadow: '0 1px 3px rgba(0,0,0,0.1)',
             fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
           }}>
-            UK based <span style={{ 
-              background: 'linear-gradient(90deg, #30d158 0%, #ff3b30 100%)',
+            UK Based {' '}
+            <span style={{ 
+              background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              display: 'inline-block'
+              display: 'inline-block',
+              fontWeight: '700',
+              paddingBottom: '4px',
+              lineHeight: '1.2'
             }}>
-              payroll migration experts
+              Payroll Migration
             </span>
+            {' '}Experts.
           </h1>
-          <p style={{ 
-            fontSize: '19px',
-            lineHeight: '1.35',
-            color: '#000000',
-            fontWeight: '500',
-            marginBottom: '48px',
+          <p className="hero-subtitle" style={{ 
+            fontSize: '20px',
+            lineHeight: '1.3',
+            color: '#283593',
+            fontWeight: '400',
+            marginBottom: '32px',
+            maxWidth: '700px',
+            margin: '0 auto 32px auto',
             fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
           }}>
-            Seamlessly migrate your payroll system with zero downtime.<br />
-            Expert team with proven track record.
+            Seamlessly migrate your payroll system with zero downtime. Expert team with proven track record.
           </p>
-          <div style={{ display: 'flex', gap: '20px', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+          <div className="hero-buttons" style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
             <Link 
-              to="/quote" 
+              to="/contact" 
               style={{
-                background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                background: '#007AFF',
                 color: 'white',
-                padding: '16px 32px',
-                borderRadius: '25px',
+                padding: '14px 32px',
+                borderRadius: '980px',
                 textDecoration: 'none',
-                fontSize: '15px',
-                fontWeight: '600',
+                fontSize: '17px',
+                fontWeight: '500',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 border: 'none',
-                boxShadow: '0 4px 20px rgba(135, 206, 250, 0.4)',
-                backdropFilter: 'blur(10px)'
+                boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)'
               }}
               onMouseEnter={(e) => { 
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 8px 30px rgba(135, 206, 250, 0.5)';
+                e.target.style.transform = 'scale(1.05)';
+                e.target.style.background = '#0056CC';
+                e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
               }}
               onMouseLeave={(e) => { 
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 4px 20px rgba(135, 206, 250, 0.4)';
+                e.target.style.transform = 'scale(1)';
+                e.target.style.background = '#007AFF';
+                e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
               }}
             >
-              Get Started
-            </Link>
-            <Link 
-              to="/success-stories"
-              style={{
-                color: '#00bfff',
-                padding: '16px 32px',
-                borderRadius: '25px',
-                textDecoration: 'none',
-                fontSize: '15px',
-                fontWeight: '600',
-                border: '2px solid rgba(135, 206, 250, 0.4)',
-                background: 'rgba(135, 206, 250, 0.08)',
-                backdropFilter: 'blur(10px)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}
-              onMouseEnter={(e) => { 
-                e.target.style.borderColor = 'rgba(135, 206, 250, 0.7)';
-                e.target.style.background = 'rgba(135, 206, 250, 0.15)';
-              }}
-              onMouseLeave={(e) => { 
-                e.target.style.borderColor = 'rgba(135, 206, 250, 0.4)';
-                e.target.style.background = 'rgba(135, 206, 250, 0.08)';
-              }}
-            >
-              Learn More
+              Book Free Consultation
             </Link>
           </div>
         </div>
@@ -200,37 +257,69 @@ const ProfessionalHome2025 = () => {
 
       {/* Services Section - Apple Style */}
       <section style={{ 
-        padding: '60px 20px 100px 20px', 
-        backgroundColor: '#f0f9ff',
-        borderTop: '1px solid rgba(135, 206, 235, 0.2)'
+        padding: '0px 20px 40px 20px', 
+        background: '#e3f2fd',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div style={{ width: '95%', margin: '0 auto', textAlign: 'left' }}>
+        {/* Liquid Glass Background */}
+        <div style={{
+          position: 'absolute',
+          top: '20%',
+          left: '15%',
+          width: '300px',
+          height: '400px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          animation: 'float 12s ease-in-out infinite',
+          zIndex: 0
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '10%',
+          right: '20%',
+          width: '250px',
+          height: '350px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(80px)',
+          animation: 'float 15s ease-in-out infinite reverse',
+          zIndex: 0
+        }} />
+        
+        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'left', position: 'relative', zIndex: 1 }}>
           <h2 style={{ 
-            fontSize: 'clamp(20px, 3.5vw, 32px)',
+            fontSize: 'clamp(28px, 3.5vw, 36px)',
             fontWeight: '700',
-            background: 'linear-gradient(90deg, #30d158 0%, #ff3b30 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            display: 'inline-block',
-            marginBottom: '20px',
-            letterSpacing: '-0.03em'
+            color: '#1a237e',
+            marginBottom: '12px',
+            letterSpacing: '-0.025em',
+            textAlign: 'center',
+            textShadow: '0 1px 3px rgba(0,0,0,0.2)',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
           }}>
             Our Services
           </h2>
           <p style={{ 
-            fontSize: '15px',
-            color: '#000000',
-            marginBottom: '60px',
-            lineHeight: '1.4'
+            fontSize: '18px',
+            color: '#283593',
+            marginBottom: '50px',
+            lineHeight: '1.4',
+            textAlign: 'center',
+            fontWeight: '500',
+            textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
           }}>
             Tailored solutions for your organization.
           </p>
           
-          <div style={{ 
+          <div className="services-grid" style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-            gap: '32px'
+            gridTemplateColumns: 'repeat(3, 1fr)', 
+            gap: '20px',
+            maxWidth: '1200px',
+            margin: '0 auto'
           }}>
             {services.map((service, index) => (
               <div 
@@ -246,7 +335,7 @@ const ProfessionalHome2025 = () => {
                     width: '100%',
                     height: '100%',
                     transformStyle: 'preserve-3d',
-                    transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                     cursor: 'pointer'
                   }}
                   className={`flip-card-${index}`}
@@ -263,51 +352,60 @@ const ProfessionalHome2025 = () => {
                     width: '100%',
                     height: '100%',
                     backfaceVisibility: 'hidden',
-                    background: 'rgba(255, 255, 255, 0.98)',
-                    borderRadius: '24px',
-                    padding: '40px 32px',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    borderRadius: '20px',
+                    padding: '36px 28px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    border: '1px solid rgba(173, 216, 230, 0.2)',
-                    boxShadow: '0 12px 48px rgba(173, 216, 230, 0.15), 0 4px 20px rgba(135, 206, 250, 0.1)',
-                    backdropFilter: 'blur(20px)'
+                    border: '1px solid rgba(255, 255, 255, 0.4)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                    backdropFilter: 'blur(40px) saturate(200%)'
                   }}>
                     <div>
                       <div style={{ 
-                        marginBottom: '28px',
-                        padding: '24px',
-                        borderRadius: '20px',
-                        background: `linear-gradient(135deg, rgba(173, 216, 230, 0.15) 0%, rgba(135, 206, 250, 0.1) 100%)`,
-                        display: 'inline-block'
+                        marginBottom: '20px',
+                        padding: '20px',
+                        borderRadius: '50%',
+                        background: `linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(240, 248, 255, 0.3) 100%)`,
+                        display: 'inline-block',
+                        backdropFilter: 'blur(20px)',
+                        border: '1px solid rgba(255, 255, 255, 0.4)'
                       }}>
                         {React.cloneElement(service.icon, { 
-                          sx: { fontSize: 36, color: '#00bfff' } 
+                          sx: { fontSize: 28, color: '#1a237e' } 
                         })}
                       </div>
                       <h3 style={{ 
-                        fontSize: '24px',
+                        fontSize: '22px',
                         fontWeight: '700',
-                        color: '#000000',
-                        marginBottom: '12px',
-                        letterSpacing: '-0.02em',
+                        background: 'linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        marginBottom: '8px',
+                        letterSpacing: '-0.01em',
+                        textShadow: '0 1px 3px rgba(0,0,0,0.1)',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
                       }}>
                         {service.title}
                       </h3>
                       <p style={{
-                        fontSize: '15px',
-                        color: '#87ceeb',
-                        fontWeight: '600',
-                        marginBottom: '16px',
+                        fontSize: '14px',
+                        color: '#283593',
+                        fontWeight: '500',
+                        marginBottom: '12px',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                       }}>
                         {service.subtitle}
                       </p>
                       <p style={{ 
-                        fontSize: '16px',
-                        color: '#000000',
-                        lineHeight: '1.5',
+                        fontSize: '15px',
+                        color: '#1a237e',
+                        lineHeight: '1.4',
+                        fontWeight: '400',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                       }}>
                         {service.description}
@@ -316,12 +414,13 @@ const ProfessionalHome2025 = () => {
                     <div style={{
                       textAlign: 'center',
                       padding: '12px 20px',
-                      borderRadius: '16px',
-                      background: 'rgba(173, 216, 230, 0.1)',
-                      color: '#00bfff',
-                      fontSize: '14px',
+                      borderRadius: '20px',
+                      background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                      color: 'white',
+                      fontSize: '12px',
                       fontWeight: '600',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      textShadow: '0 1px 2px rgba(0,0,0,0.2)'
                     }}>
                       Hover to see details
                     </div>
@@ -334,48 +433,60 @@ const ProfessionalHome2025 = () => {
                     height: '100%',
                     backfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)',
-                    background: `linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)`,
-                    borderRadius: '24px',
-                    padding: '40px 32px',
+                    background: `linear-gradient(135deg, #1a237e 0%, #283593 100%)`,
+                    borderRadius: '20px',
+                    padding: '32px 24px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    color: '#ccebff',
-                    boxShadow: '0 20px 64px rgba(135, 206, 250, 0.4)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                    color: 'rgba(255, 255, 255, 0.95)',
+                    boxShadow: '0 12px 48px rgba(26, 35, 126, 0.3)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    backdropFilter: 'blur(40px) saturate(200%)'
                   }}>
-                    {/* Background Glass Effect */}
+                    {/* Enhanced Glass Effect */}
                     <div style={{
                       position: 'absolute',
-                      top: '-30%',
-                      right: '-30%',
+                      top: '-20%',
+                      right: '-20%',
+                      width: '250px',
+                      height: '250px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+                      filter: 'blur(40px)',
+                      zIndex: 0
+                    }} />
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '-30%',
+                      left: '-20%',
                       width: '200px',
                       height: '200px',
-                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%)',
                       filter: 'blur(60px)',
                       zIndex: 0
                     }} />
                     
                     <div style={{ position: 'relative', zIndex: 1 }}>
                       <div style={{ 
-                        marginBottom: '28px',
-                        padding: '20px',
-                        borderRadius: '18px',
+                        marginBottom: '20px',
+                        padding: '18px',
+                        borderRadius: '50%',
                         background: 'rgba(255, 255, 255, 0.2)',
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.3)',
                         display: 'inline-block'
                       }}>
                         {React.cloneElement(service.icon, { 
-                          sx: { fontSize: 32, color: '#ccebff' } 
+                          sx: { fontSize: 24, color: 'rgba(255,255,255,0.9)' } 
                         })}
                       </div>
                       
                       <h3 style={{
-                        fontSize: '20px',
+                        fontSize: '18px',
                         fontWeight: '700',
-                        color: '#ccebff',
-                        marginBottom: '20px',
+                        color: 'rgba(255, 255, 255, 0.95)',
+                        marginBottom: '16px',
+                        textShadow: '0 1px 3px rgba(0,0,0,0.3)',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
                       }}>
                         What's included:
@@ -388,20 +499,29 @@ const ProfessionalHome2025 = () => {
                             style={{
                               display: 'flex',
                               alignItems: 'center',
-                              gap: '12px',
+                              gap: '10px',
                               marginBottom: '12px',
-                              fontSize: '15px',
-                              color: 'rgba(255, 255, 255, 0.95)',
+                              fontSize: '14px',
+                              color: 'rgba(255, 255, 255, 0.9)',
                               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                             }}
                           >
                             <div style={{
-                              width: '6px',
-                              height: '6px',
+                              width: '16px',
+                              height: '16px',
                               borderRadius: '50%',
-                              background: 'rgba(255, 255, 255, 0.9)',
+                              background: '#34C759',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
                               flexShrink: 0
-                            }} />
+                            }}>
+                              <span style={{
+                                color: 'white',
+                                fontSize: '10px',
+                                fontWeight: '600'
+                              }}>✓</span>
+                            </div>
                             {feature}
                           </div>
                         ))}
@@ -414,28 +534,28 @@ const ProfessionalHome2025 = () => {
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '8px',
-                        padding: '16px 28px',
-                        background: 'rgba(255, 255, 255, 0.2)',
-                        backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.3)',
-                        borderRadius: '24px',
-                        color: '#ccebff',
+                        gap: '6px',
+                        padding: '12px 20px',
+                        background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                        border: 'none',
+                        borderRadius: '20px',
+                        color: 'white',
                         textDecoration: 'none',
-                        fontSize: '16px',
+                        fontSize: '13px',
                         fontWeight: '600',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.2)',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
-                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                         position: 'relative',
                         zIndex: 2
                       }}
                       onMouseEnter={(e) => {
-                        e.target.style.background = 'rgba(255, 255, 255, 0.3)';
-                        e.target.style.transform = 'translateY(-2px)';
+                        e.target.style.background = 'rgba(255, 255, 255, 0.4)';
+                        e.target.style.transform = 'scale(1.05)';
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-                        e.target.style.transform = 'translateY(0)';
+                        e.target.style.background = 'rgba(255, 255, 255, 0.25)';
+                        e.target.style.transform = 'scale(1)';
                       }}
                     >
                       Learn More →
@@ -450,87 +570,99 @@ const ProfessionalHome2025 = () => {
 
       {/* Book Discovery Call Section - Apple Style */}
       <section style={{ 
-        padding: '80px 20px', 
-        backgroundColor: '#f0f9ff',
-        borderTop: '1px solid rgba(0, 0, 0, 0.05)',
+        padding: '60px 20px', 
+        background: '#e3f2fd',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Glass Effect */}
+        {/* Enhanced Liquid Glass Background */}
         <div style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '80%',
-          height: '400px',
-          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 70%)',
+          top: '30%',
+          left: '25%',
+          width: '300px',
+          height: '300px',
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
           borderRadius: '50%',
-          filter: 'blur(40px)',
+          filter: 'blur(80px)',
+          animation: 'float 8s ease-in-out infinite',
+          zIndex: 0
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '20%',
+          right: '30%',
+          width: '250px',
+          height: '250px',
+          background: 'radial-gradient(circle, rgba(175, 82, 222, 0.08) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(70px)',
+          animation: 'float 10s ease-in-out infinite reverse',
           zIndex: 0
         }} />
         
         <div style={{ 
-          width: '95%', 
+          maxWidth: '1200px', 
           margin: '0 auto', 
           textAlign: 'center',
           position: 'relative',
           zIndex: 1
         }}>
           <div style={{
-            background: 'rgba(255, 255, 255, 0.98)',
-            borderRadius: '24px',
-            padding: '60px 40px',
-            border: '1px solid rgba(0, 0, 0, 0.06)',
-            boxShadow: '0 8px 40px rgba(0, 0, 0, 0.12)',
-            backdropFilter: 'blur(20px)'
+            background: 'rgba(255, 255, 255, 0.9)',
+            borderRadius: '32px',
+            padding: '80px 60px',
+            border: '1px solid rgba(255, 255, 255, 0.4)',
+            boxShadow: '0 20px 64px rgba(13, 71, 161, 0.15)',
+            backdropFilter: 'blur(40px) saturate(200%)'
           }}>
             <h2 style={{ 
-              fontSize: 'clamp(24px, 4vw, 36px)',
-              fontWeight: '700',
-              color: '#000000',
-              marginBottom: '24px',
-              letterSpacing: '-0.03em',
-              lineHeight: '1.1'
+              fontSize: 'clamp(24px, 3vw, 32px)',
+              fontWeight: '600',
+              color: '#1a237e',
+              marginBottom: '16px',
+              letterSpacing: '-0.025em',
+              lineHeight: '1.1',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
             }}>
               Book a free discovery call
             </h2>
             <p style={{ 
-              fontSize: '17px',
-              color: '#000000',
+              fontSize: '18px',
+              color: '#283593',
               lineHeight: '1.4',
-              marginBottom: '40px',
+              marginBottom: '32px',
               fontWeight: '400',
               maxWidth: '600px',
-              margin: '0 auto 40px auto'
+              margin: '0 auto 32px auto',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
             }}>
               Speak with our payroll migration experts. We'll assess your current system and provide a tailored migration roadmap at no cost.
             </p>
             <Link 
               to="/quote" 
               style={{
-                background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                background: '#007AFF',
                 color: 'white',
-                padding: '18px 36px',
-                borderRadius: '28px',
+                padding: '12px 28px',
+                borderRadius: '980px',
                 textDecoration: 'none',
-                fontSize: '16px',
-                fontWeight: '600',
+                fontSize: '15px',
+                fontWeight: '400',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '10px',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                gap: '8px',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 border: 'none',
-                boxShadow: '0 6px 24px rgba(135, 206, 250, 0.4)',
-                backdropFilter: 'blur(10px)'
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
               }}
               onMouseEnter={(e) => { 
-                e.target.style.transform = 'translateY(-3px) scale(1.05)';
-                e.target.style.boxShadow = '0 12px 36px rgba(135, 206, 250, 0.5)';
+                e.target.style.transform = 'scale(1.05)';
+                e.target.style.background = '#0056CC';
               }}
               onMouseLeave={(e) => { 
-                e.target.style.transform = 'translateY(0) scale(1)';
-                e.target.style.boxShadow = '0 6px 24px rgba(135, 206, 250, 0.4)';
+                e.target.style.transform = 'scale(1)';
+                e.target.style.background = '#007AFF';
               }}
             >
               Book Call
@@ -541,82 +673,227 @@ const ProfessionalHome2025 = () => {
 
       {/* Features Section - Apple Style */}
       <section style={{ 
-        padding: '120px 20px', 
-        backgroundColor: '#f0f9ff',
-        borderTop: '1px solid rgba(0, 0, 0, 0.05)'
+        padding: '60px 20px', 
+        background: '#e3f2fd',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div style={{ width: '95%', margin: '0 auto', textAlign: 'left' }}>
+        {/* Liquid Glass Background */}
+        <div style={{
+          position: 'absolute',
+          top: '15%',
+          right: '10%',
+          width: '400px',
+          height: '300px',
+          background: 'radial-gradient(ellipse, rgba(52, 199, 89, 0.08) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(90px)',
+          animation: 'float 14s ease-in-out infinite',
+          zIndex: 0
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '20%',
+          left: '15%',
+          width: '250px',
+          height: '400px',
+          background: 'radial-gradient(ellipse, rgba(255, 149, 0, 0.06) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          animation: 'float 12s ease-in-out infinite reverse',
+          zIndex: 0
+        }} />
+        
+        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <h2 style={{ 
-            fontSize: 'clamp(20px, 3.5vw, 32px)',
+            fontSize: 'clamp(28px, 3.5vw, 36px)',
             fontWeight: '700',
-            color: '#000000',
-            marginBottom: '20px',
-            letterSpacing: '-0.03em'
+            background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            marginBottom: '12px',
+            letterSpacing: '-0.025em',
+            textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
           }}>
             Why Choose Us
           </h2>
           <p style={{ 
-            fontSize: '15px',
-            color: '#000000',
-            marginBottom: '80px',
-            lineHeight: '1.4'
+            fontSize: '20px',
+            color: '#1a237e',
+            marginBottom: '60px',
+            lineHeight: '1.4',
+            fontWeight: '500',
+            textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
           }}>
             Industry-leading expertise with proven results.
           </p>
           
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-            gap: '64px'
+            gridTemplateColumns: 'repeat(3, 1fr)', 
+            gap: '32px',
+            maxWidth: '1200px',
+            margin: '0 auto'
           }}>
             {features.map((feature, index) => (
-              <div key={index} style={{ 
-                textAlign: 'left',
-                padding: '32px',
-                borderRadius: '18px',
-                background: 'rgba(255, 255, 255, 0.98)',
-                border: '1px solid rgba(0, 0, 0, 0.06)',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.15)';
-                e.currentTarget.style.background = '#ccebff';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
-                e.currentTarget.style.background = '#ccebff';
-              }}>
-                <div style={{ 
-                  marginBottom: '32px',
-                  padding: '24px',
-                  borderRadius: '20px',
-                  background: 'linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(90, 200, 250, 0.1) 100%)',
-                  display: 'inline-block'
-                }}>
-                  {React.cloneElement(feature.icon, { 
-                    sx: { fontSize: 56, color: '#00bfff' } 
-                  })}
+              <div 
+                key={index} 
+                style={{
+                  perspective: '1000px',
+                  height: '417px'
+                }}
+              >
+                <div
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    transformStyle: 'preserve-3d',
+                    transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    cursor: 'pointer'
+                  }}
+                  className={`flip-card-feature-${index}`}
+                  onMouseEnter={() => {
+                    document.querySelector(`.flip-card-feature-${index}`).style.transform = 'rotateY(180deg)';
+                  }}
+                  onMouseLeave={() => {
+                    document.querySelector(`.flip-card-feature-${index}`).style.transform = 'rotateY(0deg)';
+                  }}
+                >
+                  {/* Front of card */}
+                  <div style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    backfaceVisibility: 'hidden',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    borderRadius: '20px',
+                    padding: '40px 28px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    border: '1px solid rgba(255, 255, 255, 0.4)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                    backdropFilter: 'blur(40px) saturate(200%)'
+                  }}>
+                    <div style={{ 
+                      marginBottom: '32px',
+                      padding: '32px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(240, 248, 255, 0.3) 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.4)'
+                    }}>
+                      {React.cloneElement(feature.icon, { 
+                        sx: { fontSize: 48, color: '#0d47a1' } 
+                      })}
+                    </div>
+                    <h3 style={{ 
+                      fontSize: '24px',
+                      fontWeight: '700',
+                      background: 'linear-gradient(135deg, #1a237e 0%, #3949ab 50%, #5c6bc0 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      marginBottom: '24px',
+                      letterSpacing: '-0.01em',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+                    }}>
+                      {feature.title}
+                    </h3>
+                    <div style={{
+                      textAlign: 'center',
+                      padding: '12px 20px',
+                      borderRadius: '20px',
+                      background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                      color: 'white',
+                      fontSize: '12px',
+                      fontWeight: '600',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      textShadow: '0 1px 2px rgba(0,0,0,0.2)'
+                    }}>
+                      Hover for details
+                    </div>
+                  </div>
+                  
+                  {/* Back of card */}
+                  <div style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    backfaceVisibility: 'hidden',
+                    transform: 'rotateY(180deg)',
+                    background: `linear-gradient(135deg, #1a237e 0%, #283593 100%)`,
+                    borderRadius: '20px',
+                    padding: '40px 28px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    color: 'rgba(255, 255, 255, 0.95)',
+                    boxShadow: '0 12px 48px rgba(26, 35, 126, 0.3)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    backdropFilter: 'blur(40px) saturate(200%)'
+                  }}>
+                    {/* Enhanced Glass Effect */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '-20%',
+                      right: '-20%',
+                      width: '200px',
+                      height: '200px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+                      filter: 'blur(40px)',
+                      zIndex: 0
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <div style={{ 
+                        marginBottom: '24px',
+                        padding: '20px',
+                        borderRadius: '50%',
+                        background: 'rgba(255, 255, 255, 0.25)',
+                        backdropFilter: 'blur(20px)',
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
+                        display: 'inline-block'
+                      }}>
+                        {React.cloneElement(feature.icon, { 
+                          sx: { fontSize: 32, color: 'rgba(255,255,255,0.9)' } 
+                        })}
+                      </div>
+                      
+                      <h3 style={{
+                        fontSize: '20px',
+                        fontWeight: '700',
+                        color: 'rgba(255, 255, 255, 0.95)',
+                        marginBottom: '20px',
+                        textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+                      }}>
+                        {feature.title}
+                      </h3>
+                      
+                      <p style={{
+                        fontSize: '16px',
+                        color: 'rgba(255, 255, 255, 0.9)',
+                        lineHeight: '1.5',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                      }}>
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <h3 style={{ 
-                  fontSize: '18px',
-                  fontWeight: '700',
-                  color: '#000000',
-                  marginBottom: '20px',
-                  letterSpacing: '-0.02em'
-                }}>
-                  {feature.title}
-                </h3>
-                <p style={{ 
-                  fontSize: '15px',
-                  color: '#000000',
-                  lineHeight: '1.5',
-                  fontWeight: '400'
-                }}>
-                  {feature.description}
-                </p>
               </div>
             ))}
           </div>
@@ -625,54 +902,89 @@ const ProfessionalHome2025 = () => {
 
       {/* Migration Process Section - Apple Style */}
       <section style={{ 
-        padding: '80px 20px', 
-        backgroundColor: '#f0f9ff',
-        borderTop: '1px solid rgba(0, 0, 0, 0.05)'
+        padding: '40px 20px 60px 20px', 
+        background: '#e3f2fd',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div style={{ width: '95%', margin: '0 auto', textAlign: 'left' }}>
+        {/* Liquid Glass Background */}
+        <div style={{
+          position: 'absolute',
+          top: '25%',
+          left: '20%',
+          width: '350px',
+          height: '250px',
+          background: 'radial-gradient(ellipse, rgba(255, 45, 85, 0.08) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(90px)',
+          animation: 'float 16s ease-in-out infinite',
+          zIndex: 0
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '15%',
+          right: '25%',
+          width: '280px',
+          height: '350px',
+          background: 'radial-gradient(ellipse, rgba(50, 215, 75, 0.06) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(80px)',
+          animation: 'float 18s ease-in-out infinite reverse',
+          zIndex: 0
+        }} />
+        
+        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <h2 style={{ 
-            fontSize: 'clamp(20px, 3.5vw, 32px)',
+            fontSize: 'clamp(28px, 3.5vw, 36px)',
             fontWeight: '700',
-            color: '#000000',
-            marginBottom: '20px',
-            letterSpacing: '-0.03em',
-            textAlign: 'center'
+            background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            marginBottom: '12px',
+            letterSpacing: '-0.025em',
+            textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
           }}>
             Our Migration Process
           </h2>
           <p style={{ 
-            fontSize: '15px',
-            color: '#000000',
+            fontSize: '20px',
+            color: '#1a237e',
             marginBottom: '60px',
             lineHeight: '1.4',
-            textAlign: 'center'
+            fontWeight: '500',
+            textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
           }}>
             Proven methodology ensuring seamless transitions.
           </p>
           
-          <div style={{ 
+          <div className="migration-process-grid" style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-            gap: '32px'
+            gridTemplateColumns: 'repeat(4, 1fr)', 
+            gap: '20px',
+            maxWidth: '1200px',
+            margin: '0 auto'
           }}>
             {[
               {
-                step: '01',
+                step: '1',
                 title: 'Assessment & Planning',
                 description: 'Comprehensive audit of your current payroll system, data mapping, and migration timeline planning.'
               },
               {
-                step: '02',
+                step: '2',
                 title: 'Data Extraction & Cleansing',
                 description: 'Secure extraction of payroll data with thorough validation and cleansing processes.'
               },
               {
-                step: '03',
+                step: '3',
                 title: 'System Configuration',
                 description: 'New system setup with your specific payroll rules, reporting requirements, and integrations.'
               },
               {
-                step: '04',
+                step: '4',
                 title: 'Parallel Testing',
                 description: 'Run both systems simultaneously to validate accuracy before full transition.'
               }
@@ -680,49 +992,155 @@ const ProfessionalHome2025 = () => {
               <div 
                 key={index} 
                 style={{
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  borderRadius: '20px',
-                  padding: '32px 24px',
-                  textAlign: 'left',
-                  border: '1px solid rgba(0, 0, 0, 0.06)',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  position: 'relative'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.15)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                  perspective: '1000px',
+                  height: '417px'
                 }}
               >
-                <div style={{ 
-                  fontSize: '48px',
-                  fontWeight: '800',
-                  color: 'rgba(173, 216, 230, 0.3)',
-                  marginBottom: '16px',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
-                }}>
-                  {process.step}
+                <div
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    transformStyle: 'preserve-3d',
+                    transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    cursor: 'pointer'
+                  }}
+                  className={`flip-card-process-${index}`}
+                  onMouseEnter={() => {
+                    document.querySelector(`.flip-card-process-${index}`).style.transform = 'rotateY(180deg)';
+                  }}
+                  onMouseLeave={() => {
+                    document.querySelector(`.flip-card-process-${index}`).style.transform = 'rotateY(0deg)';
+                  }}
+                >
+                  {/* Front of card */}
+                  <div style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    backfaceVisibility: 'hidden',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    borderRadius: '20px',
+                    padding: '40px 28px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    border: '1px solid rgba(255, 255, 255, 0.4)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                    backdropFilter: 'blur(40px) saturate(200%)'
+                  }}>
+                    <div style={{ 
+                      fontSize: '48px',
+                      fontWeight: '700',
+                      background: 'linear-gradient(135deg, #0d47a1 0%, #1565c0 35%, #1976d2 70%, #1e88e5 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      marginBottom: '32px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                      textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                    }}>
+                      {process.step}
+                    </div>
+                    <h3 style={{ 
+                      fontSize: '24px',
+                      fontWeight: '700',
+                      background: 'linear-gradient(135deg, #1a237e 0%, #3949ab 50%, #5c6bc0 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      marginBottom: '24px',
+                      letterSpacing: '-0.01em',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+                    }}>
+                      {process.title}
+                    </h3>
+                    <div style={{
+                      textAlign: 'center',
+                      padding: '12px 20px',
+                      borderRadius: '20px',
+                      background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                      color: 'white',
+                      fontSize: '12px',
+                      fontWeight: '600',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                      textShadow: '0 1px 2px rgba(0,0,0,0.2)'
+                    }}>
+                      Hover for details
+                    </div>
+                  </div>
+                  
+                  {/* Back of card */}
+                  <div style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    backfaceVisibility: 'hidden',
+                    transform: 'rotateY(180deg)',
+                    background: `linear-gradient(135deg, #1a237e 0%, #283593 100%)`,
+                    borderRadius: '20px',
+                    padding: '40px 28px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    color: 'rgba(255, 255, 255, 0.95)',
+                    boxShadow: '0 12px 48px rgba(26, 35, 126, 0.3)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    backdropFilter: 'blur(40px) saturate(200%)'
+                  }}>
+                    {/* Enhanced Glass Effect */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '-20%',
+                      right: '-20%',
+                      width: '200px',
+                      height: '200px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+                      filter: 'blur(40px)',
+                      zIndex: 0
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <div style={{ 
+                        fontSize: '32px',
+                        fontWeight: '700',
+                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        marginBottom: '24px',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+                      }}>
+                        {process.step}
+                      </div>
+                      
+                      <h3 style={{
+                        fontSize: '20px',
+                        fontWeight: '700',
+                        color: 'rgba(255, 255, 255, 0.95)',
+                        marginBottom: '20px',
+                        textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+                      }}>
+                        {process.title}
+                      </h3>
+                      
+                      <p style={{
+                        fontSize: '16px',
+                        color: 'rgba(255, 255, 255, 0.9)',
+                        lineHeight: '1.5',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                      }}>
+                        {process.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <h3 style={{ 
-                  fontSize: '18px',
-                  fontWeight: '600',
-                  color: '#000000',
-                  marginBottom: '16px',
-                  letterSpacing: '-0.02em'
-                }}>
-                  {process.title}
-                </h3>
-                <p style={{ 
-                  fontSize: '15px',
-                  color: '#000000',
-                  lineHeight: '1.5'
-                }}>
-                  {process.description}
-                </p>
               </div>
             ))}
           </div>
@@ -731,26 +1149,70 @@ const ProfessionalHome2025 = () => {
 
       {/* Client Success Stories Section - Apple Style */}
       <section style={{ 
-        padding: '80px 20px', 
-        backgroundColor: '#f0f9ff',
-        borderTop: '1px solid rgba(0, 0, 0, 0.05)'
+        padding: '60px 20px', 
+        background: '#e3f2fd',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div style={{ width: '95%', margin: '0 auto', textAlign: 'center' }}>
+        {/* Liquid Glass Background */}
+        <div style={{
+          position: 'absolute',
+          top: '30%',
+          right: '15%',
+          width: '300px',
+          height: '400px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          animation: 'float 20s ease-in-out infinite',
+          zIndex: 0
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '25%',
+          left: '10%',
+          width: '350px',
+          height: '300px',
+          background: 'radial-gradient(ellipse, rgba(175, 82, 222, 0.04) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(90px)',
+          animation: 'float 16s ease-in-out infinite reverse',
+          zIndex: 0
+        }} />
+        
+        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <h2 style={{ 
-            fontSize: 'clamp(20px, 3.5vw, 32px)',
+            fontSize: 'clamp(28px, 3.5vw, 36px)',
             fontWeight: '700',
-            color: '#000000',
-            marginBottom: '60px',
-            letterSpacing: '-0.03em'
+            background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            marginBottom: '12px',
+            letterSpacing: '-0.025em',
+            textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
           }}>
             Trusted by Leading Organizations
           </h2>
+          <p style={{ 
+            fontSize: '20px',
+            color: '#1a237e',
+            marginBottom: '60px',
+            lineHeight: '1.4',
+            fontWeight: '500',
+            textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+          }}>
+            Proven success across industries and company sizes.
+          </p>
           
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-            gap: '32px'
-          }}>
+            gridTemplateColumns: 'repeat(2, 1fr)', 
+            gap: '40px',
+            justifyItems: 'center'
+          }} className="trusted-organizations-grid">
             {[
               {
                 company: 'Manufacturing SME (250+ employees)',
@@ -771,51 +1233,64 @@ const ProfessionalHome2025 = () => {
               <div 
                 key={index} 
                 style={{
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  borderRadius: '20px',
-                  padding: '40px 32px',
+                  background: 'rgba(255, 255, 255, 0.72)',
+                  borderRadius: '24px',
+                  padding: '48px 40px',
                   textAlign: 'left',
-                  border: '1px solid rgba(0, 0, 0, 0.06)',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                  backdropFilter: 'blur(40px) saturate(200%)',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.15)';
+                  e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 20px 64px rgba(0, 0, 0, 0.15)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.85)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.72)';
                 }}
               >
                 <div style={{ 
-                  fontSize: '24px',
-                  color: '#00bfff',
-                  marginBottom: '20px'
+                  fontSize: '48px',
+                  background: 'linear-gradient(135deg, #007AFF 0%, #0051D5 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  marginBottom: '24px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                  fontWeight: '300'
                 }}>
                   "
                 </div>
                 <p style={{ 
-                  fontSize: '16px',
-                  color: '#000000',
-                  lineHeight: '1.5',
-                  marginBottom: '24px',
-                  fontStyle: 'italic'
+                  fontSize: '19px',
+                  color: '#1d1d1f',
+                  lineHeight: '1.47',
+                  marginBottom: '32px',
+                  fontStyle: 'italic',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                  fontWeight: '400'
                 }}>
                   {testimonial.quote}
                 </p>
                 <div>
                   <p style={{ 
-                    fontSize: '15px',
+                    fontSize: '17px',
                     fontWeight: '600',
-                    color: '#000000',
-                    marginBottom: '4px'
+                    color: '#1d1d1f',
+                    marginBottom: '4px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                   }}>
                     {testimonial.company}
                   </p>
                   <p style={{ 
-                    fontSize: '14px',
-                    color: '#000000'
+                    fontSize: '15px',
+                    color: '#86868b',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                    fontWeight: '400'
                   }}>
                     {testimonial.industry}
                   </p>
@@ -828,40 +1303,57 @@ const ProfessionalHome2025 = () => {
 
       {/* CTA Section - Apple Style */}
       <section style={{ 
-        padding: '160px 20px', 
-        backgroundColor: '#f0f9ff',
-        textAlign: 'left',
+        padding: '80px 20px', 
+        background: '#e3f2fd',
+        textAlign: 'center',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Effects */}
+        {/* Enhanced Liquid Glass Background */}
         <div style={{
           position: 'absolute',
-          top: '0',
-          left: '0',
-          right: '0',
-          bottom: '0',
-          background: 'radial-gradient(circle at 30% 50%, rgba(173, 216, 230, 0.18) 0%, transparent 55%), radial-gradient(circle at 70% 30%, rgba(135, 206, 250, 0.12) 0%, transparent 55%), radial-gradient(circle at 50% 80%, rgba(176, 224, 230, 0.08) 0%, transparent 60%)',
+          top: '20%',
+          left: '30%',
+          width: '300px',
+          height: '400px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          animation: 'float 10s ease-in-out infinite',
+          zIndex: 0
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '30%',
+          right: '25%',
+          width: '350px',
+          height: '300px',
+          background: 'radial-gradient(ellipse, rgba(175, 82, 222, 0.08) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(90px)',
+          animation: 'float 14s ease-in-out infinite reverse',
           zIndex: 0
         }} />
         
-        <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <h2 style={{ 
-            fontSize: 'clamp(24px, 4vw, 36px)',
-            fontWeight: '700',
-            color: '#000000',
-            marginBottom: '32px',
-            letterSpacing: '-0.04em',
-            lineHeight: '1.05'
+            fontSize: 'clamp(28px, 3.5vw, 36px)',
+            fontWeight: '600',
+            color: '#1a237e',
+            marginBottom: '20px',
+            letterSpacing: '-0.025em',
+            lineHeight: '1.05',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
           }}>
             Ready to migrate your payroll?
           </h2>
           <p style={{ 
-            fontSize: '15px',
-            color: '#000000',
-            lineHeight: '1.3',
+            fontSize: '24px',
+            color: '#283593',
+            lineHeight: '1.33',
             marginBottom: '64px',
-            fontWeight: '400'
+            fontWeight: '400',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
           }}>
             Start with a free consultation. Our UK payroll migration experts will assess your current system and provide a detailed roadmap.
           </p>
@@ -869,25 +1361,24 @@ const ProfessionalHome2025 = () => {
             <Link 
               to="/quote" 
               style={{
-                background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                background: '#007AFF',
                 color: 'white',
-                padding: '20px 40px',
-                borderRadius: '30px',
+                padding: '12px 28px',
+                borderRadius: '980px',
                 textDecoration: 'none',
                 fontSize: '15px',
-                fontWeight: '600',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: '0 8px 32px rgba(135, 206, 250, 0.4)',
+                fontWeight: '400',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 border: 'none',
-                backdropFilter: 'blur(10px)'
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
               }}
               onMouseEnter={(e) => { 
-                e.target.style.transform = 'translateY(-4px) scale(1.05)';
-                e.target.style.boxShadow = '0 16px 48px rgba(135, 206, 250, 0.5)';
+                e.target.style.transform = 'scale(1.05)';
+                e.target.style.background = '#0056CC';
               }}
               onMouseLeave={(e) => { 
-                e.target.style.transform = 'translateY(0) scale(1)';
-                e.target.style.boxShadow = '0 8px 32px rgba(135, 206, 250, 0.4)';
+                e.target.style.transform = 'scale(1)';
+                e.target.style.background = '#007AFF';
               }}
             >
               Get Free Consultation
@@ -895,28 +1386,26 @@ const ProfessionalHome2025 = () => {
             <a 
               href="mailto:info@globalpayrollmigration.com"
               style={{
-                color: '#87ceeb',
-                padding: '20px 40px',
-                borderRadius: '30px',
+                color: '#007AFF',
+                padding: '12px 28px',
+                borderRadius: '980px',
                 textDecoration: 'none',
                 fontSize: '15px',
-                fontWeight: '600',
-                border: '2px solid rgba(135, 206, 250, 0.4)',
-                background: 'rgba(135, 206, 250, 0.08)',
-                backdropFilter: 'blur(10px)',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                fontWeight: '400',
+                border: '1px solid #007AFF',
+                background: 'transparent',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
               }}
               onMouseEnter={(e) => { 
-                e.target.style.borderColor = 'rgba(135, 206, 250, 0.7)';
-                e.target.style.background = 'rgba(135, 206, 250, 0.15)';
-                e.target.style.transform = 'translateY(-4px)';
-                e.target.style.boxShadow = '0 16px 32px rgba(135, 206, 250, 0.3)';
+                e.target.style.background = '#007AFF';
+                e.target.style.color = 'white';
+                e.target.style.transform = 'scale(1.05)';
               }}
               onMouseLeave={(e) => { 
-                e.target.style.borderColor = 'rgba(135, 206, 250, 0.4)';
-                e.target.style.background = 'rgba(135, 206, 250, 0.08)';
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = 'none';
+                e.target.style.background = 'transparent';
+                e.target.style.color = '#007AFF';
+                e.target.style.transform = 'scale(1)';
               }}
             >
               Email Us

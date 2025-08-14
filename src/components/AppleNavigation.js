@@ -22,7 +22,7 @@ const AppleNavigation = () => {
   // Handle responsive breakpoints
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
     
     checkScreenSize();
@@ -62,7 +62,7 @@ const AppleNavigation = () => {
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)',
+          background: scrolled ? 'rgba(227, 242, 253, 0.95)' : 'rgba(227, 242, 253, 0.8)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           borderBottom: `0.5px solid ${scrolled ? 'rgba(0, 0, 0, 0.15)' : 'rgba(0, 0, 0, 0.1)'}`,
@@ -72,13 +72,12 @@ const AppleNavigation = () => {
         <div 
           className="apple-navigation-content"
           style={{
-            maxWidth: '1200px',
+            width: '90%',
             margin: '0 auto',
-            padding: '0 24px',
+            padding: '12px 24px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            height: '64px'
+            justifyContent: 'space-between'
           }}
         >
           {/* Logo */}
@@ -92,7 +91,7 @@ const AppleNavigation = () => {
               textDecoration: 'none',
               fontSize: '18px',
               fontWeight: 700,
-              color: '#1d1d1f',
+              color: '#1a237e',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
             }}
           >
@@ -145,7 +144,7 @@ const AppleNavigation = () => {
                     gap: '4px',
                     fontSize: '17px',
                     fontWeight: 400,
-                    color: isActiveLink('/services') ? '#007AFF' : '#1d1d1f',
+                    color: isActiveLink('/services') ? '#007AFF' : '#1a237e',
                     textDecoration: 'none',
                     padding: '8px 12px',
                     borderRadius: '8px',
@@ -176,7 +175,7 @@ const AppleNavigation = () => {
                     position: 'absolute',
                     top: '100%',
                     left: '50%',
-                    background: 'rgba(255, 255, 255, 0.95)',
+                    background: 'rgba(227, 242, 253, 0.95)',
                     backdropFilter: 'blur(20px)',
                     WebkitBackdropFilter: 'blur(20px)',
                     borderRadius: '12px',
@@ -200,7 +199,7 @@ const AppleNavigation = () => {
                         padding: '12px 16px',
                         borderRadius: '8px',
                         textDecoration: 'none',
-                        color: '#1d1d1f',
+                        color: '#1a237e',
                         transition: 'all 0.2s ease',
                         marginBottom: '4px'
                       }}
@@ -252,7 +251,7 @@ const AppleNavigation = () => {
                     gap: '4px',
                     fontSize: '17px',
                     fontWeight: 400,
-                    color: isActiveLink('/success-stories') ? '#007AFF' : '#1d1d1f',
+                    color: isActiveLink('/success-stories') ? '#007AFF' : '#1a237e',
                     textDecoration: 'none',
                     padding: '8px 12px',
                     borderRadius: '8px',
@@ -283,7 +282,7 @@ const AppleNavigation = () => {
                     position: 'absolute',
                     top: '100%',
                     left: '50%',
-                    background: 'rgba(255, 255, 255, 0.95)',
+                    background: 'rgba(227, 242, 253, 0.95)',
                     backdropFilter: 'blur(20px)',
                     WebkitBackdropFilter: 'blur(20px)',
                     borderRadius: '12px',
@@ -307,7 +306,7 @@ const AppleNavigation = () => {
                         padding: '12px 16px',
                         borderRadius: '8px',
                         textDecoration: 'none',
-                        color: '#1d1d1f',
+                        color: '#1a237e',
                         transition: 'all 0.2s ease',
                         marginBottom: '4px'
                       }}
@@ -352,7 +351,7 @@ const AppleNavigation = () => {
                   style={{
                     fontSize: '17px',
                     fontWeight: 400,
-                    color: isActiveLink('/about') ? '#007AFF' : '#1d1d1f',
+                    color: isActiveLink('/about') ? '#007AFF' : '#1a237e',
                     textDecoration: 'none',
                     padding: '8px 12px',
                     borderRadius: '8px',
@@ -379,33 +378,33 @@ const AppleNavigation = () => {
 
               <li className="apple-navigation-item">
                 <Link
-                  to="/faq"
-                  className={`apple-navigation-link ${isActiveLink('/faq') ? 'apple-navigation-link-active' : ''}`}
+                  to="/contact"
+                  className={`apple-navigation-link ${isActiveLink('/contact') ? 'apple-navigation-link-active' : ''}`}
                   style={{
                     fontSize: '17px',
                     fontWeight: 400,
-                    color: isActiveLink('/faq') ? '#007AFF' : '#1d1d1f',
+                    color: isActiveLink('/contact') ? '#007AFF' : '#1a237e',
                     textDecoration: 'none',
                     padding: '8px 12px',
                     borderRadius: '8px',
                     transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
-                    background: isActiveLink('/faq') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
+                    background: isActiveLink('/contact') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => {
-                    if (!isActiveLink('/faq')) {
+                    if (!isActiveLink('/contact')) {
                       e.target.style.background = 'rgba(0, 0, 0, 0.05)';
                       e.target.style.color = '#007AFF';
                     }
                   }}
                   onMouseLeave={(e) => {
-                    if (!isActiveLink('/faq')) {
+                    if (!isActiveLink('/contact')) {
                       e.target.style.background = 'transparent';
-                      e.target.style.color = '#1d1d1f';
+                      e.target.style.color = '#1a237e';
                     }
                   }}
                 >
-                  FAQ
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -507,7 +506,7 @@ const AppleNavigation = () => {
           top: '64px',
           left: 0,
           right: 0,
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(227, 242, 253, 0.95)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           borderBottom: '0.5px solid rgba(0, 0, 0, 0.1)',
@@ -538,7 +537,7 @@ const AppleNavigation = () => {
                 style={{
                   fontSize: '19px',
                   fontWeight: 600,
-                  color: '#1d1d1f',
+                  color: '#1a237e',
                   marginBottom: '8px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
                 }}
@@ -553,7 +552,7 @@ const AppleNavigation = () => {
                       style={{
                         display: 'block',
                         fontSize: '17px',
-                        color: '#1d1d1f',
+                        color: '#1a237e',
                         textDecoration: 'none',
                         padding: '8px 0',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
@@ -572,7 +571,7 @@ const AppleNavigation = () => {
                 style={{
                   fontSize: '19px',
                   fontWeight: 600,
-                  color: '#1d1d1f',
+                  color: '#1a237e',
                   marginBottom: '8px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
                 }}
@@ -587,7 +586,7 @@ const AppleNavigation = () => {
                       style={{
                         display: 'block',
                         fontSize: '17px',
-                        color: '#1d1d1f',
+                        color: '#1a237e',
                         textDecoration: 'none',
                         padding: '8px 0',
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
@@ -608,7 +607,7 @@ const AppleNavigation = () => {
                   display: 'block',
                   fontSize: '19px',
                   fontWeight: 500,
-                  color: '#1d1d1f',
+                  color: '#1a237e',
                   textDecoration: 'none',
                   padding: '12px 0',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
@@ -625,7 +624,7 @@ const AppleNavigation = () => {
                   display: 'block',
                   fontSize: '19px',
                   fontWeight: 500,
-                  color: '#1d1d1f',
+                  color: '#1a237e',
                   textDecoration: 'none',
                   padding: '12px 0',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'

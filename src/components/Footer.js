@@ -18,17 +18,45 @@ const Footer = () => {
   return (
     <footer 
       style={{
-        background: '#f5f5f7',
-        borderTop: '0.5px solid rgba(0, 0, 0, 0.1)',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+        background: '#e3f2fd',
+        borderTop: '2px solid rgba(26, 35, 126, 0.15)',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+        position: 'relative',
+        overflow: 'hidden',
+        marginTop: '60px'
       }}
     >
+      {/* Floating Background Elements */}
+      <div style={{
+        position: 'absolute',
+        top: '20%',
+        right: '15%',
+        width: '300px',
+        height: '250px',
+        background: 'radial-gradient(ellipse, rgba(0, 122, 255, 0.06) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(80px)',
+        zIndex: 0
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '30%',
+        left: '20%',
+        width: '200px',
+        height: '200px',
+        background: 'radial-gradient(ellipse, rgba(26, 35, 126, 0.04) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(60px)',
+        zIndex: 0
+      }} />
       {/* Main Footer Content */}
       <div 
         style={{
-          maxWidth: '1200px',
+          width: '90%',
           margin: '0 auto',
-          padding: '32px 24px 0'
+          padding: '32px 24px 0',
+          position: 'relative',
+          zIndex: 1
         }}
       >
         {/* Top Section */}
@@ -64,7 +92,7 @@ const Footer = () => {
                 style={{
                   fontSize: '17px',
                   fontWeight: 600,
-                  color: '#1d1d1f',
+                  color: '#1a237e',
                   margin: 0,
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
                 }}
@@ -201,7 +229,7 @@ const Footer = () => {
                 style={{
                   fontSize: '15px',
                   fontWeight: 600,
-                  color: '#1d1d1f',
+                  color: '#1a237e',
                   marginBottom: '12px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
                 }}
@@ -219,13 +247,13 @@ const Footer = () => {
                   to="/services/sme"
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#007AFF'}
-                  onMouseLeave={(e) => e.target.style.color = '#86868b'}
+                  onMouseLeave={(e) => e.target.style.color = '#283593'}
                 >
                   SME Solutions
                 </Link>
@@ -233,13 +261,13 @@ const Footer = () => {
                   to="/services/large-enterprise"
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#007AFF'}
-                  onMouseLeave={(e) => e.target.style.color = '#86868b'}
+                  onMouseLeave={(e) => e.target.style.color = '#283593'}
                 >
                   Large Enterprise
                 </Link>
@@ -247,13 +275,13 @@ const Footer = () => {
                   to="/services/consultancy"
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#007AFF'}
-                  onMouseLeave={(e) => e.target.style.color = '#86868b'}
+                  onMouseLeave={(e) => e.target.style.color = '#283593'}
                 >
                   Expert Consultancy
                 </Link>
@@ -266,7 +294,7 @@ const Footer = () => {
                 style={{
                   fontSize: '15px',
                   fontWeight: 600,
-                  color: '#1d1d1f',
+                  color: '#1a237e',
                   marginBottom: '12px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
                 }}
@@ -284,13 +312,13 @@ const Footer = () => {
                   to="/success-stories/sme"
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#007AFF'}
-                  onMouseLeave={(e) => e.target.style.color = '#86868b'}
+                  onMouseLeave={(e) => e.target.style.color = '#283593'}
                 >
                   SME Case Studies
                 </Link>
@@ -298,13 +326,13 @@ const Footer = () => {
                   to="/success-stories/large-enterprise"
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#007AFF'}
-                  onMouseLeave={(e) => e.target.style.color = '#86868b'}
+                  onMouseLeave={(e) => e.target.style.color = '#283593'}
                 >
                   Enterprise Stories
                 </Link>
@@ -312,13 +340,13 @@ const Footer = () => {
                   to="/success-stories/consultancy"
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#007AFF'}
-                  onMouseLeave={(e) => e.target.style.color = '#86868b'}
+                  onMouseLeave={(e) => e.target.style.color = '#283593'}
                 >
                   Consultancy Results
                 </Link>
@@ -331,7 +359,7 @@ const Footer = () => {
                 style={{
                   fontSize: '15px',
                   fontWeight: 600,
-                  color: '#1d1d1f',
+                  color: '#1a237e',
                   marginBottom: '12px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
                 }}
@@ -349,13 +377,13 @@ const Footer = () => {
                   to="/about"
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#007AFF'}
-                  onMouseLeave={(e) => e.target.style.color = '#86868b'}
+                  onMouseLeave={(e) => e.target.style.color = '#283593'}
                 >
                   About Us
                 </Link>
@@ -363,13 +391,13 @@ const Footer = () => {
                   to="/faq"
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#007AFF'}
-                  onMouseLeave={(e) => e.target.style.color = '#86868b'}
+                  onMouseLeave={(e) => e.target.style.color = '#283593'}
                 >
                   FAQ
                 </Link>
@@ -377,13 +405,13 @@ const Footer = () => {
                   to="/contact"
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#007AFF'}
-                  onMouseLeave={(e) => e.target.style.color = '#86868b'}
+                  onMouseLeave={(e) => e.target.style.color = '#283593'}
                 >
                   Contact
                 </Link>
@@ -437,7 +465,7 @@ const Footer = () => {
                 <span 
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                 >
@@ -462,7 +490,7 @@ const Footer = () => {
                 <span 
                   style={{
                     fontSize: '13px',
-                    color: '#86868b',
+                    color: '#283593',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                 >
@@ -513,7 +541,7 @@ const Footer = () => {
               <p 
                 style={{
                   fontSize: '13px',
-                  color: '#86868b',
+                  color: '#283593',
                   marginBottom: '4px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                 }}
@@ -523,7 +551,7 @@ const Footer = () => {
               <p 
                 style={{
                   fontSize: '13px',
-                  color: '#86868b',
+                  color: '#283593',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                 }}
               >
@@ -543,7 +571,7 @@ const Footer = () => {
                 to="/privacy"
                 style={{
                   fontSize: '13px',
-                  color: '#86868b',
+                  color: '#283593',
                   textDecoration: 'none',
                   transition: 'color 0.2s ease',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
@@ -557,7 +585,7 @@ const Footer = () => {
                 to="/terms"
                 style={{
                   fontSize: '13px',
-                  color: '#86868b',
+                  color: '#283593',
                   textDecoration: 'none',
                   transition: 'color 0.2s ease',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
@@ -571,7 +599,7 @@ const Footer = () => {
                 to="/cookies"
                 style={{
                   fontSize: '13px',
-                  color: '#86868b',
+                  color: '#283593',
                   textDecoration: 'none',
                   transition: 'color 0.2s ease',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
