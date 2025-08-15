@@ -106,7 +106,7 @@ const AppleCTA = () => {
                   </div>
                   <div className="apple-cta-contact-details">
                     <span className="apple-cta-contact-label">Phone</span>
-                    <span className="apple-cta-contact-value">+44 20 1234 5678</span>
+                    <span className="apple-cta-contact-value">XXXX XXX XXXX</span>
                   </div>
                 </div>
                 
@@ -119,7 +119,7 @@ const AppleCTA = () => {
                   </div>
                   <div className="apple-cta-contact-details">
                     <span className="apple-cta-contact-label">Email</span>
-                    <span className="apple-cta-contact-value">hello@globalpayrollmigration.co.uk</span>
+                    <span className="apple-cta-contact-value">info@globalpayrollmigration.com</span>
                   </div>
                 </div>
                 

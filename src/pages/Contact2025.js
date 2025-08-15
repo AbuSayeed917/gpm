@@ -37,7 +37,7 @@ const Contact2025 = () => {
     {
       icon: <Phone sx={{ fontSize: 28 }} />,
       title: "Phone",
-      primary: "+44 (0) 20 7946 0234",
+      primary: "XXXX XXX XXXX",
       secondary: "Available Mon-Fri 9AM-6PM GMT",
       description: "Speak directly with a migration expert",
       action: "Call Now"
@@ -473,7 +473,7 @@ const Contact2025 = () => {
                   </div>
                   <div>
                     <h3 className="title-medium mb-2">Phone</h3>
-                    <p className="body-large text-primary mb-1">+44 (0) 20 7946 0234</p>
+                    <p className="body-large text-primary mb-1">XXXX XXX XXXX</p>
                     <p className="body-medium text-on-surface-variant">
                       Available Monday-Friday, 9AM-6PM GMT
                     </p>
@@ -486,7 +486,7 @@ const Contact2025 = () => {
                   </div>
                   <div>
                     <h3 className="title-medium mb-2">Email</h3>
-                    <p className="body-large text-primary mb-1">hello@globalpayrollmigration.com</p>
+                    <p className="body-large text-primary mb-1">info@globalpayrollmigration.com</p>
                     <p className="body-medium text-on-surface-variant">
                       Response within 2 hours during business hours
                     </p>

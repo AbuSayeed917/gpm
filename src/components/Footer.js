@@ -476,7 +476,7 @@ const Footer = () => {
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                 >
-                  +44 20 1234 5678
+                  XXXX XXX XXXX
                 </span>
                 <span 
                   style={{
@@ -501,7 +501,7 @@ const Footer = () => {
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
                   }}
                 >
-                  hello@gpm.co.uk
+                  info@globalpayrollmigration.com
                 </span>
                 <span 
                   style={{

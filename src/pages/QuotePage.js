@@ -12,6 +12,7 @@ import {
   ArrowForward
 } from '@mui/icons-material';
 import AppleBackground from '../components/AppleBackground';
+import { sendQuoteRequest } from '../services/emailService';
 
 const QuotePage = () => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const QuotePage = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   // Extract service type from URL parameters
   const searchParams = new URLSearchParams(location.search);
@@ -194,17 +196,37 @@ const QuotePage = () => {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
+    setSubmitError('');
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    
-    // Auto redirect after success
-    setTimeout(() => {
-      navigate('/thank-you');
-    }, 3000);
+    try {
+      // Validate required fields
+      if (!formData.contactName || !formData.email || !formData.companyName || !formData.targetSystem) {
+        setSubmitError('Please fill in all required fields');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Send email using EmailJS
+      const result = await sendQuoteRequest(formData);
+      
+      if (result.success) {
+        setSubmitSuccess(true);
+        // Thank you page will stay visible with a button to return home
+        
+        // Scroll to top smoothly when thank you page appears
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      } else {
+        setSubmitError('Failed to send quote request. Please try again or contact us directly at info@globalpayrollmigration.com');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitError('An error occurred while sending your request. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const renderStepContent = (step) => {
@@ -1267,7 +1289,7 @@ const QuotePage = () => {
                   margin: '0 auto 48px auto'
                 }}
               >
-                Thank you for your interest. Our team will review your requirements 
+                Your quote request has been sent successfully! Our team will review your requirements 
                 and get back to you within 24 hours with a detailed quote.
               </motion.p>
               
@@ -1487,6 +1509,28 @@ const QuotePage = () => {
                   {renderStepContent(activeStep)}
                 </motion.div>
               </AnimatePresence>
+
+              {/* Error Message Display */}
+              {submitError && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  style={{
+                    marginTop: '24px',
+                    padding: '16px 20px',
+                    backgroundColor: 'rgba(255, 59, 48, 0.1)',
+                    border: '2px solid rgba(255, 59, 48, 0.3)',
+                    borderRadius: '12px',
+                    color: '#D70015',
+                    fontSize: '15px',
+                    fontWeight: '500',
+                    textAlign: 'center',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                  }}
+                >
+                  {submitError}
+                </motion.div>
+              )}
 
               {/* Apple Navigation Buttons - Right under the form */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '40px', padding: '0 16px' }}>

@@ -287,12 +287,12 @@ const ProfessionalHome = () => {
             
             <div className="flex justify-center gap-6 flex-wrap">
               <a 
-                href="tel:+44-20-7946-0958" 
+                href="tel:XXXX-XXX-XXXX" 
                 className="flex items-center gap-2 text-primary hover-lift"
                 style={{ textDecoration: 'none' }}
               >
                 <Phone size={20} />
-                <span className="font-medium">+44-20-7946-0958</span>
+                <span className="font-medium">XXXX-XXX-XXXX</span>
               </a>
               <a 
                 href="mailto:info@globalpayrollmigration.com" 

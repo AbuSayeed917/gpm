@@ -7,7 +7,7 @@ const Contact = () => {
     {
       icon: "📞",
       title: "Phone",
-      primary: "+44 (0) 20 7946 0234",
+      primary: "XXXX XXX XXXX",
       secondary: "Available Mon-Fri 9AM-6PM GMT",
       description: "Speak directly with a migration expert"
     },

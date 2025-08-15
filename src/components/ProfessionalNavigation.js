@@ -293,9 +293,9 @@ const ProfessionalNavigation = () => {
                   Get Free Quote
                 </Link>
                 <div className="mobile-contact-info">
-                  <a href="tel:+44-20-7946-0958" className="mobile-contact-link">
+                  <a href="tel:XXXX-XXX-XXXX" className="mobile-contact-link">
                     <Phone size={16} />
-                    +44-20-7946-0958
+                    XXXX-XXX-XXXX
                   </a>
                   <a href="mailto:info@globalpayrollmigration.com" className="mobile-contact-link">
                     <Email size={16} />

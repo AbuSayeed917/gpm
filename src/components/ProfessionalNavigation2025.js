@@ -626,7 +626,7 @@ const ProfessionalNavigation2025 = () => {
               </Link>
               <div className="flex flex-col gap-2">
                 <a 
-                  href="tel:+44-20-7946-0958" 
+                  href="tel:XXXX-XXX-XXXX" 
                   className="flex items-center gap-2 p-2 rounded-sm"
                   style={{
                     color: 'var(--color-on-surface-variant)',
@@ -634,7 +634,7 @@ const ProfessionalNavigation2025 = () => {
                   }}
                 >
                   <Phone sx={{ fontSize: 16 }} />
-                  +44-20-7946-0958
+                  XXXX-XXX-XXXX
                 </a>
                 <a 
                   href="mailto:info@globalpayrollmigration.com" 
