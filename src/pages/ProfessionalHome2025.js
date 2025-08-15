@@ -29,12 +29,13 @@ const ProfessionalHome2025 = () => {
 
   // Cleanup timeouts on unmount
   React.useEffect(() => {
+    const timeoutsRef = hoverTimeouts.current;
     return () => {
-      const timeouts = hoverTimeouts.current;
-      Object.values(timeouts).forEach((timeout) => {
+      Object.values(timeoutsRef).forEach((timeout) => {
         if (timeout) clearTimeout(timeout);
       });
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Add CSS animations
