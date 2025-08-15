@@ -1311,7 +1311,8 @@ const ProfessionalConsultancyServices = () => {
               </div>
             </motion.div>
 
-            {/* Success Story Card */}
+            {/* Success Story Card - Commented Out (Generic Content) */}
+            {/*
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1337,7 +1338,6 @@ const ProfessionalConsultancyServices = () => {
                   boxShadow: '0 8px 32px rgba(255, 149, 0, 0.3)',
                 }}
               >
-                {/* Background decoration */}
                 <div
                   style={{
                     position: 'absolute',
@@ -1476,6 +1476,8 @@ const ProfessionalConsultancyServices = () => {
                 </div>
               </motion.div>
             </motion.div>
+            */}
+
           </motion.div>
         </div>
       </section>

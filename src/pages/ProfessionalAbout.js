@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -9,52 +9,43 @@ import {
   Support,
   Phone,
   Email,
-  ExpandMore,
+  People,
+  Assessment,
+  TrendingUp,
+  CheckCircle,
 } from '@mui/icons-material';
 import AppleBackground from '../components/AppleBackground';
+import { AppleFlipCard } from '../components/AppleCardSystem';
 
 const ProfessionalAbout = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [expandedCard, setExpandedCard] = useState(null);
-  const [touchStartY, setTouchStartY] = useState(null);
-
-  // Detect mobile devices and screen size
-  useEffect(() => {
-    const checkMobile = () => {
-      const mobile =
-        window.innerWidth <= 768 ||
-        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      setIsMobile(mobile);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Handle touch interactions for mobile
-  const handleTouchStart = (e, cardIndex) => {
-    if (isMobile) {
-      setTouchStartY(e.touches[0].clientY);
-    }
-  };
-
-  const handleTouchEnd = (e, cardIndex) => {
-    if (isMobile && touchStartY) {
-      const touchEndY = e.changedTouches[0].clientY;
-      const diff = touchStartY - touchEndY;
-
-      // If minimal swipe, treat as tap to expand/collapse
-      if (Math.abs(diff) < 10) {
-        setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
+  // Add responsive styles
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @media (max-width: 1024px) {
+        .about-cards-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
       }
-      setTouchStartY(null);
-    }
-  };
+      @media (max-width: 768px) {
+        .about-cards-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .hero-title { font-size: clamp(32px, 8vw, 42px) !important; }
+        .hero-subtitle { font-size: 18px !important; }
+        .section-title { font-size: clamp(28px, 6vw, 36px) !important; }
+      }
+      @media (max-width: 480px) {
+        .hero-buttons { flex-direction: column !important; }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   const operationRegions = [
     'United Kingdom',
-    'United States',
+    'United States', 
     'Germany',
     'France',
     'Spain',
@@ -77,7 +68,7 @@ const ProfessionalAbout = () => {
         'Bank-grade encryption and SOC2 compliance protect your sensitive payroll data throughout migration.',
       features: [
         'End-to-end encryption',
-        'SOC2 Type II certified',
+        'SOC2 Type II certified', 
         'GDPR compliant processes',
         'Multi-factor authentication',
       ],
@@ -90,7 +81,7 @@ const ProfessionalAbout = () => {
       features: [
         'Parallel system testing',
         '24/7 monitoring',
-        'Instant rollback capability',
+        'Instant rollback capability', 
         'Real-time validation',
       ],
     },
@@ -120,1365 +111,961 @@ const ProfessionalAbout = () => {
     },
   ];
 
+  const companyStats = [
+    {
+      icon: <People />,
+      value: '500+',
+      label: 'Successful Migrations',
+      description: 'Completed across multiple industries',
+    },
+    {
+      icon: <Public />,
+      value: '14',
+      label: 'Countries Served',
+      description: 'Global reach with local expertise',
+    },
+    {
+      icon: <Assessment />,
+      value: '99.8%',
+      label: 'Success Rate',
+      description: 'Zero data loss guarantee',
+    },
+    {
+      icon: <TrendingUp />,
+      value: '8 Years',
+      label: 'Industry Experience',
+      description: 'Deep payroll migration expertise',
+    },
+  ];
+
   return (
-    <>
-      <style jsx>{`
-        /* Mobile-First CSS with Industry Standard Breakpoints */
-        .mobile-optimized {
-          /* Base styles for mobile (320px and up) */
-        }
-
-        /* Small Mobile */
-        @media (max-width: 375px) {
-          .hero-title {
-            font-size: 32px !important;
-            line-height: 1.1 !important;
-            margin-bottom: 16px !important;
-          }
-          .hero-subtitle {
-            font-size: 16px !important;
-            margin-bottom: 24px !important;
-          }
-          .section-padding {
-            padding: 40px 0 30px 0 !important;
-          }
-          .container-mobile {
-            padding: 0 16px !important;
-          }
-        }
-
-        /* Mobile Portrait */
-        @media (max-width: 480px) {
-          .hero-section {
-            padding: 60px 0 40px 0 !important;
-            min-height: 70vh !important;
-          }
-          .hero-title {
-            font-size: 36px !important;
-            margin-bottom: 18px !important;
-          }
-          .hero-subtitle {
-            font-size: 17px !important;
-            line-height: 1.4 !important;
-          }
-          .cta-buttons {
-            flex-direction: column !important;
-            gap: 12px !important;
-            align-items: stretch !important;
-          }
-          .cta-button {
-            width: 100% !important;
-            text-align: center !important;
-            padding: 16px 24px !important;
-          }
-          .feature-grid {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-          }
-          .card-padding {
-            padding: 24px 20px !important;
-          }
-        }
-
-        /* Mobile Landscape / Small Tablet */
-        @media (min-width: 481px) and (max-width: 768px) {
-          .hero-section {
-            padding: 70px 0 50px 0 !important;
-          }
-          .feature-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 20px !important;
-          }
-          .regions-grid {
-            gap: 12px !important;
-          }
-        }
-
-        /* Tablet */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .feature-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 24px !important;
-          }
-          .container-tablet {
-            max-width: 90% !important;
-          }
-        }
-
-        /* Touch-friendly interactions */
-        .touch-card {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-          cursor: pointer !important;
-        }
-
-        .touch-card:active {
-          transform: scale(0.98) !important;
-        }
-
-        .expanded-card {
-          transform: translateY(-4px) !important;
-          box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        /* Improved touch targets */
-        .touch-target {
-          min-height: 44px !important;
-          min-width: 44px !important;
-        }
-
-        /* Mobile typography optimization */
-        @media (max-width: 768px) {
-          .mobile-h2 {
-            font-size: clamp(28px, 6vw, 40px) !important;
-          }
-          .mobile-p {
-            font-size: 16px !important;
-            line-height: 1.5 !important;
-          }
-          .mobile-small {
-            font-size: 14px !important;
-          }
-        }
-
-        /* Scroll snap for mobile sections */
-        @media (max-width: 768px) {
-          .section-scroll-snap {
-            scroll-snap-type: y mandatory;
-          }
-          .section-snap-item {
-            scroll-snap-align: start;
-          }
-        }
-
-        /* Mobile navigation spacing */
-        @media (max-width: 768px) {
-          .mobile-nav-spacing {
-            margin-top: 60px !important;
-          }
-        }
-
-        /* Reduced motion for accessibility */
-        @media (prefers-reduced-motion: reduce) {
-          * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-            scroll-behavior: auto !important;
-          }
-        }
-
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-          .high-contrast {
-            border: 2px solid currentColor !important;
-          }
-        }
-
-        /* Dark mode considerations */
-        @media (prefers-color-scheme: dark) {
-          .dark-mode-text {
-            color: #ffffff !important;
-          }
-        }
-      `}</style>
-
-      <AppleBackground variant='primary'>
-        {/* Mobile-Optimized Hero Section */}
-        <section
-          className='hero-section section-snap-item'
+    <AppleBackground variant='primary'>
+      {/* Apple Hero Section */}
+      <section
+        style={{
+          padding: '50px 20px 40px 20px',
+          textAlign: 'center',
+          background: '#e3f2fd',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Apple-style floating background elements */}
+        <div
           style={{
-            background: '#f0f9ff',
-            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
-            position: 'relative',
-            overflow: 'hidden',
-            minHeight: isMobile ? '80vh' : 'auto',
-            display: 'flex',
-            alignItems: 'center',
+            position: 'absolute',
+            top: '20%',
+            right: '10%',
+            width: '400px',
+            height: '300px',
+            background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(100px)',
+            animation: 'float 10s ease-in-out infinite',
+            zIndex: 0,
           }}
-        >
-          {/* Optimized background for mobile performance */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: isMobile ? '100%' : '80%',
-              height: isMobile ? '400px' : '600px',
-              background: 'radial-gradient(circle, rgba(0, 122, 255, 0.05) 0%, transparent 70%)',
-              borderRadius: '50%',
-              filter: 'blur(80px)',
-              pointerEvents: 'none',
-            }}
-          />
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '10%',
+            left: '15%',
+            width: '300px',
+            height: '200px',
+            background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(80px)',
+            animation: 'float 8s ease-in-out infinite reverse',
+            zIndex: 0,
+          }}
+        />
 
-          <div
-            className='container-mobile'
-            style={{
-              position: 'relative',
-              zIndex: 1,
-              maxWidth: isMobile ? '100%' : '95%',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0 22px',
-              width: '100%',
-            }}
+        <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}
           >
+            {/* Apple-style eyebrow text */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              style={{ textAlign: 'center', maxWidth: '100%', margin: '0 auto' }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              style={{
+                fontSize: '17px',
+                fontWeight: '700',
+                color: '#007aff',
+                marginBottom: '16px',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                letterSpacing: '-0.022em',
+                textTransform: 'uppercase',
+                textAlign: 'center',
+              }}
             >
-              {/* Mobile-optimized eyebrow text */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
+              About Global Payroll Migration
+            </motion.div>
+
+            <h1
+              className='hero-title'
+              style={{
+                fontSize: 'clamp(38px, 4.5vw, 50px)',
+                fontWeight: '700',
+                lineHeight: '1.05',
+                color: '#1a237e',
+                marginBottom: '16px',
+                letterSpacing: '-0.025em',
+                textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+              }}
+            >
+              Leading the{' '}
+              <span
                 style={{
-                  fontSize: isMobile ? '15px' : '17px',
-                  fontWeight: '600',
-                  color: '#00bfff',
-                  marginBottom: isMobile ? '12px' : '16px',
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                  letterSpacing: '-0.022em',
-                  textTransform: 'uppercase',
-                  textAlign: 'center',
+                  background:
+                    'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  display: 'inline-block',
+                  fontWeight: '700',
+                  paddingBottom: '4px',
+                  lineHeight: '1.2',
                 }}
               >
-                About GlobalPayrollMigration.com
-              </motion.div>
+                Future of Payroll
+              </span>{' '}
+              Migration
+            </h1>
 
-              {/* Responsive hero title with better mobile sizing */}
-              <motion.h1
-                className='hero-title'
-                style={{
-                  fontSize: isMobile ? 'clamp(32px, 8vw, 48px)' : 'clamp(48px, 5vw, 64px)',
-                  fontWeight: '600',
-                  color: '#000000',
-                  marginBottom: isMobile ? '16px' : '20px',
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.015em',
-                  textAlign: 'center',
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.0, delay: 0.2 }}
-              >
-                Payroll migration.
-                <br />
-                <span
-                  style={{
-                    background: 'linear-gradient(90deg, #00bfff 0%, #87ceeb 100%)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    display: 'inline-block',
-                  }}
-                >
-                  Remarkably simple.
-                </span>
-              </motion.h1>
+            <p
+              className='hero-subtitle'
+              style={{
+                fontSize: '20px',
+                lineHeight: '1.3',
+                color: '#283593',
+                fontWeight: '400',
+                marginBottom: '32px',
+                maxWidth: '640px',
+                margin: '0 auto 32px auto',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              }}
+            >
+              Trusted by organizations worldwide, we specialize in seamless payroll system migrations with zero data loss and complete compliance across all jurisdictions.
+            </p>
 
-              {/* Mobile-optimized subtitle */}
-              <motion.p
-                className='hero-subtitle'
+            <div
+              className='hero-buttons'
+              style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '40px' }}
+            >
+              <Link
+                to='/contact'
                 style={{
-                  fontSize: isMobile ? '16px' : '18px',
-                  color: '#000000',
-                  marginBottom: isMobile ? '24px' : '32px',
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.5',
-                  fontWeight: '400',
-                  letterSpacing: '.011em',
-                  maxWidth: '100%',
-                  margin: isMobile ? '0 auto 24px auto' : '0 auto 32px auto',
-                  textAlign: 'center',
-                  padding: isMobile ? '0 10px' : '0',
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.0, delay: 0.4 }}
-              >
-                UK-based payroll migration specialists trusted by companies across the globe. We
-                make complex transitions feel effortless.
-              </motion.p>
-
-              {/* Mobile-first CTA buttons */}
-              <motion.div
-                className='cta-buttons'
-                style={{
-                  display: 'flex',
-                  gap: isMobile ? '12px' : '16px',
-                  justifyContent: 'center',
-                  flexWrap: 'wrap',
+                  background: '#007AFF',
+                  color: 'white',
+                  padding: '14px 32px',
+                  borderRadius: '980px',
+                  textDecoration: 'none',
+                  fontSize: '17px',
+                  fontWeight: '500',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  flexDirection: isMobile ? 'column' : 'row',
+                  gap: '8px',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  border: 'none',
+                  boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)',
                 }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.0, delay: 0.6 }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'scale(1.05)';
+                  e.target.style.background = '#0056CC';
+                  e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'scale(1)';
+                  e.target.style.background = '#007AFF';
+                  e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
+                }}
               >
-                {/* Primary CTA - Touch optimized */}
-                <motion.div
-                  whileHover={!isMobile ? { scale: 1.02, y: -2 } : {}}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
-                  className='touch-target'
-                >
-                  <Link
-                    to='/quote'
-                    className='cta-button touch-target'
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      padding: isMobile ? '16px 32px' : '14px 28px',
-                      background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                      border: 'none',
-                      borderRadius: '980px',
-                      color: '#ccebff',
-                      textDecoration: 'none',
-                      fontWeight: '400',
-                      fontSize: '16px',
-                      letterSpacing: '-0.022em',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      cursor: 'pointer',
-                      userSelect: 'none',
-                      boxShadow: '0 4px 20px rgba(0, 122, 255, 0.3)',
-                      minHeight: '44px',
-                      width: isMobile ? '100%' : 'auto',
-                      maxWidth: isMobile ? '280px' : 'none',
-                    }}
-                  >
-                    Get started
-                    <ArrowForward sx={{ fontSize: 16 }} />
-                  </Link>
-                </motion.div>
+                Get Free Consultation
+              </Link>
 
-                {/* Secondary CTA - Touch optimized */}
-                <motion.div
-                  whileHover={!isMobile ? { scale: 1.02 } : {}}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
-                  className='touch-target'
-                >
-                  <Link
-                    to='/quote'
-                    className='cta-button touch-target'
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      padding: isMobile ? '16px 32px' : '14px 8px',
-                      background: 'transparent',
-                      border: isMobile ? '2px solid #00bfff' : 'none',
-                      borderRadius: isMobile ? '980px' : '0',
-                      color: '#00bfff',
-                      textDecoration: 'none',
-                      fontWeight: '400',
-                      fontSize: '16px',
-                      letterSpacing: '-0.022em',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      cursor: 'pointer',
-                      userSelect: 'none',
-                      minHeight: '44px',
-                      width: isMobile ? '100%' : 'auto',
-                      maxWidth: isMobile ? '280px' : 'none',
-                    }}
-                  >
-                    Learn more
-                    <ArrowForward sx={{ fontSize: 16 }} />
-                  </Link>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Mobile-Optimized Story Section */}
-        <section
-          className='section-padding section-snap-item'
-          style={{
-            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
-            background: '#e6f7ff',
-            position: 'relative',
-          }}
-        >
-          <div
-            className='container-mobile'
-            style={{
-              maxWidth: isMobile ? '100%' : '95%',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0 22px',
-              marginBottom: isMobile ? '30px' : '50px',
-              position: 'relative',
-              zIndex: 1,
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              viewport={{ once: true, margin: '-100px' }}
-              style={{ textAlign: 'center' }}
-            >
-              <h2
-                className='mobile-h2'
+              <Link
+                to='/quote'
                 style={{
-                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(40px, 5vw, 56px)',
-                  fontWeight: '600',
-                  color: '#000000',
-                  marginBottom: '16px',
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.0625',
-                  letterSpacing: '-0.009em',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                  background: 'transparent',
+                  color: '#007AFF',
+                  padding: '14px 32px',
+                  borderRadius: '980px',
+                  textDecoration: 'none',
+                  fontSize: '17px',
+                  fontWeight: '500',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  border: '2px solid #007AFF',
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = '#007AFF';
+                  e.target.style.color = 'white';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'transparent';
+                  e.target.style.color = '#007AFF';
                 }}
               >
-                Our story.
-              </h2>
-              <p
-                className='mobile-p'
-                style={{
-                  fontSize: isMobile ? '18px' : '21px',
-                  color: '#000000',
-                  maxWidth: '100%',
-                  margin: '0 auto',
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.381',
-                  letterSpacing: '.011em',
-                  fontWeight: '400',
-                  padding: isMobile ? '0 10px' : '0',
-                }}
-              >
-                When your business outgrows outdated systems, migration becomes essential. But it
-                doesn't have to be complex.
-              </p>
-            </motion.div>
-          </div>
+                Get Custom Quote
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-          {/* Mobile-optimized story card */}
+      {/* Company Stats Section */}
+      <section
+        style={{
+          padding: '0px 20px 40px 20px',
+          background: '#e3f2fd',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, delay: 0.2 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             viewport={{ once: true, margin: '-100px' }}
-            style={{
-              maxWidth: isMobile ? '100%' : '95%',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0 22px',
-            }}
+            style={{ textAlign: 'center' }}
           >
-            <motion.div
-              whileHover={
-                !isMobile
-                  ? {
-                      y: -8,
-                      boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
-                    }
-                  : {}
-              }
-              transition={{ duration: 0.3 }}
+            <h2
+              className='section-title'
               style={{
-                background: '#ccebff',
-                borderRadius: isMobile ? '16px' : '22px',
-                padding: isMobile ? '40px 24px' : '60px 50px',
-                border: '1px solid rgba(0, 0, 0, 0.06)',
-                backdropFilter: 'saturate(180%) blur(20px)',
-                position: 'relative',
-                overflow: 'hidden',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontWeight: '700',
+                color: '#1a237e',
+                marginBottom: '12px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.0625',
+                letterSpacing: '-0.009em',
+                textAlign: 'center',
               }}
             >
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <p
+              Our Impact.
+            </h2>
+            <p
+              style={{
+                fontSize: '18px',
+                color: '#283593',
+                maxWidth: '700px',
+                margin: '0 auto',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.381',
+                letterSpacing: '.011em',
+                fontWeight: '400',
+              }}
+            >
+              Delivering exceptional results for organizations worldwide.
+            </p>
+          </motion.div>
+        </div>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '12px',
+            width: '95%',
+            margin: '0 auto',
+          }}
+        >
+          {companyStats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              viewport={{ once: true, margin: '-100px' }}
+            >
+              <div
+                style={{
+                  background: 'rgba(255, 255, 255, 0.72)',
+                  borderRadius: '22px',
+                  padding: '32px',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
+                  border: '1px solid rgba(0, 0, 0, 0.04)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+              >
+                <div
                   style={{
-                    fontSize: isMobile ? '16px' : '19px',
-                    lineHeight: '1.6',
-                    color: '#000000',
-                    marginBottom: isMobile ? '20px' : '30px',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    fontWeight: '400',
+                    width: '72px',
+                    height: '72px',
+                    borderRadius: '22px',
+                    background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '24px',
+                    boxShadow:
+                      '0 8px 32px rgba(0, 122, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                   }}
                 >
-                  Every payroll migration is a{' '}
-                  <strong style={{ color: '#000000', fontWeight: '600' }}>high-stakes event</strong>{' '}
-                  — and mistakes can cost you compliance penalties, employee trust, and sleepless
-                  nights.
-                </p>
+                  {React.cloneElement(stat.icon, {
+                    sx: {
+                      fontSize: 32,
+                      color: '#ccebff',
+                      filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
+                    },
+                  })}
+                </div>
+
+                <div
+                  style={{
+                    fontSize: '48px',
+                    fontWeight: '600',
+                    background:
+                      'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    marginBottom: '8px',
+                    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                    lineHeight: '1.0625',
+                    letterSpacing: '-0.005em',
+                  }}
+                >
+                  {stat.value}
+                </div>
+
+                <h3
+                  style={{
+                    fontSize: '20px',
+                    fontWeight: '600',
+                    color: '#000000',
+                    marginBottom: '8px',
+                    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                    lineHeight: '1.16667',
+                    letterSpacing: '-0.005em',
+                  }}
+                >
+                  {stat.label}
+                </h3>
 
                 <p
                   style={{
-                    fontSize: isMobile ? '16px' : '19px',
-                    lineHeight: '1.6',
+                    fontSize: '15px',
                     color: '#000000',
-                    marginBottom: isMobile ? '20px' : '30px',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    lineHeight: '1.47059',
+                    letterSpacing: '-0.022em',
                     fontWeight: '400',
-                  }}
-                >
-                  At GlobalPayrollMigration.com, we{' '}
-                  <strong style={{ color: '#00bfff', fontWeight: '600' }}>
-                    remove that risk entirely
-                  </strong>
-                  . Our expert UK-based team takes full ownership of your migration, from cleansing
-                  and validating your data to configuring statutory rules, running test cycles,
-                  reconciling results, and guiding you through go-live.
-                </p>
-
-                <p
-                  style={{
-                    fontSize: isMobile ? '16px' : '19px',
-                    lineHeight: '1.6',
-                    color: '#000000',
-                    marginBottom: isMobile ? '20px' : '30px',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    fontWeight: '400',
-                  }}
-                >
-                  Whether you're moving to Dayforce, Workday, ADP, or another payroll platform, we
-                  deliver an{' '}
-                  <strong style={{ color: '#000000', fontWeight: '600' }}>
-                    audit-ready, compliant, and disruption-free
-                  </strong>{' '}
-                  transition — so your people get paid{' '}
-                  <strong style={{ color: '#000000', fontWeight: '600' }}>
-                    right, on time, every time
-                  </strong>
-                  .
-                </p>
-
-                <p
-                  style={{
-                    fontSize: isMobile ? '16px' : '19px',
-                    lineHeight: '1.6',
-                    color: '#000000',
                     margin: '0',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    fontWeight: '400',
+                    textAlign: 'center',
                   }}
                 >
-                  We've successfully migrated payrolls for SMEs and multinationals across every
-                  sector, tailoring our approach to your size, structure, and strategic goals. With
-                  a proven track record of{' '}
-                  <strong style={{ color: '#00bfff', fontWeight: '600' }}>
-                    zero compliance failures
-                  </strong>
-                  , we make payroll migration not just stress-free — but a{' '}
-                  <strong style={{ color: '#000000', fontWeight: '600' }}>
-                    competitive advantage
-                  </strong>
-                  .
+                  {stat.description}
                 </p>
               </div>
             </motion.div>
-          </motion.div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        {/* Mobile-Optimized Features Section with Touch Interactions */}
-        <section
-          className='section-padding section-snap-item'
+      {/* Why Choose Us Section */}
+      <section
+        style={{
+          padding: '40px 20px 60px 20px',
+          background: '#e3f2fd',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
           style={{
-            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
-            background: '#ccebff',
-            position: 'relative',
-            overflow: 'hidden',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background:
+              'radial-gradient(ellipse 100% 40% at 50% 0%, rgba(0, 122, 255, 0.03), transparent)',
+            pointerEvents: 'none',
           }}
-        >
-          <div
-            className='container-mobile'
-            style={{
-              maxWidth: isMobile ? '100%' : '95%',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px 30px 20px' : '0 22px 50px 22px',
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              viewport={{ once: true, margin: '-100px' }}
-              style={{ textAlign: 'center' }}
-            >
-              <h2
-                className='mobile-h2'
-                style={{
-                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(40px, 5vw, 56px)',
-                  fontWeight: '600',
-                  color: '#000000',
-                  marginBottom: '16px',
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.0625',
-                  letterSpacing: '-0.009em',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.2)',
-                }}
-              >
-                Why choose us.
-              </h2>
-              <p
-                className='mobile-p'
-                style={{
-                  fontSize: isMobile ? '18px' : '21px',
-                  color: '#000000',
-                  maxWidth: '100%',
-                  margin: '0 auto',
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.381',
-                  letterSpacing: '.011em',
-                  fontWeight: '400',
-                  padding: isMobile ? '0 10px' : '0',
-                }}
-              >
-                Four pillars of excellence that make migration effortless.
-              </p>
-            </motion.div>
-          </div>
+        />
 
-          <div
-            className='feature-grid'
-            style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: isMobile ? '16px' : '20px',
-              width: isMobile ? '100%' : '95%',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0',
-            }}
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: '-100px' }}
+            style={{ textAlign: 'center' }}
           >
-            {whyChooseUs.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.15,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                }}
-                viewport={{ once: true, margin: '-50px' }}
-                className={`touch-card ${expandedCard === index ? 'expanded-card' : ''}`}
-                onTouchStart={(e) => handleTouchStart(e, index)}
-                onTouchEnd={(e) => handleTouchEnd(e, index)}
-                onClick={() => isMobile && setExpandedCard(expandedCard === index ? null : index)}
-                style={{
-                  background: '#ccebff',
-                  borderRadius: isMobile ? '16px' : '22px',
-                  padding: isMobile ? '24px 20px' : '32px',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-                  border: '1px solid rgba(0, 0, 0, 0.06)',
-                  backdropFilter: 'saturate(180%) blur(20px)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  cursor: isMobile ? 'pointer' : 'default',
-                  minHeight: isMobile ? 'auto' : '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
-              >
-                <div style={{ position: 'relative', zIndex: 1, flex: 1 }}>
+            <h2
+              className='section-title'
+              style={{
+                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontWeight: '700',
+                color: '#1a237e',
+                marginBottom: '12px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.0625',
+                letterSpacing: '-0.009em',
+              }}
+            >
+              Why organizations choose us.
+            </h2>
+            <p
+              style={{
+                fontSize: '18px',
+                color: '#283593',
+                maxWidth: '700px',
+                margin: '0 auto',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.381',
+                letterSpacing: '.011em',
+                fontWeight: '400',
+              }}
+            >
+              Four pillars of excellence that deliver results for global organizations.
+            </p>
+          </motion.div>
+        </div>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            maxWidth: '1200px',
+            gap: '12px',
+            width: '95%',
+            margin: '0 auto',
+          }}
+          className='about-cards-grid'
+        >
+          {whyChooseUs.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.15,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              viewport={{ once: true, margin: '-50px' }}
+            >
+              <AppleFlipCard
+                frontContent={
                   <div
                     style={{
-                      width: isMobile ? '60px' : '72px',
-                      height: isMobile ? '60px' : '72px',
-                      borderRadius: isMobile ? '16px' : '22px',
-                      background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                      background: '#e3f2fd',
+                      borderRadius: '22px',
+                      padding: '32px',
+                      height: '100%',
                       display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: isMobile ? '20px' : '24px',
-                      boxShadow:
-                        '0 8px 32px rgba(168, 85, 247, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                      flexDirection: 'column',
+                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
+                      border: '1px solid rgba(0, 0, 0, 0.04)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                   >
-                    {React.cloneElement(feature.icon, {
-                      sx: {
-                        fontSize: isMobile ? 24 : 32,
-                        color: '#ccebff',
-                        filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
-                      },
-                    })}
-                  </div>
-
-                  <h3
-                    style={{
-                      fontSize: isMobile ? '20px' : '24px',
-                      fontWeight: '600',
-                      color: '#000000',
-                      marginBottom: isMobile ? '12px' : '16px',
-                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                      lineHeight: '1.16667',
-                      letterSpacing: '-0.005em',
-                    }}
-                  >
-                    {feature.title}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontSize: isMobile ? '14px' : '16px',
-                      color: '#000000',
-                      marginBottom: isMobile ? '16px' : '24px',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      lineHeight: '1.47059',
-                      letterSpacing: '-0.022em',
-                      fontWeight: '400',
-                      flex: 1,
-                    }}
-                  >
-                    {feature.description}
-                  </p>
-
-                  {/* Mobile: Show features when expanded, Desktop: Show on hover via separate component */}
-                  {isMobile && expandedCard === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
+                    <div
                       style={{
-                        marginTop: '16px',
-                        padding: '16px',
-                        background: 'rgba(0, 191, 255, 0.1)',
-                        borderRadius: '12px',
-                        border: '1px solid rgba(0, 191, 255, 0.2)',
+                        width: '72px',
+                        height: '72px',
+                        borderRadius: '22px',
+                        background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '12px',
+                        boxShadow:
+                          '0 8px 32px rgba(0, 122, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                       }}
                     >
-                      <ul
-                        style={{
-                          listStyle: 'none',
-                          padding: 0,
-                          margin: 0,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '8px',
-                        }}
-                      >
-                        {feature.features.map((detailFeature, fIndex) => (
-                          <li
-                            key={fIndex}
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '8px',
-                              fontSize: '13px',
-                              color: '#000000',
-                              fontFamily:
-                                'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                              fontWeight: '400',
-                            }}
-                          >
-                            <div
-                              style={{
-                                width: '4px',
-                                height: '4px',
-                                borderRadius: '50%',
-                                background: '#00bfff',
-                                flexShrink: 0,
-                              }}
-                            />
-                            {detailFeature}
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
+                      {React.cloneElement(feature.icon, {
+                        sx: {
+                          fontSize: 32,
+                          color: '#ccebff',
+                          filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
+                        },
+                      })}
+                    </div>
 
-                  {/* Touch indicator for mobile */}
-                  {isMobile && (
+                    <h3
+                      style={{
+                        fontSize: '24px',
+                        fontWeight: '600',
+                        color: '#000000',
+                        marginBottom: '12px',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.16667',
+                        letterSpacing: '-0.005em',
+                      }}
+                    >
+                      {feature.title}
+                    </h3>
+
+                    <p
+                      style={{
+                        fontSize: '17px',
+                        color: '#000000',
+                        marginBottom: '12px',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.47059',
+                        letterSpacing: '-0.022em',
+                        fontWeight: '400',
+                        flex: 1,
+                      }}
+                    >
+                      {feature.description}
+                    </p>
+
                     <div
                       style={{
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center',
-                        marginTop: '12px',
-                        padding: '8px',
-                        color: '#00bfff',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        gap: '4px',
+                        marginTop: 'auto',
                       }}
                     >
-                      {expandedCard === index ? 'Tap to collapse' : 'Tap to expand'}
-                      <ExpandMore
-                        sx={{
-                          fontSize: 16,
-                          transform: expandedCard === index ? 'rotate(180deg)' : 'rotate(0deg)',
-                          transition: 'transform 0.3s ease',
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          padding: '8px 16px',
+                          borderRadius: '22px',
+                          background: 'rgba(0, 122, 255, 0.1)',
+                          color: '#007aff',
+                          fontSize: '15px',
+                          fontWeight: '500',
+                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                         }}
-                      />
+                      >
+                        Hover to learn more
+                      </div>
                     </div>
-                  )}
+                  </div>
+                }
+                backContent={
+                  <div
+                    style={{
+                      background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                      borderRadius: '22px',
+                      padding: '38px',
+                      color: '#ccebff',
+                      minHeight: '500px',
+                      height: '500px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      textAlign: 'center',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      boxShadow: '0 20px 64px rgba(0, 122, 255, 0.4)',
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '-30%',
+                        right: '-20%',
+                        width: '150px',
+                        height: '150px',
+                        background:
+                          'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                        filter: 'blur(40px)',
+                        pointerEvents: 'none',
+                      }}
+                    />
 
-                  {/* Desktop: Show CTA button */}
-                  {!isMobile && (
-                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'auto' }}>
+                    <div
+                      style={{
+                        position: 'relative',
+                        zIndex: 1,
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                      }}
+                    >
+                      <div
+                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                      >
+                        <h3
+                          style={{
+                            fontSize: '22px',
+                            fontWeight: '600',
+                            color: '#ccebff',
+                            marginBottom: '20px',
+                            fontFamily:
+                              'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                            textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+                          }}
+                        >
+                          {feature.title}
+                        </h3>
+
+                        <ul
+                          style={{
+                            listStyle: 'none',
+                            padding: 0,
+                            margin: '0 0 20px 0',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '8px',
+                          }}
+                        >
+                          {feature.features.map((detailFeature, fIndex) => (
+                            <li
+                              key={fIndex}
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                fontSize: '15px',
+                                color: 'rgba(255, 255, 255, 0.95)',
+                                fontFamily:
+                                  'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                                fontWeight: '400',
+                                textAlign: 'left',
+                              }}
+                            >
+                              <div
+                                style={{
+                                  width: '20px',
+                                  height: '20px',
+                                  borderRadius: '50%',
+                                  background: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)',
+                                  backdropFilter: 'blur(20px) saturate(200%)',
+                                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  flexShrink: 0,
+                                  boxShadow:
+                                    '0 2px 8px rgba(52, 199, 89, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    color: 'white',
+                                    fontSize: '12px',
+                                    fontWeight: '600',
+                                    textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+                                  }}
+                                >
+                                  ✓
+                                </span>
+                              </div>
+                              {detailFeature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
                       <Link
-                        to='/quote'
-                        className='touch-target'
+                        to='/contact'
                         style={{
                           display: 'inline-flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          gap: '8px',
-                          padding: '12px 24px',
-                          background: 'rgba(0, 191, 255, 0.1)',
-                          border: '1px solid rgba(0, 191, 255, 0.2)',
-                          borderRadius: '20px',
-                          color: '#00bfff',
+                          gap: '6px',
+                          padding: '8px 16px',
+                          background: 'rgba(255, 255, 255, 0.2)',
+                          backdropFilter: 'blur(20px)',
+                          border: '1px solid rgba(255, 255, 255, 0.3)',
+                          borderRadius: '18px',
+                          color: '#ccebff',
                           textDecoration: 'none',
                           fontSize: '14px',
                           fontWeight: '500',
                           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                          marginTop: 'auto',
                           cursor: 'pointer',
                           userSelect: 'none',
-                          minHeight: '44px',
                         }}
                       >
-                        Learn More
+                        Get Started
                         <ArrowForward sx={{ fontSize: 14 }} />
                       </Link>
                     </div>
-                  )}
+                  </div>
+                }
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Global Operations Section */}
+      <section
+        style={{
+          padding: '40px 20px 60px 20px',
+          background: '#e3f2fd',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: '-100px' }}
+            style={{ textAlign: 'center', marginBottom: '50px' }}
+          >
+            <h2
+              className='section-title'
+              style={{
+                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontWeight: '700',
+                color: '#1a237e',
+                marginBottom: '12px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.0625',
+                letterSpacing: '-0.009em',
+              }}
+            >
+              Global Operations.
+            </h2>
+            <p
+              style={{
+                fontSize: '18px',
+                color: '#283593',
+                maxWidth: '700px',
+                margin: '0 auto',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.381',
+                letterSpacing: '.011em',
+                fontWeight: '400',
+              }}
+            >
+              Supporting payroll migrations across multiple countries with local compliance expertise.
+            </p>
+          </motion.div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+              gap: '12px',
+              maxWidth: '900px',
+              margin: '0 auto',
+            }}
+          >
+            {operationRegions.map((region, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+                viewport={{ once: true, margin: '-50px' }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.8)',
+                  borderRadius: '16px',
+                  padding: '16px 12px',
+                  textAlign: 'center',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  cursor: 'pointer',
+                  minHeight: '120px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <div
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 8px',
+                    boxShadow: '0 4px 16px rgba(0, 122, 255, 0.2)',
+                  }}
+                >
+                  <Public sx={{ fontSize: 20, color: '#ccebff' }} />
                 </div>
+                <h3
+                  style={{
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    color: '#000000',
+                    margin: '0',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    lineHeight: '1.3',
+                  }}
+                >
+                  {region}
+                </h3>
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Mobile-Optimized Global Reach Section */}
-        <section
-          className='section-padding section-snap-item'
+      {/* Contact CTA Section */}
+      <section
+        style={{
+          background: '#e3f2fd',
+          padding: '40px 20px 60px 20px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
           style={{
-            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
-            background: '#ccebff',
+            position: 'absolute',
+            top: '20%',
+            left: '-10%',
+            width: '600px',
+            height: '600px',
+            background: 'radial-gradient(circle, rgba(0, 122, 255, 0.1) 0%, transparent 70%)',
+            filter: 'blur(100px)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '20%',
+            right: '-10%',
+            width: '500px',
+            height: '500px',
+            background: 'radial-gradient(circle, rgba(88, 86, 214, 0.1) 0%, transparent 70%)',
+            filter: 'blur(100px)',
+          }}
+        />
+
+        <div
+          style={{
             position: 'relative',
-            overflow: 'hidden',
+            zIndex: 1,
+            maxWidth: '95%',
+            margin: '0 auto',
+            padding: '0 22px',
           }}
         >
-          <div
-            className='container-mobile'
-            style={{
-              maxWidth: isMobile ? '100%' : '95%',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0 22px',
-              position: 'relative',
-              zIndex: 1,
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              viewport={{ once: true, margin: '-100px' }}
-              style={{ textAlign: 'center', marginBottom: isMobile ? '30px' : '50px' }}
-            >
-              <h2
-                className='mobile-h2'
-                style={{
-                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(40px, 5vw, 56px)',
-                  fontWeight: '600',
-                  color: '#000000',
-                  marginBottom: '16px',
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.0625',
-                  letterSpacing: '-0.009em',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.2)',
-                }}
-              >
-                Global reach.
-              </h2>
-              <p
-                className='mobile-p'
-                style={{
-                  fontSize: isMobile ? '18px' : '21px',
-                  color: '#000000',
-                  maxWidth: '100%',
-                  margin: '0 auto',
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.381',
-                  letterSpacing: '.011em',
-                  fontWeight: '400',
-                  padding: isMobile ? '0 10px' : '0',
-                }}
-              >
-                Supporting payroll transformations across 14 countries and counting.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.2 }}
-              viewport={{ once: true, margin: '-100px' }}
+            <h2
               style={{
-                background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
-                borderRadius: isMobile ? '16px' : '22px',
-                padding: isMobile ? '30px 20px' : '50px',
-                border: '1px solid rgba(0, 0, 0, 0.06)',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontWeight: '700',
+                color: '#1a237e',
+                marginBottom: '12px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.1',
               }}
             >
-              <div
-                className='regions-grid'
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: isMobile ? '8px' : '16px',
-                  justifyContent: 'center',
-                }}
-              >
-                {operationRegions.map((country, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                    whileHover={!isMobile ? { scale: 1.05, y: -2 } : {}}
-                    whileTap={isMobile ? { scale: 0.95 } : {}}
-                    style={{
-                      background: '#ccebff',
-                      color: '#000000',
-                      padding: isMobile ? '8px 12px' : '12px 20px',
-                      borderRadius: isMobile ? '16px' : '20px',
-                      fontSize: isMobile ? '13px' : '15px',
-                      fontWeight: '500',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      border: '1px solid rgba(0, 0, 0, 0.08)',
-                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
-                      cursor: 'default',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      userSelect: 'none',
-                    }}
-                  >
-                    {country}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
+              Ready to transform your payroll operations?
+            </h2>
 
-        {/* Mobile-Optimized Contact Section */}
-        <section
-          className='section-padding section-snap-item'
-          style={{
-            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
-            background: '#e6f7ff',
-            position: 'relative',
-          }}
-        >
-          <div
-            className='container-mobile'
-            style={{
-              maxWidth: isMobile ? '100%' : '95%',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0 22px',
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              viewport={{ once: true, margin: '-100px' }}
-              style={{ textAlign: 'center', marginBottom: isMobile ? '30px' : '50px' }}
+            <p
+              style={{
+                fontSize: '24px',
+                color: '#283593',
+                marginBottom: '64px',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                lineHeight: '1.33',
+                fontWeight: '400',
+              }}
             >
-              <h2
-                className='mobile-h2'
-                style={{
-                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(40px, 5vw, 56px)',
-                  fontWeight: '600',
-                  color: '#000000',
-                  marginBottom: '16px',
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.0625',
-                  letterSpacing: '-0.009em',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.2)',
-                }}
-              >
-                Get in touch.
-              </h2>
-              <p
-                className='mobile-p'
-                style={{
-                  fontSize: isMobile ? '18px' : '21px',
-                  color: '#000000',
-                  maxWidth: '100%',
-                  margin: '0 auto',
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.381',
-                  letterSpacing: '.011em',
-                  fontWeight: '400',
-                  padding: isMobile ? '0 10px' : '0',
-                }}
-              >
-                Ready to discuss your payroll migration? We're here to help.
-              </p>
-            </motion.div>
+              Join hundreds of organizations that have successfully migrated with our proven methodology. Zero downtime, maximum results.
+            </p>
 
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: isMobile ? '16px' : '24px',
-                maxWidth: isMobile ? '100%' : '800px',
-                margin: '0 auto',
+                display: 'flex',
+                gap: '16px',
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                marginBottom: '40px',
               }}
             >
-              {/* Phone Contact - Mobile Optimized */}
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                whileHover={
-                  !isMobile
-                    ? {
-                        y: -8,
-                        boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
-                      }
-                    : {}
-                }
-                whileTap={{ scale: 0.98 }}
-              >
-                <a
-                  href='tel:+447432665514'
-                  className='touch-target'
+              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  to='/contact'
                   style={{
-                    display: 'block',
-                    background: '#ccebff',
-                    borderRadius: isMobile ? '16px' : '22px',
-                    padding: isMobile ? '32px 24px' : '40px 32px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '17px 44px',
+                    background: '#007aff',
+                    border: 'none',
+                    borderRadius: '980px',
+                    color: '#ccebff',
                     textDecoration: 'none',
-                    border: '1px solid rgba(0, 0, 0, 0.06)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                    fontWeight: '400',
+                    fontSize: '17px',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
-                    minHeight: '44px',
+                    userSelect: 'none',
                   }}
                 >
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      textAlign: 'center',
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: isMobile ? '60px' : '72px',
-                        height: isMobile ? '60px' : '72px',
-                        borderRadius: isMobile ? '16px' : '22px',
-                        background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: isMobile ? '20px' : '24px',
-                        boxShadow: '0 8px 32px rgba(0, 191, 255, 0.3)',
-                      }}
-                    >
-                      <Phone
-                        sx={{
-                          fontSize: isMobile ? 24 : 32,
-                          color: '#ccebff',
-                          filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
-                        }}
-                      />
-                    </div>
-
-                    <h3
-                      style={{
-                        fontSize: isMobile ? '20px' : '24px',
-                        fontWeight: '600',
-                        color: '#000000',
-                        marginBottom: isMobile ? '8px' : '12px',
-                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                      }}
-                    >
-                      Call Us
-                    </h3>
-
-                    <p
-                      style={{
-                        fontSize: isMobile ? '18px' : '20px',
-                        fontWeight: '500',
-                        color: '#00bfff',
-                        marginBottom: '8px',
-                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      }}
-                    >
-                      +44 7432 665514
-                    </p>
-
-                    <p
-                      className='mobile-small'
-                      style={{
-                        fontSize: isMobile ? '13px' : '15px',
-                        color: '#666666',
-                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      }}
-                    >
-                      Available Mon-Fri 9AM-6PM GMT
-                    </p>
-                  </div>
-                </a>
+                  <Phone sx={{ fontSize: 18 }} />
+                  Book Free Consultation
+                </Link>
               </motion.div>
 
-              {/* Email Contact - Mobile Optimized */}
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
-                whileHover={
-                  !isMobile
-                    ? {
-                        y: -8,
-                        boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
-                      }
-                    : {}
-                }
-                whileTap={{ scale: 0.98 }}
-              >
-                <a
-                  href='mailto:info@globalpayrollmigration.com'
-                  className='touch-target'
+              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  to='/quote'
                   style={{
-                    display: 'block',
-                    background: '#ccebff',
-                    borderRadius: isMobile ? '16px' : '22px',
-                    padding: isMobile ? '32px 24px' : '40px 32px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '17px 44px',
+                    background: 'transparent',
+                    border: '2px solid #007aff',
+                    borderRadius: '980px',
+                    color: '#007aff',
                     textDecoration: 'none',
-                    border: '1px solid rgba(0, 0, 0, 0.06)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                    fontWeight: '400',
+                    fontSize: '17px',
+                    letterSpacing: '-0.022em',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
-                    minHeight: '44px',
+                    userSelect: 'none',
                   }}
                 >
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      textAlign: 'center',
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: isMobile ? '60px' : '72px',
-                        height: isMobile ? '60px' : '72px',
-                        borderRadius: isMobile ? '16px' : '22px',
-                        background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: isMobile ? '20px' : '24px',
-                        boxShadow: '0 8px 32px rgba(0, 191, 255, 0.3)',
-                      }}
-                    >
-                      <Email
-                        sx={{
-                          fontSize: isMobile ? 24 : 32,
-                          color: '#ccebff',
-                          filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
-                        }}
-                      />
-                    </div>
-
-                    <h3
-                      style={{
-                        fontSize: isMobile ? '20px' : '24px',
-                        fontWeight: '600',
-                        color: '#000000',
-                        marginBottom: isMobile ? '8px' : '12px',
-                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                      }}
-                    >
-                      Email Us
-                    </h3>
-
-                    <p
-                      style={{
-                        fontSize: isMobile ? '16px' : '18px',
-                        fontWeight: '500',
-                        color: '#00bfff',
-                        marginBottom: '8px',
-                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                        wordBreak: 'break-word',
-                      }}
-                    >
-                      info@globalpayrollmigration.com
-                    </p>
-
-                    <p
-                      className='mobile-small'
-                      style={{
-                        fontSize: isMobile ? '13px' : '15px',
-                        color: '#666666',
-                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      }}
-                    >
-                      Response within 2 hours
-                    </p>
-                  </div>
-                </a>
+                  <Email sx={{ fontSize: 18 }} />
+                  Get Custom Quote
+                </Link>
               </motion.div>
             </div>
-          </div>
-        </section>
-
-        {/* Mobile-Optimized CTA Section */}
-        <section
-          className='section-snap-item'
-          style={{
-            background: '#000000',
-            padding: isMobile ? '60px 0' : '100px 0',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
-          <div
-            className='container-mobile'
-            style={{
-              position: 'relative',
-              zIndex: 1,
-              maxWidth: isMobile ? '100%' : '95%',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0 22px',
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              style={{ textAlign: 'center', maxWidth: '100%', margin: '0 auto' }}
-            >
-              <h2
-                style={{
-                  fontSize: isMobile ? 'clamp(32px, 8vw, 48px)' : 'clamp(48px, 6vw, 72px)',
-                  fontWeight: '600',
-                  color: '#ccebff',
-                  marginBottom: isMobile ? '20px' : '24px',
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.015em',
-                }}
-              >
-                Ready to migrate?
-              </h2>
-
-              <p
-                style={{
-                  fontSize: isMobile ? '18px' : '21px',
-                  color: 'rgba(255, 255, 255, 0.8)',
-                  marginBottom: isMobile ? '32px' : '48px',
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.381',
-                  padding: isMobile ? '0 10px' : '0',
-                }}
-              >
-                Let's discuss how we can support your payroll transformation — whether you're just
-                starting out or ready to move.
-              </p>
-
-              <div
-                style={{
-                  display: 'flex',
-                  gap: isMobile ? '12px' : '16px',
-                  justifyContent: 'center',
-                  flexWrap: 'wrap',
-                  flexDirection: isMobile ? 'column' : 'row',
-                  alignItems: 'center',
-                }}
-              >
-                <motion.div
-                  whileHover={!isMobile ? { scale: 1.05, y: -2 } : {}}
-                  whileTap={{ scale: 0.98 }}
-                  className='touch-target'
-                >
-                  <Link
-                    to='/quote'
-                    className='touch-target'
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      padding: isMobile ? '16px 32px' : '18px 36px',
-                      background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                      border: 'none',
-                      borderRadius: '980px',
-                      color: '#ccebff',
-                      textDecoration: 'none',
-                      fontWeight: '400',
-                      fontSize: '16px',
-                      letterSpacing: '-0.022em',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      cursor: 'pointer',
-                      userSelect: 'none',
-                      boxShadow: '0 8px 32px rgba(0, 122, 255, 0.4)',
-                      minHeight: '44px',
-                      width: isMobile ? '100%' : 'auto',
-                      maxWidth: isMobile ? '300px' : 'none',
-                    }}
-                  >
-                    Book a Free Discovery Call
-                    <ArrowForward sx={{ fontSize: 18 }} />
-                  </Link>
-                </motion.div>
-
-                <motion.div
-                  whileHover={!isMobile ? { scale: 1.05, y: -2 } : {}}
-                  whileTap={{ scale: 0.98 }}
-                  className='touch-target'
-                >
-                  <Link
-                    to='/quote'
-                    className='touch-target'
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      padding: isMobile ? '16px 32px' : '18px 36px',
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                      borderRadius: '980px',
-                      color: '#ccebff',
-                      textDecoration: 'none',
-                      fontWeight: '400',
-                      fontSize: '16px',
-                      letterSpacing: '-0.022em',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      cursor: 'pointer',
-                      userSelect: 'none',
-                      minHeight: '44px',
-                      width: isMobile ? '100%' : 'auto',
-                      maxWidth: isMobile ? '300px' : 'none',
-                    }}
-                  >
-                    Request a Custom Quote
-                    <ArrowForward sx={{ fontSize: 18 }} />
-                  </Link>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </AppleBackground>
-    </>
+          </motion.div>
+        </div>
+      </section>
+    </AppleBackground>
   );
 };
 
