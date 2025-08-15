@@ -13,8 +13,15 @@ if (EMAILJS_PUBLIC_KEY) {
 
 export const sendQuoteRequest = async (formData) => {
   try {
-    // Check if EmailJS is configured
-    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+    // Check if EmailJS is configured with valid values (not placeholder values)
+    if (
+      !EMAILJS_SERVICE_ID ||
+      !EMAILJS_TEMPLATE_ID ||
+      !EMAILJS_PUBLIC_KEY ||
+      EMAILJS_SERVICE_ID === 'your_service_id_here' ||
+      EMAILJS_TEMPLATE_ID === 'your_template_id_here' ||
+      EMAILJS_PUBLIC_KEY === 'your_public_key_here'
+    ) {
       console.warn('EmailJS not configured. Using fallback method.');
       return sendViaMailto(formData);
     }
