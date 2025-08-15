@@ -132,6 +132,40 @@ const AppleNavigation = () => {
                 padding: 0
               }}
             >
+              {/* Home Link - First */}
+              <li className="apple-navigation-item">
+                <Link
+                  to="/"
+                  className={`apple-navigation-link ${isActiveLink('/') ? 'apple-navigation-link-active' : ''}`}
+                  style={{
+                    fontSize: '17px',
+                    fontWeight: 400,
+                    color: isActiveLink('/') ? '#007AFF' : '#1a237e',
+                    textDecoration: 'none',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                    background: isActiveLink('/') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActiveLink('/')) {
+                      e.target.style.background = 'rgba(0, 0, 0, 0.05)';
+                      e.target.style.color = '#007AFF';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActiveLink('/')) {
+                      e.target.style.background = 'transparent';
+                      e.target.style.color = '#1a237e';
+                    }
+                  }}
+                >
+                  Home
+                </Link>
+              </li>
+
               {/* Services Dropdown */}
               <li 
                 className="apple-navigation-item apple-navigation-dropdown"
@@ -351,38 +385,6 @@ const AppleNavigation = () => {
               </li>
 
               {/* Direct Links */}
-              <li className="apple-navigation-item">
-                <Link
-                  to="/"
-                  className={`apple-navigation-link ${isActiveLink('/') ? 'apple-navigation-link-active' : ''}`}
-                  style={{
-                    fontSize: '17px',
-                    fontWeight: 400,
-                    color: isActiveLink('/') ? '#007AFF' : '#1a237e',
-                    textDecoration: 'none',
-                    padding: '8px 12px',
-                    borderRadius: '8px',
-                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
-                    background: isActiveLink('/') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActiveLink('/')) {
-                      e.target.style.background = 'rgba(0, 0, 0, 0.05)';
-                      e.target.style.color = '#007AFF';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActiveLink('/')) {
-                      e.target.style.background = 'transparent';
-                      e.target.style.color = '#1a237e';
-                    }
-                  }}
-                >
-                  Home
-                </Link>
-              </li>
 
               <li className="apple-navigation-item">
                 <Link
