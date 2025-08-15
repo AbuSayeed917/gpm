@@ -1,6 +1,7 @@
 # Global Payroll Migration Website
 
-A modern, professional website for Global Payroll Migration services built with React and Material Design 3.0 principles.
+A modern, professional website for Global Payroll Migration services built with
+React and Material Design 3.0 principles.
 
 ## 🚀 Features
 
@@ -45,7 +46,8 @@ npm run build && npx serve -s build
 
 ## 🚀 Deployment
 
-The website is automatically deployed to GitHub Pages via GitHub Actions when pushing to the main branch.
+The website is automatically deployed to GitHub Pages via GitHub Actions when
+pushing to the main branch.
 
 ### Manual Deployment Setup:
 
@@ -104,4 +106,7 @@ This project is proprietary software for Global Payroll Migration.
 
 ## 📞 Support
 
-For questions or support, contact info@globalpayrollmigration.com# Updated Mon Aug 11 00:42:33 BST 2025
+For questions or support, contact info@globalpayrollmigration.com# Updated Mon
+Aug 11 00:42:33 BST 2025
+
+# Test deployment with fresh Azure token
