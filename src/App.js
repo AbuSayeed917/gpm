@@ -25,25 +25,39 @@ function App() {
   return (
     <ThemeProvider>
       <ErrorBoundary>
-        <div className="app-container surface min-h-screen">
-          <a href="#main-content" className="skip-link">Skip to main content</a>
+        <div className='app-container surface min-h-screen'>
+          <a href='#main-content' className='skip-link'>
+            Skip to main content
+          </a>
           <Router>
             <ScrollToTop />
-            <div className="flex flex-col min-h-screen">
+            <div className='flex flex-col min-h-screen'>
               <AppleNavigation />
-              <main id="main-content" className="flex-1 w-full">
+              <main id='main-content' className='flex-1 w-full'>
                 <Routes>
-                  <Route path="/" element={<ProfessionalHome />} />
-                  <Route path="/services/sme" element={<ProfessionalSMEServices />} />
-                  <Route path="/services/large-enterprise" element={<ProfessionalLargeEnterpriseServices />} />
-                  <Route path="/services/consultancy" element={<ProfessionalConsultancyServices />} />
-                  <Route path="/success-stories/sme" element={<SMESuccessStories />} />
-                  <Route path="/success-stories/large-enterprise" element={<LargeEnterpriseSuccessStories />} />
-                  <Route path="/success-stories/consultancy" element={<ConsultancySuccessStories />} />
-                  <Route path="/quote" element={<QuotePage />} />
-                  <Route path="/about" element={<ProfessionalAbout />} />
-                  <Route path="/faq" element={<FAQ />} />
-                  <Route path="/contact" element={<Contact />} />
+                  <Route path='/' element={<ProfessionalHome />} />
+                  <Route path='/services/sme' element={<ProfessionalSMEServices />} />
+                  <Route
+                    path='/services/large-enterprise'
+                    element={<ProfessionalLargeEnterpriseServices />}
+                  />
+                  <Route
+                    path='/services/consultancy'
+                    element={<ProfessionalConsultancyServices />}
+                  />
+                  <Route path='/success-stories/sme' element={<SMESuccessStories />} />
+                  <Route
+                    path='/success-stories/large-enterprise'
+                    element={<LargeEnterpriseSuccessStories />}
+                  />
+                  <Route
+                    path='/success-stories/consultancy'
+                    element={<ConsultancySuccessStories />}
+                  />
+                  <Route path='/quote' element={<QuotePage />} />
+                  <Route path='/about' element={<ProfessionalAbout />} />
+                  <Route path='/faq' element={<FAQ />} />
+                  <Route path='/contact' element={<Contact />} />
                 </Routes>
               </main>
               <Footer />
