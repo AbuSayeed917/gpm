@@ -178,7 +178,7 @@ const FAQ = () => {
     <AppleBackground variant="primary">
       {/* Apple Hero Section */}
       <section style={{ 
-        background: '#f0f9ff',
+        background: 'var(--color-background)',
         padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden'
@@ -220,11 +220,11 @@ const FAQ = () => {
                 border: '1px solid rgba(0, 122, 255, 0.2)'
               }}
             >
-              <HelpOutline sx={{ fontSize: 20, color: '#00bfff' }} />
+              <HelpOutline sx={{ fontSize: 20, color: 'var(--color-primary-500)' }} />
               <span style={{
                 fontSize: '14px',
                 fontWeight: '600',
-                color: '#00bfff',
+                color: 'var(--color-primary-500)',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
@@ -235,7 +235,7 @@ const FAQ = () => {
               style={{
                 fontSize: 'clamp(48px, 5vw, 64px)',
                 fontWeight: '600',
-                color: '#000000',
+                color: 'var(--color-text-primary)',
                 marginBottom: '24px',
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.1',
@@ -248,7 +248,7 @@ const FAQ = () => {
               transition={{ duration: 1.0, delay: 0.2 }}
             >
               Frequently Asked <span style={{ 
-                background: 'linear-gradient(90deg, #00bfff 0%, #87ceeb 100%)', 
+                background: 'linear-gradient(90deg, var(--color-primary-500) 0%, var(--color-primary-400) 100%)', 
                 backgroundClip: 'text', 
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
@@ -261,7 +261,7 @@ const FAQ = () => {
             <motion.p 
               style={{
                 fontSize: '18px',
-                color: '#000000',
+                color: 'var(--color-text-primary)',
                 marginBottom: '32px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.5',
@@ -295,7 +295,7 @@ const FAQ = () => {
                   position: 'absolute', 
                   left: '20px', 
                   fontSize: 20, 
-                  color: '#000000',
+                  color: 'var(--color-text-primary)',
                   zIndex: 1
                 }} />
                 <input
@@ -308,17 +308,17 @@ const FAQ = () => {
                     padding: '18px 50px 18px 50px',
                     borderRadius: '25px',
                     border: '2px solid rgba(0, 122, 255, 0.3)',
-                    background: 'rgba(255, 255, 255, 0.9)',
+                    background: 'var(--color-surface)',
                     fontSize: '16px',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     outline: 'none',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    color: '#000000',
+                    color: 'var(--color-text-primary)',
                     backdropFilter: 'blur(20px)',
                     boxShadow: '0 8px 32px rgba(0, 122, 255, 0.15)'
                   }}
                   onFocus={(e) => {
-                    e.target.style.borderColor = '#00bfff';
+                    e.target.style.borderColor = 'var(--color-primary-500)';
                     e.target.style.boxShadow = '0 8px 32px rgba(0, 191, 255, 0.25), 0 0 0 4px rgba(0, 191, 255, 0.1)';
                   }}
                   onBlur={(e) => {
@@ -343,7 +343,7 @@ const FAQ = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#000000',
+                      color: 'var(--color-text-primary)',
                       transition: 'all 0.2s ease'
                     }}
                     whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}
@@ -360,7 +360,7 @@ const FAQ = () => {
                   style={{
                     marginTop: '12px',
                     fontSize: '14px',
-                    color: '#000000',
+                    color: 'var(--color-text-primary)',
                     textAlign: 'center',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                   }}
@@ -374,7 +374,7 @@ const FAQ = () => {
       </section>
 
       {/* Apple Quick Stats */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: 'var(--color-surface-secondary)', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -383,26 +383,8 @@ const FAQ = () => {
             viewport={{ once: true, margin: "-100px" }}
             style={{ textAlign: 'center', marginBottom: '60px' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(40px, 5vw, 56px)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.0625',
-              letterSpacing: '-0.009em',
-              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
-            }}>Quick facts.</h2>
-            <p style={{
-              fontSize: '21px',
-              color: '#000000',
-              maxWidth: '95%',
-              margin: '0 auto',
-              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.381',
-              letterSpacing: '.011em',
-              fontWeight: '400'
-            }}>
+            <h2 className="section-title">Quick facts.</h2>
+            <p className="section-subtitle">
               Key information about our payroll migration services
             </p>
           </motion.div>
@@ -426,64 +408,15 @@ const FAQ = () => {
                 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                <motion.div
-                  whileHover={{
-                    y: -8,
-                    boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)'
-                  }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    background: '#ccebff',
-                    borderRadius: '22px',
-                    padding: '40px 32px',
-                    textAlign: 'center',
-                    border: '1px solid rgba(0, 0, 0, 0.06)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-                    backdropFilter: 'saturate(180%) blur(20px)',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  {/* Background decoration */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '-20%',
-                    right: '-20%',
-                    width: '200px',
-                    height: '200px',
-                    background: 'radial-gradient(circle, rgba(0, 122, 255, 0.04) 0%, transparent 70%)',
-                    filter: 'blur(40px)'
-                  }} />
-                  
-                  <div style={{ position: 'relative', zIndex: 1 }}>
-                    <div style={{
-                      fontSize: 'clamp(32px, 4vw, 48px)',
-                      fontWeight: '700',
-                      color: '#00bfff',
-                      marginBottom: '16px',
-                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                      lineHeight: '1.1'
-                    }}>{stat.value}</div>
-                    <h3 style={{
-                      fontSize: '20px',
-                      fontWeight: '600',
-                      color: '#000000',
-                      marginBottom: '12px',
-                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
-                    }}>{stat.label}</h3>
-                    <p style={{
-                      fontSize: '15px',
-                      color: '#000000',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                      lineHeight: '1.4',
-                      fontWeight: '400'
-                    }}>{stat.description}</p>
+                <div className="card stat-card" style={{ height: '100%' }}>
+                  <div className="card-body" style={{ textAlign: 'center' }}>
+                    <div className="stat-number">{stat.value}</div>
+                    <div className="stat-label">{stat.label}</div>
+                    <p className="text-tertiary text-sm" style={{ marginTop: 'var(--space-2)' }}>
+                      {stat.description}
+                    </p>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -491,7 +424,7 @@ const FAQ = () => {
       </section>
 
       {/* Apple Key Features */}
-      <section style={{ padding: '80px 0 60px 0', background: '#f0f9ff', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: 'var(--color-background)', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -500,26 +433,8 @@ const FAQ = () => {
             viewport={{ once: true, margin: "-100px" }}
             style={{ textAlign: 'center', marginBottom: '60px' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(40px, 5vw, 56px)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.0625',
-              letterSpacing: '-0.009em',
-              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
-            }}>Why choose us.</h2>
-            <p style={{
-              fontSize: '21px',
-              color: '#000000',
-              maxWidth: '95%',
-              margin: '0 auto',
-              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.381',
-              letterSpacing: '.011em',
-              fontWeight: '400'
-            }}>
+            <h2 className="section-title">Why choose us.</h2>
+            <p className="section-subtitle">
               Our expertise ensures successful payroll transformations
             </p>
           </motion.div>
@@ -533,10 +448,10 @@ const FAQ = () => {
           }}>
             {keyFeatures.map((feature, index) => {
               const iconMap = {
-                speed: <Speed sx={{ fontSize: 40, color: '#ccebff' }} />,
-                security: <Security sx={{ fontSize: 40, color: '#ccebff' }} />,
-                support: <Support sx={{ fontSize: 40, color: '#ccebff' }} />,
-                analytics: <Analytics sx={{ fontSize: 40, color: '#ccebff' }} />
+                speed: <Speed sx={{ fontSize: 40, color: 'var(--color-primary-600)' }} />,
+                security: <Security sx={{ fontSize: 40, color: 'var(--color-primary-600)' }} />,
+                support: <Support sx={{ fontSize: 40, color: 'var(--color-primary-600)' }} />,
+                analytics: <Analytics sx={{ fontSize: 40, color: 'var(--color-primary-600)' }} />
               };
               return (
                 <motion.div
@@ -550,74 +465,15 @@ const FAQ = () => {
                   }}
                   viewport={{ once: true, margin: "-50px" }}
                 >
-                  <motion.div
-                    whileHover={{
-                      y: -8,
-                      boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)'
-                    }}
-                    transition={{ duration: 0.3 }}
-                    style={{
-                      background: '#ccebff',
-                      borderRadius: '22px',
-                      padding: '32px',
-                      border: '1px solid rgba(0, 0, 0, 0.06)',
-                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-                      backdropFilter: 'saturate(180%) blur(20px)',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column'
-                    }}
-                  >
-                    {/* Background decoration */}
-                    <div style={{
-                      position: 'absolute',
-                      top: '-20%',
-                      right: '-20%',
-                      width: '200px',
-                      height: '200px',
-                      background: 'radial-gradient(circle, rgba(0, 122, 255, 0.04) 0%, transparent 70%)',
-                      filter: 'blur(40px)'
-                    }} />
-                    
-                    <div style={{ position: 'relative', zIndex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '24px' }}>
-                        <div style={{
-                          width: '72px',
-                          height: '72px',
-                          borderRadius: '22px',
-                          background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0,
-                          boxShadow: '0 8px 32px rgba(0, 122, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-                        }}>
-                          {iconMap[feature.type]}
-                        </div>
-                        <div>
-                          <h3 style={{
-                            fontSize: '24px',
-                            fontWeight: '600',
-                            color: '#000000',
-                            marginBottom: '12px',
-                            fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                            lineHeight: '1.16667',
-                            letterSpacing: '-0.005em'
-                          }}>{feature.title}</h3>
-                          <p style={{
-                            fontSize: '16px',
-                            color: '#000000',
-                            fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                            lineHeight: '1.47059',
-                            letterSpacing: '-0.022em',
-                            fontWeight: '400'
-                          }}>{feature.description}</p>
-                        </div>
+                  <div className="card" style={{ height: '100%' }}>
+                    <div className="card-body" style={{ textAlign: 'center' }}>
+                      <div className="service-icon" style={{ margin: '0 auto var(--space-4)' }}>
+                        {iconMap[feature.type]}
                       </div>
+                      <h4 className="service-title">{feature.title}</h4>
+                      <p className="service-description">{feature.description}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 </motion.div>
               );
             })}
@@ -626,7 +482,7 @@ const FAQ = () => {
       </section>
 
       {/* Apple FAQ Section */}
-      <section ref={faqSectionRef} style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
+      <section ref={faqSectionRef} style={{ padding: '80px 0 60px 0', background: 'var(--color-surface-secondary)', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -635,25 +491,8 @@ const FAQ = () => {
             viewport={{ once: true, margin: "-100px" }}
             style={{ textAlign: 'center', marginBottom: '60px' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(40px, 5vw, 56px)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
-            }}>Detailed answers.</h2>
-            <p style={{
-              fontSize: '21px',
-              color: '#000000',
-              maxWidth: '95%',
-              margin: '0 auto',
-              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.381',
-              letterSpacing: '.011em',
-              fontWeight: '400'
-            }}>
+            <h2 className="section-title">Detailed answers.</h2>
+            <p className="section-subtitle">
               Comprehensive responses to help you understand our process and approach
             </p>
           </motion.div>
@@ -675,7 +514,7 @@ const FAQ = () => {
                 position: 'absolute', 
                 left: '20px', 
                 fontSize: 20, 
-                color: '#000000',
+                color: 'var(--color-text-primary)',
                 zIndex: 1
               }} />
               <input
@@ -688,7 +527,7 @@ const FAQ = () => {
                   padding: '16px 50px 16px 50px',
                   borderRadius: '25px',
                   border: '2px solid rgba(0, 122, 255, 0.2)',
-                  background: '#f0f9ff',
+                  background: 'var(--color-surface-secondary)',
                   fontSize: '16px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   outline: 'none',
@@ -696,7 +535,7 @@ const FAQ = () => {
                   color: '#000000'
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = '#00bfff';
+                  e.target.style.borderColor = 'var(--color-primary-500)';
                   e.target.style.boxShadow = '0 0 0 4px rgba(0, 191, 255, 0.1)';
                 }}
                 onBlur={(e) => {
@@ -721,7 +560,7 @@ const FAQ = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#000000',
+                    color: 'var(--color-text-primary)',
                     transition: 'all 0.2s ease'
                   }}
                   whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}
@@ -738,7 +577,7 @@ const FAQ = () => {
                 style={{
                   marginTop: '12px',
                   fontSize: '14px',
-                  color: '#000000',
+                  color: 'var(--color-text-primary)',
                   textAlign: 'center',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}
@@ -790,7 +629,7 @@ const FAQ = () => {
                         textTransform: 'uppercase',
                         letterSpacing: '1px',
                         backgroundColor: 'rgba(0, 122, 255, 0.1)',
-                        color: '#00bfff',
+                        color: 'var(--color-primary-500)',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
                       }}>
                         {faq.category}
@@ -798,7 +637,7 @@ const FAQ = () => {
                       <h3 style={{
                         fontSize: '20px',
                         fontWeight: '600',
-                        color: '#000000',
+                        color: 'var(--color-text-primary)',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.3',
                         letterSpacing: '-0.022em',
@@ -827,7 +666,7 @@ const FAQ = () => {
                       <div style={{ padding: '0 28px 28px 28px' }}>
                         <p style={{
                           fontSize: '17px',
-                          color: '#000000',
+                          color: 'var(--color-text-primary)',
                           lineHeight: '1.6',
                           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                           fontWeight: '400',
@@ -844,118 +683,41 @@ const FAQ = () => {
         </div>
       </section>
 
-      {/* Apple Contact CTA */}
-      <section style={{ padding: '100px 0', background: '#000000', position: 'relative', overflow: 'hidden' }}>
-        {/* Apple-style subtle background */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '60%',
-          height: '400px',
-          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 70%)',
-          filter: 'blur(80px)'
-        }} />
-        
-        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', position: 'relative', zIndex: 1 }}>
+      {/* CTA Section */}
+      <section className="section section-sm">
+        <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            style={{ textAlign: 'center', maxWidth: '95%', margin: '0 auto' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(48px, 6vw, 72px)',
-              fontWeight: '600',
-              color: '#ccebff',
-              marginBottom: '24px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.1',
-              letterSpacing: '-0.015em'
-            }}>
-              Still have questions?
-            </h2>
-            <p style={{
-              fontSize: '21px',
-              color: 'rgba(255, 255, 255, 0.8)',
-              marginBottom: '48px',
-              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.381',
-              maxWidth: '600px',
-              margin: '0 auto 48px auto'
-            }}>
-              Our payroll migration experts are here to help. Get personalized answers to your specific situation and requirements.
-            </p>
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link 
-                  to="/contact" 
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '16px 32px',
-                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                    border: 'none',
-                    borderRadius: '980px',
-                    color: '#ccebff',
-                    textDecoration: 'none',
-                    fontWeight: '400',
-                    fontSize: '16px',
-                    letterSpacing: '-0.022em',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    userSelect: 'none',
-                    boxShadow: '0 8px 32px rgba(0, 122, 255, 0.4)'
-                  }}
-                >
-                  <Phone sx={{ fontSize: 18 }} />
-                  Schedule Consultation
-                </Link>
-              </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link 
-                  to="/contact" 
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '16px 32px',
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    borderRadius: '980px',
-                    color: '#ccebff',
-                    textDecoration: 'none',
-                    fontWeight: '400',
-                    fontSize: '16px',
-                    letterSpacing: '-0.022em',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    userSelect: 'none'
-                  }}
-                >
-                  <Email sx={{ fontSize: 18 }} />
-                  Send Message
-                </Link>
-              </motion.div>
+            <div className="cta-section">
+              <div className="cta-content">
+                <h2 className="text-inverse">Still have questions?</h2>
+                <p className="text-inverse text-lg" style={{ marginBottom: 'var(--space-6)' }}>
+                  Our payroll migration experts are here to help. Get personalized answers to your specific situation and requirements.
+                </p>
+                
+                <div className="flex justify-center gap-4" style={{ flexWrap: 'wrap' }}>
+                  <Link to="/contact" className="btn btn-secondary btn-lg">
+                    <Phone sx={{ fontSize: 18 }} />
+                    Schedule Consultation
+                  </Link>
+                  
+                  <Link to="/contact" className="btn btn-ghost btn-lg">
+                    <Email sx={{ fontSize: 18 }} />
+                    Send Message
+                  </Link>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Apple Related Resources */}
-      <section style={{ padding: '80px 0 60px 0', background: '#f0f9ff', position: 'relative' }}>
+      <section style={{ padding: '80px 0 60px 0', background: 'var(--color-background)', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -964,25 +726,8 @@ const FAQ = () => {
             viewport={{ once: true, margin: "-100px" }}
             style={{ textAlign: 'center', marginBottom: '60px' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(40px, 5vw, 56px)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
-            }}>Learn more.</h2>
-            <p style={{
-              fontSize: '21px',
-              color: '#000000',
-              maxWidth: '95%',
-              margin: '0 auto',
-              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.381',
-              letterSpacing: '.011em',
-              fontWeight: '400'
-            }}>
+            <h2 className="section-title">Learn more.</h2>
+            <p className="section-subtitle">
               Explore additional resources to understand our services and approach
             </p>
           </motion.div>
@@ -1016,18 +761,18 @@ const FAQ = () => {
                 }}
               >
                 <div style={{ marginBottom: '32px' }}>
-                  <Timeline sx={{ fontSize: 48, color: '#00bfff' }} />
+                  <Timeline sx={{ fontSize: 48, color: 'var(--color-primary-500)' }} />
                 </div>
                 <h3 style={{
                   fontSize: '24px',
                   fontWeight: '600',
-                  color: '#000000',
+                  color: 'var(--color-text-primary)',
                   marginBottom: '16px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>Our Services</h3>
                 <p style={{
                   fontSize: '16px',
-                  color: '#000000',
+                  color: 'var(--color-text-primary)',
                   marginBottom: '32px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.5',
@@ -1045,7 +790,7 @@ const FAQ = () => {
                     padding: '12px 24px',
                     border: '2px solid rgba(0, 122, 255, 0.3)',
                     borderRadius: '25px',
-                    color: '#00bfff',
+                    color: 'var(--color-primary-500)',
                     textDecoration: 'none',
                     fontSize: '15px',
                     fontWeight: '600',
@@ -1083,18 +828,18 @@ const FAQ = () => {
                 }}
               >
                 <div style={{ marginBottom: '32px' }}>
-                  <People sx={{ fontSize: 48, color: '#00bfff' }} />
+                  <People sx={{ fontSize: 48, color: 'var(--color-primary-500)' }} />
                 </div>
                 <h3 style={{
                   fontSize: '24px',
                   fontWeight: '600',
-                  color: '#000000',
+                  color: 'var(--color-text-primary)',
                   marginBottom: '16px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>Success Stories</h3>
                 <p style={{
                   fontSize: '16px',
-                  color: '#000000',
+                  color: 'var(--color-text-primary)',
                   marginBottom: '32px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.5',
@@ -1112,7 +857,7 @@ const FAQ = () => {
                     padding: '12px 24px',
                     border: '2px solid rgba(0, 122, 255, 0.3)',
                     borderRadius: '25px',
-                    color: '#00bfff',
+                    color: 'var(--color-primary-500)',
                     textDecoration: 'none',
                     fontSize: '15px',
                     fontWeight: '600',
@@ -1150,18 +895,18 @@ const FAQ = () => {
                 }}
               >
                 <div style={{ marginBottom: '32px' }}>
-                  <Business sx={{ fontSize: 48, color: '#00bfff' }} />
+                  <Business sx={{ fontSize: 48, color: 'var(--color-primary-500)' }} />
                 </div>
                 <h3 style={{
                   fontSize: '24px',
                   fontWeight: '600',
-                  color: '#000000',
+                  color: 'var(--color-text-primary)',
                   marginBottom: '16px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                 }}>Our Process</h3>
                 <p style={{
                   fontSize: '16px',
-                  color: '#000000',
+                  color: 'var(--color-text-primary)',
                   marginBottom: '32px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.5',
@@ -1179,7 +924,7 @@ const FAQ = () => {
                     padding: '12px 24px',
                     border: '2px solid rgba(0, 122, 255, 0.3)',
                     borderRadius: '25px',
-                    color: '#00bfff',
+                    color: 'var(--color-primary-500)',
                     textDecoration: 'none',
                     fontSize: '15px',
                     fontWeight: '600',
