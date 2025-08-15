@@ -16,6 +16,7 @@ import {
   Analytics
 } from '@mui/icons-material';
 import AppleBackground from '../components/AppleBackground';
+import { AppleFlipCard } from '../components/AppleCardSystem';
 
 const SMESuccessStories = () => {
   const stories = [
@@ -151,49 +152,41 @@ const SMESuccessStories = () => {
 
   return (
     <AppleBackground variant="primary">
-      {/* Apple Hero Section - 100% Authentic */}
+      {/* Hero Section - Homepage Style */}
       <section style={{ 
-        background: '#000000',
-        padding: 'max(60px, 10vh) 0 max(80px, 12vh) 0',
+        padding: '50px 20px 40px 20px', 
+        textAlign: 'center',
+        background: '#e3f2fd',
         position: 'relative',
-        overflow: 'hidden',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center'
+        overflow: 'hidden'
       }}>
-        {/* Apple-style ambient lighting - Enhanced */}
+        {/* Floating Background Elements - Homepage Style */}
         <div style={{
           position: 'absolute',
-          top: '15%',
-          right: '5%',
-          width: '60%',
-          height: '60%',
-          background: 'radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 65%)',
-          filter: 'blur(120px)',
-          opacity: 0.6,
-          pointerEvents: 'none'
+          top: '20%',
+          right: '10%',
+          width: '400px',
+          height: '300px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          animation: 'float 10s ease-in-out infinite',
+          zIndex: 0
         }} />
         <div style={{
           position: 'absolute',
           bottom: '10%',
-          left: '-10%',
-          width: '50%',
-          height: '50%',
-          background: 'radial-gradient(circle, rgba(88, 86, 214, 0.06) 0%, transparent 65%)',
-          filter: 'blur(100px)',
-          opacity: 0.4,
-          pointerEvents: 'none'
+          left: '15%',
+          width: '300px',
+          height: '200px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(80px)',
+          animation: 'float 10s ease-in-out infinite',
+          zIndex: 0
         }} />
         
-        {/* Content Container - Apple's signature max-width */}
-        <div style={{ 
-          position: 'relative', 
-          zIndex: 1, 
-          maxWidth: '95%', 
-          margin: '0 auto', 
-          padding: '0 22px',
-          width: '100%'
-        }}>
+        <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -207,7 +200,7 @@ const SMESuccessStories = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               style={{
                 fontSize: '17px',
-                fontWeight: '600',
+                fontWeight: '700',
                 color: '#007aff',
                 marginBottom: '16px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -219,139 +212,86 @@ const SMESuccessStories = () => {
               SME Success Stories
             </motion.div>
 
-            {/* Apple-style hero title */}
-            <motion.h1 
-              style={{
-                fontSize: 'clamp(48px, 7vw, 96px)',
-                fontWeight: '600',
-                color: '#f5f5f7',
-                marginBottom: '24px',
-                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                lineHeight: '1.05',
-                letterSpacing: '-0.015em',
-                textAlign: 'center'
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.2 }}
-            >
-              SME migrations.
-              <br />
+            <h1 style={{ 
+              fontSize: 'clamp(38px, 4.5vw, 50px)',
+              fontWeight: '700',
+              lineHeight: '1.05',
+              color: '#1a237e',
+              marginBottom: '16px',
+              letterSpacing: '-0.025em',
+              textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+            }}>
               <span style={{ 
-                background: 'linear-gradient(90deg, #007aff 0%, #5856d6 100%)', 
-                backgroundClip: 'text', 
-                WebkitBackgroundClip: 'text', 
+                background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                display: 'inline-block'
+                backgroundClip: 'text',
+                display: 'inline-block',
+                fontWeight: '700',
+                paddingBottom: '4px',
+                lineHeight: '1.2',
+                textShadow: '0 1px 3px rgba(0,0,0,0.1)'
               }}>
-                Real results.
+                SME Success Stories
               </span>
-            </motion.h1>
+              {' '}Results.
+            </h1>
             
-            {/* Apple-style subtitle */}
-            <motion.p 
-              style={{
-                fontSize: '21px',
-                color: '#a1a1a6',
-                marginBottom: '48px',
-                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                lineHeight: '1.381',
-                fontWeight: '400',
-                letterSpacing: '.011em',
-                maxWidth: '640px',
-                margin: '0 auto 48px auto',
-                textAlign: 'center'
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.4 }}
-            >
+            <p style={{ 
+              fontSize: '20px',
+              lineHeight: '1.3',
+              color: '#283593',
+              fontWeight: '400',
+              marginBottom: '32px',
+              maxWidth: '640px',
+              margin: '0 auto 32px auto',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+            }}>
               Real stories from SME clients who transformed their payroll operations with our tailored migration services.
-            </motion.p>
+            </p>
             
-            {/* Apple-style CTA buttons */}
-            <motion.div 
-              style={{ 
-                display: 'flex', 
-                gap: '24px', 
-                justifyContent: 'center', 
-                flexWrap: 'wrap',
-                alignItems: 'center'
-              }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.6 }}
-            >
-              {/* Primary CTA - Apple Blue */}
-              <motion.div
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
+              <Link 
+                to="/contact" 
+                style={{
+                  background: '#007AFF',
+                  color: 'white',
+                  padding: '14px 32px',
+                  borderRadius: '980px',
+                  textDecoration: 'none',
+                  fontSize: '17px',
+                  fontWeight: '500',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  border: 'none',
+                  boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                }}
+                onMouseEnter={(e) => { 
+                  e.target.style.transform = 'scale(1.05)';
+                  e.target.style.background = '#0056CC';
+                  e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
+                }}
+                onMouseLeave={(e) => { 
+                  e.target.style.transform = 'scale(1)';
+                  e.target.style.background = '#007AFF';
+                  e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
+                }}
               >
-                <Link 
-                  to="/quote" 
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '17px 32px',
-                    background: '#007aff',
-                    border: 'none',
-                    borderRadius: '980px',
-                    color: '#ccebff',
-                    textDecoration: 'none',
-                    fontWeight: '400',
-                    fontSize: '17px',
-                    letterSpacing: '-0.022em',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    userSelect: 'none',
-                    boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)'
-                  }}
-                >
-                  Get started
-                  <ArrowForward sx={{ fontSize: 16 }} />
-                </Link>
-              </motion.div>
-              
-              {/* Secondary CTA - Apple Link Style */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Link 
-                  to="/services/sme" 
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '17px 8px',
-                    background: 'transparent',
-                    border: 'none',
-                    color: '#007aff',
-                    textDecoration: 'none',
-                    fontWeight: '400',
-                    fontSize: '17px',
-                    letterSpacing: '-0.022em',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    userSelect: 'none'
-                  }}
-                >
-                  Learn more
-                  <ArrowForward sx={{ fontSize: 16 }} />
-                </Link>
-              </motion.div>
-            </motion.div>
+                Book Free Consultation
+              </Link>
+            </div>
+
           </motion.div>
         </div>
       </section>
 
       {/* Apple Stats Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#f5f5f7', position: 'relative' }}>
+      <section style={{ padding: '0px 20px 40px 20px', background: '#e3f2fd', position: 'relative', overflow: 'hidden' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -361,26 +301,28 @@ const SMESuccessStories = () => {
             style={{ textAlign: 'center' }}
           >
             <h2 style={{
-              fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              color: '#1a237e',
+              marginBottom: '12px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
               letterSpacing: '-0.009em',
-              textAlign: 'center'
+              textAlign: 'center',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}>
               SME Migration Results.
             </h2>
             <p style={{
-              fontSize: '1.125rem',
-              color: '#000000',
+              fontSize: '18px',
+              color: '#283593',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.381',
               letterSpacing: '.011em',
-              fontWeight: '400'
+              fontWeight: '400',
+              textShadow: '0 1px 2px rgba(0,0,0,0.1)'
             }}>
               Key metrics from our small to medium enterprise payroll migrations.
             </p>
@@ -407,7 +349,7 @@ const SMESuccessStories = () => {
               viewport={{ once: true, margin: "-100px" }}
             >
               <div style={{
-                background: '#ccebff',
+                background: 'rgba(255, 255, 255, 0.72)',
                 borderRadius: '22px',
                 padding: '32px',
                 height: '100%',
@@ -415,8 +357,8 @@ const SMESuccessStories = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
-                border: '1px solid rgba(0, 0, 0, 0.04)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                border: '1px solid rgba(255, 255, 255, 0.18)',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
               }}>
                 <div style={{
@@ -442,7 +384,10 @@ const SMESuccessStories = () => {
                 <div style={{
                   fontSize: '48px',
                   fontWeight: '600',
-                  color: '#000000',
+                  background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                   marginBottom: '8px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.0625',
@@ -454,7 +399,10 @@ const SMESuccessStories = () => {
                 <h3 style={{
                   fontSize: '20px',
                   fontWeight: '600',
-                  color: '#000000',
+                  background: 'linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                   marginBottom: '8px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.16667',
@@ -465,7 +413,7 @@ const SMESuccessStories = () => {
                 
                 <p style={{
                   fontSize: '15px',
-                  color: '#000000',
+                  color: '#1a237e',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.47059',
                   letterSpacing: '-0.022em',
@@ -482,7 +430,7 @@ const SMESuccessStories = () => {
       </section>
 
       {/* Apple Success Stories Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
+      <section style={{ padding: '80px 20px 60px 20px', background: '#e3f2fd', position: 'relative', overflow: 'hidden' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -491,26 +439,30 @@ const SMESuccessStories = () => {
             viewport={{ once: true, margin: "-100px" }}
             style={{ textAlign: 'center', marginBottom: '60px' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+            <h2 style={{ 
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              marginBottom: '12px',
+              letterSpacing: '-0.025em',
+              textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
             }}>
               Client Success Stories.
             </h2>
             <p style={{
-              fontSize: '1.125rem',
-              color: '#000000',
-              maxWidth: '700px',
+              fontSize: '21px',
+              color: '#1a237e',
+              maxWidth: '650px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.381',
               letterSpacing: '.011em',
-              fontWeight: '400'
+              fontWeight: '400',
+              textShadow: '0 1px 2px rgba(0,0,0,0.1)'
             }}>
               Real transformations from SME clients across different industries.
             </p>
@@ -525,11 +477,11 @@ const SMESuccessStories = () => {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 style={{
-                  background: '#ccebff',
+                  background: 'rgba(255, 255, 255, 0.72)',
                   borderRadius: '22px',
                   padding: '48px',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                  border: '1px solid rgba(255, 255, 255, 0.18)',
                   position: 'relative',
                   overflow: 'hidden'
                 }}
@@ -584,17 +536,22 @@ const SMESuccessStories = () => {
                         <h3 style={{
                           fontSize: '24px',
                           fontWeight: '600',
-                          color: '#000000',
+                          background: 'linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
                           marginBottom: '4px',
-                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                         }}>
                           {story.company}
                         </h3>
                         <p style={{
                           fontSize: '17px',
-                          color: '#000000',
+                          color: '#283593',
                           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                          fontWeight: '400'
+                          fontWeight: '400',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                         }}>
                           {story.industry}
                         </p>
@@ -616,17 +573,19 @@ const SMESuccessStories = () => {
                         }}>
                           <span style={{
                             fontSize: '15px',
-                            color: '#000000',
+                            color: '#283593',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                            fontWeight: '400'
+                            fontWeight: '400',
+                            textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                           }}>
                             {item.label}:
                           </span>
                           <span style={{
                             fontSize: '15px',
-                            color: '#000000',
+                            color: '#1a237e',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                            fontWeight: '500'
+                            fontWeight: '500',
+                            textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                           }}>
                             {item.value}
                           </span>
@@ -816,8 +775,8 @@ const SMESuccessStories = () => {
 
       {/* Apple Benefits Section */}
       <section style={{ 
-        padding: '80px 0 60px 0', 
-        background: '#ccebff', 
+        padding: '80px 20px 60px 20px', 
+        background: '#e3f2fd', 
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -841,26 +800,30 @@ const SMESuccessStories = () => {
             viewport={{ once: true, margin: "-100px" }}
             style={{ textAlign: 'center' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(40px, 5vw, 56px)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+            <h2 style={{ 
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              marginBottom: '12px',
+              letterSpacing: '-0.025em',
+              textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
             }}>
               Why SMEs choose us.
             </h2>
             <p style={{
               fontSize: '21px',
-              color: '#000000',
+              color: '#1a237e',
               maxWidth: '650px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.381',
               letterSpacing: '.011em',
-              fontWeight: '400'
+              fontWeight: '400',
+              textShadow: '0 1px 2px rgba(0,0,0,0.1)'
             }}>
               Specialized expertise and tailored solutions for growing businesses.
             </p>
@@ -887,63 +850,239 @@ const SMESuccessStories = () => {
                 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                <div style={{
-                  background: '#ccebff',
-                  borderRadius: '22px',
-                  padding: '32px',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
-                  border: '1px solid rgba(0, 0, 0, 0.04)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}>
-                  {/* Apple-style Icon Container */}
-                  <div style={{
-                    width: '72px',
-                    height: '72px',
-                    borderRadius: '22px',
-                    background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '24px',
-                    boxShadow: '0 8px 32px rgba(0, 122, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-                  }}>
-                    {React.cloneElement(benefit.icon, { 
-                      sx: { 
-                        fontSize: 32, 
-                        color: '#ccebff',
-                        filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
-                      } 
-                    })}
-                  </div>
+                <AppleFlipCard
+                  frontContent={
+                    <div style={{
+                      background: 'rgba(255, 255, 255, 0.72)',
+                      borderRadius: '22px',
+                      padding: '32px',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                      border: '1px solid rgba(255, 255, 255, 0.18)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}>
+                      {/* Apple-style Icon Container */}
+                      <div style={{
+                        width: '72px',
+                        height: '72px',
+                        borderRadius: '22px',
+                        background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '24px',
+                        boxShadow: '0 8px 32px rgba(0, 122, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                      }}>
+                        {React.cloneElement(benefit.icon, { 
+                          sx: { 
+                            fontSize: 32, 
+                            color: '#ccebff',
+                            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
+                          } 
+                        })}
+                      </div>
+                      
+                      <h3 style={{
+                        fontSize: '22px',
+                        fontWeight: '700',
+                        background: 'linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        marginBottom: '16px',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.16667',
+                        letterSpacing: '-0.005em',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                      }}>
+                        {benefit.title}
+                      </h3>
+                      
+                      <p style={{
+                        fontSize: '15px',
+                        color: '#1a237e',
+                        marginBottom: '24px',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.47059',
+                        letterSpacing: '-0.022em',
+                        fontWeight: '400',
+                        flex: 1,
+                        textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                      }}>
+                        {benefit.description}
+                      </p>
+                      
+                      <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginTop: 'auto'
+                      }}>
+                        <div style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          padding: '8px 16px',
+                          borderRadius: '20px',
+                          background: 'rgba(0, 122, 255, 0.1)',
+                          color: '#007aff',
+                          fontSize: '15px',
+                          fontWeight: '500',
+                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                        }}>
+                          Hover to learn more
+                        </div>
+                      </div>
+                    </div>
+                  }
                   
-                  <h3 style={{
-                    fontSize: '24px',
-                    fontWeight: '600',
-                    color: '#000000',
-                    marginBottom: '16px',
-                    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                    lineHeight: '1.16667',
-                    letterSpacing: '-0.005em'
-                  }}>
-                    {benefit.title}
-                  </h3>
-                  
-                  <p style={{
-                    fontSize: '17px',
-                    color: '#000000',
-                    marginBottom: '24px',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    lineHeight: '1.47059',
-                    letterSpacing: '-0.022em',
-                    fontWeight: '400',
-                    flex: 1
-                  }}>
-                    {benefit.description}
-                  </p>
-                </div>
+                  backContent={
+                    <div style={{
+                      background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                      borderRadius: '22px',
+                      padding: '32px',
+                      color: '#ccebff',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      textAlign: 'center',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      boxShadow: '0 20px 64px rgba(0, 122, 255, 0.4)'
+                    }}>
+                      {/* Apple Ambient Effects */}
+                      <div style={{
+                        position: 'absolute',
+                        top: '-30%',
+                        right: '-20%',
+                        width: '150px',
+                        height: '150px',
+                        background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                        filter: 'blur(40px)',
+                        pointerEvents: 'none'
+                      }} />
+                      
+                      <div style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                        {/* Icon */}
+                        <div style={{
+                          width: '72px',
+                          height: '72px',
+                          borderRadius: '22px',
+                          background: 'rgba(255, 255, 255, 0.2)',
+                          backdropFilter: 'blur(20px)',
+                          border: '1px solid rgba(255, 255, 255, 0.3)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          margin: '0 auto 24px',
+                          boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.3)'
+                        }}>
+                          {React.cloneElement(benefit.icon, { 
+                            sx: { 
+                              fontSize: 32, 
+                              color: '#ccebff',
+                              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
+                            } 
+                          })}
+                        </div>
+                        
+                        <h3 style={{
+                          fontSize: '22px',
+                          fontWeight: '700',
+                          color: '#ccebff',
+                          marginBottom: '20px',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                        }}>
+                          {benefit.title}
+                        </h3>
+                        
+                        {/* Benefits List */}
+                        <ul style={{
+                          listStyle: 'none',
+                          padding: 0,
+                          margin: '0 0 24px 0',
+                          flex: 1,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center',
+                          gap: '12px'
+                        }}>
+                          {benefit.features?.map((feature, fIndex) => (
+                            <li key={fIndex} style={{ 
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '12px',
+                              fontSize: '15px',
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                              fontWeight: '400',
+                              textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                            }}>
+                              <div style={{
+                                width: '6px',
+                                height: '6px',
+                                borderRadius: '50%',
+                                background: 'rgba(255, 255, 255, 0.8)',
+                                flexShrink: 0
+                              }} />
+                              {feature}
+                            </li>
+                          )) || [
+                            <li key={0} style={{ 
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '12px',
+                              fontSize: '15px',
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                              fontWeight: '400',
+                              textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                            }}>
+                              <div style={{
+                                width: '6px',
+                                height: '6px',
+                                borderRadius: '50%',
+                                background: 'rgba(255, 255, 255, 0.8)',
+                                flexShrink: 0
+                              }} />
+                              {benefit.description}
+                            </li>
+                          ]}
+                        </ul>
+                        
+                        {/* Apple Button */}
+                        <Link 
+                          to="/quote"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '8px',
+                            padding: '12px 24px',
+                            background: 'rgba(255, 255, 255, 0.2)',
+                            backdropFilter: 'blur(20px)',
+                            border: '1px solid rgba(255, 255, 255, 0.3)',
+                            borderRadius: '20px',
+                            color: '#ccebff',
+                            textDecoration: 'none',
+                            fontSize: '15px',
+                            fontWeight: '500',
+                            fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                            cursor: 'pointer',
+                            userSelect: 'none',
+                            textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                          }}
+                        >
+                          Get Started
+                          <ArrowForward sx={{ fontSize: 16 }} />
+                        </Link>
+                      </div>
+                    </div>
+                  }
+                />
               </motion.div>
             ))}
           </div>
@@ -951,8 +1090,9 @@ const SMESuccessStories = () => {
 
       {/* Apple CTA Section */}
       <section style={{ 
-        background: '#000000', 
-        padding: '80px 0 60px 0',
+        padding: '80px 20px', 
+        background: '#e3f2fd',
+        textAlign: 'center',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -976,7 +1116,7 @@ const SMESuccessStories = () => {
           filter: 'blur(100px)'
         }} />
         
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '1000px', margin: '0 auto' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -984,23 +1124,27 @@ const SMESuccessStories = () => {
             viewport={{ once: true }}
             style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            <h2 style={{ 
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
               fontWeight: '600',
-              color: '#ccebff',
-              marginBottom: '24px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.1'
+              color: '#1a237e',
+              marginBottom: '20px',
+              letterSpacing: '-0.025em',
+              lineHeight: '1.05',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}>
               Ready for your SME migration?
             </h2>
             
-            <p style={{
-              fontSize: '1.25rem',
-              color: 'rgba(255, 255, 255, 0.8)',
-              marginBottom: '48px',
-              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.6'
+            <p style={{ 
+              fontSize: '24px',
+              color: '#283593',
+              lineHeight: '1.33',
+              marginBottom: '64px',
+              fontWeight: '400',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              textShadow: '0 1px 2px rgba(0,0,0,0.1)'
             }}>
               Join these successful SME clients who transformed their payroll operations. 
               Get a free consultation tailored to your business size and requirements.
@@ -1018,10 +1162,10 @@ const SMESuccessStories = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '17px 44px',
-                    background: '#007aff',
+                    background: '#007AFF',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ccebff',
+                    color: 'white',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -1029,7 +1173,18 @@ const SMESuccessStories = () => {
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
-                    userSelect: 'none'
+                    userSelect: 'none',
+                    boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)'
+                  }}
+                  onMouseEnter={(e) => { 
+                    e.target.style.transform = 'scale(1.05)';
+                    e.target.style.background = '#0056CC';
+                    e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
+                  }}
+                  onMouseLeave={(e) => { 
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.background = '#007AFF';
+                    e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
                   }}
                 >
                   <Phone sx={{ fontSize: 18 }} />
@@ -1049,9 +1204,9 @@ const SMESuccessStories = () => {
                     gap: '8px',
                     padding: '17px 44px',
                     background: 'transparent',
-                    border: '1px solid rgba(255, 255, 255, 0.28)',
+                    border: '2px solid #007AFF',
                     borderRadius: '980px',
-                    color: '#ccebff',
+                    color: '#007AFF',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -1059,7 +1214,20 @@ const SMESuccessStories = () => {
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
-                    userSelect: 'none'
+                    userSelect: 'none',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                  }}
+                  onMouseEnter={(e) => { 
+                    e.target.style.transform = 'scale(1.05)';
+                    e.target.style.background = '#007AFF';
+                    e.target.style.color = 'white';
+                    e.target.style.borderColor = '#007AFF';
+                  }}
+                  onMouseLeave={(e) => { 
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.background = 'transparent';
+                    e.target.style.color = '#007AFF';
+                    e.target.style.borderColor = '#007AFF';
                   }}
                 >
                   <ArrowForward sx={{ fontSize: 18 }} />
@@ -1072,7 +1240,7 @@ const SMESuccessStories = () => {
       </section>
 
       {/* Apple Related Success Stories Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#f5f5f7', position: 'relative' }}>
+      <section style={{ padding: '80px 20px 60px 20px', background: '#e3f2fd', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}

@@ -557,7 +557,7 @@ const AppleNavigation = () => {
           transform: mobileOpen ? 'translateY(0)' : 'translateY(-100%)',
           transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
           zIndex: 999,
-          maxHeight: 'calc(100vh - 64px)',
+          maxHeight: 'calc(100dvh - 64px)',
           overflowY: 'auto'
         }}
       >

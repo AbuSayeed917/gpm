@@ -17,6 +17,7 @@ import LargeEnterpriseSuccessStories from './pages/LargeEnterpriseSuccessStories
 import ConsultancySuccessStories from './pages/ConsultancySuccessStories';
 import QuotePage from './pages/QuotePage';
 import './styles/base-2025.css';
+import './styles/glossy-effects.css';
 
 // Professional App Component - Clean and Accessible
 

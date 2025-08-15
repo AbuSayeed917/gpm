@@ -16,6 +16,7 @@ import {
   People
 } from '@mui/icons-material';
 import AppleBackground from '../components/AppleBackground';
+import { AppleFlipCard } from '../components/AppleCardSystem';
 
 const LargeEnterpriseSuccessStories = () => {
   const stories = [
@@ -154,49 +155,41 @@ const LargeEnterpriseSuccessStories = () => {
 
   return (
     <AppleBackground variant="primary">
-      {/* Apple Hero Section - 100% Authentic */}
+      {/* Hero Section - Homepage Style */}
       <section style={{ 
-        background: '#000000',
-        padding: 'max(60px, 10vh) 0 max(80px, 12vh) 0',
+        padding: '50px 20px 40px 20px', 
+        textAlign: 'center',
+        background: '#e3f2fd',
         position: 'relative',
-        overflow: 'hidden',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center'
+        overflow: 'hidden'
       }}>
-        {/* Apple-style ambient lighting - Enhanced */}
+        {/* Floating Background Elements - Homepage Style */}
         <div style={{
           position: 'absolute',
-          top: '15%',
-          right: '5%',
-          width: '60%',
-          height: '60%',
-          background: 'radial-gradient(circle, rgba(48, 209, 88, 0.08) 0%, transparent 65%)',
-          filter: 'blur(120px)',
-          opacity: 0.6,
-          pointerEvents: 'none'
+          top: '20%',
+          right: '10%',
+          width: '400px',
+          height: '300px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          animation: 'float 10s ease-in-out infinite',
+          zIndex: 0
         }} />
         <div style={{
           position: 'absolute',
           bottom: '10%',
-          left: '-10%',
-          width: '50%',
-          height: '50%',
-          background: 'radial-gradient(circle, rgba(255, 59, 48, 0.06) 0%, transparent 65%)',
-          filter: 'blur(100px)',
-          opacity: 0.4,
-          pointerEvents: 'none'
+          left: '15%',
+          width: '300px',
+          height: '200px',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(80px)',
+          animation: 'float 10s ease-in-out infinite',
+          zIndex: 0
         }} />
         
-        {/* Content Container - Apple's signature max-width */}
-        <div style={{ 
-          position: 'relative', 
-          zIndex: 1, 
-          maxWidth: '95%', 
-          margin: '0 auto', 
-          padding: '0 22px',
-          width: '100%'
-        }}>
+        <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -210,8 +203,8 @@ const LargeEnterpriseSuccessStories = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               style={{
                 fontSize: '17px',
-                fontWeight: '600',
-                color: '#30d158',
+                fontWeight: '700',
+                color: '#007aff',
                 marginBottom: '16px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 letterSpacing: '-0.022em',
@@ -222,139 +215,85 @@ const LargeEnterpriseSuccessStories = () => {
               Enterprise Success Stories
             </motion.div>
 
-            {/* Apple-style hero title */}
-            <motion.h1 
-              style={{
-                fontSize: 'clamp(48px, 7vw, 96px)',
-                fontWeight: '600',
-                color: '#f5f5f7',
-                marginBottom: '24px',
-                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                lineHeight: '1.05',
-                letterSpacing: '-0.015em',
-                textAlign: 'center'
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.2 }}
-            >
-              Enterprise scale.
-              <br />
+            <h1 style={{ 
+              fontSize: 'clamp(38px, 4.5vw, 50px)',
+              fontWeight: '700',
+              lineHeight: '1.05',
+              color: '#1a237e',
+              marginBottom: '16px',
+              letterSpacing: '-0.025em',
+              textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+            }}>
               <span style={{ 
-                background: 'linear-gradient(90deg, #30d158 0%, #ff3b30 100%)', 
-                backgroundClip: 'text', 
-                WebkitBackgroundClip: 'text', 
+                background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                display: 'inline-block'
+                backgroundClip: 'text',
+                display: 'inline-block',
+                fontWeight: '700',
+                paddingBottom: '4px',
+                lineHeight: '1.2',
+                textShadow: '0 1px 3px rgba(0,0,0,0.1)'
               }}>
-                Global excellence.
+                Enterprise Success Stories
               </span>
-            </motion.h1>
+              {' '}Results.
+            </h1>
             
-            {/* Apple-style subtitle */}
-            <motion.p 
-              style={{
-                fontSize: '21px',
-                color: '#a1a1a6',
-                marginBottom: '48px',
-                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                lineHeight: '1.381',
-                fontWeight: '400',
-                letterSpacing: '.011em',
-                maxWidth: '640px',
-                margin: '0 auto 48px auto',
-                textAlign: 'center'
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.4 }}
-            >
+            <p style={{ 
+              fontSize: '20px',
+              lineHeight: '1.3',
+              color: '#283593',
+              fontWeight: '400',
+              marginBottom: '32px',
+              maxWidth: '640px',
+              margin: '0 auto 32px auto',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+            }}>
               Complex multi-country payroll transformations for enterprise organizations across multiple jurisdictions.
-            </motion.p>
+            </p>
             
-            {/* Apple-style CTA buttons */}
-            <motion.div 
-              style={{ 
-                display: 'flex', 
-                gap: '24px', 
-                justifyContent: 'center', 
-                flexWrap: 'wrap',
-                alignItems: 'center'
-              }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.6 }}
-            >
-              {/* Primary CTA - Apple Green */}
-              <motion.div
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
+              <Link 
+                to="/contact" 
+                style={{
+                  background: '#007AFF',
+                  color: 'white',
+                  padding: '14px 32px',
+                  borderRadius: '980px',
+                  textDecoration: 'none',
+                  fontSize: '17px',
+                  fontWeight: '500',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  border: 'none',
+                  boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                }}
+                onMouseEnter={(e) => { 
+                  e.target.style.transform = 'scale(1.05)';
+                  e.target.style.background = '#0056CC';
+                  e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
+                }}
+                onMouseLeave={(e) => { 
+                  e.target.style.transform = 'scale(1)';
+                  e.target.style.background = '#007AFF';
+                  e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
+                }}
               >
-                <Link 
-                  to="/quote" 
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '17px 32px',
-                    background: '#30d158',
-                    border: 'none',
-                    borderRadius: '980px',
-                    color: '#ccebff',
-                    textDecoration: 'none',
-                    fontWeight: '400',
-                    fontSize: '17px',
-                    letterSpacing: '-0.022em',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    userSelect: 'none',
-                    boxShadow: '0 4px 16px rgba(48, 209, 88, 0.3)'
-                  }}
-                >
-                  Get started
-                  <ArrowForward sx={{ fontSize: 16 }} />
-                </Link>
-              </motion.div>
-              
-              {/* Secondary CTA - Apple Link Style */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Link 
-                  to="/services/large-enterprise" 
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '17px 8px',
-                    background: 'transparent',
-                    border: 'none',
-                    color: '#30d158',
-                    textDecoration: 'none',
-                    fontWeight: '400',
-                    fontSize: '17px',
-                    letterSpacing: '-0.022em',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    userSelect: 'none'
-                  }}
-                >
-                  Learn more
-                  <ArrowForward sx={{ fontSize: 16 }} />
-                </Link>
-              </motion.div>
-            </motion.div>
+                Book Enterprise Consultation
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Apple Stats Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#f5f5f7', position: 'relative' }}>
+      <section style={{ padding: '0px 20px 40px 20px', background: '#e3f2fd', position: 'relative', overflow: 'hidden' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -364,20 +303,21 @@ const LargeEnterpriseSuccessStories = () => {
             style={{ textAlign: 'center' }}
           >
             <h2 style={{
-              fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              color: '#1a237e',
+              marginBottom: '12px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
               letterSpacing: '-0.009em',
-              textAlign: 'center'
+              textAlign: 'center',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}>
               Enterprise Migration Results.
             </h2>
             <p style={{
-              fontSize: '1.125rem',
-              color: '#000000',
+              fontSize: '18px',
+              color: '#283593',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -410,7 +350,7 @@ const LargeEnterpriseSuccessStories = () => {
               viewport={{ once: true, margin: "-100px" }}
             >
               <div style={{
-                background: '#ccebff',
+                background: 'rgba(255, 255, 255, 0.72)',
                 borderRadius: '22px',
                 padding: '32px',
                 height: '100%',
@@ -445,7 +385,10 @@ const LargeEnterpriseSuccessStories = () => {
                 <div style={{
                   fontSize: '48px',
                   fontWeight: '600',
-                  color: '#000000',
+                  background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                   marginBottom: '8px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.0625',
@@ -485,7 +428,7 @@ const LargeEnterpriseSuccessStories = () => {
       </section>
 
       {/* Apple Success Stories Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
+      <section style={{ padding: '80px 20px 60px 20px', background: '#e3f2fd', position: 'relative', overflow: 'hidden' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -494,21 +437,24 @@ const LargeEnterpriseSuccessStories = () => {
             viewport={{ once: true, margin: "-100px" }}
             style={{ textAlign: 'center', marginBottom: '60px' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+            <h2 style={{ 
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              marginBottom: '12px',
+              letterSpacing: '-0.025em',
+              textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
             }}>
               Enterprise Client Success Stories.
             </h2>
             <p style={{
-              fontSize: '1.125rem',
-              color: '#000000',
-              maxWidth: '700px',
+              fontSize: '21px',
+              color: '#1a237e',
+              maxWidth: '650px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.381',
@@ -528,7 +474,7 @@ const LargeEnterpriseSuccessStories = () => {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 style={{
-                  background: '#ccebff',
+                  background: 'rgba(255, 255, 255, 0.72)',
                   borderRadius: '22px',
                   padding: '48px',
                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
@@ -847,8 +793,8 @@ const LargeEnterpriseSuccessStories = () => {
 
       {/* Apple Benefits Section */}
       <section style={{ 
-        padding: '80px 0 60px 0', 
-        background: '#ccebff', 
+        padding: '80px 20px 60px 20px', 
+        background: '#e3f2fd', 
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -872,20 +818,23 @@ const LargeEnterpriseSuccessStories = () => {
             viewport={{ once: true, margin: "-100px" }}
             style={{ textAlign: 'center' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(40px, 5vw, 56px)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+            <h2 style={{ 
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              marginBottom: '12px',
+              letterSpacing: '-0.025em',
+              textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
             }}>
               Why enterprises choose us.
             </h2>
             <p style={{
               fontSize: '21px',
-              color: '#000000',
+              color: '#1a237e',
               maxWidth: '650px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -919,7 +868,7 @@ const LargeEnterpriseSuccessStories = () => {
                 viewport={{ once: true, margin: "-50px" }}
               >
                 <div style={{
-                  background: '#ccebff',
+                  background: 'rgba(255, 255, 255, 0.72)',
                   borderRadius: '22px',
                   padding: '32px',
                   height: '100%',
@@ -982,8 +931,9 @@ const LargeEnterpriseSuccessStories = () => {
 
       {/* Apple CTA Section */}
       <section style={{ 
-        background: '#000000', 
-        padding: '80px 0 60px 0',
+        padding: '80px 20px', 
+        background: '#e3f2fd',
+        textAlign: 'center',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -1007,7 +957,7 @@ const LargeEnterpriseSuccessStories = () => {
           filter: 'blur(100px)'
         }} />
         
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '1000px', margin: '0 auto' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1015,23 +965,27 @@ const LargeEnterpriseSuccessStories = () => {
             viewport={{ once: true }}
             style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}
           >
-            <h2 style={{
-              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            <h2 style={{ 
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
               fontWeight: '600',
-              color: '#ccebff',
-              marginBottom: '24px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.1'
+              color: '#1a237e',
+              marginBottom: '20px',
+              letterSpacing: '-0.025em',
+              lineHeight: '1.05',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}>
               Ready for your enterprise migration?
             </h2>
             
-            <p style={{
-              fontSize: '1.25rem',
-              color: 'rgba(255, 255, 255, 0.8)',
-              marginBottom: '48px',
-              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.6'
+            <p style={{ 
+              fontSize: '24px',
+              color: '#283593',
+              lineHeight: '1.33',
+              marginBottom: '64px',
+              fontWeight: '400',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              textShadow: '0 1px 2px rgba(0,0,0,0.1)'
             }}>
               Join these successful enterprise clients who transformed their global payroll operations. 
               Get a comprehensive consultation tailored to your enterprise requirements and complexity.
@@ -1043,16 +997,16 @@ const LargeEnterpriseSuccessStories = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Link 
-                  to="/contact" 
+                  to="/quote" 
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
                     padding: '17px 44px',
-                    background: '#30d158',
+                    background: '#007AFF',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ccebff',
+                    color: 'white',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -1060,7 +1014,19 @@ const LargeEnterpriseSuccessStories = () => {
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
-                    userSelect: 'none'
+                    userSelect: 'none',
+                    boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                  }}
+                  onMouseEnter={(e) => { 
+                    e.target.style.transform = 'scale(1.05)';
+                    e.target.style.background = '#0056CC';
+                    e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
+                  }}
+                  onMouseLeave={(e) => { 
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.background = '#007AFF';
+                    e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
                   }}
                 >
                   <Phone sx={{ fontSize: 18 }} />
@@ -1080,9 +1046,9 @@ const LargeEnterpriseSuccessStories = () => {
                     gap: '8px',
                     padding: '17px 44px',
                     background: 'transparent',
-                    border: '1px solid rgba(255, 255, 255, 0.28)',
+                    border: '2px solid #007AFF',
                     borderRadius: '980px',
-                    color: '#ccebff',
+                    color: '#007AFF',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -1090,7 +1056,20 @@ const LargeEnterpriseSuccessStories = () => {
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
-                    userSelect: 'none'
+                    userSelect: 'none',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                  }}
+                  onMouseEnter={(e) => { 
+                    e.target.style.transform = 'scale(1.05)';
+                    e.target.style.background = '#007AFF';
+                    e.target.style.color = 'white';
+                    e.target.style.borderColor = '#007AFF';
+                  }}
+                  onMouseLeave={(e) => { 
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.background = 'transparent';
+                    e.target.style.color = '#007AFF';
+                    e.target.style.borderColor = '#007AFF';
                   }}
                 >
                   <ArrowForward sx={{ fontSize: 18 }} />
@@ -1103,7 +1082,7 @@ const LargeEnterpriseSuccessStories = () => {
       </section>
 
       {/* Apple Related Success Stories Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#f5f5f7', position: 'relative' }}>
+      <section style={{ padding: '80px 20px 60px 20px', background: '#e3f2fd', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -1113,19 +1092,21 @@ const LargeEnterpriseSuccessStories = () => {
             style={{ textAlign: 'center', marginBottom: '60px' }}
           >
             <h2 style={{
-              fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              color: '#1a237e',
+              marginBottom: '12px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+              letterSpacing: '-0.009em',
+              textAlign: 'center',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}>
               More Success Stories.
             </h2>
             <p style={{
-              fontSize: '1.125rem',
-              color: '#000000',
+              fontSize: '18px',
+              color: '#283593',
               maxWidth: '700px',
               margin: '0 auto',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
