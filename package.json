@@ -2,7 +2,7 @@
   "name": "global-payroll-migration",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://abusayeed917.github.io/gpm",
+  "homepage": ".",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
