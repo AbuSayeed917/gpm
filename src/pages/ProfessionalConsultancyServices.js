@@ -7,9 +7,7 @@ import {
   TrendingUp,
   CheckCircle,
   ArrowForward,
-  Analytics,
-  Lightbulb,
-  Support
+  Analytics
 } from '@mui/icons-material';
 import AppleBackground from '../components/AppleBackground';
 import { AppleFlipCard } from '../components/AppleCardSystem';
