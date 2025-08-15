@@ -82,11 +82,17 @@ const ProfessionalHome2025 = () => {
         .card-title { font-size: 22px !important; }
         .card-description { font-size: 16px !important; }
         .float-bg { display: none !important; }
+        .features-card { height: 350px !important; }
+        .features-card-padding { padding: 28px 20px !important; }
+        .features-card-icon { font-size: 36px !important; }
+        .features-card-title { font-size: 20px !important; }
+        .features-card-description { font-size: 14px !important; }
       }
       
       @media (max-width: 1024px) {
         .services-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
         .migration-process-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+        .features-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
       }
       
       .trusted-organizations-grid > div:nth-child(3) {
@@ -105,6 +111,7 @@ const ProfessionalHome2025 = () => {
         .grid-layout { grid-template-columns: 1fr !important; }
         .services-grid { grid-template-columns: 1fr !important; }
         .migration-process-grid { grid-template-columns: 1fr !important; }
+        .features-grid { grid-template-columns: 1fr !important; }
       }
     `;
     document.head.appendChild(style);
@@ -974,6 +981,7 @@ const ProfessionalHome2025 = () => {
           </div>
 
           <div
+            className='features-grid'
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -985,6 +993,7 @@ const ProfessionalHome2025 = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
+                className='features-card'
                 style={{
                   perspective: '1000px',
                   height: '417px',
@@ -1005,6 +1014,7 @@ const ProfessionalHome2025 = () => {
                 >
                   {/* Front of card */}
                   <div
+                    className='features-card-padding'
                     style={{
                       position: 'absolute',
                       width: '100%',
@@ -1039,9 +1049,11 @@ const ProfessionalHome2025 = () => {
                     >
                       {React.cloneElement(feature.icon, {
                         sx: { fontSize: 48, color: '#0d47a1' },
+                        className: 'features-card-icon',
                       })}
                     </div>
                     <h3
+                      className='features-card-title'
                       style={{
                         fontSize: '24px',
                         fontWeight: '700',
@@ -1078,6 +1090,7 @@ const ProfessionalHome2025 = () => {
 
                   {/* Back of card */}
                   <div
+                    className='features-card-padding'
                     style={{
                       position: 'absolute',
                       width: '100%',
