@@ -33,6 +33,37 @@ const Contact2025 = () => {
     details: '',
   });
 
+  // State for card flips
+  const [flippedCards, setFlippedCards] = React.useState({});
+
+  // Refs to prevent rapid toggling
+  const hoverTimeouts = React.useRef({});
+
+  // Smooth hover handlers
+  const handleCardHover = (index, isHovered) => {
+    const key = `card-${index}`;
+    if (hoverTimeouts.current[key]) {
+      clearTimeout(hoverTimeouts.current[key]);
+    }
+
+    hoverTimeouts.current[key] = setTimeout(
+      () => {
+        setFlippedCards((prev) => ({ ...prev, [index]: isHovered }));
+      },
+      isHovered ? 20 : 100
+    );
+  };
+
+  // Cleanup timeouts on unmount
+  React.useEffect(() => {
+    const timeoutsRef = hoverTimeouts.current;
+    return () => {
+      Object.values(timeoutsRef).forEach((timeout) => {
+        if (timeout) clearTimeout(timeout);
+      });
+    };
+  }, []);
+
   const contactMethods = [
     {
       icon: <Phone sx={{ fontSize: 28 }} />,
@@ -66,23 +97,47 @@ const Contact2025 = () => {
       title: 'Free Consultation',
       description:
         'No-obligation discussion about your payroll migration needs with detailed project assessment',
+      features: [
+        'Detailed needs assessment',
+        'Migration roadmap planning',
+        'Risk identification',
+        'Cost estimation guidance'
+      ]
     },
     {
       icon: <Speed sx={{ fontSize: 32 }} />,
       title: 'Quick Response',
       description:
         'We respond to all inquiries within 2 hours during business hours with personalized recommendations',
+      features: [
+        '2-hour response guarantee',
+        'Direct expert contact',
+        'Personalized recommendations',
+        'Same-day consultation booking'
+      ]
     },
     {
       icon: <Group sx={{ fontSize: 32 }} />,
       title: 'Expert Team',
       description: 'Speak directly with experienced payroll migration specialists, not salespeople',
+      features: [
+        '500+ migrations completed',
+        'UK-based specialists',
+        'No sales pressure',
+        'Technical expertise'
+      ]
     },
     {
       icon: <Public sx={{ fontSize: 32 }} />,
       title: 'Global Experience',
       description:
         'Deep knowledge of payroll systems across 14+ countries and regulatory frameworks',
+      features: [
+        '14+ countries supported',
+        'Multi-jurisdiction expertise',
+        'Regulatory compliance',
+        'Global payroll systems'
+      ]
     },
   ];
 
@@ -264,7 +319,10 @@ const Contact2025 = () => {
             </motion.div>
           </div>
 
-          <div className='grid grid-cols-1 lg:grid-cols-4 gap-8'>
+          <div 
+            className='grid grid-cols-1 sm:grid-cols-4 gap-4 max-w-5xl mx-auto'
+            style={{ minHeight: '380px' }}
+          >
             {whyContact.map((reason, index) => (
               <motion.div
                 key={index}
@@ -272,15 +330,203 @@ const Contact2025 = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className='card p-6 text-center hover:shadow-3 transition-all duration-300'
+                style={{
+                  perspective: '1000px',
+                  height: '350px',
+                }}
               >
-                <div className='inline-flex items-center justify-center w-16 h-16 rounded-full surface-container-high text-primary mb-6'>
-                  {reason.icon}
+                <div
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    transformStyle: 'preserve-3d',
+                    transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    cursor: 'pointer',
+                    transform: flippedCards[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                  }}
+                  onMouseEnter={() => handleCardHover(index, true)}
+                  onMouseLeave={() => handleCardHover(index, false)}
+                >
+                  {/* Front of card */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      width: '100%',
+                      height: '100%',
+                      backfaceVisibility: 'hidden',
+                      background: 'rgba(255, 255, 255, 0.9)',
+                      borderRadius: '20px',
+                      padding: '28px 20px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                      backdropFilter: 'blur(40px) saturate(200%)',
+                    }}
+                  >
+                    <div
+                      style={{
+                        marginBottom: '24px',
+                        padding: '20px',
+                        borderRadius: '50%',
+                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(240, 248, 255, 0.3) 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backdropFilter: 'blur(20px)',
+                        border: '1px solid rgba(255, 255, 255, 0.4)',
+                      }}
+                    >
+                      {React.cloneElement(reason.icon, {
+                        sx: { fontSize: 32, color: '#0d47a1' },
+                      })}
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: '18px',
+                        fontWeight: '700',
+                        background: 'linear-gradient(135deg, #1a237e 0%, #3949ab 50%, #5c6bc0 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        marginBottom: '16px',
+                        letterSpacing: '-0.01em',
+                        textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                      }}
+                    >
+                      {reason.title}
+                    </h3>
+                    <div
+                      style={{
+                        textAlign: 'center',
+                        padding: '8px 16px',
+                        borderRadius: '16px',
+                        background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                        color: 'white',
+                        fontSize: '11px',
+                        fontWeight: '600',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+                      }}
+                    >
+                      Hover for details
+                    </div>
+                  </div>
+
+                  {/* Back of card */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      width: '100%',
+                      height: '100%',
+                      backfaceVisibility: 'hidden',
+                      transform: 'rotateY(180deg)',
+                      background: 'linear-gradient(135deg, #1a237e 0%, #283593 100%)',
+                      borderRadius: '20px',
+                      padding: '28px 20px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                      color: 'rgba(255, 255, 255, 0.95)',
+                      boxShadow: '0 12px 48px rgba(26, 35, 126, 0.3)',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
+                      backdropFilter: 'blur(40px) saturate(200%)',
+                    }}
+                  >
+                    {/* Enhanced Glass Effect */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '-20%',
+                        right: '-20%',
+                        width: '150px',
+                        height: '150px',
+                        background: 'radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+                        filter: 'blur(40px)',
+                        zIndex: 0,
+                      }}
+                    />
+
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <div
+                        style={{
+                          marginBottom: '20px',
+                          padding: '16px',
+                          borderRadius: '50%',
+                          background: 'rgba(255, 255, 255, 0.25)',
+                          backdropFilter: 'blur(20px)',
+                          border: '1px solid rgba(255, 255, 255, 0.3)',
+                          display: 'inline-block',
+                        }}
+                      >
+                        {React.cloneElement(reason.icon, {
+                          sx: { fontSize: 24, color: 'rgba(255,255,255,0.9)' },
+                        })}
+                      </div>
+
+                      <h3
+                        style={{
+                          fontSize: '16px',
+                          fontWeight: '700',
+                          color: 'rgba(255, 255, 255, 0.95)',
+                          marginBottom: '16px',
+                          textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                        }}
+                      >
+                        What's included:
+                      </h3>
+
+                      <div style={{ marginBottom: '0' }}>
+                        {reason.features.map((feature, fIndex) => (
+                          <div
+                            key={fIndex}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '8px',
+                              marginBottom: '8px',
+                              fontSize: '12px',
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: '12px',
+                                height: '12px',
+                                borderRadius: '50%',
+                                background: '#34C759',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexShrink: 0,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  color: 'white',
+                                  fontSize: '8px',
+                                  fontWeight: '600',
+                                }}
+                              >
+                                ✓
+                              </span>
+                            </div>
+                            {feature}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className='title-medium mb-3'>{reason.title}</h3>
-                <p className='body-medium text-on-surface-variant leading-relaxed'>
-                  {reason.description}
-                </p>
               </motion.div>
             ))}
           </div>
