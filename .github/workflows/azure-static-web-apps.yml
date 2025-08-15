@@ -36,6 +36,12 @@ jobs:
           npm run build
           find build -name "*.map" -delete
           find build -name "*.LICENSE.txt" -delete
+          rm -f build/404.html
+          rm -f build/security.txt
+          rm -rf build/.well-known
+          rm -f build/favicon-192.png
+          rm -f build/apple-touch-icon.png
+          rm -f build/favicon.svg
       
       - name: Build And Deploy
         id: builddeploy
