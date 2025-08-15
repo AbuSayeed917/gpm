@@ -1487,6 +1487,113 @@ const QuotePage = () => {
                   {renderStepContent(activeStep)}
                 </motion.div>
               </AnimatePresence>
+
+              {/* Apple Navigation Buttons - Right under the form */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '40px', padding: '0 16px' }}>
+                {activeStep === 0 ? (
+                  <div style={{ width: '120px' }} />
+                ) : (
+                  <motion.button
+                    onClick={handleBack}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      padding: '12px 24px',
+                      background: 'rgba(135, 206, 250, 0.08)',
+                      border: '2px solid rgba(135, 206, 250, 0.4)',
+                      borderRadius: '25px',
+                      color: '#87ceeb',
+                      textDecoration: 'none',
+                      fontSize: '15px',
+                      fontWeight: '600',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      minWidth: '120px'
+                    }}
+                  >
+                    <ArrowBack sx={{ fontSize: 18 }} />
+                    <span>Back</span>
+                  </motion.button>
+                )}
+                
+                {activeStep === steps.length - 1 ? (
+                  <motion.button
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    whileHover={!isSubmitting ? { scale: 1.05, y: -2 } : {}}
+                    whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      padding: '16px 32px',
+                      background: isSubmitting 
+                        ? '#000000'
+                        : 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                      border: 'none',
+                      borderRadius: '980px',
+                      color: '#ccebff',
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: isSubmitting ? 'default' : 'pointer',
+                      minWidth: '200px',
+                      boxShadow: isSubmitting ? 'none' : '0 8px 32px rgba(0, 122, 255, 0.4)',
+                      opacity: isSubmitting ? 0.7 : 1
+                    }}
+                  >
+                    {isSubmitting ? (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{
+                          width: '20px',
+                          height: '20px',
+                          border: '2px solid #ccebff',
+                          borderTop: '2px solid transparent',
+                          borderRadius: '50%',
+                          animation: 'spin 1s linear infinite'
+                        }}></div>
+                        <span>Submitting...</span>
+                      </div>
+                    ) : (
+                      <>
+                        <span>Submit Quote Request</span>
+                        <Send sx={{ fontSize: 18 }} />
+                      </>
+                    )}
+                  </motion.button>
+                ) : (
+                  <motion.button
+                    onClick={handleNext}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      padding: '16px 32px',
+                      background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                      border: 'none',
+                      borderRadius: '980px',
+                      color: '#ccebff',
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      minWidth: '140px',
+                      boxShadow: '0 8px 32px rgba(135, 206, 250, 0.4)'
+                    }}
+                  >
+                    <span>Next</span>
+                    <ArrowForward sx={{ fontSize: 18 }} />
+                  </motion.button>
+                )}
+              </div>
             </motion.div>
 
             {/* Not Sure? Discovery Call Section */}
@@ -1571,112 +1678,6 @@ const QuotePage = () => {
               </p>
             </motion.div>
           
-            {/* Apple Navigation Buttons */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '40px', padding: '0 16px' }}>
-              {activeStep === 0 ? (
-                <div style={{ width: '120px' }} />
-              ) : (
-                <motion.button
-                  onClick={handleBack}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '12px 24px',
-                    background: 'rgba(135, 206, 250, 0.08)',
-                    border: '2px solid rgba(135, 206, 250, 0.4)',
-                    borderRadius: '25px',
-                    color: '#87ceeb',
-                    textDecoration: 'none',
-                    fontSize: '15px',
-                    fontWeight: '600',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    minWidth: '120px'
-                  }}
-                >
-                  <ArrowBack sx={{ fontSize: 18 }} />
-                  <span>Back</span>
-                </motion.button>
-              )}
-              
-              {activeStep === steps.length - 1 ? (
-                <motion.button
-                  onClick={handleSubmit}
-                  disabled={isSubmitting}
-                  whileHover={!isSubmitting ? { scale: 1.05, y: -2 } : {}}
-                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '16px 32px',
-                    background: isSubmitting 
-                      ? '#000000'
-                      : 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                    border: 'none',
-                    borderRadius: '980px',
-                    color: '#ccebff',
-                    fontSize: '16px',
-                    fontWeight: '600',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: isSubmitting ? 'default' : 'pointer',
-                    minWidth: '200px',
-                    boxShadow: isSubmitting ? 'none' : '0 8px 32px rgba(0, 122, 255, 0.4)',
-                    opacity: isSubmitting ? 0.7 : 1
-                  }}
-                >
-                  {isSubmitting ? (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{
-                        width: '20px',
-                        height: '20px',
-                        border: '2px solid #ccebff',
-                        borderTop: '2px solid transparent',
-                        borderRadius: '50%',
-                        animation: 'spin 1s linear infinite'
-                      }}></div>
-                      <span>Submitting...</span>
-                    </div>
-                  ) : (
-                    <>
-                      <span>Submit Quote Request</span>
-                      <Send sx={{ fontSize: 18 }} />
-                    </>
-                  )}
-                </motion.button>
-              ) : (
-                <motion.button
-                  onClick={handleNext}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '16px 32px',
-                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                    border: 'none',
-                    borderRadius: '980px',
-                    color: '#ccebff',
-                    fontSize: '16px',
-                    fontWeight: '600',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    minWidth: '140px',
-                    boxShadow: '0 8px 32px rgba(135, 206, 250, 0.4)'
-                  }}
-                >
-                  <span>Next</span>
-                  <ArrowForward sx={{ fontSize: 18 }} />
-                </motion.button>
-              )}
-            </div>
 
             {/* Apple Service Type Alert */}
             <motion.div
