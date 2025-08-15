@@ -1,56 +1,121 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Phone,
   Email,
-  CalendarToday,
+  LocationOn,
+  Schedule,
   CheckCircle,
   Speed,
-  Groups,
+  Group,
   Public,
-  ExpandMore,
+  Send,
+  CalendarMonth,
+  BusinessCenter,
+  Groups,
+  Language,
+  PersonPin,
 } from '@mui/icons-material';
+import AppleBackground from '../components/AppleBackground';
+import { AppleFlipCard } from '../components/AppleCardSystem';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [expandedCard, setExpandedCard] = useState(null);
-  const [touchStartY, setTouchStartY] = useState(null);
-
-  // Detect mobile devices and screen size
-  useEffect(() => {
-    const checkMobile = () => {
-      const mobile =
-        window.innerWidth <= 768 ||
-        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      setIsMobile(mobile);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+  // Add responsive styles
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @media (max-width: 1024px) {
+        .contact-cards-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+      }
+      @media (max-width: 768px) {
+        .contact-cards-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .hero-title { font-size: clamp(32px, 8vw, 42px) !important; }
+        .hero-subtitle { font-size: 18px !important; }
+        .section-title { font-size: clamp(28px, 6vw, 36px) !important; }
+        .contact-form { padding: 32px 24px !important; }
+      }
+      @media (max-width: 480px) {
+        .hero-buttons { flex-direction: column !important; }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
   }, []);
 
-  // Handle touch interactions for mobile
-  const handleTouchStart = (e, cardIndex) => {
-    if (isMobile) {
-      setTouchStartY(e.touches[0].clientY);
-    }
-  };
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    company: '',
+    employees: '',
+    service: '',
+    timeline: '',
+    currentSystem: '',
+    targetSystem: '',
+    countries: '',
+    details: '',
+  });
 
-  const handleTouchEnd = (e, cardIndex) => {
-    if (isMobile && touchStartY) {
-      const touchEndY = e.changedTouches[0].clientY;
-      const diff = touchStartY - touchEndY;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
-      // If minimal swipe, treat as tap to expand/collapse
-      if (Math.abs(diff) < 10) {
-        setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
-      }
-      setTouchStartY(null);
-    }
-  };
+  const contactReasons = [
+    {
+      icon: <CheckCircle />,
+      title: 'Free Consultation',
+      description:
+        'Get expert guidance on your payroll migration with no commitment required.',
+      features: [
+        'Detailed needs assessment',
+        'Migration roadmap planning',
+        'Risk identification',
+        'Cost estimation guidance'
+      ]
+    },
+    {
+      icon: <Speed />,
+      title: 'Quick Response',
+      description:
+        'We respond to all inquiries within 2 hours during business hours with personalized recommendations.',
+      features: [
+        '2-hour response guarantee',
+        'Direct expert contact',
+        'Personalized recommendations',
+        'Same-day consultation booking'
+      ]
+    },
+    {
+      icon: <Group />,
+      title: 'Expert Team',
+      description: 'Speak directly with experienced payroll migration specialists, not salespeople.',
+      features: [
+        '500+ migrations completed',
+        'UK-based specialists',
+        'No sales pressure',
+        'Technical expertise'
+      ]
+    },
+    {
+      icon: <Public />,
+      title: 'Global Experience',
+      description:
+        'Deep knowledge of payroll systems across 14+ countries and regulatory frameworks.',
+      features: [
+        '14+ countries supported',
+        'Multi-jurisdiction expertise',
+        'Regulatory compliance',
+        'Global payroll systems'
+      ]
+    },
+  ];
 
-  const contactMethods = [
+  const contactInfo = [
     {
       icon: <Phone />,
       title: 'Phone',
@@ -58,12 +123,6 @@ const Contact = () => {
       secondary: 'Available Mon-Fri 9AM-6PM GMT',
       description: 'Speak directly with a migration expert',
       href: 'tel:+447432665514',
-      features: [
-        'Immediate support',
-        'Expert consultation',
-        'Project planning',
-        'Technical guidance',
-      ],
     },
     {
       icon: <Email />,
@@ -72,913 +131,1312 @@ const Contact = () => {
       secondary: 'Response within 2 hours',
       description: 'Send us your requirements',
       href: 'mailto:info@globalpayrollmigration.com',
-      features: [
-        'Detailed project scope',
-        'Document sharing',
-        'Formal quotes',
-        'Technical specifications',
-      ],
     },
     {
-      icon: <CalendarToday />,
-      title: 'Book Discovery Call',
-      primary: 'Free 30-minute consultation',
-      secondary: 'No obligation, just insight',
-      description: 'Schedule directly with an expert',
-      href: 'mailto:info@globalpayrollmigration.com?subject=Discovery Call Request',
-      features: ['Project assessment', 'Timeline planning', 'Cost estimation', 'Risk evaluation'],
+      icon: <CalendarMonth />,
+      title: 'Book a Call',
+      primary: 'Schedule Free Consultation',
+      secondary: '30-minute discovery session',
+      description: 'Choose a time that works for you',
+      href: 'https://calendly.com/globalpayrollmigration',
     },
   ];
 
-  const whyContact = [
-    {
-      icon: <CheckCircle />,
-      title: 'Free Consultation',
-      description:
-        'No-obligation discussion about your payroll migration needs with detailed project assessment',
-      features: [
-        'Project scope analysis',
-        'Risk assessment',
-        'Timeline estimation',
-        'Resource planning',
-      ],
-    },
-    {
-      icon: <Speed />,
-      title: 'Quick Response',
-      description:
-        'We respond to all inquiries within 2 hours during business hours with personalized recommendations',
-      features: [
-        '24/7 monitoring',
-        'Emergency support',
-        'Escalation procedures',
-        'Multi-channel access',
-      ],
-    },
-    {
-      icon: <Groups />,
-      title: 'Expert Team',
-      description: 'Speak directly with experienced payroll migration specialists, not salespeople',
-      features: [
-        'Certified professionals',
-        'Years of experience',
-        'Industry expertise',
-        'Proven track record',
-      ],
-    },
-    {
-      icon: <Public />,
-      title: 'Global Experience',
-      description:
-        'Deep knowledge of payroll systems across 14+ countries and regulatory frameworks',
-      features: [
-        'Multi-country compliance',
-        'Local regulations',
-        'Cross-border coordination',
-        'Regional expertise',
-      ],
-    },
+  const services = [
+    'Legacy System Migration',
+    'Cloud Platform Migration',
+    'Multi-Country Consolidation',
+    'System Implementation',
+    'Payroll Health Check',
+    'Strategic Consulting',
+    'Other (please specify)',
   ];
+
+  const urgency = [
+    'Just exploring options',
+    'Within next 6 months',
+    'Within next 3 months',
+    'Within next month',
+    'Urgent - as soon as possible',
+  ];
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // EmailJS configuration
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        employees: formData.employees,
+        service: formData.service,
+        timeline: formData.timeline,
+        current_system: formData.currentSystem,
+        target_system: formData.targetSystem,
+        countries: formData.countries,
+        message: formData.details,
+        to_email: 'info@globalpayrollmigration.com',
+      };
+
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      );
+
+      setSubmitStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        employees: '',
+        service: '',
+        timeline: '',
+        currentSystem: '',
+        targetSystem: '',
+        countries: '',
+        details: '',
+      });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <>
-      <style jsx>{`
-        /* Mobile-First CSS with Industry Standard Breakpoints */
-        .mobile-optimized {
-          /* Base styles for mobile (320px and up) */
-        }
-
-        /* Small Mobile */
-        @media (max-width: 375px) {
-          .hero-title {
-            font-size: 32px !important;
-            line-height: 1.1 !important;
-            margin-bottom: 16px !important;
-          }
-          .hero-subtitle {
-            font-size: 16px !important;
-            margin-bottom: 24px !important;
-          }
-          .section-padding {
-            padding: 40px 0 30px 0 !important;
-          }
-          .container-mobile {
-            padding: 0 16px !important;
-          }
-        }
-
-        /* Mobile Portrait */
-        @media (max-width: 480px) {
-          .hero-section {
-            padding: 60px 0 40px 0 !important;
-            min-height: 70vh !important;
-          }
-          .hero-title {
-            font-size: 36px !important;
-            margin-bottom: 18px !important;
-          }
-          .hero-subtitle {
-            font-size: 17px !important;
-            line-height: 1.4 !important;
-          }
-          .contact-grid {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-          }
-          .why-grid {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-          }
-          .card-padding {
-            padding: 24px 20px !important;
-          }
-        }
-
-        /* Mobile Landscape / Small Tablet */
-        @media (min-width: 481px) and (max-width: 768px) {
-          .hero-section {
-            padding: 70px 0 50px 0 !important;
-          }
-          .contact-grid {
-            grid-template-columns: 1fr !important;
-            gap: 20px !important;
-          }
-          .why-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 20px !important;
-          }
-        }
-
-        /* Tablet */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .contact-grid {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-            gap: 24px !important;
-          }
-          .why-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 24px !important;
-          }
-          .container-tablet {
-            max-width: 90% !important;
-          }
-        }
-
-        /* Touch-friendly interactions */
-        .touch-card {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-          cursor: pointer !important;
-        }
-
-        .touch-card:active {
-          transform: scale(0.98) !important;
-        }
-
-        .expanded-card {
-          transform: translateY(-4px) !important;
-          box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        /* Improved touch targets */
-        .touch-target {
-          min-height: 44px !important;
-          min-width: 44px !important;
-        }
-
-        /* Mobile typography optimization */
-        @media (max-width: 768px) {
-          .mobile-h1 {
-            font-size: clamp(32px, 8vw, 48px) !important;
-          }
-          .mobile-h2 {
-            font-size: clamp(28px, 6vw, 40px) !important;
-          }
-          .mobile-p {
-            font-size: 16px !important;
-            line-height: 1.5 !important;
-          }
-          .mobile-small {
-            font-size: 14px !important;
-          }
-        }
-
-        /* Contact method specific styling */
-        .contact-method-card {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        }
-
-        .contact-method-card:hover {
-          transform: translateY(-8px) !important;
-          box-shadow: 0 20px 64px rgba(135, 206, 235, 0.25) !important;
-        }
-
-        /* Mobile contact card styling */
-        @media (max-width: 768px) {
-          .contact-method-card:active {
-            transform: scale(0.98) !important;
-          }
-        }
-
-        /* Scroll snap for mobile sections */
-        @media (max-width: 768px) {
-          .section-scroll-snap {
-            scroll-snap-type: y mandatory;
-          }
-          .section-snap-item {
-            scroll-snap-align: start;
-          }
-        }
-
-        /* Mobile navigation spacing */
-        @media (max-width: 768px) {
-          .mobile-nav-spacing {
-            margin-top: 60px !important;
-          }
-        }
-
-        /* Reduced motion for accessibility */
-        @media (prefers-reduced-motion: reduce) {
-          * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-            scroll-behavior: auto !important;
-          }
-        }
-
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-          .high-contrast {
-            border: 2px solid currentColor !important;
-          }
-        }
-
-        /* Dark mode considerations */
-        @media (prefers-color-scheme: dark) {
-          .dark-mode-text {
-            color: #ffffff !important;
-          }
-        }
-
-        /* Focus styles for accessibility */
-        .touch-target:focus {
-          outline: 2px solid #00bfff !important;
-          outline-offset: 2px !important;
-        }
-      `}</style>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+    <AppleBackground variant='primary'>
+      {/* Apple Hero Section */}
+      <section
         style={{
-          minHeight: '100vh',
-          background: 'linear-gradient(135deg, #E8F6FF 0%, #F0FAFF 50%, #ccebff 100%)',
-          fontFamily:
-            '"SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+          padding: '50px 20px 40px 20px',
+          textAlign: 'center',
+          background: '#e3f2fd',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        {/* Mobile-Optimized Hero Section */}
-        <section
-          className='hero-section section-snap-item'
+        {/* Apple-style floating background elements */}
+        <div
           style={{
-            padding: isMobile ? '60px 0 40px 0' : '8rem 0 6rem 0',
-            background:
-              'linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(173, 216, 230, 0.1) 50%, rgba(240, 248, 255, 0.05) 100%)',
-            position: 'relative',
-            overflow: 'hidden',
-            minHeight: isMobile ? '80vh' : 'auto',
-            display: 'flex',
-            alignItems: 'center',
+            position: 'absolute',
+            top: '20%',
+            right: '10%',
+            width: '400px',
+            height: '300px',
+            background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(100px)',
+            animation: 'float 10s ease-in-out infinite',
+            zIndex: 0,
           }}
-        >
-          <div
-            className='container-mobile'
-            style={{
-              maxWidth: isMobile ? '100%' : '1200px',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0 2rem',
-              position: 'relative',
-              zIndex: 1,
-            }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '10%',
+            left: '15%',
+            width: '300px',
+            height: '200px',
+            background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(80px)',
+            animation: 'float 8s ease-in-out infinite reverse',
+            zIndex: 0,
+          }}
+        />
+
+        <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}
           >
+            {/* Apple-style eyebrow text */}
             <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              style={{ textAlign: 'center' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              style={{
+                fontSize: '17px',
+                fontWeight: '700',
+                color: '#007aff',
+                marginBottom: '16px',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                letterSpacing: '-0.022em',
+                textTransform: 'uppercase',
+                textAlign: 'center',
+              }}
             >
-              <div
+              Contact Our Experts
+            </motion.div>
+
+            <h1
+              className='hero-title'
+              style={{
+                fontSize: 'clamp(38px, 4.5vw, 50px)',
+                fontWeight: '700',
+                lineHeight: '1.05',
+                color: '#1a237e',
+                marginBottom: '16px',
+                letterSpacing: '-0.025em',
+                textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+              }}
+            >
+              Ready to{' '}
+              <span
                 style={{
+                  background:
+                    'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  display: 'inline-block',
+                  fontWeight: '700',
+                  paddingBottom: '4px',
+                  lineHeight: '1.2',
+                }}
+              >
+                Transform
+              </span>{' '}
+              Your Payroll?
+            </h1>
+
+            <p
+              className='hero-subtitle'
+              style={{
+                fontSize: '20px',
+                lineHeight: '1.3',
+                color: '#283593',
+                fontWeight: '400',
+                marginBottom: '32px',
+                maxWidth: '640px',
+                margin: '0 auto 32px auto',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              }}
+            >
+              Get expert guidance from UK-based specialists. Free consultation, quick response, and zero sales pressure.
+            </p>
+
+            <div
+              className='hero-buttons'
+              style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '40px' }}
+            >
+              <a
+                href='tel:+447432665514'
+                style={{
+                  background: '#007AFF',
+                  color: 'white',
+                  padding: '14px 32px',
+                  borderRadius: '980px',
+                  textDecoration: 'none',
+                  fontSize: '17px',
+                  fontWeight: '500',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: isMobile ? '10px 20px' : '12px 24px',
-                  borderRadius: '50px',
-                  backgroundColor: 'rgba(135, 206, 235, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(135, 206, 235, 0.2)',
-                  marginBottom: isMobile ? '16px' : '2rem',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  border: 'none',
+                  boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)',
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'scale(1.05)';
+                  e.target.style.background = '#0056CC';
+                  e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'scale(1)';
+                  e.target.style.background = '#007AFF';
+                  e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
                 }}
               >
-                <span style={{ fontSize: isMobile ? '16px' : '1.2rem' }}>📞</span>
-                <span
-                  style={{
-                    fontSize: isMobile ? '14px' : '0.875rem',
-                    fontWeight: '600',
-                    color: '#1976d2',
-                    letterSpacing: '0.025em',
-                  }}
-                >
-                  Free Consultation Available
-                </span>
-              </div>
+                <Phone sx={{ fontSize: 18 }} />
+                Call Now
+              </a>
 
-              <h1
-                className='mobile-h1'
+              <a
+                href='mailto:info@globalpayrollmigration.com'
                 style={{
-                  fontSize: isMobile ? 'clamp(32px, 8vw, 48px)' : 'clamp(2.5rem, 5vw, 4rem)',
-                  fontWeight: '700',
-                  lineHeight: '1.1',
-                  color: '#1a1a1a',
-                  marginBottom: isMobile ? '16px' : '2rem',
-                  letterSpacing: '-0.02em',
+                  background: 'transparent',
+                  color: '#007AFF',
+                  padding: '14px 32px',
+                  borderRadius: '980px',
+                  textDecoration: 'none',
+                  fontSize: '17px',
+                  fontWeight: '500',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  border: '2px solid #007AFF',
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = '#007AFF';
+                  e.target.style.color = 'white';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'transparent';
+                  e.target.style.color = '#007AFF';
                 }}
               >
-                Get Started with Your <span style={{ color: '#87ceeb' }}>Payroll Migration</span>
-              </h1>
+                <Email sx={{ fontSize: 18 }} />
+                Send Email
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-              <p
-                className='mobile-p'
-                style={{
-                  fontSize: isMobile ? '16px' : '1.25rem',
-                  lineHeight: '1.6',
-                  color: '#4a4a4a',
-                  maxWidth: isMobile ? '100%' : '48rem',
-                  margin: '0 auto',
-                  fontWeight: '400',
-                  padding: isMobile ? '0 10px' : '0',
-                }}
-              >
-                Ready to migrate without the stress? Let's discuss how we can support your payroll
-                migration — whether you're just starting out or ready to move forward immediately.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Mobile-Optimized Contact Methods */}
-        <section
-          className='section-padding section-snap-item'
+      {/* Why Contact Us Section */}
+      <section
+        style={{
+          padding: '40px 20px 60px 20px',
+          background: '#e3f2fd',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
           style={{
-            padding: isMobile ? '60px 0 40px 0' : '4rem 0',
-            backgroundColor: 'rgba(135, 206, 235, 0.08)',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background:
+              'radial-gradient(ellipse 100% 40% at 50% 0%, rgba(0, 122, 255, 0.03), transparent)',
+            pointerEvents: 'none',
           }}
-        >
-          <div
-            className='container-mobile'
-            style={{
-              maxWidth: isMobile ? '100%' : '1200px',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0 2rem',
-            }}
-          >
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ textAlign: 'center', marginBottom: isMobile ? '30px' : '4rem' }}
-            >
-              <h2
-                className='mobile-h2'
-                style={{
-                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(2rem, 4vw, 3rem)',
-                  fontWeight: '700',
-                  marginBottom: isMobile ? '12px' : '1.5rem',
-                  color: '#1a1a1a',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                How to <span style={{ color: '#87ceeb' }}>Reach Us</span>
-              </h2>
-              <p
-                className='mobile-p'
-                style={{
-                  fontSize: isMobile ? '16px' : '1.125rem',
-                  color: '#4a4a4a',
-                  fontWeight: '400',
-                  padding: isMobile ? '0 10px' : '0',
-                }}
-              >
-                Choose the method that works best for you
-              </p>
-            </motion.div>
+        />
 
-            <div
-              className='contact-grid'
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: '-100px' }}
+            style={{ textAlign: 'center' }}
+          >
+            <h2
+              className='section-title'
               style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: isMobile ? '16px' : '2rem',
-                marginBottom: isMobile ? '30px' : '4rem',
+                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontWeight: '700',
+                color: '#1a237e',
+                marginBottom: '12px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.0625',
+                letterSpacing: '-0.009em',
               }}
             >
-              {contactMethods.map((method, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
-                  className={`contact-method-card touch-card ${expandedCard === index ? 'expanded-card' : ''}`}
-                  onTouchStart={(e) => handleTouchStart(e, index)}
-                  onTouchEnd={(e) => handleTouchEnd(e, index)}
-                  onClick={() =>
-                    !isMobile
-                      ? (window.location.href = method.href)
-                      : setExpandedCard(expandedCard === index ? null : index)
-                  }
-                  style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(135, 206, 235, 0.2)',
-                    borderRadius: isMobile ? '16px' : '20px',
-                    padding: isMobile ? '24px 20px' : '2rem',
-                    textAlign: 'center',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    minHeight: isMobile ? 'auto' : '100%',
-                  }}
-                  whileHover={
-                    !isMobile
-                      ? {
-                          y: -5,
-                          scale: 1.02,
-                          boxShadow: '0 20px 40px rgba(135, 206, 235, 0.25)',
-                        }
-                      : {}
-                  }
-                  whileTap={{ scale: 0.98 }}
-                >
+              Why contact us?
+            </h2>
+            <p
+              style={{
+                fontSize: '18px',
+                color: '#283593',
+                maxWidth: '700px',
+                margin: '0 auto',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.381',
+                letterSpacing: '.011em',
+                fontWeight: '400',
+              }}
+            >
+              Four compelling reasons to start your payroll transformation journey with us.
+            </p>
+          </motion.div>
+        </div>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            maxWidth: '1200px',
+            gap: '12px',
+            width: '95%',
+            margin: '0 auto',
+          }}
+          className='contact-cards-grid'
+        >
+          {contactReasons.map((reason, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.15,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              viewport={{ once: true, margin: '-50px' }}
+            >
+              <AppleFlipCard
+                frontContent={
                   <div
                     style={{
+                      background: '#e3f2fd',
+                      borderRadius: '22px',
+                      padding: '32px',
+                      height: '100%',
                       display: 'flex',
-                      justifyContent: 'center',
-                      marginBottom: isMobile ? '16px' : '1.5rem',
+                      flexDirection: 'column',
+                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
+                      border: '1px solid rgba(0, 0, 0, 0.04)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                   >
                     <div
                       style={{
-                        width: isMobile ? '60px' : '80px',
-                        height: isMobile ? '60px' : '80px',
-                        backgroundColor: 'rgba(135, 206, 235, 0.15)',
-                        borderRadius: isMobile ? '16px' : '20px',
+                        width: '72px',
+                        height: '72px',
+                        borderRadius: '22px',
+                        background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        boxShadow: '0 8px 32px rgba(135, 206, 235, 0.2)',
+                        marginBottom: '12px',
+                        boxShadow:
+                          '0 8px 32px rgba(0, 122, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                       }}
                     >
-                      {React.cloneElement(method.icon, {
+                      {React.cloneElement(reason.icon, {
                         sx: {
-                          fontSize: isMobile ? 24 : 32,
-                          color: '#87ceeb',
-                          filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
+                          fontSize: 32,
+                          color: '#ccebff',
+                          filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
                         },
                       })}
                     </div>
-                  </div>
 
-                  <h3
-                    style={{
-                      fontSize: isMobile ? '20px' : '1.5rem',
-                      fontWeight: '700',
-                      marginBottom: isMobile ? '8px' : '0.75rem',
-                      color: '#1a1a1a',
-                      letterSpacing: '-0.01em',
-                    }}
-                  >
-                    {method.title}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontSize: isMobile ? '16px' : '1.125rem',
-                      color: '#87ceeb',
-                      fontWeight: '600',
-                      marginBottom: isMobile ? '6px' : '0.5rem',
-                      wordBreak: method.title === 'Email' ? 'break-word' : 'normal',
-                    }}
-                  >
-                    {method.primary}
-                  </p>
-
-                  <p
-                    className='mobile-small'
-                    style={{
-                      fontSize: isMobile ? '14px' : '1rem',
-                      color: '#666',
-                      marginBottom: isMobile ? '8px' : '1rem',
-                      fontWeight: '400',
-                    }}
-                  >
-                    {method.secondary}
-                  </p>
-
-                  <p
-                    className='mobile-small'
-                    style={{
-                      fontSize: isMobile ? '13px' : '0.875rem',
-                      color: '#666',
-                      marginBottom: isMobile ? '16px' : '1.5rem',
-                      fontWeight: '400',
-                      flex: 1,
-                    }}
-                  >
-                    {method.description}
-                  </p>
-
-                  {/* Mobile: Show features when expanded */}
-                  {isMobile && expandedCard === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
+                    <h3
                       style={{
-                        marginTop: '16px',
-                        padding: '16px',
-                        background: 'rgba(135, 206, 235, 0.1)',
-                        borderRadius: '12px',
-                        border: '1px solid rgba(135, 206, 235, 0.2)',
+                        fontSize: '24px',
+                        fontWeight: '600',
+                        color: '#000000',
+                        marginBottom: '12px',
+                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.16667',
+                        letterSpacing: '-0.005em',
                       }}
                     >
-                      <ul
-                        style={{
-                          listStyle: 'none',
-                          padding: 0,
-                          margin: 0,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '8px',
-                        }}
-                      >
-                        {method.features.map((feature, fIndex) => (
-                          <li
-                            key={fIndex}
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '8px',
-                              fontSize: '13px',
-                              color: '#1a1a1a',
-                              fontFamily:
-                                'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                              fontWeight: '400',
-                            }}
-                          >
-                            <div
-                              style={{
-                                width: '4px',
-                                height: '4px',
-                                borderRadius: '50%',
-                                background: '#87ceeb',
-                                flexShrink: 0,
-                              }}
-                            />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
+                      {reason.title}
+                    </h3>
 
-                  {/* Touch indicator for mobile */}
-                  {isMobile && (
+                    <p
+                      style={{
+                        fontSize: '17px',
+                        color: '#000000',
+                        marginBottom: '12px',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.47059',
+                        letterSpacing: '-0.022em',
+                        fontWeight: '400',
+                        flex: 1,
+                      }}
+                    >
+                      {reason.description}
+                    </p>
+
                     <div
                       style={{
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center',
-                        marginTop: '12px',
-                        padding: '8px',
-                        color: '#87ceeb',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        gap: '4px',
-                      }}
-                    >
-                      {expandedCard === index ? 'Tap to contact' : 'Tap to expand'}
-                      <ExpandMore
-                        sx={{
-                          fontSize: 16,
-                          transform: expandedCard === index ? 'rotate(180deg)' : 'rotate(0deg)',
-                          transition: 'transform 0.3s ease',
-                        }}
-                      />
-                    </div>
-                  )}
-
-                  {/* Desktop: Show CTA button */}
-                  {!isMobile && (
-                    <a
-                      href={method.href}
-                      className='touch-target'
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '100%',
-                        padding: '14px 24px',
-                        backgroundColor: 'transparent',
-                        border: '2px solid #00bfff',
-                        borderRadius: '12px',
-                        color: '#87ceeb',
-                        fontSize: '1rem',
-                        fontWeight: '600',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        fontFamily: 'inherit',
-                        textDecoration: 'none',
                         marginTop: 'auto',
-                        minHeight: '44px',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = '#00bfff';
-                        e.target.style.color = '#ccebff';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = 'transparent';
-                        e.target.style.color = '#87ceeb';
                       }}
                     >
-                      Contact Now
-                    </a>
-                  )}
-
-                  {/* Mobile: Direct contact action when expanded */}
-                  {isMobile && expandedCard === index && (
-                    <motion.a
-                      href={method.href}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: 0.1 }}
-                      className='touch-target'
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '100%',
-                        padding: '16px 24px',
-                        backgroundColor: '#00bfff',
-                        border: 'none',
-                        borderRadius: '12px',
-                        color: '#ccebff',
-                        fontSize: '16px',
-                        fontWeight: '600',
-                        cursor: 'pointer',
-                        fontFamily: 'inherit',
-                        textDecoration: 'none',
-                        marginTop: '16px',
-                        minHeight: '44px',
-                        boxShadow: '0 4px 16px rgba(0, 191, 255, 0.3)',
-                      }}
-                    >
-                      {method.title === 'Phone'
-                        ? 'Call Now'
-                        : method.title === 'Email'
-                          ? 'Send Email'
-                          : 'Schedule Call'}
-                    </motion.a>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Mobile-Optimized Why Contact Us Section */}
-        <section
-          className='section-padding section-snap-item'
-          style={{
-            padding: isMobile ? '60px 0 40px 0' : '5rem 0',
-          }}
-        >
-          <div
-            className='container-mobile'
-            style={{
-              maxWidth: isMobile ? '100%' : '1200px',
-              margin: '0 auto',
-              padding: isMobile ? '0 20px' : '0 2rem',
-            }}
-          >
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              style={{ textAlign: 'center', marginBottom: isMobile ? '30px' : '4rem' }}
-            >
-              <h2
-                className='mobile-h2'
-                style={{
-                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(2rem, 4vw, 3rem)',
-                  fontWeight: '700',
-                  marginBottom: isMobile ? '12px' : '1.5rem',
-                  color: '#1a1a1a',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                Why <span style={{ color: '#87ceeb' }}>Contact Us</span>?
-              </h2>
-            </motion.div>
-
-            <div
-              className='why-grid'
-              style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: isMobile ? '16px' : '2rem',
-              }}
-            >
-              {whyContact.map((reason, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
-                  className={`touch-card ${expandedCard === `why-${index}` ? 'expanded-card' : ''}`}
-                  onTouchStart={(e) => handleTouchStart(e, `why-${index}`)}
-                  onTouchEnd={(e) => handleTouchEnd(e, `why-${index}`)}
-                  onClick={() =>
-                    isMobile &&
-                    setExpandedCard(expandedCard === `why-${index}` ? null : `why-${index}`)
-                  }
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.85)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(135, 206, 235, 0.3)',
-                    borderRadius: isMobile ? '16px' : '24px',
-                    padding: isMobile ? '24px 20px' : '2rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    textAlign: 'center',
-                    boxShadow: '0 8px 32px rgba(135, 206, 235, 0.15)',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: isMobile ? 'pointer' : 'default',
-                    minHeight: isMobile ? 'auto' : '300px',
-                  }}
-                  whileHover={
-                    !isMobile
-                      ? {
-                          y: -8,
-                          boxShadow: '0 20px 64px rgba(135, 206, 235, 0.25)',
-                        }
-                      : {}
-                  }
-                  whileTap={isMobile ? { scale: 0.98 } : {}}
-                >
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          padding: '8px 16px',
+                          borderRadius: '22px',
+                          background: 'rgba(0, 122, 255, 0.1)',
+                          color: '#007aff',
+                          fontSize: '15px',
+                          fontWeight: '500',
+                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        }}
+                      >
+                        Hover to learn more
+                      </div>
+                    </div>
+                  </div>
+                }
+                backContent={
                   <div
                     style={{
-                      width: isMobile ? '60px' : '80px',
-                      height: isMobile ? '60px' : '80px',
-                      backgroundColor: 'rgba(135, 206, 235, 0.2)',
-                      borderRadius: isMobile ? '16px' : '20px',
+                      background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                      borderRadius: '22px',
+                      padding: '38px',
+                      color: '#ccebff',
+                      minHeight: '500px',
+                      height: '500px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      textAlign: 'center',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      boxShadow: '0 20px 64px rgba(0, 122, 255, 0.4)',
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '-30%',
+                        right: '-20%',
+                        width: '150px',
+                        height: '150px',
+                        background:
+                          'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                        filter: 'blur(40px)',
+                        pointerEvents: 'none',
+                      }}
+                    />
+
+                    <div
+                      style={{
+                        position: 'relative',
+                        zIndex: 1,
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                      }}
+                    >
+                      <div
+                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                      >
+                        <h3
+                          style={{
+                            fontSize: '22px',
+                            fontWeight: '600',
+                            color: '#ccebff',
+                            marginBottom: '20px',
+                            fontFamily:
+                              'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                            textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+                          }}
+                        >
+                          {reason.title}
+                        </h3>
+
+                        <ul
+                          style={{
+                            listStyle: 'none',
+                            padding: 0,
+                            margin: '0 0 20px 0',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '8px',
+                          }}
+                        >
+                          {reason.features.map((feature, fIndex) => (
+                            <li
+                              key={fIndex}
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                fontSize: '15px',
+                                color: 'rgba(255, 255, 255, 0.95)',
+                                fontFamily:
+                                  'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                                fontWeight: '400',
+                                textAlign: 'left',
+                              }}
+                            >
+                              <div
+                                style={{
+                                  width: '20px',
+                                  height: '20px',
+                                  borderRadius: '50%',
+                                  background: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)',
+                                  backdropFilter: 'blur(20px) saturate(200%)',
+                                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  flexShrink: 0,
+                                  boxShadow:
+                                    '0 2px 8px rgba(52, 199, 89, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    color: 'white',
+                                    fontSize: '12px',
+                                    fontWeight: '600',
+                                    textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+                                  }}
+                                >
+                                  ✓
+                                </span>
+                              </div>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <a
+                        href='#contact-form'
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          padding: '8px 16px',
+                          background: 'rgba(255, 255, 255, 0.2)',
+                          backdropFilter: 'blur(20px)',
+                          border: '1px solid rgba(255, 255, 255, 0.3)',
+                          borderRadius: '18px',
+                          color: '#ccebff',
+                          textDecoration: 'none',
+                          fontSize: '14px',
+                          fontWeight: '500',
+                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                          marginTop: 'auto',
+                          cursor: 'pointer',
+                          userSelect: 'none',
+                        }}
+                      >
+                        Get Started
+                        <Send sx={{ fontSize: 14 }} />
+                      </a>
+                    </div>
+                  </div>
+                }
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Information Section */}
+      <section
+        style={{
+          padding: '40px 20px 60px 20px',
+          background: '#e3f2fd',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: '-100px' }}
+            style={{ textAlign: 'center' }}
+          >
+            <h2
+              className='section-title'
+              style={{
+                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontWeight: '700',
+                color: '#1a237e',
+                marginBottom: '12px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.0625',
+                letterSpacing: '-0.009em',
+              }}
+            >
+              Get in touch.
+            </h2>
+            <p
+              style={{
+                fontSize: '18px',
+                color: '#283593',
+                maxWidth: '700px',
+                margin: '0 auto',
+                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.381',
+                letterSpacing: '.011em',
+                fontWeight: '400',
+              }}
+            >
+              Choose your preferred way to connect with our payroll migration experts.
+            </p>
+          </motion.div>
+        </div>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '24px',
+            maxWidth: '1000px',
+            margin: '0 auto',
+            padding: '0 20px',
+          }}
+        >
+          {contactInfo.map((info, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              viewport={{ once: true, margin: '-100px' }}
+            >
+              <motion.a
+                href={info.href}
+                target={info.href.includes('calendly') ? '_blank' : '_self'}
+                rel={info.href.includes('calendly') ? 'noopener noreferrer' : ''}
+                whileHover={{ y: -8, scale: 1.02 }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  background: 'rgba(255, 255, 255, 0.9)',
+                  borderRadius: '24px',
+                  padding: '40px 32px',
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  cursor: 'pointer',
+                  minHeight: '320px',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+                  <div
+                    style={{
+                      width: '80px',
+                      height: '80px',
+                      borderRadius: '24px',
+                      background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: isMobile ? '16px' : '1.5rem',
-                      border: '2px solid rgba(135, 206, 235, 0.3)',
-                      boxShadow: '0 8px 32px rgba(135, 206, 235, 0.2)',
+                      marginBottom: '24px',
+                      boxShadow: '0 8px 32px rgba(0, 122, 255, 0.3)',
                     }}
                   >
-                    {React.cloneElement(reason.icon, {
+                    {React.cloneElement(info.icon, {
                       sx: {
-                        fontSize: isMobile ? 24 : 32,
-                        color: '#87ceeb',
-                        filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
+                        fontSize: 36,
+                        color: '#ccebff',
+                        filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
                       },
                     })}
                   </div>
 
                   <h3
                     style={{
-                      fontSize: isMobile ? '20px' : '1.5rem',
-                      fontWeight: '700',
-                      color: '#1a1a1a',
-                      letterSpacing: '-0.02em',
-                      lineHeight: '1.2',
-                      marginBottom: isMobile ? '12px' : '1rem',
+                      fontSize: '24px',
+                      fontWeight: '600',
+                      color: '#1a237e',
+                      marginBottom: '8px',
+                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                      lineHeight: '1.16667',
+                      letterSpacing: '-0.005em',
                     }}
                   >
-                    {reason.title}
+                    {info.title}
                   </h3>
+
+                  <div
+                    style={{
+                      fontSize: '18px',
+                      fontWeight: '500',
+                      color: '#007aff',
+                      marginBottom: '4px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      lineHeight: '1.3',
+                      textAlign: 'center',
+                      wordBreak: 'break-word',
+                    }}
+                  >
+                    {info.primary}
+                  </div>
+
+                  <div
+                    style={{
+                      fontSize: '14px',
+                      color: '#1a237e',
+                      marginBottom: '12px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      opacity: 0.8,
+                      textAlign: 'center',
+                    }}
+                  >
+                    {info.secondary}
+                  </div>
 
                   <p
                     style={{
-                      fontSize: isMobile ? '14px' : '1rem',
-                      color: '#1a1a1a',
-                      lineHeight: '1.6',
+                      fontSize: '15px',
+                      color: '#1a237e',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      lineHeight: '1.4',
+                      letterSpacing: '-0.022em',
                       fontWeight: '400',
-                      marginBottom: isMobile ? '16px' : '1.5rem',
-                      flex: 1,
+                      margin: 0,
+                      textAlign: 'center',
                     }}
                   >
-                    {reason.description}
+                    {info.description}
                   </p>
+                </div>
+              </motion.a>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-                  {/* Mobile: Show features when expanded */}
-                  {isMobile && expandedCard === `why-${index}` && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      style={{
-                        width: '100%',
-                        marginTop: '16px',
-                        padding: '16px',
-                        background: 'rgba(135, 206, 235, 0.1)',
-                        borderRadius: '12px',
-                        border: '1px solid rgba(135, 206, 235, 0.2)',
-                      }}
-                    >
-                      <ul
-                        style={{
-                          listStyle: 'none',
-                          padding: 0,
-                          margin: 0,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '8px',
-                        }}
-                      >
-                        {reason.features.map((feature, fIndex) => (
-                          <li
-                            key={fIndex}
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '8px',
-                              fontSize: '13px',
-                              color: '#1a1a1a',
-                              fontFamily:
-                                'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                              fontWeight: '400',
-                              textAlign: 'left',
-                            }}
-                          >
-                            <div
-                              style={{
-                                width: '4px',
-                                height: '4px',
-                                borderRadius: '50%',
-                                background: '#87ceeb',
-                                flexShrink: 0,
-                              }}
-                            />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
+      {/* Contact Form Section */}
+      <section
+        id='contact-form'
+        style={{
+          padding: '60px 20px 80px 20px',
+          background: '#e3f2fd',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: '20%',
+            left: '-10%',
+            width: '600px',
+            height: '600px',
+            background: 'radial-gradient(circle, rgba(0, 122, 255, 0.1) 0%, transparent 70%)',
+            filter: 'blur(100px)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '20%',
+            right: '-10%',
+            width: '500px',
+            height: '500px',
+            background: 'radial-gradient(circle, rgba(88, 86, 214, 0.1) 0%, transparent 70%)',
+            filter: 'blur(100px)',
+          }}
+        />
 
-                  {/* Touch indicator for mobile */}
-                  {isMobile && (
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            maxWidth: '800px',
+            margin: '0 auto',
+            padding: '0 22px',
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', marginBottom: '50px' }}
+          >
+            <h2
+              style={{
+                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontWeight: '700',
+                color: '#1a237e',
+                marginBottom: '12px',
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                lineHeight: '1.1',
+              }}
+            >
+              Send us a message.
+            </h2>
+
+            <p
+              style={{
+                fontSize: '18px',
+                color: '#283593',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                lineHeight: '1.33',
+                fontWeight: '400',
+              }}
+            >
+              Tell us about your payroll migration needs and we'll get back to you within 2 hours.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            style={{
+              background: 'rgba(255, 255, 255, 0.9)',
+              borderRadius: '24px',
+              padding: '48px 40px',
+              boxShadow: '0 20px 64px rgba(0, 0, 0, 0.1)',
+              border: '1px solid rgba(0, 0, 0, 0.06)',
+              backdropFilter: 'blur(20px)',
+            }}
+            className='contact-form'
+          >
+            {submitStatus === 'success' && (
+              <div
+                style={{
+                  background: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)',
+                  color: 'white',
+                  padding: '16px 24px',
+                  borderRadius: '16px',
+                  marginBottom: '32px',
+                  textAlign: 'center',
+                  fontSize: '16px',
+                  fontWeight: '500',
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                }}
+              >
+                ✓ Thank you! We'll respond within 2 hours.
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div
+                style={{
+                  background: 'linear-gradient(135deg, #FF3B30 0%, #FF2D92 100%)',
+                  color: 'white',
+                  padding: '16px 24px',
+                  borderRadius: '16px',
+                  marginBottom: '32px',
+                  textAlign: 'center',
+                  fontSize: '16px',
+                  fontWeight: '500',
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                }}
+              >
+                ✗ Something went wrong. Please try again or call us directly.
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
+                <div>
+                  <label
+                    style={{
+                      display: 'block',
+                      fontSize: '15px',
+                      fontWeight: '500',
+                      color: '#1a237e',
+                      marginBottom: '8px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    First Name *
+                  </label>
+                  <input
+                    type='text'
+                    name='firstName'
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '14px 16px',
+                      border: '2px solid rgba(0, 122, 255, 0.2)',
+                      borderRadius: '12px',
+                      fontSize: '16px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      outline: 'none',
+                      transition: 'all 0.3s ease',
+                      background: 'rgba(255, 255, 255, 0.8)',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#007aff';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(0, 122, 255, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: 'block',
+                      fontSize: '15px',
+                      fontWeight: '500',
+                      color: '#1a237e',
+                      marginBottom: '8px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    Last Name *
+                  </label>
+                  <input
+                    type='text'
+                    name='lastName'
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '14px 16px',
+                      border: '2px solid rgba(0, 122, 255, 0.2)',
+                      borderRadius: '12px',
+                      fontSize: '16px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      outline: 'none',
+                      transition: 'all 0.3s ease',
+                      background: 'rgba(255, 255, 255, 0.8)',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#007aff';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(0, 122, 255, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
+                <div>
+                  <label
+                    style={{
+                      display: 'block',
+                      fontSize: '15px',
+                      fontWeight: '500',
+                      color: '#1a237e',
+                      marginBottom: '8px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    Email *
+                  </label>
+                  <input
+                    type='email'
+                    name='email'
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '14px 16px',
+                      border: '2px solid rgba(0, 122, 255, 0.2)',
+                      borderRadius: '12px',
+                      fontSize: '16px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      outline: 'none',
+                      transition: 'all 0.3s ease',
+                      background: 'rgba(255, 255, 255, 0.8)',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#007aff';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(0, 122, 255, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: 'block',
+                      fontSize: '15px',
+                      fontWeight: '500',
+                      color: '#1a237e',
+                      marginBottom: '8px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    Phone
+                  </label>
+                  <input
+                    type='tel'
+                    name='phone'
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    style={{
+                      width: '100%',
+                      padding: '14px 16px',
+                      border: '2px solid rgba(0, 122, 255, 0.2)',
+                      borderRadius: '12px',
+                      fontSize: '16px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      outline: 'none',
+                      transition: 'all 0.3s ease',
+                      background: 'rgba(255, 255, 255, 0.8)',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#007aff';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(0, 122, 255, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
+                <div>
+                  <label
+                    style={{
+                      display: 'block',
+                      fontSize: '15px',
+                      fontWeight: '500',
+                      color: '#1a237e',
+                      marginBottom: '8px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    Company *
+                  </label>
+                  <input
+                    type='text'
+                    name='company'
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '14px 16px',
+                      border: '2px solid rgba(0, 122, 255, 0.2)',
+                      borderRadius: '12px',
+                      fontSize: '16px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      outline: 'none',
+                      transition: 'all 0.3s ease',
+                      background: 'rgba(255, 255, 255, 0.8)',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#007aff';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(0, 122, 255, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: 'block',
+                      fontSize: '15px',
+                      fontWeight: '500',
+                      color: '#1a237e',
+                      marginBottom: '8px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    Service Needed *
+                  </label>
+                  <select
+                    name='service'
+                    value={formData.service}
+                    onChange={handleInputChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '14px 16px',
+                      border: '2px solid rgba(0, 122, 255, 0.2)',
+                      borderRadius: '12px',
+                      fontSize: '16px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      outline: 'none',
+                      transition: 'all 0.3s ease',
+                      background: 'rgba(255, 255, 255, 0.8)',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#007aff';
+                      e.target.style.boxShadow = '0 0 0 4px rgba(0, 122, 255, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  >
+                    <option value=''>Select a service</option>
+                    {services.map((service) => (
+                      <option key={service} value={service}>
+                        {service}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '24px' }}>
+                <label
+                  style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '500',
+                    color: '#1a237e',
+                    marginBottom: '8px',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  }}
+                >
+                  Timeline *
+                </label>
+                <select
+                  name='timeline'
+                  value={formData.timeline}
+                  onChange={handleInputChange}
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '14px 16px',
+                    border: '2px solid rgba(0, 122, 255, 0.2)',
+                    borderRadius: '12px',
+                    fontSize: '16px',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    outline: 'none',
+                    transition: 'all 0.3s ease',
+                    background: 'rgba(255, 255, 255, 0.8)',
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#007aff';
+                    e.target.style.boxShadow = '0 0 0 4px rgba(0, 122, 255, 0.1)';
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                >
+                  <option value=''>Select timeline</option>
+                  {urgency.map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div style={{ marginBottom: '24px' }}>
+                <label
+                  style={{
+                    display: 'block',
+                    fontSize: '15px',
+                    fontWeight: '500',
+                    color: '#1a237e',
+                    marginBottom: '8px',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  }}
+                >
+                  Project Details
+                </label>
+                <textarea
+                  name='details'
+                  value={formData.details}
+                  onChange={handleInputChange}
+                  rows={4}
+                  placeholder='Tell us about your current payroll system, challenges, and what you hope to achieve...'
+                  style={{
+                    width: '100%',
+                    padding: '14px 16px',
+                    border: '2px solid rgba(0, 122, 255, 0.2)',
+                    borderRadius: '12px',
+                    fontSize: '16px',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    outline: 'none',
+                    transition: 'all 0.3s ease',
+                    background: 'rgba(255, 255, 255, 0.8)',
+                    resize: 'vertical',
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#007aff';
+                    e.target.style.boxShadow = '0 0 0 4px rgba(0, 122, 255, 0.1)';
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                />
+              </div>
+
+              <motion.button
+                type='submit'
+                disabled={isSubmitting}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                style={{
+                  width: '100%',
+                  padding: '16px 32px',
+                  background: isSubmitting 
+                    ? 'rgba(0, 122, 255, 0.5)' 
+                    : 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '12px',
+                  fontSize: '17px',
+                  fontWeight: '500',
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  boxShadow: isSubmitting 
+                    ? 'none' 
+                    : '0 4px 16px rgba(0, 122, 255, 0.3)',
+                }}
+              >
+                {isSubmitting ? (
+                  <>
                     <div
                       style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginTop: '12px',
-                        padding: '8px',
-                        color: '#87ceeb',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        gap: '4px',
+                        width: '20px',
+                        height: '20px',
+                        border: '2px solid rgba(255, 255, 255, 0.3)',
+                        borderTop: '2px solid white',
+                        borderRadius: '50%',
+                        animation: 'spin 1s linear infinite',
                       }}
-                    >
-                      {expandedCard === `why-${index}` ? 'Tap to collapse' : 'Tap to expand'}
-                      <ExpandMore
-                        sx={{
-                          fontSize: 16,
-                          transform:
-                            expandedCard === `why-${index}` ? 'rotate(180deg)' : 'rotate(0deg)',
-                          transition: 'transform 0.3s ease',
-                        }}
-                      />
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </motion.div>
-    </>
+                    />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send sx={{ fontSize: 18 }} />
+                    Send Message
+                  </>
+                )}
+              </motion.button>
+            </form>
+          </motion.div>
+        </div>
+      </section>
+    </AppleBackground>
   );
 };
 
