@@ -857,70 +857,82 @@ const ProfessionalAbout = () => {
 
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-              gap: '12px',
-              maxWidth: '900px',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '16px',
+              maxWidth: '1000px',
               margin: '0 auto',
             }}
           >
-            {operationRegions.map((region, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.05,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                }}
-                viewport={{ once: true, margin: '-50px' }}
-                whileHover={{ y: -4, scale: 1.02 }}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.8)',
-                  borderRadius: '16px',
-                  padding: '16px 12px',
-                  textAlign: 'center',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-                  border: '1px solid rgba(0, 0, 0, 0.06)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  cursor: 'pointer',
-                  minHeight: '120px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <div
+            {operationRegions.map((region, index) => {
+              // Country code mapping for flag emojis
+              const flagMap = {
+                'United Kingdom': '🇬🇧',
+                'United States': '🇺🇸',
+                'Germany': '🇩🇪',
+                'France': '🇫🇷',
+                'Spain': '🇪🇸',
+                'Netherlands': '🇳🇱',
+                'UAE': '🇦🇪',
+                'Saudi Arabia': '🇸🇦',
+                'Italy': '🇮🇹',
+                'Belgium': '🇧🇪',
+                'Switzerland': '🇨🇭',
+                'Austria': '🇦🇹',
+                'Sweden': '🇸🇪',
+                'Qatar': '🇶🇦',
+              };
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.03,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  whileHover={{ y: -6, scale: 1.1 }}
                   style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '10px',
-                    background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                     display: 'flex',
+                    flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 8px',
-                    boxShadow: '0 4px 16px rgba(0, 122, 255, 0.2)',
+                    gap: '8px',
+                    padding: '8px',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
                   }}
                 >
-                  <Public sx={{ fontSize: 20, color: '#ccebff' }} />
-                </div>
-                <h3
-                  style={{
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: '#000000',
-                    margin: '0',
-                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    lineHeight: '1.3',
-                  }}
-                >
-                  {region}
-                </h3>
-              </motion.div>
-            ))}
+                  <div
+                    style={{
+                      fontSize: '48px',
+                      lineHeight: '1',
+                      filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                  >
+                    {flagMap[region] || '🌍'}
+                  </div>
+                  <span
+                    style={{
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#1a237e',
+                      textAlign: 'center',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      maxWidth: '80px',
+                      lineHeight: '1.2',
+                    }}
+                  >
+                    {region}
+                  </span>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
