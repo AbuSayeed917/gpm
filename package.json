@@ -74,7 +74,7 @@
     "cypress": "^14.5.4",
     "dependency-check": "^4.1.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-cypress": "^5.1.1",
+    "eslint-plugin-cypress": "^2.15.1",
     "husky": "^9.1.7",
     "jest-environment-jsdom": "^30.0.5",
     "lint-staged": "^16.1.5",
