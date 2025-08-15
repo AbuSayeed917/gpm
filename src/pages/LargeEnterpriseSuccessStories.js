@@ -16,7 +16,6 @@ import {
   People
 } from '@mui/icons-material';
 import AppleBackground from '../components/AppleBackground';
-import { AppleFlipCard } from '../components/AppleCardSystem';
 
 const LargeEnterpriseSuccessStories = () => {
   const stories = [
