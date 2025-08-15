@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -13,17 +13,35 @@ import {
   Business,
   People,
   Timeline,
-  ArrowForward
+  ArrowForward,
+  Search,
+  Clear
 } from '@mui/icons-material';
 import AppleBackground from '../components/AppleBackground';
 
 
 const FAQ = () => {
   const [openFAQ, setOpenFAQ] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const faqSectionRef = useRef(null);
 
   const toggleFAQ = (index) => {
     setOpenFAQ(openFAQ === index ? null : index);
   };
+
+  const handleSearchChange = (value) => {
+    setSearchTerm(value);
+    if (value.trim() && faqSectionRef.current) {
+      // Scroll to FAQ section when user starts typing
+      setTimeout(() => {
+        faqSectionRef.current.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 100);
+    }
+  };
+
   const faqs = [
     {
       category: "General",
@@ -112,6 +130,11 @@ const FAQ = () => {
     }
   ];
 
+  const filteredFAQs = faqs.filter(faq => 
+    faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    faq.answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    faq.category.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const quickStats = [
     { value: '4-16 Weeks', label: 'Typical Duration', description: 'From SME to enterprise projects' },
@@ -224,9 +247,7 @@ const FAQ = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.0, delay: 0.2 }}
             >
-              Frequently Asked
-              <br />
-              <span style={{ 
+              Frequently Asked <span style={{ 
                 background: 'linear-gradient(90deg, #00bfff 0%, #87ceeb 100%)', 
                 backgroundClip: 'text', 
                 WebkitBackgroundClip: 'text', 
@@ -257,6 +278,97 @@ const FAQ = () => {
               Everything you need to know about our payroll migration services, process, and approach. 
               Get clear answers from our experts who have successfully completed 500+ migrations.
             </motion.p>
+
+            {/* Hero Search Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              style={{ maxWidth: '600px', margin: '40px auto 0 auto' }}
+            >
+              <div style={{
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <Search sx={{ 
+                  position: 'absolute', 
+                  left: '20px', 
+                  fontSize: 20, 
+                  color: '#000000',
+                  zIndex: 1
+                }} />
+                <input
+                  type="text"
+                  placeholder="Search FAQs..."
+                  value={searchTerm}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '18px 50px 18px 50px',
+                    borderRadius: '25px',
+                    border: '2px solid rgba(0, 122, 255, 0.3)',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    fontSize: '16px',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                    outline: 'none',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    color: '#000000',
+                    backdropFilter: 'blur(20px)',
+                    boxShadow: '0 8px 32px rgba(0, 122, 255, 0.15)'
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#00bfff';
+                    e.target.style.boxShadow = '0 8px 32px rgba(0, 191, 255, 0.25), 0 0 0 4px rgba(0, 191, 255, 0.1)';
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = 'rgba(0, 122, 255, 0.3)';
+                    e.target.style.boxShadow = '0 8px 32px rgba(0, 122, 255, 0.15)';
+                  }}
+                />
+                {searchTerm && (
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    onClick={() => setSearchTerm('')}
+                    style={{
+                      position: 'absolute',
+                      right: '20px',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: '4px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#000000',
+                      transition: 'all 0.2s ease'
+                    }}
+                    whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Clear sx={{ fontSize: 20 }} />
+                  </motion.button>
+                )}
+              </div>
+              {searchTerm && (
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  style={{
+                    marginTop: '12px',
+                    fontSize: '14px',
+                    color: '#000000',
+                    textAlign: 'center',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                  }}
+                >
+                  {filteredFAQs.length} result{filteredFAQs.length !== 1 ? 's' : ''} found for "{searchTerm}"
+                </motion.p>
+              )}
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -297,7 +409,7 @@ const FAQ = () => {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '24px',
             width: '95%',
             margin: '0 auto'
@@ -329,7 +441,11 @@ const FAQ = () => {
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
                     backdropFilter: 'saturate(180%) blur(20px)',
                     position: 'relative',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
                   }}
                 >
                   {/* Background decoration */}
@@ -410,7 +526,7 @@ const FAQ = () => {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '24px',
             width: '95%',
             margin: '0 auto'
@@ -448,7 +564,10 @@ const FAQ = () => {
                       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
                       backdropFilter: 'saturate(180%) blur(20px)',
                       position: 'relative',
-                      overflow: 'hidden'
+                      overflow: 'hidden',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column'
                     }}
                   >
                     {/* Background decoration */}
@@ -507,7 +626,7 @@ const FAQ = () => {
       </section>
 
       {/* Apple FAQ Section */}
-      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
+      <section ref={faqSectionRef} style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
         <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -539,8 +658,98 @@ const FAQ = () => {
             </p>
           </motion.div>
 
+          {/* Search Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            style={{ maxWidth: '600px', margin: '0 auto 40px auto' }}
+          >
+            <div style={{
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+              <Search sx={{ 
+                position: 'absolute', 
+                left: '20px', 
+                fontSize: 20, 
+                color: '#000000',
+                zIndex: 1
+              }} />
+              <input
+                type="text"
+                placeholder="Search FAQs..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '16px 50px 16px 50px',
+                  borderRadius: '25px',
+                  border: '2px solid rgba(0, 122, 255, 0.2)',
+                  background: '#f0f9ff',
+                  fontSize: '16px',
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  outline: 'none',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  color: '#000000'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#00bfff';
+                  e.target.style.boxShadow = '0 0 0 4px rgba(0, 191, 255, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(0, 122, 255, 0.2)';
+                  e.target.style.boxShadow = 'none';
+                }}
+              />
+              {searchTerm && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  onClick={() => setSearchTerm('')}
+                  style={{
+                    position: 'absolute',
+                    right: '20px',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '4px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#000000',
+                    transition: 'all 0.2s ease'
+                  }}
+                  whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Clear sx={{ fontSize: 20 }} />
+                </motion.button>
+              )}
+            </div>
+            {searchTerm && (
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                style={{
+                  marginTop: '12px',
+                  fontSize: '14px',
+                  color: '#000000',
+                  textAlign: 'center',
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                }}
+              >
+                {filteredFAQs.length} result{filteredFAQs.length !== 1 ? 's' : ''} found for "{searchTerm}"
+              </motion.p>
+            )}
+          </motion.div>
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '900px', margin: '0 auto' }}>
-            {faqs.map((faq, index) => (
+            {filteredFAQs.map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
