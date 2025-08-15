@@ -162,10 +162,9 @@ const ConsultancySuccessStories = () => {
       {/* Hero Section - SME Style */}
       <section style={{ 
         background: '#e3f2fd',
-        padding: 'max(60px, 10vh) 0 max(80px, 12vh) 0',
+        padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden',
-        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center'
       }}>
@@ -1157,14 +1156,14 @@ const ConsultancySuccessStories = () => {
           }}>
             {[
               {
-                icon: <Business sx={{ fontSize: 48, color: '#ccebff' }} />,
+                icon: <Business sx={{ fontSize: 48, color: '#ffffff' }} />,
                 title: 'SME Success Stories',
                 description: 'Tailored migration solutions for small to medium enterprises',
                 link: '/success-stories/sme',
                 gradient: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)'
               },
               {
-                icon: <Groups sx={{ fontSize: 48, color: '#ccebff' }} />,
+                icon: <Groups sx={{ fontSize: 48, color: '#ffffff' }} />,
                 title: 'Enterprise Stories', 
                 description: 'Complex multi-country migrations for large organizations',
                 link: '/success-stories/large-enterprise',
