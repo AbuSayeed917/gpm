@@ -239,6 +239,7 @@ const QuotePage = () => {
         );
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Submission error:', error);
       setSubmitError(
         'An error occurred while sending your request. Please try again or contact us directly.'

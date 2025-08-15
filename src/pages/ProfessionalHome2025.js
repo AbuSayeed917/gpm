@@ -30,7 +30,8 @@ const ProfessionalHome2025 = () => {
   // Cleanup timeouts on unmount
   React.useEffect(() => {
     return () => {
-      Object.values(hoverTimeouts.current).forEach((timeout) => {
+      const timeouts = hoverTimeouts.current;
+      Object.values(timeouts).forEach((timeout) => {
         if (timeout) clearTimeout(timeout);
       });
     };

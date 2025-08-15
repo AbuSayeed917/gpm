@@ -462,7 +462,7 @@ export const AppleSuccessCard = ({ story, size = 'default', ...props }) => {
       variant='gradient'
       primaryAction={{
         label: 'Read Story',
-        onClick: () => console.log('Read story:', story.company),
+        onClick: () => {},
       }}
       {...props}
     />

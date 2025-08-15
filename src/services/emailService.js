@@ -22,6 +22,7 @@ export const sendQuoteRequest = async (formData) => {
       EMAILJS_TEMPLATE_ID === 'your_template_id_here' ||
       EMAILJS_PUBLIC_KEY === 'your_public_key_here'
     ) {
+      // eslint-disable-next-line no-console
       console.warn('EmailJS not configured. Using fallback method.');
       return sendViaMailto(formData);
     }
@@ -67,9 +68,11 @@ export const sendQuoteRequest = async (formData) => {
 
     const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailData);
 
+    // eslint-disable-next-line no-console
     console.log('Email sent successfully:', response);
     return { success: true, response };
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error sending email:', error);
     return { success: false, error };
   }
