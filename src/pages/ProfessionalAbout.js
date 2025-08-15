@@ -1,11 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowForward, Public, Shield, Speed, Support, Phone, Email } from '@mui/icons-material';
+import {
+  ArrowForward,
+  Public,
+  Shield,
+  Speed,
+  Support,
+  Phone,
+  Email,
+  ExpandMore,
+} from '@mui/icons-material';
 import AppleBackground from '../components/AppleBackground';
-import { AppleFlipCard } from '../components/AppleCardSystem';
 
 const ProfessionalAbout = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [expandedCard, setExpandedCard] = useState(null);
+  const [touchStartY, setTouchStartY] = useState(null);
+
+  // Detect mobile devices and screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile =
+        window.innerWidth <= 768 ||
+        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      setIsMobile(mobile);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Handle touch interactions for mobile
+  const handleTouchStart = (e, cardIndex) => {
+    if (isMobile) {
+      setTouchStartY(e.touches[0].clientY);
+    }
+  };
+
+  const handleTouchEnd = (e, cardIndex) => {
+    if (isMobile && touchStartY) {
+      const touchEndY = e.changedTouches[0].clientY;
+      const diff = touchStartY - touchEndY;
+
+      // If minimal swipe, treat as tap to expand/collapse
+      if (Math.abs(diff) < 10) {
+        setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
+      }
+      setTouchStartY(null);
+    }
+  };
+
   const operationRegions = [
     'United Kingdom',
     'United States',
@@ -77,51 +123,188 @@ const ProfessionalAbout = () => {
   return (
     <>
       <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px);
+        /* Mobile-First CSS with Industry Standard Breakpoints */
+        .mobile-optimized {
+          /* Base styles for mobile (320px and up) */
+        }
+
+        /* Small Mobile */
+        @media (max-width: 375px) {
+          .hero-title {
+            font-size: 32px !important;
+            line-height: 1.1 !important;
+            margin-bottom: 16px !important;
           }
-          50% {
-            transform: translateY(-20px);
+          .hero-subtitle {
+            font-size: 16px !important;
+            margin-bottom: 24px !important;
+          }
+          .section-padding {
+            padding: 40px 0 30px 0 !important;
+          }
+          .container-mobile {
+            padding: 0 16px !important;
           }
         }
 
-        @keyframes pulse-glow {
-          0%,
-          100% {
-            opacity: 0.4;
-            transform: scale(1);
+        /* Mobile Portrait */
+        @media (max-width: 480px) {
+          .hero-section {
+            padding: 60px 0 40px 0 !important;
+            min-height: 70vh !important;
           }
-          50% {
-            opacity: 0.8;
-            transform: scale(1.05);
+          .hero-title {
+            font-size: 36px !important;
+            margin-bottom: 18px !important;
+          }
+          .hero-subtitle {
+            font-size: 17px !important;
+            line-height: 1.4 !important;
+          }
+          .cta-buttons {
+            flex-direction: column !important;
+            gap: 12px !important;
+            align-items: stretch !important;
+          }
+          .cta-button {
+            width: 100% !important;
+            text-align: center !important;
+            padding: 16px 24px !important;
+          }
+          .feature-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          .card-padding {
+            padding: 24px 20px !important;
+          }
+        }
+
+        /* Mobile Landscape / Small Tablet */
+        @media (min-width: 481px) and (max-width: 768px) {
+          .hero-section {
+            padding: 70px 0 50px 0 !important;
+          }
+          .feature-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
+          }
+          .regions-grid {
+            gap: 12px !important;
+          }
+        }
+
+        /* Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .feature-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 24px !important;
+          }
+          .container-tablet {
+            max-width: 90% !important;
+          }
+        }
+
+        /* Touch-friendly interactions */
+        .touch-card {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          cursor: pointer !important;
+        }
+
+        .touch-card:active {
+          transform: scale(0.98) !important;
+        }
+
+        .expanded-card {
+          transform: translateY(-4px) !important;
+          box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        /* Improved touch targets */
+        .touch-target {
+          min-height: 44px !important;
+          min-width: 44px !important;
+        }
+
+        /* Mobile typography optimization */
+        @media (max-width: 768px) {
+          .mobile-h2 {
+            font-size: clamp(28px, 6vw, 40px) !important;
+          }
+          .mobile-p {
+            font-size: 16px !important;
+            line-height: 1.5 !important;
+          }
+          .mobile-small {
+            font-size: 14px !important;
+          }
+        }
+
+        /* Scroll snap for mobile sections */
+        @media (max-width: 768px) {
+          .section-scroll-snap {
+            scroll-snap-type: y mandatory;
+          }
+          .section-snap-item {
+            scroll-snap-align: start;
+          }
+        }
+
+        /* Mobile navigation spacing */
+        @media (max-width: 768px) {
+          .mobile-nav-spacing {
+            margin-top: 60px !important;
+          }
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+          }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+          .high-contrast {
+            border: 2px solid currentColor !important;
+          }
+        }
+
+        /* Dark mode considerations */
+        @media (prefers-color-scheme: dark) {
+          .dark-mode-text {
+            color: #ffffff !important;
           }
         }
       `}</style>
 
       <AppleBackground variant='primary'>
-        {/* Apple Hero Section - 100% Authentic */}
+        {/* Mobile-Optimized Hero Section */}
         <section
+          className='hero-section section-snap-item'
           style={{
             background: '#f0f9ff',
-            padding: '80px 0 60px 0',
+            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
             position: 'relative',
             overflow: 'hidden',
-            minHeight: 'auto',
+            minHeight: isMobile ? '80vh' : 'auto',
             display: 'flex',
             alignItems: 'center',
           }}
         >
-          {/* Apple-style ambient lighting */}
+          {/* Optimized background for mobile performance */}
           <div
             style={{
               position: 'absolute',
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
-              width: '80%',
-              height: '600px',
+              width: isMobile ? '100%' : '80%',
+              height: isMobile ? '400px' : '600px',
               background: 'radial-gradient(circle, rgba(0, 122, 255, 0.05) 0%, transparent 70%)',
               borderRadius: '50%',
               filter: 'blur(80px)',
@@ -129,14 +312,14 @@ const ProfessionalAbout = () => {
             }}
           />
 
-          {/* Content Container - Apple's signature max-width */}
           <div
+            className='container-mobile'
             style={{
               position: 'relative',
               zIndex: 1,
-              maxWidth: '95%',
+              maxWidth: isMobile ? '100%' : '95%',
               margin: '0 auto',
-              padding: '0 22px',
+              padding: isMobile ? '0 20px' : '0 22px',
               width: '100%',
             }}
           >
@@ -144,18 +327,18 @@ const ProfessionalAbout = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              style={{ textAlign: 'center', maxWidth: '95%', margin: '0 auto' }}
+              style={{ textAlign: 'center', maxWidth: '100%', margin: '0 auto' }}
             >
-              {/* Apple-style eyebrow text */}
+              {/* Mobile-optimized eyebrow text */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 style={{
-                  fontSize: '17px',
+                  fontSize: isMobile ? '15px' : '17px',
                   fontWeight: '600',
                   color: '#00bfff',
-                  marginBottom: '16px',
+                  marginBottom: isMobile ? '12px' : '16px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   letterSpacing: '-0.022em',
                   textTransform: 'uppercase',
@@ -165,13 +348,14 @@ const ProfessionalAbout = () => {
                 About GlobalPayrollMigration.com
               </motion.div>
 
-              {/* Apple-style hero title */}
+              {/* Responsive hero title with better mobile sizing */}
               <motion.h1
+                className='hero-title'
                 style={{
-                  fontSize: 'clamp(48px, 5vw, 64px)',
+                  fontSize: isMobile ? 'clamp(32px, 8vw, 48px)' : 'clamp(48px, 5vw, 64px)',
                   fontWeight: '600',
                   color: '#000000',
-                  marginBottom: '20px',
+                  marginBottom: isMobile ? '16px' : '20px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.1',
                   letterSpacing: '-0.015em',
@@ -196,19 +380,21 @@ const ProfessionalAbout = () => {
                 </span>
               </motion.h1>
 
-              {/* Apple-style subtitle */}
+              {/* Mobile-optimized subtitle */}
               <motion.p
+                className='hero-subtitle'
                 style={{
-                  fontSize: '18px',
+                  fontSize: isMobile ? '16px' : '18px',
                   color: '#000000',
-                  marginBottom: '32px',
+                  marginBottom: isMobile ? '24px' : '32px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.5',
                   fontWeight: '400',
                   letterSpacing: '.011em',
-                  maxWidth: '95%',
-                  margin: '0 auto 32px auto',
+                  maxWidth: '100%',
+                  margin: isMobile ? '0 auto 24px auto' : '0 auto 32px auto',
                   textAlign: 'center',
+                  padding: isMobile ? '0 10px' : '0',
                 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -218,32 +404,37 @@ const ProfessionalAbout = () => {
                 make complex transitions feel effortless.
               </motion.p>
 
-              {/* Apple-style CTA buttons */}
+              {/* Mobile-first CTA buttons */}
               <motion.div
+                className='cta-buttons'
                 style={{
                   display: 'flex',
-                  gap: '16px',
+                  gap: isMobile ? '12px' : '16px',
                   justifyContent: 'center',
                   flexWrap: 'wrap',
                   alignItems: 'center',
+                  flexDirection: isMobile ? 'column' : 'row',
                 }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.0, delay: 0.6 }}
               >
-                {/* Primary CTA - Apple Blue */}
+                {/* Primary CTA - Touch optimized */}
                 <motion.div
-                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileHover={!isMobile ? { scale: 1.02, y: -2 } : {}}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.2 }}
+                  className='touch-target'
                 >
                   <Link
                     to='/quote'
+                    className='cta-button touch-target'
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
+                      justifyContent: 'center',
                       gap: '8px',
-                      padding: '14px 28px',
+                      padding: isMobile ? '16px 32px' : '14px 28px',
                       background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                       border: 'none',
                       borderRadius: '980px',
@@ -257,6 +448,9 @@ const ProfessionalAbout = () => {
                       cursor: 'pointer',
                       userSelect: 'none',
                       boxShadow: '0 4px 20px rgba(0, 122, 255, 0.3)',
+                      minHeight: '44px',
+                      width: isMobile ? '100%' : 'auto',
+                      maxWidth: isMobile ? '280px' : 'none',
                     }}
                   >
                     Get started
@@ -264,21 +458,25 @@ const ProfessionalAbout = () => {
                   </Link>
                 </motion.div>
 
-                {/* Secondary CTA - Apple Link Style */}
+                {/* Secondary CTA - Touch optimized */}
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={!isMobile ? { scale: 1.02 } : {}}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.2 }}
+                  className='touch-target'
                 >
                   <Link
                     to='/quote'
+                    className='cta-button touch-target'
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
+                      justifyContent: 'center',
                       gap: '6px',
-                      padding: '14px 8px',
+                      padding: isMobile ? '16px 32px' : '14px 8px',
                       background: 'transparent',
-                      border: 'none',
+                      border: isMobile ? '2px solid #00bfff' : 'none',
+                      borderRadius: isMobile ? '980px' : '0',
                       color: '#00bfff',
                       textDecoration: 'none',
                       fontWeight: '400',
@@ -288,6 +486,9 @@ const ProfessionalAbout = () => {
                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                       cursor: 'pointer',
                       userSelect: 'none',
+                      minHeight: '44px',
+                      width: isMobile ? '100%' : 'auto',
+                      maxWidth: isMobile ? '280px' : 'none',
                     }}
                   >
                     Learn more
@@ -295,69 +496,26 @@ const ProfessionalAbout = () => {
                   </Link>
                 </motion.div>
               </motion.div>
-
-              {/* Apple-style scroll indicator */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1.0, delay: 1.0 }}
-                style={{
-                  position: 'absolute',
-                  bottom: '40px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '8px',
-                }}
-              >
-                <div
-                  style={{
-                    width: '1px',
-                    height: '40px',
-                    background: 'linear-gradient(to bottom, transparent, #a1a1a6, transparent)',
-                    opacity: 0.6,
-                  }}
-                />
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    background: '#00bfff',
-                    opacity: 0.6,
-                  }}
-                />
-              </motion.div>
             </motion.div>
           </div>
         </section>
 
-        {/* Apple About Section */}
-        <section style={{ padding: '80px 0 60px 0', background: '#e6f7ff', position: 'relative' }}>
-          {/* Apple-style subtle background */}
+        {/* Mobile-Optimized Story Section */}
+        <section
+          className='section-padding section-snap-item'
+          style={{
+            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
+            background: '#e6f7ff',
+            position: 'relative',
+          }}
+        >
           <div
+            className='container-mobile'
             style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage:
-                'radial-gradient(circle at 50% 50%, rgba(0, 122, 255, 0.02) 0%, transparent 50%)',
-              pointerEvents: 'none',
-            }}
-          />
-
-          <div
-            style={{
-              maxWidth: '95%',
+              maxWidth: isMobile ? '100%' : '95%',
               margin: '0 auto',
-              padding: '0 22px',
-              marginBottom: '50px',
+              padding: isMobile ? '0 20px' : '0 22px',
+              marginBottom: isMobile ? '30px' : '50px',
               position: 'relative',
               zIndex: 1,
             }}
@@ -370,8 +528,9 @@ const ProfessionalAbout = () => {
               style={{ textAlign: 'center' }}
             >
               <h2
+                className='mobile-h2'
                 style={{
-                  fontSize: 'clamp(40px, 5vw, 56px)',
+                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(40px, 5vw, 56px)',
                   fontWeight: '600',
                   color: '#000000',
                   marginBottom: '16px',
@@ -384,15 +543,17 @@ const ProfessionalAbout = () => {
                 Our story.
               </h2>
               <p
+                className='mobile-p'
                 style={{
-                  fontSize: '21px',
+                  fontSize: isMobile ? '18px' : '21px',
                   color: '#000000',
-                  maxWidth: '95%',
+                  maxWidth: '100%',
                   margin: '0 auto',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.381',
                   letterSpacing: '.011em',
                   fontWeight: '400',
+                  padding: isMobile ? '0 10px' : '0',
                 }}
               >
                 When your business outgrows outdated systems, migration becomes essential. But it
@@ -401,28 +562,32 @@ const ProfessionalAbout = () => {
             </motion.div>
           </div>
 
-          {/* Apple Story Card */}
+          {/* Mobile-optimized story card */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.2 }}
             viewport={{ once: true, margin: '-100px' }}
             style={{
-              maxWidth: '95%',
+              maxWidth: isMobile ? '100%' : '95%',
               margin: '0 auto',
-              padding: '0 22px',
+              padding: isMobile ? '0 20px' : '0 22px',
             }}
           >
             <motion.div
-              whileHover={{
-                y: -8,
-                boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
-              }}
+              whileHover={
+                !isMobile
+                  ? {
+                      y: -8,
+                      boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
+                    }
+                  : {}
+              }
               transition={{ duration: 0.3 }}
               style={{
                 background: '#ccebff',
-                borderRadius: '22px',
-                padding: '60px 50px',
+                borderRadius: isMobile ? '16px' : '22px',
+                padding: isMobile ? '40px 24px' : '60px 50px',
                 border: '1px solid rgba(0, 0, 0, 0.06)',
                 backdropFilter: 'saturate(180%) blur(20px)',
                 position: 'relative',
@@ -430,61 +595,35 @@ const ProfessionalAbout = () => {
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
               }}
             >
-              {/* Background decoration */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-20%',
-                  right: '-20%',
-                  width: '300px',
-                  height: '300px',
-                  background:
-                    'radial-gradient(circle, rgba(168, 85, 247, 0.06) 0%, transparent 70%)',
-                  filter: 'blur(60px)',
-                }}
-              />
-
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <p
                   style={{
-                    fontSize: '19px',
+                    fontSize: isMobile ? '16px' : '19px',
                     lineHeight: '1.6',
                     color: '#000000',
-                    marginBottom: '30px',
+                    marginBottom: isMobile ? '20px' : '30px',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     fontWeight: '400',
                   }}
                 >
                   Every payroll migration is a{' '}
-                  <strong
-                    style={{
-                      color: '#000000',
-                      fontWeight: '600',
-                    }}
-                  >
-                    high-stakes event
-                  </strong>{' '}
+                  <strong style={{ color: '#000000', fontWeight: '600' }}>high-stakes event</strong>{' '}
                   — and mistakes can cost you compliance penalties, employee trust, and sleepless
                   nights.
                 </p>
 
                 <p
                   style={{
-                    fontSize: '19px',
+                    fontSize: isMobile ? '16px' : '19px',
                     lineHeight: '1.6',
                     color: '#000000',
-                    marginBottom: '30px',
+                    marginBottom: isMobile ? '20px' : '30px',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     fontWeight: '400',
                   }}
                 >
                   At GlobalPayrollMigration.com, we{' '}
-                  <strong
-                    style={{
-                      color: '#00bfff',
-                      fontWeight: '600',
-                    }}
-                  >
+                  <strong style={{ color: '#00bfff', fontWeight: '600' }}>
                     remove that risk entirely
                   </strong>
                   . Our expert UK-based team takes full ownership of your migration, from cleansing
@@ -494,31 +633,21 @@ const ProfessionalAbout = () => {
 
                 <p
                   style={{
-                    fontSize: '19px',
+                    fontSize: isMobile ? '16px' : '19px',
                     lineHeight: '1.6',
                     color: '#000000',
-                    marginBottom: '30px',
+                    marginBottom: isMobile ? '20px' : '30px',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     fontWeight: '400',
                   }}
                 >
                   Whether you're moving to Dayforce, Workday, ADP, or another payroll platform, we
                   deliver an{' '}
-                  <strong
-                    style={{
-                      color: '#000000',
-                      fontWeight: '600',
-                    }}
-                  >
+                  <strong style={{ color: '#000000', fontWeight: '600' }}>
                     audit-ready, compliant, and disruption-free
                   </strong>{' '}
                   transition — so your people get paid{' '}
-                  <strong
-                    style={{
-                      color: '#000000',
-                      fontWeight: '600',
-                    }}
-                  >
+                  <strong style={{ color: '#000000', fontWeight: '600' }}>
                     right, on time, every time
                   </strong>
                   .
@@ -526,7 +655,7 @@ const ProfessionalAbout = () => {
 
                 <p
                   style={{
-                    fontSize: '19px',
+                    fontSize: isMobile ? '16px' : '19px',
                     lineHeight: '1.6',
                     color: '#000000',
                     margin: '0',
@@ -537,21 +666,11 @@ const ProfessionalAbout = () => {
                   We've successfully migrated payrolls for SMEs and multinationals across every
                   sector, tailoring our approach to your size, structure, and strategic goals. With
                   a proven track record of{' '}
-                  <strong
-                    style={{
-                      color: '#00bfff',
-                      fontWeight: '600',
-                    }}
-                  >
+                  <strong style={{ color: '#00bfff', fontWeight: '600' }}>
                     zero compliance failures
                   </strong>
                   , we make payroll migration not just stress-free — but a{' '}
-                  <strong
-                    style={{
-                      color: '#000000',
-                      fontWeight: '600',
-                    }}
-                  >
+                  <strong style={{ color: '#000000', fontWeight: '600' }}>
                     competitive advantage
                   </strong>
                   .
@@ -561,17 +680,23 @@ const ProfessionalAbout = () => {
           </motion.div>
         </section>
 
-        {/* Apple "Why Choose Us" Section */}
+        {/* Mobile-Optimized Features Section with Touch Interactions */}
         <section
+          className='section-padding section-snap-item'
           style={{
-            padding: '80px 0 60px 0',
+            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
             background: '#ccebff',
             position: 'relative',
             overflow: 'hidden',
           }}
         >
           <div
-            style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}
+            className='container-mobile'
+            style={{
+              maxWidth: isMobile ? '100%' : '95%',
+              margin: '0 auto',
+              padding: isMobile ? '0 20px 30px 20px' : '0 22px 50px 22px',
+            }}
           >
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -581,8 +706,9 @@ const ProfessionalAbout = () => {
               style={{ textAlign: 'center' }}
             >
               <h2
+                className='mobile-h2'
                 style={{
-                  fontSize: 'clamp(40px, 5vw, 56px)',
+                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(40px, 5vw, 56px)',
                   fontWeight: '600',
                   color: '#000000',
                   marginBottom: '16px',
@@ -595,15 +721,17 @@ const ProfessionalAbout = () => {
                 Why choose us.
               </h2>
               <p
+                className='mobile-p'
                 style={{
-                  fontSize: '21px',
+                  fontSize: isMobile ? '18px' : '21px',
                   color: '#000000',
-                  maxWidth: '95%',
+                  maxWidth: '100%',
                   margin: '0 auto',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.381',
                   letterSpacing: '.011em',
                   fontWeight: '400',
+                  padding: isMobile ? '0 10px' : '0',
                 }}
               >
                 Four pillars of excellence that make migration effortless.
@@ -612,12 +740,14 @@ const ProfessionalAbout = () => {
           </div>
 
           <div
+            className='feature-grid'
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '12px',
-              width: '95%',
+              gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: isMobile ? '16px' : '20px',
+              width: isMobile ? '100%' : '95%',
               margin: '0 auto',
+              padding: isMobile ? '0 20px' : '0',
             }}
           >
             {whyChooseUs.map((feature, index) => (
@@ -631,292 +761,213 @@ const ProfessionalAbout = () => {
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
                 viewport={{ once: true, margin: '-50px' }}
+                className={`touch-card ${expandedCard === index ? 'expanded-card' : ''}`}
+                onTouchStart={(e) => handleTouchStart(e, index)}
+                onTouchEnd={(e) => handleTouchEnd(e, index)}
+                onClick={() => isMobile && setExpandedCard(expandedCard === index ? null : index)}
+                style={{
+                  background: '#ccebff',
+                  borderRadius: isMobile ? '16px' : '22px',
+                  padding: isMobile ? '24px 20px' : '32px',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  backdropFilter: 'saturate(180%) blur(20px)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  cursor: isMobile ? 'pointer' : 'default',
+                  minHeight: isMobile ? 'auto' : '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
               >
-                <AppleFlipCard
-                  frontContent={
+                <div style={{ position: 'relative', zIndex: 1, flex: 1 }}>
+                  <div
+                    style={{
+                      width: isMobile ? '60px' : '72px',
+                      height: isMobile ? '60px' : '72px',
+                      borderRadius: isMobile ? '16px' : '22px',
+                      background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: isMobile ? '20px' : '24px',
+                      boxShadow:
+                        '0 8px 32px rgba(168, 85, 247, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                    }}
+                  >
+                    {React.cloneElement(feature.icon, {
+                      sx: {
+                        fontSize: isMobile ? 24 : 32,
+                        color: '#ccebff',
+                        filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
+                      },
+                    })}
+                  </div>
+
+                  <h3
+                    style={{
+                      fontSize: isMobile ? '20px' : '24px',
+                      fontWeight: '600',
+                      color: '#000000',
+                      marginBottom: isMobile ? '12px' : '16px',
+                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                      lineHeight: '1.16667',
+                      letterSpacing: '-0.005em',
+                    }}
+                  >
+                    {feature.title}
+                  </h3>
+
+                  <p
+                    style={{
+                      fontSize: isMobile ? '14px' : '16px',
+                      color: '#000000',
+                      marginBottom: isMobile ? '16px' : '24px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      lineHeight: '1.47059',
+                      letterSpacing: '-0.022em',
+                      fontWeight: '400',
+                      flex: 1,
+                    }}
+                  >
+                    {feature.description}
+                  </p>
+
+                  {/* Mobile: Show features when expanded, Desktop: Show on hover via separate component */}
+                  {isMobile && expandedCard === index && (
                     <motion.div
-                      whileHover={{
-                        y: -8,
-                        boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
-                      }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
                       style={{
-                        background: '#ccebff',
-                        borderRadius: '22px',
-                        padding: '32px',
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-                        border: '1px solid rgba(0, 0, 0, 0.06)',
-                        backdropFilter: 'saturate(180%) blur(20px)',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        marginTop: '16px',
+                        padding: '16px',
+                        background: 'rgba(0, 191, 255, 0.1)',
+                        borderRadius: '12px',
+                        border: '1px solid rgba(0, 191, 255, 0.2)',
                       }}
                     >
-                      {/* Background decoration */}
-                      <div
+                      <ul
                         style={{
-                          position: 'absolute',
-                          top: '-20%',
-                          right: '-20%',
-                          width: '200px',
-                          height: '200px',
-                          background:
-                            'radial-gradient(circle, rgba(168, 85, 247, 0.04) 0%, transparent 70%)',
-                          filter: 'blur(40px)',
-                        }}
-                      />
-
-                      <div style={{ position: 'relative', zIndex: 1 }}>
-                        <div
-                          style={{
-                            width: '72px',
-                            height: '72px',
-                            borderRadius: '22px',
-                            background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginBottom: '24px',
-                            boxShadow:
-                              '0 8px 32px rgba(168, 85, 247, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-                          }}
-                        >
-                          {React.cloneElement(feature.icon, {
-                            sx: {
-                              fontSize: 32,
-                              color: '#ccebff',
-                              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
-                            },
-                          })}
-                        </div>
-
-                        <h3
-                          style={{
-                            fontSize: '24px',
-                            fontWeight: '600',
-                            color: '#000000',
-                            marginBottom: '16px',
-                            fontFamily:
-                              'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                            lineHeight: '1.16667',
-                            letterSpacing: '-0.005em',
-                          }}
-                        >
-                          {feature.title}
-                        </h3>
-
-                        <p
-                          style={{
-                            fontSize: '16px',
-                            color: '#000000',
-                            marginBottom: '24px',
-                            fontFamily:
-                              'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                            lineHeight: '1.47059',
-                            letterSpacing: '-0.022em',
-                            fontWeight: '400',
-                            flex: 1,
-                          }}
-                        >
-                          {feature.description}
-                        </p>
-
-                        <div
-                          style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            marginTop: 'auto',
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              padding: '8px 16px',
-                              borderRadius: '20px',
-                              background: 'rgba(168, 85, 247, 0.1)',
-                              color: '#00bfff',
-                              fontSize: '15px',
-                              fontWeight: '500',
-                              fontFamily:
-                                'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                            }}
-                          >
-                            Hover to learn more
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  }
-                  backContent={
-                    <div
-                      style={{
-                        background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                        borderRadius: '22px',
-                        padding: '32px',
-                        color: '#ccebff',
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        textAlign: 'center',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        boxShadow: '0 20px 64px rgba(168, 85, 247, 0.4)',
-                      }}
-                    >
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '-30%',
-                          right: '-20%',
-                          width: '150px',
-                          height: '150px',
-                          background:
-                            'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
-                          filter: 'blur(40px)',
-                          pointerEvents: 'none',
-                        }}
-                      />
-
-                      <div
-                        style={{
-                          position: 'relative',
-                          zIndex: 1,
-                          height: '100%',
+                          listStyle: 'none',
+                          padding: 0,
+                          margin: 0,
                           display: 'flex',
                           flexDirection: 'column',
+                          gap: '8px',
                         }}
                       >
-                        <div
-                          style={{
-                            width: '72px',
-                            height: '72px',
-                            borderRadius: '22px',
-                            background: 'rgba(255, 255, 255, 0.2)',
-                            backdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(255, 255, 255, 0.3)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            margin: '0 auto 24px',
-                            boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.3)',
-                          }}
-                        >
-                          {React.cloneElement(feature.icon, {
-                            sx: {
-                              fontSize: 32,
-                              color: '#ccebff',
-                              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
-                            },
-                          })}
-                        </div>
-
-                        <h3
-                          style={{
-                            fontSize: '24px',
-                            fontWeight: '600',
-                            color: '#ccebff',
-                            marginBottom: '20px',
-                            fontFamily:
-                              'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                            textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
-                          }}
-                        >
-                          {feature.title}
-                        </h3>
-
-                        <ul
-                          style={{
-                            listStyle: 'none',
-                            padding: 0,
-                            margin: '0 0 24px 0',
-                            flex: 1,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            gap: '12px',
-                          }}
-                        >
-                          {feature.features.map((detailFeature, fIndex) => (
-                            <li
-                              key={fIndex}
+                        {feature.features.map((detailFeature, fIndex) => (
+                          <li
+                            key={fIndex}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '8px',
+                              fontSize: '13px',
+                              color: '#000000',
+                              fontFamily:
+                                'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                              fontWeight: '400',
+                            }}
+                          >
+                            <div
                               style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '12px',
-                                fontSize: '15px',
-                                color: 'rgba(255, 255, 255, 0.9)',
-                                fontFamily:
-                                  'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                                fontWeight: '400',
+                                width: '4px',
+                                height: '4px',
+                                borderRadius: '50%',
+                                background: '#00bfff',
+                                flexShrink: 0,
                               }}
-                            >
-                              <div
-                                style={{
-                                  width: '6px',
-                                  height: '6px',
-                                  borderRadius: '50%',
-                                  background: 'rgba(255, 255, 255, 0.8)',
-                                  flexShrink: 0,
-                                }}
-                              />
-                              {detailFeature}
-                            </li>
-                          ))}
-                        </ul>
+                            />
+                            {detailFeature}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
 
-                        <Link
-                          to='/quote'
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: '8px',
-                            padding: '12px 24px',
-                            background: 'rgba(255, 255, 255, 0.2)',
-                            backdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(255, 255, 255, 0.3)',
-                            borderRadius: '20px',
-                            color: '#ccebff',
-                            textDecoration: 'none',
-                            fontSize: '16px',
-                            fontWeight: '500',
-                            fontFamily:
-                              'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                            cursor: 'pointer',
-                            userSelect: 'none',
-                          }}
-                        >
-                          Get Started
-                          <ArrowForward sx={{ fontSize: 16 }} />
-                        </Link>
-                      </div>
+                  {/* Touch indicator for mobile */}
+                  {isMobile && (
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: '12px',
+                        padding: '8px',
+                        color: '#00bfff',
+                        fontSize: '12px',
+                        fontWeight: '500',
+                        gap: '4px',
+                      }}
+                    >
+                      {expandedCard === index ? 'Tap to collapse' : 'Tap to expand'}
+                      <ExpandMore
+                        sx={{
+                          fontSize: 16,
+                          transform: expandedCard === index ? 'rotate(180deg)' : 'rotate(0deg)',
+                          transition: 'transform 0.3s ease',
+                        }}
+                      />
                     </div>
-                  }
-                />
+                  )}
+
+                  {/* Desktop: Show CTA button */}
+                  {!isMobile && (
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'auto' }}>
+                      <Link
+                        to='/quote'
+                        className='touch-target'
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '8px',
+                          padding: '12px 24px',
+                          background: 'rgba(0, 191, 255, 0.1)',
+                          border: '1px solid rgba(0, 191, 255, 0.2)',
+                          borderRadius: '20px',
+                          color: '#00bfff',
+                          textDecoration: 'none',
+                          fontSize: '14px',
+                          fontWeight: '500',
+                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                          cursor: 'pointer',
+                          userSelect: 'none',
+                          minHeight: '44px',
+                        }}
+                      >
+                        Learn More
+                        <ArrowForward sx={{ fontSize: 14 }} />
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Apple Global Reach Section */}
+        {/* Mobile-Optimized Global Reach Section */}
         <section
+          className='section-padding section-snap-item'
           style={{
-            padding: '80px 0 60px 0',
+            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
             background: '#ccebff',
             position: 'relative',
             overflow: 'hidden',
           }}
         >
           <div
+            className='container-mobile'
             style={{
-              maxWidth: '95%',
+              maxWidth: isMobile ? '100%' : '95%',
               margin: '0 auto',
-              padding: '0 22px',
+              padding: isMobile ? '0 20px' : '0 22px',
               position: 'relative',
               zIndex: 1,
             }}
@@ -926,11 +977,12 @@ const ProfessionalAbout = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               viewport={{ once: true, margin: '-100px' }}
-              style={{ textAlign: 'center', marginBottom: '50px' }}
+              style={{ textAlign: 'center', marginBottom: isMobile ? '30px' : '50px' }}
             >
               <h2
+                className='mobile-h2'
                 style={{
-                  fontSize: 'clamp(40px, 5vw, 56px)',
+                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(40px, 5vw, 56px)',
                   fontWeight: '600',
                   color: '#000000',
                   marginBottom: '16px',
@@ -943,15 +995,17 @@ const ProfessionalAbout = () => {
                 Global reach.
               </h2>
               <p
+                className='mobile-p'
                 style={{
-                  fontSize: '21px',
+                  fontSize: isMobile ? '18px' : '21px',
                   color: '#000000',
-                  maxWidth: '95%',
+                  maxWidth: '100%',
                   margin: '0 auto',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.381',
                   letterSpacing: '.011em',
                   fontWeight: '400',
+                  padding: isMobile ? '0 10px' : '0',
                 }}
               >
                 Supporting payroll transformations across 14 countries and counting.
@@ -965,17 +1019,18 @@ const ProfessionalAbout = () => {
               viewport={{ once: true, margin: '-100px' }}
               style={{
                 background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
-                borderRadius: '22px',
-                padding: '50px',
+                borderRadius: isMobile ? '16px' : '22px',
+                padding: isMobile ? '30px 20px' : '50px',
                 border: '1px solid rgba(0, 0, 0, 0.06)',
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
               }}
             >
               <div
+                className='regions-grid'
                 style={{
                   display: 'flex',
                   flexWrap: 'wrap',
-                  gap: '16px',
+                  gap: isMobile ? '8px' : '16px',
                   justifyContent: 'center',
                 }}
               >
@@ -986,19 +1041,21 @@ const ProfessionalAbout = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={!isMobile ? { scale: 1.05, y: -2 } : {}}
+                    whileTap={isMobile ? { scale: 0.95 } : {}}
                     style={{
                       background: '#ccebff',
                       color: '#000000',
-                      padding: '12px 20px',
-                      borderRadius: '20px',
-                      fontSize: '15px',
+                      padding: isMobile ? '8px 12px' : '12px 20px',
+                      borderRadius: isMobile ? '16px' : '20px',
+                      fontSize: isMobile ? '13px' : '15px',
                       fontWeight: '500',
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                       border: '1px solid rgba(0, 0, 0, 0.08)',
                       boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
                       cursor: 'default',
                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      userSelect: 'none',
                     }}
                   >
                     {country}
@@ -1009,25 +1066,34 @@ const ProfessionalAbout = () => {
           </div>
         </section>
 
-        {/* Contact Information Section */}
+        {/* Mobile-Optimized Contact Section */}
         <section
+          className='section-padding section-snap-item'
           style={{
-            padding: '80px 0 60px 0',
+            padding: isMobile ? '60px 0 40px 0' : '80px 0 60px 0',
             background: '#e6f7ff',
             position: 'relative',
           }}
         >
-          <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
+          <div
+            className='container-mobile'
+            style={{
+              maxWidth: isMobile ? '100%' : '95%',
+              margin: '0 auto',
+              padding: isMobile ? '0 20px' : '0 22px',
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               viewport={{ once: true, margin: '-100px' }}
-              style={{ textAlign: 'center', marginBottom: '50px' }}
+              style={{ textAlign: 'center', marginBottom: isMobile ? '30px' : '50px' }}
             >
               <h2
+                className='mobile-h2'
                 style={{
-                  fontSize: 'clamp(40px, 5vw, 56px)',
+                  fontSize: isMobile ? 'clamp(28px, 6vw, 36px)' : 'clamp(40px, 5vw, 56px)',
                   fontWeight: '600',
                   color: '#000000',
                   marginBottom: '16px',
@@ -1040,15 +1106,17 @@ const ProfessionalAbout = () => {
                 Get in touch.
               </h2>
               <p
+                className='mobile-p'
                 style={{
-                  fontSize: '21px',
+                  fontSize: isMobile ? '18px' : '21px',
                   color: '#000000',
-                  maxWidth: '95%',
+                  maxWidth: '100%',
                   margin: '0 auto',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.381',
                   letterSpacing: '.011em',
                   fontWeight: '400',
+                  padding: isMobile ? '0 10px' : '0',
                 }}
               >
                 Ready to discuss your payroll migration? We're here to help.
@@ -1058,35 +1126,42 @@ const ProfessionalAbout = () => {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '24px',
-                maxWidth: '800px',
+                gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+                gap: isMobile ? '16px' : '24px',
+                maxWidth: isMobile ? '100%' : '800px',
                 margin: '0 auto',
               }}
             >
-              {/* Phone Contact */}
+              {/* Phone Contact - Mobile Optimized */}
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                whileHover={{
-                  y: -8,
-                  boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
-                }}
+                whileHover={
+                  !isMobile
+                    ? {
+                        y: -8,
+                        boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
+                      }
+                    : {}
+                }
+                whileTap={{ scale: 0.98 }}
               >
                 <a
                   href='tel:+447432665514'
+                  className='touch-target'
                   style={{
                     display: 'block',
                     background: '#ccebff',
-                    borderRadius: '22px',
-                    padding: '40px 32px',
+                    borderRadius: isMobile ? '16px' : '22px',
+                    padding: isMobile ? '32px 24px' : '40px 32px',
                     textDecoration: 'none',
                     border: '1px solid rgba(0, 0, 0, 0.06)',
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
+                    minHeight: '44px',
                   }}
                 >
                   <div
@@ -1099,20 +1174,20 @@ const ProfessionalAbout = () => {
                   >
                     <div
                       style={{
-                        width: '72px',
-                        height: '72px',
-                        borderRadius: '22px',
+                        width: isMobile ? '60px' : '72px',
+                        height: isMobile ? '60px' : '72px',
+                        borderRadius: isMobile ? '16px' : '22px',
                         background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        marginBottom: '24px',
+                        marginBottom: isMobile ? '20px' : '24px',
                         boxShadow: '0 8px 32px rgba(0, 191, 255, 0.3)',
                       }}
                     >
                       <Phone
                         sx={{
-                          fontSize: 32,
+                          fontSize: isMobile ? 24 : 32,
                           color: '#ccebff',
                           filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
                         }}
@@ -1121,10 +1196,10 @@ const ProfessionalAbout = () => {
 
                     <h3
                       style={{
-                        fontSize: '24px',
+                        fontSize: isMobile ? '20px' : '24px',
                         fontWeight: '600',
                         color: '#000000',
-                        marginBottom: '12px',
+                        marginBottom: isMobile ? '8px' : '12px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                       }}
                     >
@@ -1133,7 +1208,7 @@ const ProfessionalAbout = () => {
 
                     <p
                       style={{
-                        fontSize: '20px',
+                        fontSize: isMobile ? '18px' : '20px',
                         fontWeight: '500',
                         color: '#00bfff',
                         marginBottom: '8px',
@@ -1144,8 +1219,9 @@ const ProfessionalAbout = () => {
                     </p>
 
                     <p
+                      className='mobile-small'
                       style={{
-                        fontSize: '15px',
+                        fontSize: isMobile ? '13px' : '15px',
                         color: '#666666',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                       }}
@@ -1156,29 +1232,36 @@ const ProfessionalAbout = () => {
                 </a>
               </motion.div>
 
-              {/* Email Contact */}
+              {/* Email Contact - Mobile Optimized */}
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                whileHover={{
-                  y: -8,
-                  boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
-                }}
+                whileHover={
+                  !isMobile
+                    ? {
+                        y: -8,
+                        boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)',
+                      }
+                    : {}
+                }
+                whileTap={{ scale: 0.98 }}
               >
                 <a
                   href='mailto:info@globalpayrollmigration.com'
+                  className='touch-target'
                   style={{
                     display: 'block',
                     background: '#ccebff',
-                    borderRadius: '22px',
-                    padding: '40px 32px',
+                    borderRadius: isMobile ? '16px' : '22px',
+                    padding: isMobile ? '32px 24px' : '40px 32px',
                     textDecoration: 'none',
                     border: '1px solid rgba(0, 0, 0, 0.06)',
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
+                    minHeight: '44px',
                   }}
                 >
                   <div
@@ -1191,20 +1274,20 @@ const ProfessionalAbout = () => {
                   >
                     <div
                       style={{
-                        width: '72px',
-                        height: '72px',
-                        borderRadius: '22px',
+                        width: isMobile ? '60px' : '72px',
+                        height: isMobile ? '60px' : '72px',
+                        borderRadius: isMobile ? '16px' : '22px',
                         background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        marginBottom: '24px',
+                        marginBottom: isMobile ? '20px' : '24px',
                         boxShadow: '0 8px 32px rgba(0, 191, 255, 0.3)',
                       }}
                     >
                       <Email
                         sx={{
-                          fontSize: 32,
+                          fontSize: isMobile ? 24 : 32,
                           color: '#ccebff',
                           filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))',
                         }}
@@ -1213,10 +1296,10 @@ const ProfessionalAbout = () => {
 
                     <h3
                       style={{
-                        fontSize: '24px',
+                        fontSize: isMobile ? '20px' : '24px',
                         fontWeight: '600',
                         color: '#000000',
-                        marginBottom: '12px',
+                        marginBottom: isMobile ? '8px' : '12px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                       }}
                     >
@@ -1225,7 +1308,7 @@ const ProfessionalAbout = () => {
 
                     <p
                       style={{
-                        fontSize: '18px',
+                        fontSize: isMobile ? '16px' : '18px',
                         fontWeight: '500',
                         color: '#00bfff',
                         marginBottom: '8px',
@@ -1237,8 +1320,9 @@ const ProfessionalAbout = () => {
                     </p>
 
                     <p
+                      className='mobile-small'
                       style={{
-                        fontSize: '15px',
+                        fontSize: isMobile ? '13px' : '15px',
                         color: '#666666',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                       }}
@@ -1252,36 +1336,24 @@ const ProfessionalAbout = () => {
           </div>
         </section>
 
-        {/* Apple CTA Section */}
+        {/* Mobile-Optimized CTA Section */}
         <section
+          className='section-snap-item'
           style={{
             background: '#000000',
-            padding: '100px 0',
+            padding: isMobile ? '60px 0' : '100px 0',
             position: 'relative',
             overflow: 'hidden',
           }}
         >
-          {/* Apple-style subtle background */}
           <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: '60%',
-              height: '400px',
-              background: 'radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-            }}
-          />
-
-          <div
+            className='container-mobile'
             style={{
               position: 'relative',
               zIndex: 1,
-              maxWidth: '95%',
+              maxWidth: isMobile ? '100%' : '95%',
               margin: '0 auto',
-              padding: '0 22px',
+              padding: isMobile ? '0 20px' : '0 22px',
             }}
           >
             <motion.div
@@ -1289,14 +1361,14 @@ const ProfessionalAbout = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              style={{ textAlign: 'center', maxWidth: '95%', margin: '0 auto' }}
+              style={{ textAlign: 'center', maxWidth: '100%', margin: '0 auto' }}
             >
               <h2
                 style={{
-                  fontSize: 'clamp(48px, 6vw, 72px)',
+                  fontSize: isMobile ? 'clamp(32px, 8vw, 48px)' : 'clamp(48px, 6vw, 72px)',
                   fontWeight: '600',
                   color: '#ccebff',
-                  marginBottom: '24px',
+                  marginBottom: isMobile ? '20px' : '24px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.1',
                   letterSpacing: '-0.015em',
@@ -1307,11 +1379,12 @@ const ProfessionalAbout = () => {
 
               <p
                 style={{
-                  fontSize: '21px',
+                  fontSize: isMobile ? '18px' : '21px',
                   color: 'rgba(255, 255, 255, 0.8)',
-                  marginBottom: '48px',
+                  marginBottom: isMobile ? '32px' : '48px',
                   fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                   lineHeight: '1.381',
+                  padding: isMobile ? '0 10px' : '0',
                 }}
               >
                 Let's discuss how we can support your payroll transformation — whether you're just
@@ -1319,16 +1392,29 @@ const ProfessionalAbout = () => {
               </p>
 
               <div
-                style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}
+                style={{
+                  display: 'flex',
+                  gap: isMobile ? '12px' : '16px',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                  flexDirection: isMobile ? 'column' : 'row',
+                  alignItems: 'center',
+                }}
               >
-                <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }}>
+                <motion.div
+                  whileHover={!isMobile ? { scale: 1.05, y: -2 } : {}}
+                  whileTap={{ scale: 0.98 }}
+                  className='touch-target'
+                >
                   <Link
                     to='/quote'
+                    className='touch-target'
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
+                      justifyContent: 'center',
                       gap: '8px',
-                      padding: '18px 36px',
+                      padding: isMobile ? '16px 32px' : '18px 36px',
                       background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                       border: 'none',
                       borderRadius: '980px',
@@ -1342,6 +1428,9 @@ const ProfessionalAbout = () => {
                       cursor: 'pointer',
                       userSelect: 'none',
                       boxShadow: '0 8px 32px rgba(0, 122, 255, 0.4)',
+                      minHeight: '44px',
+                      width: isMobile ? '100%' : 'auto',
+                      maxWidth: isMobile ? '300px' : 'none',
                     }}
                   >
                     Book a Free Discovery Call
@@ -1349,14 +1438,20 @@ const ProfessionalAbout = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }}>
+                <motion.div
+                  whileHover={!isMobile ? { scale: 1.05, y: -2 } : {}}
+                  whileTap={{ scale: 0.98 }}
+                  className='touch-target'
+                >
                   <Link
                     to='/quote'
+                    className='touch-target'
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
+                      justifyContent: 'center',
                       gap: '8px',
-                      padding: '18px 36px',
+                      padding: isMobile ? '16px 32px' : '18px 36px',
                       background: 'rgba(255, 255, 255, 0.1)',
                       border: '1px solid rgba(255, 255, 255, 0.2)',
                       borderRadius: '980px',
@@ -1369,6 +1464,9 @@ const ProfessionalAbout = () => {
                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                       cursor: 'pointer',
                       userSelect: 'none',
+                      minHeight: '44px',
+                      width: isMobile ? '100%' : 'auto',
+                      maxWidth: isMobile ? '300px' : 'none',
                     }}
                   >
                     Request a Custom Quote
