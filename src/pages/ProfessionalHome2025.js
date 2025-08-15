@@ -335,7 +335,7 @@ const ProfessionalHome2025 = () => {
         </div>
       </section>
 
-      {/* Services Section - Apple Style */}
+      {/* Services Section - Industry-Grade Mobile */}
       <section
         style={{
           padding: '0px 20px 40px 20px',
@@ -703,7 +703,7 @@ const ProfessionalHome2025 = () => {
         </div>
       </section>
 
-      {/* Book Discovery Call Section - Apple Style */}
+      {/* Book Discovery Call Section - Industry-Grade Mobile */}
       <section
         style={{
           padding: '60px 20px',
