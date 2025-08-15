@@ -80,14 +80,16 @@ const Footer = () => {
                 marginBottom: '12px'
               }}
             >
-              <span 
+              <img 
+                src="/images/gpm-logo.png"
+                alt="GPM Logo"
                 style={{
-                  fontSize: '24px',
-                  color: '#007AFF'
+                  width: '36px',
+                  height: '36px',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))'
                 }}
-              >
-                🌍
-              </span>
+              />
               <h3 
                 style={{
                   fontSize: '17px',

@@ -74,7 +74,7 @@ const AppleNavigation = () => {
           style={{
             width: '90%',
             margin: '0 auto',
-            padding: '12px 24px',
+            padding: '16px 24px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between'
@@ -95,15 +95,17 @@ const AppleNavigation = () => {
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
             }}
           >
-            <span 
+            <img 
+              src="/images/gpm-logo.png"
+              alt="GPM Logo"
               className="apple-navigation-logo-icon"
               style={{
-                fontSize: '24px',
-                color: '#007AFF'
+                width: '48px',
+                height: '48px',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))'
               }}
-            >
-              🌍
-            </span>
+            />
             <span className="apple-navigation-logo-text">
               Global Payroll Migration
             </span>
@@ -344,6 +346,38 @@ const AppleNavigation = () => {
               </li>
 
               {/* Direct Links */}
+              <li className="apple-navigation-item">
+                <Link
+                  to="/"
+                  className={`apple-navigation-link ${isActiveLink('/') ? 'apple-navigation-link-active' : ''}`}
+                  style={{
+                    fontSize: '17px',
+                    fontWeight: 400,
+                    color: isActiveLink('/') ? '#007AFF' : '#1a237e',
+                    textDecoration: 'none',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                    background: isActiveLink('/') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActiveLink('/')) {
+                      e.target.style.background = 'rgba(0, 0, 0, 0.05)';
+                      e.target.style.color = '#007AFF';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActiveLink('/')) {
+                      e.target.style.background = 'transparent';
+                      e.target.style.color = '#1a237e';
+                    }
+                  }}
+                >
+                  Home
+                </Link>
+              </li>
+
               <li className="apple-navigation-item">
                 <Link
                   to="/about"
@@ -600,6 +634,23 @@ const AppleNavigation = () => {
             </li>
 
             {/* Mobile Direct Links */}
+            <li className="apple-navigation-mobile-item" style={{ marginBottom: '12px' }}>
+              <Link
+                to="/"
+                style={{
+                  display: 'block',
+                  fontSize: '19px',
+                  fontWeight: 500,
+                  color: '#1a237e',
+                  textDecoration: 'none',
+                  padding: '12px 0',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                }}
+              >
+                Home
+              </Link>
+            </li>
+
             <li className="apple-navigation-mobile-item" style={{ marginBottom: '12px' }}>
               <Link
                 to="/about"
