@@ -17,6 +17,25 @@ import AppleBackground from '../components/AppleBackground';
 import { AppleFlipCard } from '../components/AppleCardSystem';
 
 const ProfessionalLargeEnterpriseServices = () => {
+  // Add responsive styles for the enterprise cards grid
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @media (max-width: 1024px) {
+        .enterprise-cards-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+      }
+      @media (max-width: 768px) {
+        .enterprise-cards-grid {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
+
   const migrationTypes = [
     {
       icon: <AccountTree />,
@@ -170,17 +189,13 @@ const ProfessionalLargeEnterpriseServices = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.0, delay: 0.2 }}
             >
-              Payroll migration.
-              <br />
-              <span style={{ 
+              Payroll migration. <span style={{ 
                 background: 'linear-gradient(90deg, #007aff 0%, #5856d6 100%)', 
                 backgroundClip: 'text', 
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 display: 'inline-block'
-              }}>
-                Enterprise scale.
-              </span>
+              }}>Enterprise scale.</span>
             </motion.h1>
             
             <motion.p 
@@ -320,7 +335,8 @@ const ProfessionalLargeEnterpriseServices = () => {
         {/* Apple Product Grid - Responsive */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+          maxWidth: '1200px',
           gap: '12px',
           width: '95%',
           margin: '0 auto'
@@ -362,7 +378,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: `linear-gradient(135deg, ${index % 3 === 0 ? 'rgba(0, 122, 255, 0.025)' : index % 3 === 1 ? 'rgba(48, 209, 88, 0.025)' : 'rgba(255, 59, 48, 0.025)'} 0%, ${index % 3 === 0 ? 'rgba(88, 86, 214, 0.025)' : index % 3 === 1 ? 'rgba(50, 215, 75, 0.025)' : 'rgba(255, 149, 0, 0.025)'} 100%)`,
+                      background: `linear-gradient(135deg, ${index % 4 === 0 ? 'rgba(0, 122, 255, 0.025)' : index % 4 === 1 ? 'rgba(48, 209, 88, 0.025)' : index % 4 === 2 ? 'rgba(255, 59, 48, 0.025)' : 'rgba(88, 86, 214, 0.025)'} 0%, ${index % 4 === 0 ? 'rgba(88, 86, 214, 0.025)' : index % 4 === 1 ? 'rgba(50, 215, 75, 0.025)' : index % 4 === 2 ? 'rgba(255, 149, 0, 0.025)' : 'rgba(175, 82, 222, 0.025)'} 100%)`,
                       backdropFilter: 'blur(40px)',
                       WebkitBackdropFilter: 'blur(40px)',
                       borderRadius: '22px'
@@ -372,13 +388,13 @@ const ProfessionalLargeEnterpriseServices = () => {
                       <div style={{
                         width: '72px',
                         height: '72px',
-                        background: `linear-gradient(135deg, ${index % 3 === 0 ? '#007aff' : index % 3 === 1 ? '#30d158' : '#ff3b30'} 0%, ${index % 3 === 0 ? '#5856d6' : index % 3 === 1 ? '#32d74b' : '#ff9500'} 100%)`,
+                        background: `linear-gradient(135deg, ${index % 4 === 0 ? '#007aff' : index % 4 === 1 ? '#30d158' : index % 4 === 2 ? '#ff3b30' : '#5856d6'} 0%, ${index % 4 === 0 ? '#5856d6' : index % 4 === 1 ? '#32d74b' : index % 4 === 2 ? '#ff9500' : '#af52de'} 100%)`,
                         borderRadius: '22px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         margin: '0 auto 24px',
-                        boxShadow: `0 8px 32px ${index % 3 === 0 ? 'rgba(0, 122, 255, 0.3)' : index % 3 === 1 ? 'rgba(48, 209, 88, 0.3)' : 'rgba(255, 59, 48, 0.3)'}, inset 0 1px 0 rgba(255, 255, 255, 0.2)`
+                        boxShadow: `0 8px 32px ${index % 4 === 0 ? 'rgba(0, 122, 255, 0.3)' : index % 4 === 1 ? 'rgba(48, 209, 88, 0.3)' : index % 4 === 2 ? 'rgba(255, 59, 48, 0.3)' : 'rgba(88, 86, 214, 0.3)'}, inset 0 1px 0 rgba(255, 255, 255, 0.2)`
                       }}>
                         {React.cloneElement(type.icon, { sx: { fontSize: 32, color: '#ccebff' } })}
                       </div>
@@ -387,26 +403,14 @@ const ProfessionalLargeEnterpriseServices = () => {
                         fontSize: '28px',
                         fontWeight: '700',
                         color: '#000000',
-                        marginBottom: '12px',
+                        marginBottom: '0',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.07143',
-                        letterSpacing: '-0.005em'
+                        letterSpacing: '-0.005em',
+                        textAlign: 'center'
                       }}>
                         {type.title}
                       </h3>
-                      
-                      <p style={{
-                        fontSize: '19px',
-                        color: '#6E6E73',
-                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                        lineHeight: '1.42105',
-                        letterSpacing: '.012em',
-                        fontWeight: '400',
-                        margin: '0',
-                        maxWidth: '280px'
-                      }}>
-                        {type.description}
-                      </p>
                     </div>
                   </div>
                 }
@@ -423,7 +427,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    boxShadow: `0 20px 64px ${index % 3 === 0 ? 'rgba(0, 122, 255, 0.4)' : index % 3 === 1 ? 'rgba(48, 209, 88, 0.4)' : 'rgba(255, 59, 48, 0.4)'}`
+                    boxShadow: `0 20px 64px ${index % 4 === 0 ? 'rgba(0, 122, 255, 0.4)' : index % 4 === 1 ? 'rgba(48, 209, 88, 0.4)' : index % 4 === 2 ? 'rgba(255, 59, 48, 0.4)' : 'rgba(88, 86, 214, 0.4)'}`
                   }}>
                     <div style={{
                       position: 'absolute',
@@ -437,54 +441,81 @@ const ProfessionalLargeEnterpriseServices = () => {
                     
                     <div style={{ position: 'relative', zIndex: 1 }}>
                       <h4 style={{
-                        fontSize: '24px',
+                        fontSize: '22px',
                         fontWeight: '700',
-                        color: '#283593',
-                        marginBottom: '32px',
+                        color: '#ccebff',
+                        marginBottom: '24px',
                         textAlign: 'center',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
                       }}>
-                        Platform Expertise
+                        {type.title}
                       </h4>
                       
-                      <div style={{
-                        padding: '16px 20px',
-                        background: 'rgba(255, 255, 255, 0.15)',
-                        backdropFilter: 'blur(20px)',
-                        borderRadius: '16px',
-                        border: '1px solid rgba(255, 255, 255, 0.2)',
-                        marginBottom: '20px'
+                      <p style={{
+                        fontSize: '17px',
+                        color: 'rgba(255, 255, 255, 0.95)',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                        lineHeight: '1.47059',
+                        letterSpacing: '.011em',
+                        fontWeight: '400',
+                        margin: '0',
+                        textAlign: 'center'
                       }}>
-                        <p style={{
-                          fontSize: '13px',
-                          color: 'rgba(255, 255, 255, 0.9)',
-                          fontWeight: '600',
-                          marginBottom: '8px',
-                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.5px',
-                          textAlign: 'center'
-                        }}>
-                          Our Team Has Delivered Migrations On:
-                        </p>
-                        <p style={{
-                          fontSize: '15px',
-                          color: '#283593',
-                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                          margin: 0,
-                          fontWeight: '500',
-                          lineHeight: '1.4',
-                          textAlign: 'center'
-                        }}>
-                          {type.platforms}
-                        </p>
-                      </div>
+                        {type.description}
+                      </p>
                     </div>
                   </div>
                 }
               />
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Our Team Platforms Section */}
+      <section style={{ 
+        padding: '60px 20px', 
+        background: '#e3f2fd', 
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', textAlign: 'center' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 style={{
+              fontSize: '22px',
+              fontWeight: '600',
+              color: '#1a237e',
+              marginBottom: '24px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.2',
+              letterSpacing: '-0.01em'
+            }}>
+              Our Team Has Delivered Migrations On:
+            </h2>
+            
+            <p style={{
+              fontSize: '28px',
+              background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.3',
+              fontWeight: '800',
+              margin: '0',
+              maxWidth: '900px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              letterSpacing: '-0.01em'
+            }}>
+              Dayforce, ADP, Workday, SAP, CloudPay, Xero, BrightPay, Sage, Iris
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -514,9 +545,9 @@ const ProfessionalLargeEnterpriseServices = () => {
             style={{ textAlign: 'center' }}
           >
             <h2 style={{
-              fontSize: 'clamp(40px, 5vw, 56px)',
-              fontWeight: '600',
-              color: '#000000',
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              color: '#1a237e',
               marginBottom: '12px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
@@ -541,11 +572,14 @@ const ProfessionalLargeEnterpriseServices = () => {
           
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          maxWidth: '1200px',
           gap: '12px',
           width: '95%',
           margin: '0 auto'
-        }}>
+        }}
+        className="enterprise-cards-grid"
+        >
           {[
             {
               icon: <Shield />,
@@ -687,9 +721,10 @@ const ProfessionalLargeEnterpriseServices = () => {
                   <div style={{
                     background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                     borderRadius: '22px',
-                    padding: '32px',
+                    padding: '38px',
                     color: '#283593',
-                    height: '100%',
+                    minHeight: '500px',
+                    height: '500px',
                     display: 'flex',
                     flexDirection: 'column',
                     textAlign: 'center',
@@ -708,71 +743,63 @@ const ProfessionalLargeEnterpriseServices = () => {
                       pointerEvents: 'none'
                     }} />
                     
-                    <div style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                      <div style={{
-                        width: '72px',
-                        height: '72px',
-                        borderRadius: '22px',
-                        background: 'rgba(255, 255, 255, 0.2)',
-                        backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.3)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 24px',
-                        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.3)'
-                      }}>
-                        {React.cloneElement(feature.icon, { 
-                          sx: { 
-                            fontSize: 32, 
-                            color: '#283593',
-                            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
-                          } 
-                        })}
-                      </div>
-                      
-                      <h3 style={{
-                        fontSize: '24px',
-                        fontWeight: '600',
-                        color: '#283593',
-                        marginBottom: '20px',
-                        fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                        textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
-                      }}>
-                        {feature.title}
-                      </h3>
-                      
-                      <ul style={{
-                        listStyle: 'none',
-                        padding: 0,
-                        margin: '0 0 24px 0',
-                        flex: 1,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        gap: '12px'
-                      }}>
+                    <div style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <h3 style={{
+                          fontSize: '22px',
+                          fontWeight: '600',
+                          color: '#283593',
+                          marginBottom: '20px',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                        }}>
+                          {feature.title}
+                        </h3>
+                        
+                        <ul style={{
+                          listStyle: 'none',
+                          padding: 0,
+                          margin: '0 0 20px 0',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '8px'
+                        }}>
                         {feature.features.map((detailFeature, fIndex) => (
                           <li key={fIndex} style={{ 
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '12px',
+                            gap: '10px',
                             fontSize: '15px',
-                            color: 'rgba(255, 255, 255, 0.9)',
+                            color: 'rgba(255, 255, 255, 0.95)',
                             fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                            fontWeight: '400'
+                            fontWeight: '400',
+                            textAlign: 'left'
                           }}>
                             <div style={{
-                              width: '6px',
-                              height: '6px',
+                              width: '20px',
+                              height: '20px',
                               borderRadius: '50%',
-                              background: 'rgba(255, 255, 255, 0.8)',
-                              flexShrink: 0
-                            }} />
+                              background: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)',
+                              backdropFilter: 'blur(20px) saturate(200%)',
+                              border: '1px solid rgba(255, 255, 255, 0.3)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexShrink: 0,
+                              boxShadow: '0 2px 8px rgba(52, 199, 89, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
+                            }}>
+                              <span style={{
+                                color: 'white',
+                                fontSize: '12px',
+                                fontWeight: '600',
+                                textShadow: '0 1px 2px rgba(0,0,0,0.2)'
+                              }}>✓</span>
+                            </div>
                             {detailFeature}
                           </li>
                         ))}
-                      </ul>
+                        </ul>
+                      </div>
                       
                       <Link 
                         to="/quote"
@@ -780,24 +807,25 @@ const ProfessionalLargeEnterpriseServices = () => {
                           display: 'inline-flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          gap: '8px',
-                          padding: '12px 24px',
+                          gap: '6px',
+                          padding: '8px 16px',
                           background: 'rgba(255, 255, 255, 0.2)',
                           backdropFilter: 'blur(20px)',
                           border: '1px solid rgba(255, 255, 255, 0.3)',
-                          borderRadius: '22px',
+                          borderRadius: '18px',
                           color: '#283593',
                           textDecoration: 'none',
-                          fontSize: '17px',
+                          fontSize: '14px',
                           fontWeight: '500',
                           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                          marginTop: 'auto',
                           cursor: 'pointer',
                           userSelect: 'none'
                         }}
                       >
                         Get Started
-                        <ArrowForward sx={{ fontSize: 16 }} />
+                        <ArrowForward sx={{ fontSize: 14 }} />
                       </Link>
                     </div>
                   </div>
@@ -870,19 +898,20 @@ const ProfessionalLargeEnterpriseServices = () => {
                     width: '80px',
                     height: '80px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
+                    background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: '0 8px 32px rgba(0, 122, 255, 0.3)',
+                    boxShadow: '0 8px 32px rgba(255, 107, 53, 0.3)',
                     flexShrink: 0
                   }}
                 >
                   <span style={{
                     fontSize: '24px',
                     fontWeight: '600',
-                    color: '#283593',
-                    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                    color: 'white',
+                    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.2)'
                   }}>
                     {step.step}
                   </span>
@@ -974,9 +1003,9 @@ const ProfessionalLargeEnterpriseServices = () => {
               viewport={{ once: true }}
             >
               <h2 style={{
-                fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-                fontWeight: '600',
-                color: '#000000',
+                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontWeight: '700',
+                color: '#1a237e',
                 marginBottom: '12px',
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.08349',
@@ -1170,9 +1199,13 @@ const ProfessionalLargeEnterpriseServices = () => {
                         <div style={{
                           fontSize: '40px',
                           fontWeight: '600',
-                          color: '#283593',
+                          background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                          marginBottom: '8px'
+                          marginBottom: '8px',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                         }}>
                           {stat.value}
                         </div>
@@ -1240,11 +1273,12 @@ const ProfessionalLargeEnterpriseServices = () => {
             </h2>
             
             <p style={{
-              fontSize: '22px',
-              color: 'rgba(255, 255, 255, 0.8)',
-              marginBottom: '48px',
+              fontSize: '24px',
+              color: '#283593',
+              marginBottom: '64px',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
-              lineHeight: '1.6'
+              lineHeight: '1.33',
+              fontWeight: '400'
             }}>
               Join 500+ large enterprises that have successfully migrated with our proven methodology. Zero downtime, maximum results.
             </p>
@@ -1264,7 +1298,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     background: '#007aff',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#283593',
+                    color: '#ccebff',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -1290,22 +1324,33 @@ const ProfessionalLargeEnterpriseServices = () => {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    padding: '17px 44px',
-                    background: 'transparent',
-                    border: '1px solid rgba(255, 255, 255, 0.28)',
+                    padding: '16px 32px',
+                    background: '#007AFF',
+                    border: 'none',
                     borderRadius: '980px',
-                    color: '#283593',
+                    color: 'white',
                     textDecoration: 'none',
-                    fontWeight: '400',
                     fontSize: '17px',
+                    fontWeight: '400',
                     letterSpacing: '-0.022em',
                     fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                     cursor: 'pointer',
-                    userSelect: 'none'
+                    userSelect: 'none',
+                    boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'scale(1.05)';
+                    e.target.style.background = '#0056CC';
+                    e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.background = '#007AFF';
+                    e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
                   }}
                 >
-                  Request Quote
+                  Get Custom Quote
                   <ArrowForward sx={{ fontSize: 18 }} />
                 </Link>
               </motion.div>

@@ -12,22 +12,6 @@ import AppleBackground from '../components/AppleBackground';
 import { AppleFlipCard } from '../components/AppleCardSystem';
 
 const ProfessionalAbout = () => {
-  const teamMembers = [
-    {
-      name: "Azizul Karim",
-      role: "Operations Director & Payroll Migration Consultant",
-      experience: "10+ years",
-      description: "Aziz brings over a decade of hands-on international payroll experience across multiple platforms and regions.",
-      specialties: ["Multi-country implementations", "System architecture", "Project management"]
-    },
-    {
-      name: "Misbahul Karim",
-      role: "Chartered Accountant (FCCA), Senior Migration Advisor",
-      experience: "19+ years",
-      description: "Misbahul holds the FCCA qualification and brings extensive experience in payroll compliance and financial systems.",
-      specialties: ["Compliance frameworks", "Financial reconciliation", "Risk management"]
-    }
-  ];
 
   const operationRegions = [
     "United Kingdom", "United States", "Germany", "France", "Spain", "Netherlands", 
@@ -350,7 +334,8 @@ const ProfessionalAbout = () => {
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+              letterSpacing: '-0.009em',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}>
               Our story.
             </h2>
@@ -524,7 +509,8 @@ const ProfessionalAbout = () => {
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+              letterSpacing: '-0.009em',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}>
               Why choose us.
             </h2>
@@ -789,171 +775,6 @@ const ProfessionalAbout = () => {
         </div>
       </section>
 
-      {/* Apple Team Section */}
-      <section style={{ 
-        padding: '80px 0 60px 0', 
-        background: '#f0f9ff', 
-        position: 'relative' 
-      }}>
-        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            viewport={{ once: true, margin: "-100px" }}
-            style={{ textAlign: 'center', marginBottom: '50px' }}
-          >
-            <h2 style={{
-              fontSize: 'clamp(40px, 5vw, 56px)',
-              fontWeight: '600',
-              color: '#000000',
-              marginBottom: '16px',
-              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
-            }}>
-              Meet our team.
-            </h2>
-            <p style={{
-              fontSize: '21px',
-              color: '#000000',
-              maxWidth: '95%',
-              margin: '0 auto',
-              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-              lineHeight: '1.381',
-              letterSpacing: '.011em',
-              fontWeight: '400'
-            }}>
-              Expert migration specialists with decades of combined experience.
-            </p>
-          </motion.div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-            gap: '24px',
-            maxWidth: '95%',
-            margin: '0 auto'
-          }}>
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.7, 
-                  delay: index * 0.1,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-                viewport={{ once: true, margin: "-100px" }}
-              >
-                <motion.div
-                  whileHover={{
-                    y: -8,
-                    boxShadow: '0 20px 64px rgba(0, 0, 0, 0.3)'
-                  }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    background: '#ccebff',
-                    borderRadius: '22px',
-                    padding: '40px 32px',
-                    color: '#000000',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    border: '1px solid rgba(0, 0, 0, 0.06)',
-                    backdropFilter: 'saturate(180%) blur(20px)',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
-                  }}
-                >
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: `linear-gradient(135deg, ${index % 2 === 0 ? 'rgba(0, 122, 255, 0.02)' : 'rgba(48, 209, 88, 0.02)'} 0%, ${index % 2 === 0 ? 'rgba(88, 86, 214, 0.02)' : 'rgba(50, 215, 75, 0.02)'} 100%)`,
-                    borderRadius: '22px'
-                  }} />
-                  
-                  <div style={{ position: 'relative', zIndex: 1 }}>
-                    <h3 style={{
-                      fontSize: '24px',
-                      fontWeight: '600',
-                      color: '#000000',
-                      marginBottom: '8px',
-                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
-                    }}>
-                      {member.name}
-                    </h3>
-                    
-                    <p style={{
-                      fontSize: '16px',
-                      color: '#00bfff',
-                      fontWeight: '500',
-                      marginBottom: '8px',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
-                    }}>
-                      {member.role}
-                    </p>
-                    
-                    <p style={{
-                      fontSize: '15px',
-                      color: '#000000',
-                      marginBottom: '16px',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
-                    }}>
-                      {member.experience} experience
-                    </p>
-                    
-                    <p style={{
-                      fontSize: '16px',
-                      lineHeight: '1.5',
-                      color: '#000000',
-                      marginBottom: '20px',
-                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
-                    }}>
-                      {member.description}
-                    </p>
-                    
-                    <div>
-                      <p style={{
-                        fontSize: '15px',
-                        fontWeight: '600',
-                        color: '#000000',
-                        marginBottom: '12px',
-                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
-                      }}>
-                        Specialties:
-                      </p>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                        {member.specialties.map((specialty, sIndex) => (
-                          <span
-                            key={sIndex}
-                            style={{
-                              background: '#00bfff',
-                              color: '#ccebff',
-                              padding: '6px 12px',
-                              borderRadius: '12px',
-                              fontSize: '13px',
-                              fontWeight: '500',
-                              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
-                            }}
-                          >
-                            {specialty}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Apple Global Reach Section */}
       <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative', overflow: 'hidden' }}>
@@ -973,7 +794,8 @@ const ProfessionalAbout = () => {
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+              letterSpacing: '-0.009em',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}>
               Global reach.
             </h2>

@@ -92,7 +92,8 @@ const AppleNavigation = () => {
               fontSize: '18px',
               fontWeight: 700,
               color: '#1a237e',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
             }}
           >
             <img 
@@ -154,7 +155,8 @@ const AppleNavigation = () => {
                     background: 'none',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                   }}
                 >
                   Services
@@ -218,7 +220,8 @@ const AppleNavigation = () => {
                           fontSize: '17px',
                           fontWeight: 500,
                           marginBottom: '2px',
-                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                         }}
                       >
                         {item.name}
@@ -261,7 +264,8 @@ const AppleNavigation = () => {
                     background: 'none',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                   }}
                 >
                   Success Stories
@@ -325,7 +329,8 @@ const AppleNavigation = () => {
                           fontSize: '17px',
                           fontWeight: 500,
                           marginBottom: '2px',
-                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                         }}
                       >
                         {item.name}
@@ -359,7 +364,8 @@ const AppleNavigation = () => {
                     borderRadius: '8px',
                     transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     background: isActiveLink('/') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                   }}
                   onMouseEnter={(e) => {
                     if (!isActiveLink('/')) {
@@ -391,7 +397,8 @@ const AppleNavigation = () => {
                     borderRadius: '8px',
                     transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     background: isActiveLink('/about') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                   }}
                   onMouseEnter={(e) => {
                     if (!isActiveLink('/about')) {
@@ -423,7 +430,8 @@ const AppleNavigation = () => {
                     borderRadius: '8px',
                     transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     background: isActiveLink('/contact') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                   }}
                   onMouseEnter={(e) => {
                     if (!isActiveLink('/contact')) {

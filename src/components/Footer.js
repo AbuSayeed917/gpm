@@ -96,7 +96,8 @@ const Footer = () => {
                   fontWeight: 600,
                   color: '#1a237e',
                   margin: 0,
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                 }}
               >
                 Global Payroll Migration
@@ -233,7 +234,8 @@ const Footer = () => {
                   fontWeight: 600,
                   color: '#1a237e',
                   marginBottom: '12px',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                 }}
               >
                 Services
@@ -298,7 +300,8 @@ const Footer = () => {
                   fontWeight: 600,
                   color: '#1a237e',
                   marginBottom: '12px',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                 }}
               >
                 Success Stories
@@ -363,7 +366,8 @@ const Footer = () => {
                   fontWeight: 600,
                   color: '#1a237e',
                   marginBottom: '12px',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                 }}
               >
                 Company

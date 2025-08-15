@@ -13,6 +13,25 @@ import AppleBackground from '../components/AppleBackground';
 import { AppleFlipCard } from '../components/AppleCardSystem';
 
 const ProfessionalConsultancyServices = () => {
+  // Add responsive styles for all consultancy grids
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @media (max-width: 1024px) {
+        .consultancy-cards-grid, .consultancy-features-grid, .consultancy-stats-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+      }
+      @media (max-width: 768px) {
+        .consultancy-cards-grid, .consultancy-features-grid, .consultancy-stats-grid {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
+
   const features = [
     {
       icon: <Assessment />,
@@ -46,8 +65,7 @@ const ProfessionalConsultancyServices = () => {
         "Gap analysis and recommendations",
         "Risk assessment matrix",
         "ROI analysis for improvements"
-      ],
-      price: "£25,000 - £45,000"
+      ]
     },
     {
       title: "Migration Strategy & Planning",
@@ -58,8 +76,7 @@ const ProfessionalConsultancyServices = () => {
         "Detailed project plan",
         "Resource requirements analysis",
         "Vendor evaluation and selection"
-      ],
-      price: "£35,000 - £65,000"
+      ]
     },
     {
       title: "Process Optimization",
@@ -70,8 +87,7 @@ const ProfessionalConsultancyServices = () => {
         "Optimization recommendations",
         "Implementation roadmap",
         "Training materials and support"
-      ],
-      price: "£45,000 - £85,000"
+      ]
     },
     {
       title: "Compliance & Governance",
@@ -82,8 +98,7 @@ const ProfessionalConsultancyServices = () => {
         "Governance framework design",
         "Policy and procedure documentation",
         "Compliance monitoring setup"
-      ],
-      price: "£30,000 - £55,000"
+      ]
     }
   ];
 
@@ -141,13 +156,11 @@ const ProfessionalConsultancyServices = () => {
     <AppleBackground variant="primary">
       {/* Apple Hero Section - Consultancy Theme */}
       <section style={{ 
-        background: '#000000',
-        padding: 'max(60px, 10vh) 0 max(80px, 12vh) 0',
+        background: '#e3f2fd',
+        padding: '50px 20px 40px 20px',
         position: 'relative',
         overflow: 'hidden',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center'
+        textAlign: 'center'
       }}>
         {/* Apple-style ambient lighting - Consultancy Colors */}
         <div style={{
@@ -173,14 +186,7 @@ const ProfessionalConsultancyServices = () => {
           pointerEvents: 'none'
         }} />
         
-        <div style={{ 
-          position: 'relative', 
-          zIndex: 1, 
-          maxWidth: '95%', 
-          margin: '0 auto', 
-          padding: '0 22px',
-          width: '100%'
-        }}>
+        <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -194,8 +200,8 @@ const ProfessionalConsultancyServices = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               style={{
                 fontSize: '17px',
-                fontWeight: '600',
-                color: '#ff9500',
+                fontWeight: '700',
+                color: '#007aff',
                 marginBottom: '16px',
                 fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                 letterSpacing: '-0.022em',
@@ -206,55 +212,45 @@ const ProfessionalConsultancyServices = () => {
               Consultancy Services
             </motion.div>
 
-            {/* Apple-style hero title */}
-            <motion.h1 
-              style={{
-                fontSize: 'clamp(48px, 7vw, 96px)',
-                fontWeight: '600',
-                color: '#f5f5f7',
-                marginBottom: '24px',
-                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                lineHeight: '1.05',
-                letterSpacing: '-0.015em',
-                textAlign: 'center'
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.2 }}
-            >
-              Expert payroll consultancy.
-              <br />
+            <h1 style={{ 
+              fontSize: 'clamp(38px, 4.5vw, 50px)',
+              fontWeight: '700',
+              lineHeight: '1.05',
+              color: '#1a237e',
+              marginBottom: '16px',
+              letterSpacing: '-0.025em',
+              textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+            }}>
+              UK Based {' '}
               <span style={{ 
-                background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)', 
-                backgroundClip: 'text', 
-                WebkitBackgroundClip: 'text', 
+                background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                display: 'inline-block'
+                backgroundClip: 'text',
+                display: 'inline-block',
+                fontWeight: '700',
+                paddingBottom: '4px',
+                lineHeight: '1.2'
               }}>
-                Strategic insights.
+                Consultancy
               </span>
-            </motion.h1>
+              {' '}Experts.
+            </h1>
             
             {/* Apple-style subtitle */}
-            <motion.p 
-              style={{
-                fontSize: '21px',
-                color: '#a1a1a6',
-                marginBottom: '48px',
-                fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-                lineHeight: '1.381',
-                fontWeight: '400',
-                letterSpacing: '.011em',
-                maxWidth: '640px',
-                margin: '0 auto 48px auto',
-                textAlign: 'center'
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.4 }}
-            >
+            <p style={{ 
+              fontSize: '20px',
+              lineHeight: '1.3',
+              color: '#283593',
+              fontWeight: '400',
+              marginBottom: '32px',
+              maxWidth: '640px',
+              margin: '0 auto 32px auto',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+            }}>
               Strategic guidance and optimization expertise for organizations seeking to improve payroll operations without full system migration.
-            </motion.p>
+            </p>
             
             {/* Apple-style CTA buttons */}
             <motion.div 
@@ -282,10 +278,10 @@ const ProfessionalConsultancyServices = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '17px 32px',
-                    background: '#ff9500',
+                    background: '#007aff',
                     border: 'none',
                     borderRadius: '980px',
-                    color: '#ccebff',
+                    color: '#283593',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
@@ -294,10 +290,10 @@ const ProfessionalConsultancyServices = () => {
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
                     userSelect: 'none',
-                    boxShadow: '0 4px 16px rgba(255, 149, 0, 0.3)'
+                    boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)'
                   }}
                 >
-                  Book Strategy Session
+                  Get free quote
                   <ArrowForward sx={{ fontSize: 16 }} />
                 </Link>
               </motion.div>
@@ -382,11 +378,12 @@ const ProfessionalConsultancyServices = () => {
             viewport={{ once: true, margin: "-100px" }}
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gridTemplateColumns: 'repeat(4, 1fr)',
               gap: '24px',
               maxWidth: '1000px',
               margin: '0 auto'
             }}
+            className="consultancy-stats-grid"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -419,29 +416,35 @@ const ProfessionalConsultancyServices = () => {
                 }} />
                 
                 <div style={{
-                  fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+                  fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
                   fontWeight: '600',
-                  color: '#000000',
+                  background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                   marginBottom: '8px',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                  lineHeight: '1.1'
+                  lineHeight: '1.1',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.2)'
                 }}>
                   {stat.value}
                 </div>
                 <h3 style={{
-                  fontSize: '18px',
+                  fontSize: '16px',
                   fontWeight: '600',
                   color: '#000000',
                   marginBottom: '8px',
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                 }}>
                   {stat.label}
                 </h3>
                 <p style={{
-                  fontSize: '15px',
+                  fontSize: '13px',
                   color: '#000000',
                   margin: 0,
-                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                  fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                 }}>
                   {stat.description}
                 </p>
@@ -470,7 +473,8 @@ const ProfessionalConsultancyServices = () => {
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
               letterSpacing: '-0.009em',
-              textAlign: 'center'
+              textAlign: 'center',
+              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
             }}>
               Our Consultancy Approach.
             </h2>
@@ -489,14 +493,16 @@ const ProfessionalConsultancyServices = () => {
           </motion.div>
         </div>
           
-        {/* Apple Product Grid - Responsive */}
+        {/* Apple Product Grid - Horizontal Line */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gridTemplateColumns: 'repeat(4, 1fr)',
           gap: '12px',
           width: '95%',
           margin: '0 auto'
-        }}>
+        }}
+        className="consultancy-features-grid"
+        >
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -514,11 +520,11 @@ const ProfessionalConsultancyServices = () => {
                   <div style={{
                     background: 'linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%)',
                     borderRadius: '22px',
-                    padding: '48px 32px',
+                    padding: '32px 24px',
                     color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
-                    height: '440px',
+                    height: '430px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
@@ -545,41 +551,42 @@ const ProfessionalConsultancyServices = () => {
                     <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                       {/* Icon Container */}
                       <div style={{
-                        width: '72px',
-                        height: '72px',
+                        width: '64px',
+                        height: '64px',
                         background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)',
-                        borderRadius: '22px',
+                        borderRadius: '20px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto 24px',
+                        margin: '0 auto 20px',
                         boxShadow: '0 8px 32px rgba(255, 149, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                       }}>
-                        {React.cloneElement(feature.icon, { sx: { fontSize: 32, color: '#ccebff' } })}
+                        {React.cloneElement(feature.icon, { sx: { fontSize: 28, color: '#ccebff' } })}
                       </div>
                       
                       {/* Typography */}
                       <h3 style={{
-                        fontSize: '28px',
-                        fontWeight: '700',
+                        fontSize: '22px',
+                        fontWeight: '600',
                         color: '#000000',
                         marginBottom: '12px',
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.07143',
-                        letterSpacing: '-0.005em'
+                        letterSpacing: '-0.005em',
+                        textShadow: '0 1px 3px rgba(0,0,0,0.2)'
                       }}>
                         {feature.title}
                       </h3>
                       
                       <p style={{
-                        fontSize: '19px',
+                        fontSize: '16px',
                         color: '#6E6E73',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.42105',
                         letterSpacing: '.012em',
                         fontWeight: '400',
                         margin: '0',
-                        maxWidth: '280px'
+                        maxWidth: '240px'
                       }}>
                         {feature.description}
                       </p>
@@ -726,7 +733,8 @@ const ProfessionalConsultancyServices = () => {
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
               letterSpacing: '-0.009em',
-              textAlign: 'center'
+              textAlign: 'center',
+              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
             }}>
               Consultancy Services.
             </h2>
@@ -879,21 +887,10 @@ const ProfessionalConsultancyServices = () => {
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
+                justifyContent: 'center',
                 paddingTop: '24px',
                 borderTop: '1px solid rgba(0, 0, 0, 0.06)'
               }}>
-                <div style={{
-                  fontSize: '28px',
-                  fontWeight: '600',
-                  background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
-                }}>
-                  {service.price}
-                </div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
@@ -1463,6 +1460,473 @@ const ProfessionalConsultancyServices = () => {
               </motion.div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Why Choose Our Consultancy Section */}
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: "-100px" }}
+            style={{ textAlign: 'center' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              color: '#000000',
+              marginBottom: '12px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.0625',
+              letterSpacing: '-0.009em',
+              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
+            }}>
+              Why choose our consultancy experts.
+            </h2>
+            <p style={{
+              fontSize: '18px',
+              color: '#000000',
+              maxWidth: '700px',
+              margin: '0 auto',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              letterSpacing: '.011em',
+              fontWeight: '400'
+            }}>
+              Four pillars of expertise that deliver strategic insights and measurable results.
+            </p>
+          </motion.div>
+        </div>
+          
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          maxWidth: '1200px',
+          gap: '12px',
+          width: '95%',
+          margin: '0 auto'
+        }}
+        className="consultancy-cards-grid"
+        >
+          {[
+            {
+              icon: <Psychology />,
+              title: "Strategic Expertise",
+              description: "Deep knowledge of payroll strategies and industry best practices for optimal results.",
+              features: [
+                "Industry-leading expertise",
+                "Strategic vision and planning",
+                "Best practice frameworks",
+                "Executive-level insights"
+              ]
+            },
+            {
+              icon: <Assessment />,
+              title: "Comprehensive Analysis",
+              description: "Thorough assessment of current systems and detailed roadmaps for improvement.",
+              features: [
+                "In-depth system audits",
+                "Gap analysis and recommendations", 
+                "ROI modeling and forecasting",
+                "Risk assessment and mitigation"
+              ]
+            },
+            {
+              icon: <TrendingUp />,
+              title: "Proven Results",
+              description: "Track record of delivering measurable improvements and cost savings.",
+              features: [
+                "150+ successful projects",
+                "Average £850K savings",
+                "95% client satisfaction",
+                "Long-term partnerships"
+              ]
+            },
+            {
+              icon: <Analytics />,
+              title: "Ongoing Support",
+              description: "Continued guidance and support throughout implementation and beyond.",
+              features: [
+                "Implementation oversight",
+                "Change management support",
+                "Training and enablement",
+                "Post-delivery optimization"
+              ]
+            }
+          ].map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.15,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <AppleFlipCard
+                frontContent={
+                  <div style={{
+                    background: '#ccebff',
+                    borderRadius: '22px',
+                    padding: '32px',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
+                    border: '1px solid rgba(0, 0, 0, 0.04)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                  }}>
+                    <div style={{
+                      width: '72px',
+                      height: '72px',
+                      borderRadius: '22px',
+                      background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: '12px',
+                      boxShadow: '0 8px 32px rgba(255, 149, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                    }}>
+                      {React.cloneElement(feature.icon, { 
+                        sx: { 
+                          fontSize: 32, 
+                          color: 'white',
+                          filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))'
+                        } 
+                      })}
+                    </div>
+                    
+                    <h3 style={{
+                      fontSize: '24px',
+                      fontWeight: '600',
+                      color: '#000000',
+                      marginBottom: '12px',
+                      fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                      lineHeight: '1.0625',
+                      letterSpacing: '-0.005em',
+                      textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                    }}>
+                      {feature.title}
+                    </h3>
+                    
+                    <p style={{
+                      fontSize: '17px',
+                      color: '#000000',
+                      marginBottom: '12px',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      lineHeight: '1.47059',
+                      letterSpacing: '-0.022em',
+                      fontWeight: '400',
+                      flex: 1
+                    }}>
+                      {feature.description}
+                    </p>
+                    
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      marginTop: 'auto'
+                    }}>
+                      <div style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '8px 16px',
+                        borderRadius: '22px',
+                        background: 'rgba(255, 149, 0, 0.1)',
+                        color: '#ff9500',
+                        fontSize: '15px',
+                        fontWeight: '500',
+                        fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                      }}>
+                        Hover to learn more
+                      </div>
+                    </div>
+                  </div>
+                }
+                
+                backContent={
+                  <div style={{
+                    background: 'linear-gradient(135deg, #ff9500 0%, #af52de 100%)',
+                    borderRadius: '22px',
+                    padding: '38px',
+                    color: 'white',
+                    minHeight: '500px',
+                    height: '500px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    textAlign: 'center',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    boxShadow: '0 20px 64px rgba(255, 149, 0, 0.4)'
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      top: '-30%',
+                      right: '-20%',
+                      width: '150px',
+                      height: '150px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+                      filter: 'blur(40px)',
+                      pointerEvents: 'none'
+                    }} />
+                    
+                    <div style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <h3 style={{
+                          fontSize: '22px',
+                          fontWeight: '600',
+                          color: 'white',
+                          marginBottom: '16px',
+                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                          textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                        }}>
+                          {feature.title}
+                        </h3>
+                        
+                        <ul style={{
+                          listStyle: 'none',
+                          padding: 0,
+                          margin: '0 0 20px 0',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '8px'
+                        }}>
+                        {feature.features.map((detailFeature, fIndex) => (
+                          <li key={fIndex} style={{ 
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '10px',
+                            fontSize: '15px',
+                            color: 'rgba(255, 255, 255, 0.95)',
+                            fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                            fontWeight: '400',
+                            textAlign: 'left'
+                          }}>
+                            <div style={{
+                              width: '20px',
+                              height: '20px',
+                              borderRadius: '50%',
+                              background: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)',
+                              backdropFilter: 'blur(20px) saturate(200%)',
+                              border: '1px solid rgba(255, 255, 255, 0.3)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexShrink: 0,
+                              boxShadow: '0 2px 8px rgba(52, 199, 89, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
+                            }}>
+                              <span style={{
+                                color: 'white',
+                                fontSize: '12px',
+                                fontWeight: '600',
+                                textShadow: '0 1px 2px rgba(0,0,0,0.2)'
+                              }}>✓</span>
+                            </div>
+                            {detailFeature}
+                          </li>
+                        ))}
+                        </ul>
+                      </div>
+                      
+                      <Link 
+                        to="/quote"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          padding: '8px 16px',
+                          background: 'rgba(255, 255, 255, 0.2)',
+                          backdropFilter: 'blur(20px)',
+                          border: '1px solid rgba(255, 255, 255, 0.3)',
+                          borderRadius: '18px',
+                          color: 'white',
+                          textDecoration: 'none',
+                          fontSize: '14px',
+                          fontWeight: '500',
+                          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                          marginTop: 'auto',
+                          cursor: 'pointer',
+                          userSelect: 'none'
+                        }}
+                      >
+                        Get Started
+                        <ArrowForward sx={{ fontSize: 14 }} />
+                      </Link>
+                    </div>
+                  </div>
+                }
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Process Steps Section */}
+      <section style={{ padding: '80px 0 60px 0', background: '#ccebff', position: 'relative' }}>
+        <div style={{ maxWidth: '95%', margin: '0 auto', padding: '0 22px', marginBottom: '50px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, margin: "-100px" }}
+            style={{ textAlign: 'center' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(28px, 3.5vw, 36px)',
+              fontWeight: '700',
+              color: '#000000',
+              marginBottom: '12px',
+              fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.0625',
+              letterSpacing: '-0.009em',
+              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
+            }}>
+              Our consultancy process.
+            </h2>
+            <p style={{
+              fontSize: '18px',
+              color: '#000000',
+              maxWidth: '700px',
+              margin: '0 auto',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+              lineHeight: '1.381',
+              letterSpacing: '.011em',
+              fontWeight: '400'
+            }}>
+              Structured approach delivering strategic insights and actionable recommendations.
+            </p>
+          </motion.div>
+        </div>
+
+        <div style={{
+          maxWidth: '900px',
+          margin: '0 auto',
+          padding: '0 22px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '60px'
+        }}>
+          {approach.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '40px',
+                flexDirection: index % 2 === 0 ? 'row' : 'row-reverse'
+              }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                style={{
+                  width: '80px',
+                  height: '80px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 8px 32px rgba(255, 107, 53, 0.3)',
+                  flexShrink: 0
+                }}
+              >
+                <span style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  color: 'white',
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.2)'
+                }}>
+                  {index + 1}
+                </span>
+              </motion.div>
+
+              <motion.div
+                whileHover={{
+                  y: -8,
+                  boxShadow: '0 20px 64px rgba(0, 0, 0, 0.15)'
+                }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  flex: 1,
+                  background: '#ccebff',
+                  borderRadius: '18px',
+                  padding: '32px 40px',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.06)'
+                }}
+              >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  marginBottom: '16px'
+                }}>
+                  <h3 style={{
+                    fontSize: '24px',
+                    fontWeight: '600',
+                    color: '#000000',
+                    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                    margin: 0,
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                  }}>
+                    {step.phase}
+                  </h3>
+                  <span style={{
+                    padding: '4px 12px',
+                    background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                    color: 'white',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    borderRadius: '12px',
+                    fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+                  }}>
+                    {step.duration}
+                  </span>
+                </div>
+                
+                <ul style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  margin: 0,
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                  gap: '12px'
+                }}>
+                  {step.activities.map((activity, actIndex) => (
+                    <li key={actIndex} style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      fontSize: '16px',
+                      color: '#000000',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      fontWeight: '400'
+                    }}>
+                      <div style={{
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+                        flexShrink: 0
+                      }} />
+                      {activity}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </motion.div>
+          ))}
         </div>
       </section>
     </AppleBackground>

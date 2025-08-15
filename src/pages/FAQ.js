@@ -217,7 +217,8 @@ const FAQ = () => {
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                 lineHeight: '1.1',
                 letterSpacing: '-0.015em',
-                textAlign: 'center'
+                textAlign: 'center',
+                textShadow: '0 2px 4px rgba(0,0,0,0.2)'
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -277,7 +278,8 @@ const FAQ = () => {
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+              letterSpacing: '-0.009em',
+              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
             }}>Quick facts.</h2>
             <p style={{
               fontSize: '21px',
@@ -389,7 +391,8 @@ const FAQ = () => {
               marginBottom: '16px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.0625',
-              letterSpacing: '-0.009em'
+              letterSpacing: '-0.009em',
+              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
             }}>Why choose us.</h2>
             <p style={{
               fontSize: '21px',
