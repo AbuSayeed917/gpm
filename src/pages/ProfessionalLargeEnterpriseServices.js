@@ -42,7 +42,7 @@ const ProfessionalLargeEnterpriseServices = () => {
       title: 'System-to-System Migration',
       description:
         'Switch payroll platforms without losing accuracy or compliance. Seamlessly move from one payroll system to another (e.g., SAP → Dayforce, Workday → ADP).',
-      platforms: 'Dayforce, ADP, Workday, SAP, CloudPay, Xero, BrightPay, Sage, Iris',
+      platforms: 'Dayforce, ADP, Workday, SAP, CloudPay',
     },
     {
       icon: <Business />,
@@ -56,7 +56,7 @@ const ProfessionalLargeEnterpriseServices = () => {
       title: 'Outsourced to In-House Migration',
       description:
         'Gain direct control over your payroll. Bring payroll operations back in-house with complete system setup and team training.',
-      platforms: 'Dayforce, Xero, BrightPay, Sage, Workday, SAP',
+      platforms: 'Dayforce, Workday, SAP',
     },
     {
       icon: <Public />,
@@ -77,7 +77,7 @@ const ProfessionalLargeEnterpriseServices = () => {
       title: 'Cloud Migration',
       description:
         'Modernise your payroll technology. Upgrade from legacy on-premise systems to secure, scalable cloud platforms.',
-      platforms: 'Dayforce, ADP, Workday, SAP, CloudPay, Xero, BrightPay, Sage, Iris',
+      platforms: 'Dayforce, ADP, Workday, SAP, CloudPay',
     },
   ];
 
@@ -579,7 +579,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                 letterSpacing: '-0.01em',
               }}
             >
-              Dayforce, ADP, Workday, SAP, CloudPay, Xero, BrightPay, Sage, Iris
+              Dayforce, ADP, Workday, SAP, CloudPay
             </p>
           </motion.div>
         </div>
@@ -1184,9 +1184,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     borderRadius: '2px',
                   }}
                 />
-                "We've successfully migrated payroll operations across 15 countries with zero
-                disruption. The team's expertise in handling complex compliance requirements was
-                exceptional."
+                "They saved our project when it was in serious trouble. The rescue and delivery exceeded all our expectations."
               </blockquote>
 
               <div
@@ -1213,7 +1211,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                   }}
                 >
-                  S
+                  UK
                 </motion.div>
                 <div>
                   <h4
@@ -1225,7 +1223,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                     }}
                   >
-                    Sarah Mitchell
+                    UK Operations Manager
                   </h4>
                   <p
                     style={{
@@ -1235,7 +1233,7 @@ const ProfessionalLargeEnterpriseServices = () => {
                       fontWeight: '400',
                     }}
                   >
-                    Global HR Director, TechGlobal Manufacturing
+                    Operations Manager, UK Research & Policy Organization
                   </p>
                 </div>
               </div>
@@ -1347,10 +1345,10 @@ const ProfessionalLargeEnterpriseServices = () => {
                     }}
                   >
                     {[
-                      { value: '15', label: 'Countries' },
-                      { value: '2.5K', label: 'Employees' },
-                      { value: '85%', label: 'Cost Reduction' },
-                      { value: '12 weeks', label: 'Timeline' },
+                      { value: '1', label: 'Country' },
+                      { value: '500+', label: 'Employees' },
+                      { value: '100%', label: 'Project Rescue' },
+                      { value: '6 weeks', label: 'Recovery Time' },
                     ].map((stat, idx) => (
                       <motion.div
                         key={idx}
