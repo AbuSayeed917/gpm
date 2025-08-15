@@ -22,9 +22,9 @@ const QuotePage = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
-  // Extract service type from URL parameters
+  // Extract service type from URL parameters - no default value
   const searchParams = new URLSearchParams(location.search);
-  const serviceType = searchParams.get('type') || 'sme';
+  const serviceType = searchParams.get('type') || '';
 
   const [formData, setFormData] = useState({
     // Auto-filled based on service type
@@ -33,12 +33,13 @@ const QuotePage = () => {
     companyName: '',
     industry: '',
     employeeCount: '',
-    companySize:
-      serviceType === 'sme'
-        ? 'small'
-        : serviceType === 'large-enterprise'
-          ? 'enterprise'
-          : 'consultancy',
+    companySize: serviceType === 'sme'
+      ? 'small'
+      : serviceType === 'large-enterprise'
+        ? 'enterprise'
+        : serviceType === 'consultancy'
+          ? 'consultancy'
+          : '',
     // Current System
     currentSystem: '',
     migrationUrgency: '',
@@ -157,12 +158,31 @@ const QuotePage = () => {
     },
   };
 
-  const currentConfig = serviceConfig[formData.serviceCategory];
+  // Default configuration when no service is selected
+  const defaultConfig = {
+    title: 'Get Your Migration Quote',
+    icon: <Business sx={{ fontSize: 40, color: '#87ceeb' }} />,
+    gradient: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+    description: 'Choose your service type to get started with a personalized migration quote',
+    migrationOptions: [],
+    industries: [],
+    employeeRanges: [],
+  };
 
-  const steps = [
+  const currentConfig = formData.serviceCategory 
+    ? serviceConfig[formData.serviceCategory] 
+    : defaultConfig;
+
+  const steps = formData.serviceCategory ? [
+    'Service Details',
+    'Company Information', 
+    'Technical Requirements',
+    'Contact & Timeline',
+  ] : [
+    'Choose Service',
     'Service Details',
     'Company Information',
-    'Technical Requirements',
+    'Technical Requirements', 
     'Contact & Timeline',
   ];
 
@@ -171,12 +191,13 @@ const QuotePage = () => {
     setFormData((prev) => ({
       ...prev,
       serviceCategory: serviceType,
-      companySize:
-        serviceType === 'sme'
-          ? 'small'
-          : serviceType === 'large-enterprise'
-            ? 'enterprise'
-            : 'consultancy',
+      companySize: serviceType === 'sme'
+        ? 'small'
+        : serviceType === 'large-enterprise'
+          ? 'enterprise'
+          : serviceType === 'consultancy'
+            ? 'consultancy'
+            : '',
     }));
   }, [serviceType]);
 
@@ -211,6 +232,7 @@ const QuotePage = () => {
     try {
       // Validate required fields
       if (
+        !formData.serviceCategory ||
         !formData.contactName ||
         !formData.email ||
         !formData.companyName ||
@@ -250,6 +272,160 @@ const QuotePage = () => {
   };
 
   const renderStepContent = (step) => {
+    // If no service is selected, show service selection as step 0
+    if (!formData.serviceCategory) {
+      switch (step) {
+        case 0:
+          return (
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div style={{ maxWidth: '100%' }}>
+                <div style={{ marginBottom: '40px' }}>
+                  <h3
+                    style={{
+                      fontSize: '28px',
+                      fontWeight: '700',
+                      color: '#000000',
+                      marginBottom: '16px',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                      letterSpacing: '-0.02em',
+                    }}
+                  >
+                    Choose Your Service
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: '17px',
+                      color: '#6e6e73',
+                      lineHeight: '1.47',
+                      marginBottom: '0',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                    }}
+                  >
+                    Select the type of payroll migration service you need to get started.
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr',
+                    gap: '20px',
+                    marginBottom: '32px',
+                  }}
+                >
+                  {[
+                    {
+                      key: 'sme',
+                      title: 'SME Payroll Migration',
+                      description: 'Perfect for small to medium enterprises (1-250 employees)',
+                      icon: <Business sx={{ fontSize: 32, color: '#00bfff' }} />,
+                    },
+                    {
+                      key: 'large-enterprise',
+                      title: 'Large Enterprise Solutions',
+                      description: 'Enterprise-grade solutions for organizations with 500+ employees',
+                      icon: <CorporateFare sx={{ fontSize: 32, color: '#00bfff' }} />,
+                    },
+                    {
+                      key: 'consultancy',
+                      title: 'Payroll Consultancy',
+                      description: 'Partnership opportunities for consulting firms and professional services',
+                      icon: <Groups sx={{ fontSize: 32, color: '#00bfff' }} />,
+                    },
+                  ].map((service) => (
+                    <button
+                      key={service.key}
+                      type='button'
+                      onClick={() => {
+                        handleInputChange('serviceCategory', service.key);
+                        window.history.replaceState({}, '', `/quote?type=${service.key}`);
+                        handleInputChange('companySize', 
+                          service.key === 'sme' ? 'small' :
+                          service.key === 'large-enterprise' ? 'enterprise' :
+                          service.key === 'consultancy' ? 'consultancy' : ''
+                        );
+                      }}
+                      style={{
+                        padding: '24px',
+                        border: '2px solid rgba(173, 216, 230, 0.3)',
+                        borderRadius: '20px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        backdropFilter: 'blur(10px)',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        textAlign: 'left',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '20px',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.borderColor = '#00bfff';
+                        e.target.style.backgroundColor = 'rgba(135, 206, 250, 0.1)';
+                        e.target.style.transform = 'translateY(-2px)';
+                        e.target.style.boxShadow = '0 8px 32px rgba(135, 206, 250, 0.2)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
+                        e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+                        e.target.style.transform = 'translateY(0px)';
+                        e.target.style.boxShadow = 'none';
+                      }}
+                    >
+                      <div style={{ flexShrink: 0 }}>
+                        {service.icon}
+                      </div>
+                      <div>
+                        <h4
+                          style={{
+                            fontSize: '18px',
+                            fontWeight: '600',
+                            color: '#000000',
+                            marginBottom: '8px',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                          }}
+                        >
+                          {service.title}
+                        </h4>
+                        <p
+                          style={{
+                            fontSize: '15px',
+                            color: '#6e6e73',
+                            margin: '0',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                            lineHeight: '1.47',
+                          }}
+                        >
+                          {service.description}
+                        </p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          );
+        
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+          // Shift step numbers by 1 when service selection is first
+          return renderServiceSelectedStepContent(step - 1);
+        
+        default:
+          return null;
+      }
+    }
+    
+    // If service is already selected, use normal step flow
+    return renderServiceSelectedStepContent(step);
+  };
+
+  const renderServiceSelectedStepContent = (step) => {
     switch (step) {
       case 0:
         return (
@@ -295,42 +471,22 @@ const QuotePage = () => {
                   >
                     Service Type *
                   </label>
-                  <select
-                    value={formData.serviceCategory}
-                    onChange={(e) => {
-                      const newServiceType = e.target.value;
-                      handleInputChange('serviceCategory', newServiceType);
-                      window.history.replaceState({}, '', `/quote?type=${newServiceType}`);
-                      handleInputChange('targetSystem', '');
-                    }}
+                  <div
                     style={{
-                      width: '100%',
-                      height: '56px',
                       padding: '16px 20px',
                       border: '1px solid rgba(173, 216, 230, 0.3)',
                       borderRadius: '16px',
                       fontSize: '17px',
                       fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
-                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                      backdropFilter: 'blur(10px)',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      outline: 'none',
-                      boxSizing: 'border-box',
-                      cursor: 'pointer',
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = '#00bfff';
-                      e.target.style.boxShadow = '0 0 0 4px rgba(135, 206, 250, 0.1)';
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = 'rgba(173, 216, 230, 0.3)';
-                      e.target.style.boxShadow = 'none';
+                      backgroundColor: 'rgba(135, 206, 250, 0.1)',
+                      color: '#000000',
+                      fontWeight: '600',
                     }}
                   >
-                    <option value='sme'>SME Payroll Migration</option>
-                    <option value='large-enterprise'>Large Enterprise Solutions</option>
-                    <option value='consultancy'>Payroll Consultancy</option>
-                  </select>
+                    {formData.serviceCategory === 'sme' && 'SME Payroll Migration'}
+                    {formData.serviceCategory === 'large-enterprise' && 'Large Enterprise Solutions'}
+                    {formData.serviceCategory === 'consultancy' && 'Payroll Consultancy'}
+                  </div>
                 </div>
 
                 <div>
@@ -1778,15 +1934,24 @@ const QuotePage = () => {
                     </motion.button>
                   ) : (
                     <motion.button
-                      onClick={handleNext}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        // If on service selection step and no service selected, prevent next
+                        if (!formData.serviceCategory && activeStep === 0) {
+                          return;
+                        }
+                        handleNext();
+                      }}
+                      disabled={!formData.serviceCategory && activeStep === 0}
+                      whileHover={(!formData.serviceCategory && activeStep === 0) ? {} : { scale: 1.05, y: -2 }}
+                      whileTap={(!formData.serviceCategory && activeStep === 0) ? {} : { scale: 0.98 }}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: '8px',
                         padding: '16px 32px',
-                        background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                        background: (!formData.serviceCategory && activeStep === 0) ? 
+                          'rgba(135, 206, 250, 0.3)' : 
+                          'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
                         border: 'none',
                         borderRadius: '980px',
                         color: '#ccebff',
@@ -1794,9 +1959,11 @@ const QuotePage = () => {
                         fontWeight: '600',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                        cursor: 'pointer',
+                        cursor: (!formData.serviceCategory && activeStep === 0) ? 'not-allowed' : 'pointer',
                         minWidth: '140px',
-                        boxShadow: '0 8px 32px rgba(135, 206, 250, 0.4)',
+                        boxShadow: (!formData.serviceCategory && activeStep === 0) ? 
+                          'none' : '0 8px 32px rgba(135, 206, 250, 0.4)',
+                        opacity: (!formData.serviceCategory && activeStep === 0) ? 0.5 : 1,
                       }}
                     >
                       <span>Next</span>
