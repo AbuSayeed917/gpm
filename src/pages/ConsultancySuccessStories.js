@@ -989,32 +989,13 @@ const ConsultancySuccessStories = () => {
       </section>
 
 
-      {/* Apple CTA Section */}
+      {/* CTA Section */}
       <section style={{ 
-        background: '#000000', 
+        background: '#e3f2fd', 
         padding: '80px 0 60px 0',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Elements */}
-        <div style={{
-          position: 'absolute',
-          top: '20%',
-          left: '-10%',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(255, 149, 0, 0.1) 0%, transparent 70%)',
-          filter: 'blur(100px)'
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '20%',
-          right: '-10%',
-          width: '500px',
-          height: '500px',
-          background: 'radial-gradient(circle, rgba(175, 82, 222, 0.1) 0%, transparent 70%)',
-          filter: 'blur(100px)'
-        }} />
         
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '95%', margin: '0 auto', padding: '0 22px' }}>
           <motion.div
@@ -1027,7 +1008,10 @@ const ConsultancySuccessStories = () => {
             <h2 style={{
               fontSize: 'clamp(28px, 3.5vw, 36px)',
               fontWeight: '600',
-              color: '#ffffff',
+              background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
               marginBottom: '24px',
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.1'
@@ -1037,7 +1021,7 @@ const ConsultancySuccessStories = () => {
             
             <p style={{
               fontSize: '1.25rem',
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: '#1a237e',
               marginBottom: '48px',
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
               lineHeight: '1.6'
@@ -1089,9 +1073,9 @@ const ConsultancySuccessStories = () => {
                     gap: '8px',
                     padding: '17px 44px',
                     background: 'transparent',
-                    border: '1px solid rgba(255, 255, 255, 0.28)',
+                    border: '2px solid #FF6B35',
                     borderRadius: '980px',
-                    color: '#ffffff',
+                    color: '#FF6B35',
                     textDecoration: 'none',
                     fontWeight: '400',
                     fontSize: '17px',
