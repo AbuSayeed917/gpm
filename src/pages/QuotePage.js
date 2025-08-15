@@ -473,6 +473,9 @@ const QuotePage = () => {
                   </label>
                   <div
                     style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
                       padding: '16px 20px',
                       border: '1px solid rgba(173, 216, 230, 0.3)',
                       borderRadius: '16px',
@@ -483,9 +486,43 @@ const QuotePage = () => {
                       fontWeight: '600',
                     }}
                   >
-                    {formData.serviceCategory === 'sme' && 'SME Payroll Migration'}
-                    {formData.serviceCategory === 'large-enterprise' && 'Large Enterprise Solutions'}
-                    {formData.serviceCategory === 'consultancy' && 'Payroll Consultancy'}
+                    <span>
+                      {formData.serviceCategory === 'sme' && 'SME Payroll Migration'}
+                      {formData.serviceCategory === 'large-enterprise' && 'Large Enterprise Solutions'}
+                      {formData.serviceCategory === 'consultancy' && 'Payroll Consultancy'}
+                    </span>
+                    <button
+                      type='button'
+                      onClick={() => {
+                        handleInputChange('serviceCategory', '');
+                        handleInputChange('targetSystem', '');
+                        handleInputChange('companySize', '');
+                        window.history.replaceState({}, '', '/quote');
+                        setActiveStep(0);
+                      }}
+                      style={{
+                        padding: '8px 16px',
+                        border: '1px solid rgba(0, 191, 255, 0.4)',
+                        borderRadius: '12px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        color: '#00bfff',
+                        fontSize: '14px',
+                        fontWeight: '500',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.backgroundColor = 'rgba(0, 191, 255, 0.1)';
+                        e.target.style.borderColor = '#00bfff';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+                        e.target.style.borderColor = 'rgba(0, 191, 255, 0.4)';
+                      }}
+                    >
+                      Change Service
+                    </button>
                   </div>
                 </div>
 
