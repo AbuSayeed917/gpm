@@ -30,7 +30,12 @@ jobs:
         run: npm install --legacy-peer-deps
       
       - name: Build application
-        run: npm run build
+        env:
+          GENERATE_SOURCEMAP: false
+        run: |
+          npm run build
+          find build -name "*.map" -delete
+          find build -name "*.LICENSE.txt" -delete
       
       - name: Build And Deploy
         id: builddeploy
