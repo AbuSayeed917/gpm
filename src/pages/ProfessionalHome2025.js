@@ -74,6 +74,23 @@ const ProfessionalHome2025 = () => {
         will-change: transform;
       }
       
+      @keyframes wave {
+        0%, 100% { transform: rotate(-5deg) scale(1); }
+        25% { transform: rotate(-8deg) scale(1.05); }
+        50% { transform: rotate(-2deg) scale(1.1); }
+        75% { transform: rotate(-6deg) scale(1.05); }
+      }
+      
+      .waving-flag {
+        animation: wave 2s ease-in-out infinite;
+        transform-origin: left center;
+        display: inline-block;
+      }
+      
+      .waving-flag:hover {
+        animation-duration: 0.8s;
+      }
+      
       @media (max-width: 768px) {
         .hero-title { font-size: clamp(26px, 6vw, 36px) !important; }
         .hero-subtitle { font-size: 18px !important; }
@@ -1538,10 +1555,13 @@ const ProfessionalHome2025 = () => {
 
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: '16px',
-                textAlign: 'center',
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '20px',
+                maxWidth: '1000px',
+                margin: '0 auto',
               }}
             >
               {[
@@ -1562,104 +1582,78 @@ const ProfessionalHome2025 = () => {
               ].map((country, index) => (
                 <div
                   key={index}
-                  className='country-card-container'
                   style={{
-                    perspective: '1200px',
-                    height: '80px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '8px',
                     cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   }}
-                  onMouseEnter={() => handleCardHover(index, true, setFlippedCountries)}
-                  onMouseLeave={() => handleCardHover(index, false, setFlippedCountries)}
+                  onMouseEnter={(e) => {
+                    const flag = e.currentTarget.querySelector('.waving-flag');
+                    if (flag) {
+                      flag.style.animationDuration = '0.8s';
+                      flag.style.transform = 'scale(1.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    const flag = e.currentTarget.querySelector('.waving-flag');
+                    if (flag) {
+                      flag.style.animationDuration = '2s';
+                      flag.style.transform = 'scale(1)';
+                    }
+                  }}
                 >
                   <div
+                    className='waving-flag'
                     style={{
-                      position: 'relative',
-                      width: '100%',
-                      height: '100%',
-                      transformStyle: 'preserve-3d',
-                      transition: 'transform 0.9s cubic-bezier(0.23, 1, 0.32, 1)',
-                      transform: flippedCountries[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                      willChange: 'transform',
-                      transformOrigin: 'center center',
+                      fontSize: '64px',
+                      lineHeight: '1',
+                      filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2))',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      animationDelay: `${index * 0.1}s`,
                     }}
                   >
-                    {/* Front of card - Country name */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        transform: 'translateZ(0)',
-                        WebkitTransform: 'translateZ(0)',
-                        padding: '12px 16px',
-                        borderRadius: '12px',
-                        background:
-                          'linear-gradient(135deg, rgba(0, 122, 255, 0.08) 0%, rgba(88, 86, 214, 0.08) 100%)',
-                        border: '1px solid rgba(0, 122, 255, 0.15)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '15px',
-                        color: '#1a237e',
-                        fontWeight: '500',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
-                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
-                        willChange: 'transform',
-                      }}
-                    >
-                      {country.name}
-                    </div>
-
-                    {/* Back of card - Country flag */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        transform: 'rotateY(180deg) translateZ(0)',
-                        WebkitTransform: 'rotateY(180deg) translateZ(0)',
-                        padding: '12px 16px',
-                        borderRadius: '12px',
-                        background:
-                          'linear-gradient(135deg, rgba(255, 149, 0, 0.12) 0%, rgba(255, 107, 53, 0.12) 100%)',
-                        border: '1px solid rgba(255, 149, 0, 0.2)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '36px',
-                        boxShadow: '0 4px 16px rgba(255, 149, 0, 0.15)',
-                        willChange: 'transform',
-                      }}
-                    >
-                      {country.flag}
-                    </div>
+                    {country.flag}
                   </div>
+                  <span
+                    style={{
+                      fontSize: '13px',
+                      fontWeight: '500',
+                      color: '#1a237e',
+                      textAlign: 'center',
+                      fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+                      maxWidth: '90px',
+                      lineHeight: '1.2',
+                      opacity: 0.8,
+                    }}
+                  >
+                    {country.name}
+                  </span>
                 </div>
               ))}
-              <div
-                style={{
-                  padding: '12px 16px',
-                  borderRadius: '12px',
-                  background:
-                    'linear-gradient(135deg, rgba(255, 149, 0, 0.08) 0%, rgba(255, 59, 48, 0.08) 100%)',
-                  border: '1px solid rgba(255, 149, 0, 0.15)',
-                  fontSize: '15px',
-                  color: '#1a237e',
-                  fontWeight: '500',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
-                  fontStyle: 'italic',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '80px',
-                }}
-              >
-                ...and more
-              </div>
+            </div>
+            
+            <div
+              style={{
+                marginTop: '32px',
+                padding: '16px 24px',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(255, 149, 0, 0.08) 0%, rgba(255, 59, 48, 0.08) 100%)',
+                border: '1px solid rgba(255, 149, 0, 0.15)',
+                fontSize: '16px',
+                color: '#1a237e',
+                fontWeight: '500',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                fontStyle: 'italic',
+                textAlign: 'center',
+                maxWidth: '300px',
+                margin: '32px auto 0',
+              }}
+            >
+              ...and expanding globally
             </div>
           </div>
         </div>
