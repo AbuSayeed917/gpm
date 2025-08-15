@@ -1,5 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Fab, Dialog, DialogTitle, DialogContent, DialogActions, Button, Switch, FormControlLabel, Slider, Typography } from '@mui/material';
+import {
+  Box,
+  Fab,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  Switch,
+  FormControlLabel,
+  Slider,
+  Typography,
+} from '@mui/material';
 import { Accessibility, Contrast, TextIncrease, Hearing, VisibilityOff } from '@mui/icons-material';
 
 const AccessibilityEnhancer = () => {
@@ -10,13 +22,13 @@ const AccessibilityEnhancer = () => {
     largeText: false,
     focusVisible: true,
     screenReaderOptimized: false,
-    fontSize: 16
+    fontSize: 16,
   });
 
   // Apply accessibility preferences
   useEffect(() => {
     const root = document.documentElement;
-    
+
     // High contrast mode
     if (preferences.highContrast) {
       root.style.setProperty('--color-bg-primary', '#ffffff');
@@ -74,7 +86,6 @@ const AccessibilityEnhancer = () => {
 
     // Font size adjustment
     root.style.setProperty('--base-font-size', `${preferences.fontSize}px`);
-
   }, [preferences]);
 
   // Keyboard navigation enhancement
@@ -188,16 +199,19 @@ const AccessibilityEnhancer = () => {
   }, [preferences.focusVisible, preferences.highContrast]);
 
   const handlePreferenceChange = (key, value) => {
-    setPreferences(prev => ({
+    setPreferences((prev) => ({
       ...prev,
-      [key]: value
+      [key]: value,
     }));
 
     // Save to localStorage
-    localStorage.setItem('accessibilityPreferences', JSON.stringify({
-      ...preferences,
-      [key]: value
-    }));
+    localStorage.setItem(
+      'accessibilityPreferences',
+      JSON.stringify({
+        ...preferences,
+        [key]: value,
+      })
+    );
 
     // Announce change to screen readers
     const announcement = document.createElement('div');
@@ -219,12 +233,12 @@ const AccessibilityEnhancer = () => {
     // Detect system preferences
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const prefersHighContrast = window.matchMedia('(prefers-contrast: high)').matches;
-    
+
     if (prefersReducedMotion || prefersHighContrast) {
-      setPreferences(prev => ({
+      setPreferences((prev) => ({
         ...prev,
         reducedMotion: prefersReducedMotion,
-        highContrast: prefersHighContrast
+        highContrast: prefersHighContrast,
       }));
     }
   }, []);
@@ -233,8 +247,8 @@ const AccessibilityEnhancer = () => {
     <>
       {/* Skip to content link */}
       <a
-        href="#main-content"
-        className="skip-to-content sr-only focus:not-sr-only"
+        href='#main-content'
+        className='skip-to-content sr-only focus:not-sr-only'
         style={{
           position: 'absolute',
           top: '-40px',
@@ -245,7 +259,7 @@ const AccessibilityEnhancer = () => {
           textDecoration: 'none',
           borderRadius: '4px',
           zIndex: 9999,
-          transition: 'top 0.3s ease'
+          transition: 'top 0.3s ease',
         }}
         onFocus={(e) => {
           e.target.style.top = '6px';
@@ -259,8 +273,8 @@ const AccessibilityEnhancer = () => {
 
       {/* Accessibility Settings FAB */}
       <Fab
-        color="primary"
-        aria-label="Open accessibility settings"
+        color='primary'
+        aria-label='Open accessibility settings'
         onClick={() => setOpen(true)}
         sx={{
           position: 'fixed',
@@ -273,12 +287,12 @@ const AccessibilityEnhancer = () => {
           color: 'var(--color-blue-600)',
           '&:hover': {
             transform: 'scale(1.1)',
-            boxShadow: 'var(--glass-shadow-lg)'
+            boxShadow: 'var(--glass-shadow-lg)',
           },
           '&:focus': {
             outline: '3px solid var(--color-blue-500)',
-            outlineOffset: '2px'
-          }
+            outlineOffset: '2px',
+          },
         }}
       >
         <Accessibility />
@@ -288,21 +302,22 @@ const AccessibilityEnhancer = () => {
       <Dialog
         open={open}
         onClose={() => setOpen(false)}
-        maxWidth="md"
+        maxWidth='md'
         fullWidth
-        aria-labelledby="accessibility-dialog-title"
-        aria-describedby="accessibility-dialog-description"
+        aria-labelledby='accessibility-dialog-title'
+        aria-describedby='accessibility-dialog-description'
       >
-        <DialogTitle id="accessibility-dialog-title">
-          <Box display="flex" alignItems="center" gap={1}>
+        <DialogTitle id='accessibility-dialog-title'>
+          <Box display='flex' alignItems='center' gap={1}>
             <Accessibility />
             Accessibility Settings
           </Box>
         </DialogTitle>
-        
-        <DialogContent id="accessibility-dialog-description">
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-            Customize your experience with these accessibility options. Changes are saved automatically.
+
+        <DialogContent id='accessibility-dialog-description'>
+          <Typography variant='body2' color='text.secondary' sx={{ mb: 3 }}>
+            Customize your experience with these accessibility options. Changes are saved
+            automatically.
           </Typography>
 
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
@@ -312,16 +327,20 @@ const AccessibilityEnhancer = () => {
                 <Switch
                   checked={preferences.highContrast}
                   onChange={(e) => handlePreferenceChange('highContrast', e.target.checked)}
-                  aria-describedby="high-contrast-description"
+                  aria-describedby='high-contrast-description'
                 />
               }
               label={
                 <Box>
-                  <Box display="flex" alignItems="center" gap={1}>
-                    <Contrast fontSize="small" />
+                  <Box display='flex' alignItems='center' gap={1}>
+                    <Contrast fontSize='small' />
                     High Contrast Mode
                   </Box>
-                  <Typography variant="caption" color="text.secondary" id="high-contrast-description">
+                  <Typography
+                    variant='caption'
+                    color='text.secondary'
+                    id='high-contrast-description'
+                  >
                     Increases contrast between text and background for better visibility
                   </Typography>
                 </Box>
@@ -334,16 +353,20 @@ const AccessibilityEnhancer = () => {
                 <Switch
                   checked={preferences.reducedMotion}
                   onChange={(e) => handlePreferenceChange('reducedMotion', e.target.checked)}
-                  aria-describedby="reduced-motion-description"
+                  aria-describedby='reduced-motion-description'
                 />
               }
               label={
                 <Box>
-                  <Box display="flex" alignItems="center" gap={1}>
-                    <VisibilityOff fontSize="small" />
+                  <Box display='flex' alignItems='center' gap={1}>
+                    <VisibilityOff fontSize='small' />
                     Reduced Motion
                   </Box>
-                  <Typography variant="caption" color="text.secondary" id="reduced-motion-description">
+                  <Typography
+                    variant='caption'
+                    color='text.secondary'
+                    id='reduced-motion-description'
+                  >
                     Reduces or removes animations and transitions
                   </Typography>
                 </Box>
@@ -356,16 +379,16 @@ const AccessibilityEnhancer = () => {
                 <Switch
                   checked={preferences.largeText}
                   onChange={(e) => handlePreferenceChange('largeText', e.target.checked)}
-                  aria-describedby="large-text-description"
+                  aria-describedby='large-text-description'
                 />
               }
               label={
                 <Box>
-                  <Box display="flex" alignItems="center" gap={1}>
-                    <TextIncrease fontSize="small" />
+                  <Box display='flex' alignItems='center' gap={1}>
+                    <TextIncrease fontSize='small' />
                     Large Text
                   </Box>
-                  <Typography variant="caption" color="text.secondary" id="large-text-description">
+                  <Typography variant='caption' color='text.secondary' id='large-text-description'>
                     Increases text size for better readability
                   </Typography>
                 </Box>
@@ -378,13 +401,18 @@ const AccessibilityEnhancer = () => {
                 <Switch
                   checked={preferences.focusVisible}
                   onChange={(e) => handlePreferenceChange('focusVisible', e.target.checked)}
-                  aria-describedby="focus-visible-description"
+                  aria-describedby='focus-visible-description'
                 />
               }
               label={
                 <Box>
                   Enhanced Focus Indicators
-                  <Typography variant="caption" color="text.secondary" id="focus-visible-description" display="block">
+                  <Typography
+                    variant='caption'
+                    color='text.secondary'
+                    id='focus-visible-description'
+                    display='block'
+                  >
                     Makes keyboard focus more visible (WCAG 2.2 AA compliant)
                   </Typography>
                 </Box>
@@ -396,17 +424,23 @@ const AccessibilityEnhancer = () => {
               control={
                 <Switch
                   checked={preferences.screenReaderOptimized}
-                  onChange={(e) => handlePreferenceChange('screenReaderOptimized', e.target.checked)}
-                  aria-describedby="screen-reader-description"
+                  onChange={(e) =>
+                    handlePreferenceChange('screenReaderOptimized', e.target.checked)
+                  }
+                  aria-describedby='screen-reader-description'
                 />
               }
               label={
                 <Box>
-                  <Box display="flex" alignItems="center" gap={1}>
-                    <Hearing fontSize="small" />
+                  <Box display='flex' alignItems='center' gap={1}>
+                    <Hearing fontSize='small' />
                     Screen Reader Optimized
                   </Box>
-                  <Typography variant="caption" color="text.secondary" id="screen-reader-description">
+                  <Typography
+                    variant='caption'
+                    color='text.secondary'
+                    id='screen-reader-description'
+                  >
                     Optimizes the interface for screen readers
                   </Typography>
                 </Box>
@@ -415,9 +449,7 @@ const AccessibilityEnhancer = () => {
 
             {/* Font Size Slider */}
             <Box>
-              <Typography gutterBottom>
-                Font Size: {preferences.fontSize}px
-              </Typography>
+              <Typography gutterBottom>Font Size: {preferences.fontSize}px</Typography>
               <Slider
                 value={preferences.fontSize}
                 onChange={(_, value) => handlePreferenceChange('fontSize', value)}
@@ -428,9 +460,9 @@ const AccessibilityEnhancer = () => {
                   { value: 12, label: '12px' },
                   { value: 16, label: '16px' },
                   { value: 20, label: '20px' },
-                  { value: 24, label: '24px' }
+                  { value: 24, label: '24px' },
                 ]}
-                aria-label="Font size adjustment"
+                aria-label='Font size adjustment'
               />
             </Box>
           </Box>

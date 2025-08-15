@@ -73,38 +73,38 @@
   .horizontal-card-container {
     gap: 24px;
   }
-  
+
   .horizontal-card-row {
     flex-direction: column !important;
     gap: 20px;
     text-align: center;
   }
-  
+
   .horizontal-card-row.reverse {
     flex-direction: column !important;
   }
-  
+
   .step-number-circle {
     width: 64px;
     height: 64px;
     order: -1;
   }
-  
+
   .horizontal-card-content {
     padding: 24px;
     width: 100%;
   }
-  
+
   .card-header {
     flex-direction: column;
     align-items: flex-start !important;
     gap: 12px;
   }
-  
+
   .card-header h3 {
     font-size: 1.25rem !important;
   }
-  
+
   .progress-container {
     margin-top: 16px !important;
   }
@@ -115,24 +115,24 @@
     gap: 20px;
     padding: 0 16px;
   }
-  
+
   .horizontal-card-content {
     padding: 20px 16px;
   }
-  
+
   .step-number-circle {
     width: 56px;
     height: 56px;
   }
-  
+
   .card-header h3 {
     font-size: 1.125rem !important;
   }
-  
+
   .card-description {
     font-size: 0.875rem !important;
   }
-  
+
   .duration-badge {
     font-size: 10px !important;
     padding: 4px 12px !important;
@@ -184,7 +184,7 @@
   .progress-fill {
     transition: none;
   }
-  
+
   .slide-in-left,
   .slide-in-right {
     animation: none;

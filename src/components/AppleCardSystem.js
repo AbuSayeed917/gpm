@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
+import {
   ArrowForward,
   Business,
   CorporateFare,
@@ -14,7 +14,7 @@ import {
   Assessment,
   Settings,
   Cloud,
-  Analytics
+  Analytics,
 } from '@mui/icons-material';
 
 // Apple Flip Card with stunning 3D animations
@@ -35,21 +35,21 @@ export const AppleFlipCard = ({
         width: '100%',
         height: '100%',
         minHeight: '400px',
-        ...style
+        ...style,
       }}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
       {...props}
     >
       <motion.div
-        className="apple-flip-card-inner"
+        className='apple-flip-card-inner'
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
         style={{
           position: 'relative',
           width: '100%',
           height: '100%',
-          transformStyle: 'preserve-3d'
+          transformStyle: 'preserve-3d',
         }}
       >
         {/* Front Side */}
@@ -60,7 +60,7 @@ export const AppleFlipCard = ({
             height: '100%',
             backfaceVisibility: 'hidden',
             borderRadius: '20px',
-            overflow: 'hidden'
+            overflow: 'hidden',
           }}
         >
           {frontContent}
@@ -75,7 +75,7 @@ export const AppleFlipCard = ({
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
             borderRadius: '20px',
-            overflow: 'hidden'
+            overflow: 'hidden',
           }}
         >
           {backContent}
@@ -107,34 +107,34 @@ export const AppleCard = ({
   const sizeStyles = {
     compact: {
       minHeight: '280px',
-      padding: '24px'
+      padding: '24px',
     },
     default: {
       minHeight: '360px',
-      padding: '32px'
+      padding: '32px',
     },
     large: {
       minHeight: '440px',
-      padding: '40px'
-    }
+      padding: '40px',
+    },
   };
 
   const variantStyles = {
     glass: {
       background: 'linear-gradient(135deg, #1976d2 0%, #1565c0 100%)',
       border: 'none',
-      color: '#FFFFFF'
+      color: '#FFFFFF',
     },
     solid: {
       background: 'linear-gradient(135deg, #1976d2 0%, #1565c0 100%)',
       border: 'none',
-      color: '#FFFFFF'
+      color: '#FFFFFF',
     },
     gradient: {
       background: gradient || 'linear-gradient(135deg, #1976d2 0%, #1565c0 100%)',
       border: 'none',
-      color: '#FFFFFF'
-    }
+      color: '#FFFFFF',
+    },
   };
 
   return (
@@ -149,13 +149,13 @@ export const AppleCard = ({
         boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
         ...variantStyles[variant],
         ...sizeStyles[size],
-        ...style
+        ...style,
       }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{
         y: -4,
-        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)'
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
       }}
       transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
       {...props}
@@ -167,53 +167,61 @@ export const AppleCard = ({
           color: '#FFFFFF',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
         }}
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.15 }}
       >
-        {React.cloneElement(icon, { sx: { fontSize: size === 'compact' ? 28 : size === 'large' ? 40 : 32, color: '#FFFFFF' } })}
+        {React.cloneElement(icon, {
+          sx: { fontSize: size === 'compact' ? 28 : size === 'large' ? 40 : 32, color: '#FFFFFF' },
+        })}
       </motion.div>
 
       {/* Content */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         {/* Title */}
-        <h3 style={{
-          fontSize: size === 'compact' ? '18px' : size === 'large' ? '24px' : '20px',
-          fontWeight: '600',
-          color: '#FFFFFF',
-          marginBottom: '8px',
-          fontFamily: 'Roboto, "Helvetica Neue", Arial, sans-serif',
-          lineHeight: '1.25',
-          letterSpacing: '0.0125em'
-        }}>
+        <h3
+          style={{
+            fontSize: size === 'compact' ? '18px' : size === 'large' ? '24px' : '20px',
+            fontWeight: '600',
+            color: '#FFFFFF',
+            marginBottom: '8px',
+            fontFamily: 'Roboto, "Helvetica Neue", Arial, sans-serif',
+            lineHeight: '1.25',
+            letterSpacing: '0.0125em',
+          }}
+        >
           {title}
         </h3>
 
         {/* Subtitle */}
         {subtitle && (
-          <p style={{
-            fontSize: '14px',
-            color: 'rgba(255, 255, 255, 0.87)',
-            fontWeight: '400',
-            marginBottom: '16px',
-            fontFamily: 'Roboto, "Helvetica Neue", Arial, sans-serif',
-            lineHeight: '1.4'
-          }}>
+          <p
+            style={{
+              fontSize: '14px',
+              color: 'rgba(255, 255, 255, 0.87)',
+              fontWeight: '400',
+              marginBottom: '16px',
+              fontFamily: 'Roboto, "Helvetica Neue", Arial, sans-serif',
+              lineHeight: '1.4',
+            }}
+          >
             {subtitle}
           </p>
         )}
 
         {/* Description */}
         {description && (
-          <p style={{
-            fontSize: '14px',
-            lineHeight: '1.5',
-            color: 'rgba(255, 255, 255, 0.87)',
-            marginBottom: '24px',
-            flex: 1,
-            fontFamily: 'Roboto, "Helvetica Neue", Arial, sans-serif'
-          }}>
+          <p
+            style={{
+              fontSize: '14px',
+              lineHeight: '1.5',
+              color: 'rgba(255, 255, 255, 0.87)',
+              marginBottom: '24px',
+              flex: 1,
+              fontFamily: 'Roboto, "Helvetica Neue", Arial, sans-serif',
+            }}
+          >
             {description}
           </p>
         )}
@@ -221,11 +229,13 @@ export const AppleCard = ({
         {/* Features */}
         {features.length > 0 && (
           <div style={{ marginBottom: '24px' }}>
-            <div style={{ 
-              display: 'flex', 
-              flexDirection: 'column',
-              gap: '8px'
-            }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+              }}
+            >
               {features.slice(0, 4).map((feature, index) => (
                 <motion.div
                   key={index}
@@ -236,13 +246,20 @@ export const AppleCard = ({
                     fontSize: '13px',
                     color: 'rgba(255, 255, 255, 0.87)',
                     fontFamily: 'Roboto, "Helvetica Neue", Arial, sans-serif',
-                    lineHeight: '1.4'
+                    lineHeight: '1.4',
                   }}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  <CheckCircle sx={{ fontSize: 14, color: 'rgba(255, 255, 255, 0.7)', marginTop: '2px', flexShrink: 0 }} />
+                  <CheckCircle
+                    sx={{
+                      fontSize: 14,
+                      color: 'rgba(255, 255, 255, 0.7)',
+                      marginTop: '2px',
+                      flexShrink: 0,
+                    }}
+                  />
                   <span>{feature}</span>
                 </motion.div>
               ))}
@@ -251,11 +268,13 @@ export const AppleCard = ({
         )}
 
         {/* Actions */}
-        <div style={{
-          display: 'flex',
-          gap: '12px',
-          marginTop: 'auto'
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: '12px',
+            marginTop: 'auto',
+          }}
+        >
           {primaryAction && (
             <motion.button
               style={{
@@ -273,11 +292,11 @@ export const AppleCard = ({
                 justifyContent: 'center',
                 gap: '8px',
                 fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)'
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)',
               }}
               whileHover={{
                 scale: 1.02,
-                boxShadow: '0 6px 24px rgba(0, 0, 0, 0.4)'
+                boxShadow: '0 6px 24px rgba(0, 0, 0, 0.4)',
               }}
               whileTap={{ scale: 0.98 }}
               onClick={primaryAction.onClick}
@@ -302,11 +321,11 @@ export const AppleCard = ({
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
               }}
               whileHover={{
                 background: 'rgba(255, 255, 255, 0.25)',
-                scale: 1.05
+                scale: 1.05,
               }}
               whileTap={{ scale: 0.95 }}
               onClick={secondaryAction.onClick}
@@ -321,8 +340,8 @@ export const AppleCard = ({
 };
 
 // Grid container for consistent card layouts
-export const AppleCardGrid = ({ 
-  children, 
+export const AppleCardGrid = ({
+  children,
   columns = 'auto-fit',
   minWidth = '320px',
   gap = '24px',
@@ -335,12 +354,13 @@ export const AppleCardGrid = ({
       className={`apple-card-grid ${className}`}
       style={{
         display: 'grid',
-        gridTemplateColumns: columns === 'auto-fit' 
-          ? `repeat(auto-fit, minmax(${minWidth}, 1fr))`
-          : `repeat(${columns}, 1fr)`,
+        gridTemplateColumns:
+          columns === 'auto-fit'
+            ? `repeat(auto-fit, minmax(${minWidth}, 1fr))`
+            : `repeat(${columns}, 1fr)`,
         gap: gap,
         alignItems: 'stretch',
-        ...style
+        ...style,
       }}
       {...props}
     >
@@ -350,29 +370,29 @@ export const AppleCardGrid = ({
 };
 
 // Service Card specifically designed for services
-export const AppleServiceCard = ({ 
-  service, 
+export const AppleServiceCard = ({
+  service,
   size = 'default',
   onLearnMore,
   onGetQuote,
-  ...props 
+  ...props
 }) => {
   const iconMap = {
-    'sme': <Business />,
-    'enterprise': <CorporateFare />,
-    'consultancy': <Groups />
+    sme: <Business />,
+    enterprise: <CorporateFare />,
+    consultancy: <Groups />,
   };
 
   const colorMap = {
-    'sme': '#007AFF',
-    'enterprise': '#FF3B30', 
-    'consultancy': '#30D158'
+    sme: '#007AFF',
+    enterprise: '#FF3B30',
+    consultancy: '#30D158',
   };
 
   const gradientMap = {
-    'sme': 'linear-gradient(135deg, #007AFF 0%, #5856D6 100%)',
-    'enterprise': 'linear-gradient(135deg, #FF3B30 0%, #FF9500 100%)',
-    'consultancy': 'linear-gradient(135deg, #30D158 0%, #32D74B 100%)'
+    sme: 'linear-gradient(135deg, #007AFF 0%, #5856D6 100%)',
+    enterprise: 'linear-gradient(135deg, #FF3B30 0%, #FF9500 100%)',
+    consultancy: 'linear-gradient(135deg, #30D158 0%, #32D74B 100%)',
   };
 
   return (
@@ -385,14 +405,14 @@ export const AppleServiceCard = ({
       gradient={gradientMap[service.id]}
       features={service.features || []}
       size={size}
-      variant="glass"
+      variant='glass'
       primaryAction={{
         label: 'Learn More',
-        onClick: () => onLearnMore?.(service)
+        onClick: () => onLearnMore?.(service),
       }}
       secondaryAction={{
         icon: <ArrowForward sx={{ fontSize: 18 }} />,
-        onClick: () => onGetQuote?.(service)
+        onClick: () => onGetQuote?.(service),
       }}
       {...props}
     />
@@ -400,18 +420,14 @@ export const AppleServiceCard = ({
 };
 
 // Feature Card for showcasing features
-export const AppleFeatureCard = ({ 
-  feature, 
-  size = 'compact',
-  ...props 
-}) => {
+export const AppleFeatureCard = ({ feature, size = 'compact', ...props }) => {
   const iconMap = {
-    'security': <Security />,
-    'speed': <Speed />,
-    'support': <Support />,
-    'analytics': <Analytics />,
-    'cloud': <Cloud />,
-    'integration': <Settings />
+    security: <Security />,
+    speed: <Speed />,
+    support: <Support />,
+    analytics: <Analytics />,
+    cloud: <Cloud />,
+    integration: <Settings />,
   };
 
   return (
@@ -421,36 +437,32 @@ export const AppleFeatureCard = ({
       icon={iconMap[feature.icon] || <Star />}
       iconColor={feature.color || '#007AFF'}
       size={size}
-      variant="glass"
+      variant='glass'
       {...props}
     />
   );
 };
 
 // Success Story Card
-export const AppleSuccessCard = ({ 
-  story, 
-  size = 'default',
-  ...props 
-}) => {
+export const AppleSuccessCard = ({ story, size = 'default', ...props }) => {
   return (
     <AppleCard
       title={story.company}
       subtitle={story.industry}
       description={story.challenge}
       icon={<TrendingUp />}
-      iconColor="#30D158"
-      gradient="linear-gradient(135deg, #30D158 0%, #32D74B 100%)"
+      iconColor='#30D158'
+      gradient='linear-gradient(135deg, #30D158 0%, #32D74B 100%)'
       features={[
         `Saved ${story.timeSaved || '60%'} time`,
         `Reduced errors by ${story.errorReduction || '95%'}`,
-        `${story.employeeCount || '500+'} employees migrated`
+        `${story.employeeCount || '500+'} employees migrated`,
       ]}
       size={size}
-      variant="gradient"
+      variant='gradient'
       primaryAction={{
         label: 'Read Story',
-        onClick: () => console.log('Read story:', story.company)
+        onClick: () => console.log('Read story:', story.company),
       }}
       {...props}
     />
@@ -458,14 +470,14 @@ export const AppleSuccessCard = ({
 };
 
 // Statistics Card
-export const AppleStatsCard = ({ 
-  title, 
-  value, 
-  subtitle, 
-  icon, 
+export const AppleStatsCard = ({
+  title,
+  value,
+  subtitle,
+  icon,
   color = '#007AFF',
   size = 'compact',
-  ...props 
+  ...props
 }) => {
   return (
     <AppleCard
@@ -475,11 +487,11 @@ export const AppleStatsCard = ({
       icon={icon || <Assessment />}
       iconColor={color}
       size={size}
-      variant="glass"
+      variant='glass'
       {...props}
       style={{
         textAlign: 'center',
-        ...props.style
+        ...props.style,
       }}
     />
   );
@@ -492,7 +504,7 @@ const AppleCardComponents = {
   AppleServiceCard,
   AppleFeatureCard,
   AppleSuccessCard,
-  AppleStatsCard
+  AppleStatsCard,
 };
 
 export default AppleCardComponents;

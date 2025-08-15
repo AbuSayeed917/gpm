@@ -5,14 +5,14 @@ import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-mo
 const BackgroundElement = ({ element, yTransform, xTransform }) => {
   const bgY = useTransform(yTransform, [0, 1], [0, element.speed || 1]);
   const bgX = useTransform(xTransform, [0, 1], [0, element.speed || 1]);
-  
+
   return (
     <motion.div
       style={{
         position: 'absolute',
         y: bgY,
         x: bgX,
-        ...element.style
+        ...element.style,
       }}
       className={element.className || ''}
     >
@@ -24,11 +24,11 @@ const BackgroundElement = ({ element, yTransform, xTransform }) => {
 // Helper component for layer elements
 const LayerElement = ({ layer, index, scrollYProgress }) => {
   const layerY = useTransform(
-    scrollYProgress, 
-    [0, 1], 
+    scrollYProgress,
+    [0, 1],
     [`${(layer.speed || 1) * -50}%`, `${(layer.speed || 1) * 50}%`]
   );
-  
+
   return (
     <motion.div
       style={{
@@ -36,7 +36,7 @@ const LayerElement = ({ layer, index, scrollYProgress }) => {
         inset: layer.absolute !== false ? 0 : 'auto',
         y: layerY,
         zIndex: layer.zIndex || index,
-        ...layer.style
+        ...layer.style,
       }}
       className={layer.className || ''}
     >
@@ -45,13 +45,13 @@ const LayerElement = ({ layer, index, scrollYProgress }) => {
   );
 };
 
-const ParallaxSection = ({ 
-  children, 
-  speed = 0.5, 
+const ParallaxSection = ({
+  children,
+  speed = 0.5,
   direction = 'vertical',
   className = '',
   backgroundElements = [],
-  threshold = 0.1 
+  threshold = 0.1,
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { threshold, once: false });
@@ -77,21 +77,17 @@ const ParallaxSection = ({
 
   // Advanced parallax transforms with bidirectional control
   const elementHeight = ref.current?.offsetHeight || 0;
-  
+
   const y = useTransform(
     scrollY,
     [elementTop - clientHeight, elementTop + elementHeight],
-    direction === 'vertical' 
-      ? [`-${speed * 100}%`, `${speed * 100}%`]
-      : ['0%', '0%']
+    direction === 'vertical' ? [`-${speed * 100}%`, `${speed * 100}%`] : ['0%', '0%']
   );
 
   const x = useTransform(
     scrollY,
     [elementTop - clientHeight, elementTop + elementHeight],
-    direction === 'horizontal' 
-      ? [`-${speed * 100}%`, `${speed * 100}%`]
-      : ['0%', '0%']
+    direction === 'horizontal' ? [`-${speed * 100}%`, `${speed * 100}%`] : ['0%', '0%']
   );
 
   const opacity = useTransform(
@@ -100,7 +96,7 @@ const ParallaxSection = ({
       elementTop - clientHeight,
       elementTop - clientHeight * 0.5,
       elementTop + elementHeight * 0.5,
-      elementTop + elementHeight
+      elementTop + elementHeight,
     ],
     [0, 1, 1, 0.3]
   );
@@ -125,7 +121,7 @@ const ParallaxSection = ({
       style={{
         opacity: opacitySpring,
         scale: scaleSpring,
-        willChange: 'transform, opacity'
+        willChange: 'transform, opacity',
       }}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
@@ -133,21 +129,16 @@ const ParallaxSection = ({
     >
       {/* Background parallax elements */}
       {backgroundElements.map((element, index) => (
-        <BackgroundElement
-          key={index}
-          element={element}
-          yTransform={y}
-          xTransform={x}
-        />
+        <BackgroundElement key={index} element={element} yTransform={y} xTransform={x} />
       ))}
 
       {/* Foreground content */}
       <motion.div
         style={{
           y: ySpring,
-          x: xSpring
+          x: xSpring,
         }}
-        className="parallax-content"
+        className='parallax-content'
       >
         {children}
       </motion.div>
@@ -160,14 +151,14 @@ export const ParallaxContainer = ({ children, className = '' }) => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start'],
   });
 
   return (
     <div ref={containerRef} className={`parallax-container ${className}`}>
       <motion.div
         style={{
-          y: useTransform(scrollYProgress, [0, 1], ['0%', '-10%'])
+          y: useTransform(scrollYProgress, [0, 1], ['0%', '-10%']),
         }}
       >
         {children}
@@ -181,22 +172,17 @@ export const LayeredParallax = ({ layers = [], className = '' }) => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start'],
   });
 
   return (
-    <div 
-      ref={containerRef} 
+    <div
+      ref={containerRef}
       className={`layered-parallax ${className}`}
       style={{ position: 'relative', overflow: 'hidden' }}
     >
       {layers.map((layer, index) => (
-        <LayerElement
-          key={index}
-          layer={layer}
-          index={index}
-          scrollYProgress={scrollYProgress}
-        />
+        <LayerElement key={index} layer={layer} index={index} scrollYProgress={scrollYProgress} />
       ))}
     </div>
   );
@@ -211,14 +197,14 @@ export const MagneticSection = ({ children, magneticForce = 0.1, className = '' 
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!ref.current) return;
-      
+
       const rect = ref.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      
+
       setMousePosition({
         x: (e.clientX - centerX) * magneticForce,
-        y: (e.clientY - centerY) * magneticForce
+        y: (e.clientY - centerY) * magneticForce,
       });
     };
 
@@ -250,16 +236,16 @@ export const MagneticSection = ({ children, magneticForce = 0.1, className = '' 
       className={`magnetic-section ${className}`}
       animate={{
         x: mousePosition.x,
-        y: mousePosition.y
+        y: mousePosition.y,
       }}
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 150,
         damping: 15,
-        mass: 0.5
+        mass: 0.5,
       }}
       style={{
-        cursor: isHovering ? 'pointer' : 'default'
+        cursor: isHovering ? 'pointer' : 'default',
       }}
     >
       {children}

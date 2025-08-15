@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
+import {
   Language,
   Menu as MenuIcon,
   Close as CloseIcon,
   KeyboardArrowDown,
   Phone,
-  Email
+  Email,
 } from '@mui/icons-material';
 
 const ProfessionalNavigation = () => {
@@ -26,7 +26,8 @@ const ProfessionalNavigation = () => {
   // Close mobile menu when screen size changes to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) { // lg breakpoint
+      if (window.innerWidth >= 1024) {
+        // lg breakpoint
         setMobileMenuOpen(false);
         setServicesOpen(false);
         setSuccessStoriesOpen(false);
@@ -51,15 +52,27 @@ const ProfessionalNavigation = () => {
   }, []);
 
   const services = [
-    { name: 'SME Solutions', href: '/services/sme', description: 'Payroll migration for small to medium enterprises' },
-    { name: 'Large Enterprise', href: '/services/large-enterprise', description: 'Complex migrations for large organizations' },
-    { name: 'Expert Consultancy', href: '/services/consultancy', description: 'Strategic guidance and optimization' }
+    {
+      name: 'SME Solutions',
+      href: '/services/sme',
+      description: 'Payroll migration for small to medium enterprises',
+    },
+    {
+      name: 'Large Enterprise',
+      href: '/services/large-enterprise',
+      description: 'Complex migrations for large organizations',
+    },
+    {
+      name: 'Expert Consultancy',
+      href: '/services/consultancy',
+      description: 'Strategic guidance and optimization',
+    },
   ];
 
   const successStories = [
     { name: 'SME Success Stories', href: '/success-stories/sme' },
     { name: 'Enterprise Stories', href: '/success-stories/large-enterprise' },
-    { name: 'Consultancy Results', href: '/success-stories/consultancy' }
+    { name: 'Consultancy Results', href: '/success-stories/consultancy' },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -67,23 +80,23 @@ const ProfessionalNavigation = () => {
   return (
     <>
       {/* Skip to main content link for accessibility */}
-      <a href="#main-content" className="skip-link">
+      <a href='#main-content' className='skip-link'>
         Skip to main content
       </a>
 
-      <nav className="nav" role="navigation" aria-label="Main navigation">
-        <div className="container nav-container">
+      <nav className='nav' role='navigation' aria-label='Main navigation'>
+        <div className='container nav-container'>
           {/* Brand */}
-          <Link to="/" className="nav-brand" aria-label="Global Payroll Migration - Home">
-            <Language aria-hidden="true" />
+          <Link to='/' className='nav-brand' aria-label='Global Payroll Migration - Home'>
+            <Language aria-hidden='true' />
             <span>Global Payroll Migration</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden-mobile">
-            <ul className="nav-menu" role="menubar">
+          <div className='hidden-mobile'>
+            <ul className='nav-menu' role='menubar'>
               {/* Services Dropdown */}
-              <li className="dropdown-container" role="none">
+              <li className='dropdown-container' role='none'>
                 <button
                   className={`nav-link dropdown-trigger ${servicesOpen ? 'active' : ''}`}
                   onClick={() => {
@@ -91,35 +104,31 @@ const ProfessionalNavigation = () => {
                     setSuccessStoriesOpen(false);
                   }}
                   aria-expanded={servicesOpen}
-                  aria-haspopup="true"
-                  role="menuitem"
+                  aria-haspopup='true'
+                  role='menuitem'
                 >
                   Services
-                  <KeyboardArrowDown 
-                    style={{ 
+                  <KeyboardArrowDown
+                    style={{
                       transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 150ms ease'
+                      transition: 'transform 150ms ease',
                     }}
-                    aria-hidden="true"
+                    aria-hidden='true'
                   />
                 </button>
                 {servicesOpen && (
-                  <div 
-                    className="dropdown-menu" 
-                    role="menu"
-                    aria-label="Services menu"
-                  >
+                  <div className='dropdown-menu' role='menu' aria-label='Services menu'>
                     {services.map((service) => (
                       <Link
                         key={service.href}
                         to={service.href}
-                        className="dropdown-item"
-                        role="menuitem"
+                        className='dropdown-item'
+                        role='menuitem'
                         onClick={() => setServicesOpen(false)}
                       >
                         <div>
-                          <div className="dropdown-item-title">{service.name}</div>
-                          <div className="dropdown-item-description">{service.description}</div>
+                          <div className='dropdown-item-title'>{service.name}</div>
+                          <div className='dropdown-item-description'>{service.description}</div>
                         </div>
                       </Link>
                     ))}
@@ -128,7 +137,7 @@ const ProfessionalNavigation = () => {
               </li>
 
               {/* Success Stories Dropdown */}
-              <li className="dropdown-container" role="none">
+              <li className='dropdown-container' role='none'>
                 <button
                   className={`nav-link dropdown-trigger ${successStoriesOpen ? 'active' : ''}`}
                   onClick={() => {
@@ -136,33 +145,29 @@ const ProfessionalNavigation = () => {
                     setServicesOpen(false);
                   }}
                   aria-expanded={successStoriesOpen}
-                  aria-haspopup="true"
-                  role="menuitem"
+                  aria-haspopup='true'
+                  role='menuitem'
                 >
                   Success Stories
-                  <KeyboardArrowDown 
-                    style={{ 
+                  <KeyboardArrowDown
+                    style={{
                       transform: successStoriesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 150ms ease'
+                      transition: 'transform 150ms ease',
                     }}
-                    aria-hidden="true"
+                    aria-hidden='true'
                   />
                 </button>
                 {successStoriesOpen && (
-                  <div 
-                    className="dropdown-menu" 
-                    role="menu"
-                    aria-label="Success Stories menu"
-                  >
+                  <div className='dropdown-menu' role='menu' aria-label='Success Stories menu'>
                     {successStories.map((story) => (
                       <Link
                         key={story.href}
                         to={story.href}
-                        className="dropdown-item"
-                        role="menuitem"
+                        className='dropdown-item'
+                        role='menuitem'
                         onClick={() => setSuccessStoriesOpen(false)}
                       >
-                        <div className="dropdown-item-title">{story.name}</div>
+                        <div className='dropdown-item-title'>{story.name}</div>
                       </Link>
                     ))}
                   </div>
@@ -170,29 +175,29 @@ const ProfessionalNavigation = () => {
               </li>
 
               {/* Static Navigation Items */}
-              <li role="none">
-                <Link 
-                  to="/about" 
+              <li role='none'>
+                <Link
+                  to='/about'
                   className={`nav-link ${isActive('/about') ? 'active' : ''}`}
-                  role="menuitem"
+                  role='menuitem'
                 >
                   About
                 </Link>
               </li>
-              <li role="none">
-                <Link 
-                  to="/faq" 
+              <li role='none'>
+                <Link
+                  to='/faq'
                   className={`nav-link ${isActive('/faq') ? 'active' : ''}`}
-                  role="menuitem"
+                  role='menuitem'
                 >
                   FAQ
                 </Link>
               </li>
-              <li role="none">
-                <Link 
-                  to="/contact" 
+              <li role='none'>
+                <Link
+                  to='/contact'
                   className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
-                  role="menuitem"
+                  role='menuitem'
                 >
                   Contact
                 </Link>
@@ -200,17 +205,17 @@ const ProfessionalNavigation = () => {
             </ul>
 
             {/* CTA Button */}
-            <Link to="/quote" className="btn btn-primary">
+            <Link to='/quote' className='btn btn-primary'>
               Get Free Quote
             </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="nav-toggle hidden-desktop"
+            className='nav-toggle hidden-desktop'
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
-            aria-label="Toggle mobile menu"
+            aria-label='Toggle mobile menu'
           >
             {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -218,31 +223,31 @@ const ProfessionalNavigation = () => {
 
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
-          <div className="mobile-menu" role="menu" aria-label="Mobile navigation">
-            <div className="container">
+          <div className='mobile-menu' role='menu' aria-label='Mobile navigation'>
+            <div className='container'>
               {/* Services Section */}
-              <div className="mobile-menu-section">
+              <div className='mobile-menu-section'>
                 <button
-                  className="mobile-menu-toggle"
+                  className='mobile-menu-toggle'
                   onClick={() => setServicesOpen(!servicesOpen)}
                   aria-expanded={servicesOpen}
                 >
                   Services
-                  <KeyboardArrowDown 
-                    style={{ 
+                  <KeyboardArrowDown
+                    style={{
                       transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 150ms ease'
+                      transition: 'transform 150ms ease',
                     }}
                   />
                 </button>
                 {servicesOpen && (
-                  <div className="mobile-submenu">
+                  <div className='mobile-submenu'>
                     {services.map((service) => (
                       <Link
                         key={service.href}
                         to={service.href}
-                        className="mobile-menu-link"
-                        role="menuitem"
+                        className='mobile-menu-link'
+                        role='menuitem'
                       >
                         {service.name}
                       </Link>
@@ -252,28 +257,28 @@ const ProfessionalNavigation = () => {
               </div>
 
               {/* Success Stories Section */}
-              <div className="mobile-menu-section">
+              <div className='mobile-menu-section'>
                 <button
-                  className="mobile-menu-toggle"
+                  className='mobile-menu-toggle'
                   onClick={() => setSuccessStoriesOpen(!successStoriesOpen)}
                   aria-expanded={successStoriesOpen}
                 >
                   Success Stories
-                  <KeyboardArrowDown 
-                    style={{ 
+                  <KeyboardArrowDown
+                    style={{
                       transform: successStoriesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 150ms ease'
+                      transition: 'transform 150ms ease',
                     }}
                   />
                 </button>
                 {successStoriesOpen && (
-                  <div className="mobile-submenu">
+                  <div className='mobile-submenu'>
                     {successStories.map((story) => (
                       <Link
                         key={story.href}
                         to={story.href}
-                        className="mobile-menu-link"
-                        role="menuitem"
+                        className='mobile-menu-link'
+                        role='menuitem'
                       >
                         {story.name}
                       </Link>
@@ -283,21 +288,27 @@ const ProfessionalNavigation = () => {
               </div>
 
               {/* Static Links */}
-              <Link to="/about" className="mobile-menu-link" role="menuitem">About</Link>
-              <Link to="/faq" className="mobile-menu-link" role="menuitem">FAQ</Link>
-              <Link to="/contact" className="mobile-menu-link" role="menuitem">Contact</Link>
-              
+              <Link to='/about' className='mobile-menu-link' role='menuitem'>
+                About
+              </Link>
+              <Link to='/faq' className='mobile-menu-link' role='menuitem'>
+                FAQ
+              </Link>
+              <Link to='/contact' className='mobile-menu-link' role='menuitem'>
+                Contact
+              </Link>
+
               {/* Mobile CTA */}
-              <div className="mobile-menu-cta">
-                <Link to="/quote" className="btn btn-primary w-full">
+              <div className='mobile-menu-cta'>
+                <Link to='/quote' className='btn btn-primary w-full'>
                   Get Free Quote
                 </Link>
-                <div className="mobile-contact-info">
-                  <a href="tel:XXXX-XXX-XXXX" className="mobile-contact-link">
+                <div className='mobile-contact-info'>
+                  <a href='tel:XXXX-XXX-XXXX' className='mobile-contact-link'>
                     <Phone size={16} />
                     XXXX-XXX-XXXX
                   </a>
-                  <a href="mailto:info@globalpayrollmigration.com" className="mobile-contact-link">
+                  <a href='mailto:info@globalpayrollmigration.com' className='mobile-contact-link'>
                     <Email size={16} />
                     Get in touch
                   </a>

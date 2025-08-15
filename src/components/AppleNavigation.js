@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-
 const AppleNavigation = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -24,7 +23,7 @@ const AppleNavigation = () => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 1024);
     };
-    
+
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
@@ -38,15 +37,39 @@ const AppleNavigation = () => {
   }, [location]);
 
   const servicesItems = [
-    { name: 'SME Solutions', path: '/services/sme', description: 'Specialized solutions for small and medium enterprises' },
-    { name: 'Large Enterprise', path: '/services/large-enterprise', description: 'Comprehensive services for enterprise organizations' },
-    { name: 'Expert Consultancy', path: '/services/consultancy', description: 'Professional guidance and strategic planning' }
+    {
+      name: 'SME Solutions',
+      path: '/services/sme',
+      description: 'Specialized solutions for small and medium enterprises',
+    },
+    {
+      name: 'Large Enterprise',
+      path: '/services/large-enterprise',
+      description: 'Comprehensive services for enterprise organizations',
+    },
+    {
+      name: 'Expert Consultancy',
+      path: '/services/consultancy',
+      description: 'Professional guidance and strategic planning',
+    },
   ];
 
   const successStoriesItems = [
-    { name: 'SME Success Stories', path: '/success-stories/sme', description: 'Real results from small business migrations' },
-    { name: 'Enterprise Stories', path: '/success-stories/large-enterprise', description: 'Large-scale transformation case studies' },
-    { name: 'Consultancy Results', path: '/success-stories/consultancy', description: 'Strategic consulting outcomes' }
+    {
+      name: 'SME Success Stories',
+      path: '/success-stories/sme',
+      description: 'Real results from small business migrations',
+    },
+    {
+      name: 'Enterprise Stories',
+      path: '/success-stories/large-enterprise',
+      description: 'Large-scale transformation case studies',
+    },
+    {
+      name: 'Consultancy Results',
+      path: '/success-stories/consultancy',
+      description: 'Strategic consulting outcomes',
+    },
   ];
 
   const isActiveLink = (path) => location.pathname === path;
@@ -54,7 +77,7 @@ const AppleNavigation = () => {
   return (
     <>
       {/* Apple Navigation Bar */}
-      <nav 
+      <nav
         className={`apple-navigation ${scrolled ? 'apple-navigation-scrolled' : ''}`}
         style={{
           position: 'fixed',
@@ -66,24 +89,24 @@ const AppleNavigation = () => {
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           borderBottom: `0.5px solid ${scrolled ? 'rgba(0, 0, 0, 0.15)' : 'rgba(0, 0, 0, 0.1)'}`,
-          transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
+          transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
         }}
       >
-        <div 
-          className="apple-navigation-content"
+        <div
+          className='apple-navigation-content'
           style={{
             width: '90%',
             margin: '0 auto',
             padding: '16px 24px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
           }}
         >
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="apple-navigation-logo"
+          <Link
+            to='/'
+            className='apple-navigation-logo'
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -92,50 +115,49 @@ const AppleNavigation = () => {
               fontSize: '18px',
               fontWeight: 700,
               color: '#1a237e',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
-              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
+              fontFamily:
+                '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+              textShadow: '0 1px 3px rgba(0,0,0,0.2)',
             }}
           >
-            <img 
-              src="/images/gpm-logo.png"
-              alt="GPM Logo"
-              className="apple-navigation-logo-icon"
+            <img
+              src='/images/gpm-logo.png'
+              alt='GPM Logo'
+              className='apple-navigation-logo-icon'
               style={{
                 width: '48px',
                 height: '48px',
                 objectFit: 'contain',
-                filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))'
+                filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))',
               }}
             />
-            <span className="apple-navigation-logo-text">
-              Global Payroll Migration
-            </span>
+            <span className='apple-navigation-logo-text'>Global Payroll Migration</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div 
-            className="apple-navigation-desktop"
+          <div
+            className='apple-navigation-desktop'
             style={{
               display: !isMobile ? 'flex' : 'none',
               alignItems: 'center',
-              gap: '48px'
+              gap: '48px',
             }}
           >
-            <ul 
-              className="apple-navigation-menu"
+            <ul
+              className='apple-navigation-menu'
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '32px',
                 listStyle: 'none',
                 margin: 0,
-                padding: 0
+                padding: 0,
               }}
             >
               {/* Home Link - First */}
-              <li className="apple-navigation-item">
+              <li className='apple-navigation-item'>
                 <Link
-                  to="/"
+                  to='/'
                   className={`apple-navigation-link ${isActiveLink('/') ? 'apple-navigation-link-active' : ''}`}
                   style={{
                     fontSize: '17px',
@@ -146,8 +168,9 @@ const AppleNavigation = () => {
                     borderRadius: '8px',
                     transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     background: isActiveLink('/') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                    fontFamily:
+                      '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                   }}
                   onMouseEnter={(e) => {
                     if (!isActiveLink('/')) {
@@ -167,8 +190,8 @@ const AppleNavigation = () => {
               </li>
 
               {/* Services Dropdown */}
-              <li 
-                className="apple-navigation-item apple-navigation-dropdown"
+              <li
+                className='apple-navigation-item apple-navigation-dropdown'
                 style={{ position: 'relative' }}
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
@@ -189,23 +212,24 @@ const AppleNavigation = () => {
                     background: 'none',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                    fontFamily:
+                      '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                   }}
                 >
                   Services
-                  <span 
-                    className="apple-navigation-chevron"
+                  <span
+                    className='apple-navigation-chevron'
                     style={{
                       transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
-                      color: '#86868b'
+                      color: '#86868b',
                     }}
                   >
                     ▼
                   </span>
                 </button>
-                
+
                 {/* Services Dropdown Menu */}
                 <div
                   className={`apple-navigation-dropdown-menu ${servicesOpen ? 'apple-navigation-dropdown-menu-open' : ''}`}
@@ -223,15 +247,17 @@ const AppleNavigation = () => {
                     padding: '8px',
                     opacity: servicesOpen ? 1 : 0,
                     visibility: servicesOpen ? 'visible' : 'hidden',
-                    transform: servicesOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-10px)',
-                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)'
+                    transform: servicesOpen
+                      ? 'translateX(-50%) translateY(0)'
+                      : 'translateX(-50%) translateY(-10px)',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                   }}
                 >
                   {servicesItems.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
-                      className="apple-navigation-dropdown-item"
+                      className='apple-navigation-dropdown-item'
                       style={{
                         display: 'block',
                         padding: '12px 16px',
@@ -239,7 +265,7 @@ const AppleNavigation = () => {
                         textDecoration: 'none',
                         color: '#1a237e',
                         transition: 'all 0.2s ease',
-                        marginBottom: '4px'
+                        marginBottom: '4px',
                       }}
                       onMouseEnter={(e) => {
                         e.target.style.background = 'rgba(0, 0, 0, 0.05)';
@@ -248,24 +274,26 @@ const AppleNavigation = () => {
                         e.target.style.background = 'transparent';
                       }}
                     >
-                      <div 
-                        className="apple-navigation-dropdown-item-name"
+                      <div
+                        className='apple-navigation-dropdown-item-name'
                         style={{
                           fontSize: '17px',
                           fontWeight: 500,
                           marginBottom: '2px',
-                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-                          textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                          fontFamily:
+                            '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                         }}
                       >
                         {item.name}
                       </div>
-                      <div 
-                        className="apple-navigation-dropdown-item-description"
+                      <div
+                        className='apple-navigation-dropdown-item-description'
                         style={{
                           fontSize: '14px',
                           color: '#86868b',
-                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                          fontFamily:
+                            '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
                         }}
                       >
                         {item.description}
@@ -276,8 +304,8 @@ const AppleNavigation = () => {
               </li>
 
               {/* Success Stories Dropdown */}
-              <li 
-                className="apple-navigation-item apple-navigation-dropdown"
+              <li
+                className='apple-navigation-item apple-navigation-dropdown'
                 style={{ position: 'relative' }}
                 onMouseEnter={() => setSuccessStoriesOpen(true)}
                 onMouseLeave={() => setSuccessStoriesOpen(false)}
@@ -298,23 +326,24 @@ const AppleNavigation = () => {
                     background: 'none',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                    fontFamily:
+                      '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                   }}
                 >
                   Success Stories
-                  <span 
-                    className="apple-navigation-chevron"
+                  <span
+                    className='apple-navigation-chevron'
                     style={{
                       transform: successStoriesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
-                      color: '#86868b'
+                      color: '#86868b',
                     }}
                   >
                     ▼
                   </span>
                 </button>
-                
+
                 {/* Success Stories Dropdown Menu */}
                 <div
                   className={`apple-navigation-dropdown-menu ${successStoriesOpen ? 'apple-navigation-dropdown-menu-open' : ''}`}
@@ -332,15 +361,17 @@ const AppleNavigation = () => {
                     padding: '8px',
                     opacity: successStoriesOpen ? 1 : 0,
                     visibility: successStoriesOpen ? 'visible' : 'hidden',
-                    transform: successStoriesOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-10px)',
-                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)'
+                    transform: successStoriesOpen
+                      ? 'translateX(-50%) translateY(0)'
+                      : 'translateX(-50%) translateY(-10px)',
+                    transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                   }}
                 >
                   {successStoriesItems.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
-                      className="apple-navigation-dropdown-item"
+                      className='apple-navigation-dropdown-item'
                       style={{
                         display: 'block',
                         padding: '12px 16px',
@@ -348,7 +379,7 @@ const AppleNavigation = () => {
                         textDecoration: 'none',
                         color: '#1a237e',
                         transition: 'all 0.2s ease',
-                        marginBottom: '4px'
+                        marginBottom: '4px',
                       }}
                       onMouseEnter={(e) => {
                         e.target.style.background = 'rgba(0, 0, 0, 0.05)';
@@ -357,24 +388,26 @@ const AppleNavigation = () => {
                         e.target.style.background = 'transparent';
                       }}
                     >
-                      <div 
-                        className="apple-navigation-dropdown-item-name"
+                      <div
+                        className='apple-navigation-dropdown-item-name'
                         style={{
                           fontSize: '17px',
                           fontWeight: 500,
                           marginBottom: '2px',
-                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-                          textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                          fontFamily:
+                            '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                         }}
                       >
                         {item.name}
                       </div>
-                      <div 
-                        className="apple-navigation-dropdown-item-description"
+                      <div
+                        className='apple-navigation-dropdown-item-description'
                         style={{
                           fontSize: '14px',
                           color: '#86868b',
-                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                          fontFamily:
+                            '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
                         }}
                       >
                         {item.description}
@@ -386,9 +419,9 @@ const AppleNavigation = () => {
 
               {/* Direct Links */}
 
-              <li className="apple-navigation-item">
+              <li className='apple-navigation-item'>
                 <Link
-                  to="/about"
+                  to='/about'
                   className={`apple-navigation-link ${isActiveLink('/about') ? 'apple-navigation-link-active' : ''}`}
                   style={{
                     fontSize: '17px',
@@ -399,8 +432,9 @@ const AppleNavigation = () => {
                     borderRadius: '8px',
                     transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     background: isActiveLink('/about') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                    fontFamily:
+                      '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                   }}
                   onMouseEnter={(e) => {
                     if (!isActiveLink('/about')) {
@@ -419,9 +453,9 @@ const AppleNavigation = () => {
                 </Link>
               </li>
 
-              <li className="apple-navigation-item">
+              <li className='apple-navigation-item'>
                 <Link
-                  to="/contact"
+                  to='/contact'
                   className={`apple-navigation-link ${isActiveLink('/contact') ? 'apple-navigation-link-active' : ''}`}
                   style={{
                     fontSize: '17px',
@@ -432,8 +466,9 @@ const AppleNavigation = () => {
                     borderRadius: '8px',
                     transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     background: isActiveLink('/contact') ? 'rgba(0, 122, 255, 0.1)' : 'transparent',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-                    textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                    fontFamily:
+                      '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                   }}
                   onMouseEnter={(e) => {
                     if (!isActiveLink('/contact')) {
@@ -454,10 +489,10 @@ const AppleNavigation = () => {
             </ul>
 
             {/* CTA Button */}
-            <div className="apple-navigation-actions">
+            <div className='apple-navigation-actions'>
               <Link
-                to="/quote"
-                className="apple-navigation-cta"
+                to='/quote'
+                className='apple-navigation-cta'
                 style={{
                   display: 'inline-block',
                   padding: '8px 20px',
@@ -468,9 +503,10 @@ const AppleNavigation = () => {
                   fontSize: '17px',
                   fontWeight: 500,
                   transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
                   position: 'relative',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
                 }}
                 onMouseEnter={(e) => {
                   e.target.style.background = '#0056CC';
@@ -500,23 +536,25 @@ const AppleNavigation = () => {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              padding: 0
+              padding: 0,
             }}
           >
-            <span 
-              className="apple-navigation-mobile-line"
+            <span
+              className='apple-navigation-mobile-line'
               style={{
                 width: '18px',
                 height: '2px',
                 background: '#1d1d1f',
                 borderRadius: '1px',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
-                transform: mobileOpen ? 'rotate(45deg) translateY(6px)' : 'rotate(0deg) translateY(0)',
-                marginBottom: mobileOpen ? 0 : '4px'
+                transform: mobileOpen
+                  ? 'rotate(45deg) translateY(6px)'
+                  : 'rotate(0deg) translateY(0)',
+                marginBottom: mobileOpen ? 0 : '4px',
               }}
             />
-            <span 
-              className="apple-navigation-mobile-line"
+            <span
+              className='apple-navigation-mobile-line'
               style={{
                 width: '18px',
                 height: '2px',
@@ -524,18 +562,20 @@ const AppleNavigation = () => {
                 borderRadius: '1px',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
                 opacity: mobileOpen ? 0 : 1,
-                marginBottom: mobileOpen ? 0 : '4px'
+                marginBottom: mobileOpen ? 0 : '4px',
               }}
             />
-            <span 
-              className="apple-navigation-mobile-line"
+            <span
+              className='apple-navigation-mobile-line'
               style={{
                 width: '18px',
                 height: '2px',
                 background: '#1d1d1f',
                 borderRadius: '1px',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
-                transform: mobileOpen ? 'rotate(-45deg) translateY(-6px)' : 'rotate(0deg) translateY(0)'
+                transform: mobileOpen
+                  ? 'rotate(-45deg) translateY(-6px)'
+                  : 'rotate(0deg) translateY(0)',
               }}
             />
           </button>
@@ -558,32 +598,33 @@ const AppleNavigation = () => {
           transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
           zIndex: 999,
           maxHeight: 'calc(100dvh - 64px)',
-          overflowY: 'auto'
+          overflowY: 'auto',
         }}
       >
-        <div 
-          className="apple-navigation-mobile-content"
+        <div
+          className='apple-navigation-mobile-content'
           style={{
-            padding: '20px 24px'
+            padding: '20px 24px',
           }}
         >
-          <ul 
-            className="apple-navigation-mobile-menu"
+          <ul
+            className='apple-navigation-mobile-menu'
             style={{
               listStyle: 'none',
               margin: 0,
-              padding: 0
+              padding: 0,
             }}
           >
             {/* Mobile Services */}
-            <li className="apple-navigation-mobile-item" style={{ marginBottom: '20px' }}>
-              <div 
+            <li className='apple-navigation-mobile-item' style={{ marginBottom: '20px' }}>
+              <div
                 style={{
                   fontSize: '19px',
                   fontWeight: 600,
                   color: '#1a237e',
                   marginBottom: '8px',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
                 }}
               >
                 Services
@@ -599,7 +640,8 @@ const AppleNavigation = () => {
                         color: '#1a237e',
                         textDecoration: 'none',
                         padding: '8px 0',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                        fontFamily:
+                          '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
                       }}
                     >
                       {item.name}
@@ -610,14 +652,15 @@ const AppleNavigation = () => {
             </li>
 
             {/* Mobile Success Stories */}
-            <li className="apple-navigation-mobile-item" style={{ marginBottom: '20px' }}>
-              <div 
+            <li className='apple-navigation-mobile-item' style={{ marginBottom: '20px' }}>
+              <div
                 style={{
                   fontSize: '19px',
                   fontWeight: 600,
                   color: '#1a237e',
                   marginBottom: '8px',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
                 }}
               >
                 Success Stories
@@ -633,7 +676,8 @@ const AppleNavigation = () => {
                         color: '#1a237e',
                         textDecoration: 'none',
                         padding: '8px 0',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                        fontFamily:
+                          '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
                       }}
                     >
                       {item.name}
@@ -644,9 +688,9 @@ const AppleNavigation = () => {
             </li>
 
             {/* Mobile Direct Links */}
-            <li className="apple-navigation-mobile-item" style={{ marginBottom: '12px' }}>
+            <li className='apple-navigation-mobile-item' style={{ marginBottom: '12px' }}>
               <Link
-                to="/"
+                to='/'
                 style={{
                   display: 'block',
                   fontSize: '19px',
@@ -654,16 +698,17 @@ const AppleNavigation = () => {
                   color: '#1a237e',
                   textDecoration: 'none',
                   padding: '12px 0',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
                 }}
               >
                 Home
               </Link>
             </li>
 
-            <li className="apple-navigation-mobile-item" style={{ marginBottom: '12px' }}>
+            <li className='apple-navigation-mobile-item' style={{ marginBottom: '12px' }}>
               <Link
-                to="/about"
+                to='/about'
                 style={{
                   display: 'block',
                   fontSize: '19px',
@@ -671,16 +716,17 @@ const AppleNavigation = () => {
                   color: '#1a237e',
                   textDecoration: 'none',
                   padding: '12px 0',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
                 }}
               >
                 About
               </Link>
             </li>
 
-            <li className="apple-navigation-mobile-item" style={{ marginBottom: '12px' }}>
+            <li className='apple-navigation-mobile-item' style={{ marginBottom: '12px' }}>
               <Link
-                to="/faq"
+                to='/faq'
                 style={{
                   display: 'block',
                   fontSize: '19px',
@@ -688,7 +734,8 @@ const AppleNavigation = () => {
                   color: '#1a237e',
                   textDecoration: 'none',
                   padding: '12px 0',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif'
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
                 }}
               >
                 FAQ
@@ -696,9 +743,9 @@ const AppleNavigation = () => {
             </li>
 
             {/* Mobile CTA */}
-            <li className="apple-navigation-mobile-item" style={{ marginTop: '24px' }}>
+            <li className='apple-navigation-mobile-item' style={{ marginTop: '24px' }}>
               <Link
-                to="/quote"
+                to='/quote'
                 style={{
                   display: 'inline-block',
                   padding: '12px 24px',
@@ -708,7 +755,8 @@ const AppleNavigation = () => {
                   borderRadius: '24px',
                   fontSize: '17px',
                   fontWeight: 500,
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif'
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
                 }}
               >
                 Get Free Quote

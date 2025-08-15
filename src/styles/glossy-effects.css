@@ -27,17 +27,18 @@
 }
 
 @keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 
+  0%,
+  100% {
+    box-shadow:
       0 0 5px rgba(65, 105, 225, 0.1),
       0 0 10px rgba(65, 105, 225, 0.05),
-      inset 0 1px 0 rgba(255,255,255,0.9);
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
   50% {
-    box-shadow: 
+    box-shadow:
       0 0 8px rgba(65, 105, 225, 0.15),
       0 0 16px rgba(65, 105, 225, 0.08),
-      inset 0 1px 0 rgba(255,255,255,1);
+      inset 0 1px 0 rgba(255, 255, 255, 1);
   }
 }
 
@@ -102,7 +103,7 @@
   backdrop-filter: blur(10px) saturate(120%) brightness(1.05);
   -webkit-backdrop-filter: blur(10px) saturate(120%) brightness(1.05);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.1),
     0 4px 16px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
@@ -133,9 +134,9 @@
    ============================================================================= */
 .reflective {
   position: relative;
-  background: 
-    linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.8) 100%),
-    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(255,255,255,0.6) 0%, transparent 50%);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.8) 100%),
+    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(255, 255, 255, 0.6) 0%, transparent 50%);
 }
 
 .reflective::after {
@@ -145,17 +146,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    linear-gradient(135deg, 
-      rgba(255,255,255,0.9) 0%, 
-      rgba(135,206,250,0.7) 15%,
-      rgba(255,255,255,0.6) 25%, 
-      transparent 35%,
-      transparent 65%, 
-      rgba(255,255,255,0.4) 75%, 
-      rgba(173,216,230,0.8) 85%,
-      rgba(255,255,255,0.9) 100%
-    );
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(135, 206, 250, 0.7) 15%,
+    rgba(255, 255, 255, 0.6) 25%,
+    transparent 35%,
+    transparent 65%,
+    rgba(255, 255, 255, 0.4) 75%,
+    rgba(173, 216, 230, 0.8) 85%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
   opacity: 0.8;
   pointer-events: none;
   border-radius: inherit;
@@ -172,7 +173,7 @@
   backdrop-filter: blur(12px) saturate(120%) brightness(1.05);
   -webkit-backdrop-filter: blur(12px) saturate(120%) brightness(1.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 
+  box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.08),
     0 2px 12px rgba(0, 0, 0, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -189,7 +190,7 @@
 
 .interactive-glossy:hover {
   transform: translateY(-2px) scale(1.01);
-  box-shadow: 
+  box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.1),
     0 3px 10px rgba(0, 0, 0, 0.05),
     0 0 8px rgba(65, 105, 225, 0.1),
@@ -203,54 +204,90 @@
 
 /* Apply to ALL text elements for universal liquid glass effect */
 .liquid-glass-text {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 .liquid-glass-heading {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 .liquid-glass-title {
-  text-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 .liquid-glass-button {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Universal liquid glass for all common elements */
-h1, h2, h3, h4, h5, h6 {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
-p, span, div, a, button, input, textarea, label {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+p,
+span,
+div,
+a,
+button,
+input,
+textarea,
+label {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Stronger effect for large titles */
-.hero-title, .section-title, .page-title {
-  text-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+.hero-title,
+.section-title,
+.page-title {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Button text enhancement */
-button, .btn, [role="button"], .apple-navigation-cta {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+button,
+.btn,
+[role='button'],
+.apple-navigation-cta {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Navigation liquid glass */
-nav a, .navigation-link, .apple-navigation-link {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+nav a,
+.navigation-link,
+.apple-navigation-link {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Card content liquid glass */
-.card, .flip-card, .apple-card {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+.card,
+.flip-card,
+.apple-card {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
-.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
-.flip-card h1, .flip-card h2, .flip-card h3, .flip-card h4, .flip-card h5, .flip-card h6,
-.apple-card h1, .apple-card h2, .apple-card h3, .apple-card h4, .apple-card h5, .apple-card h6 {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6,
+.flip-card h1,
+.flip-card h2,
+.flip-card h3,
+.flip-card h4,
+.flip-card h5,
+.flip-card h6,
+.apple-card h1,
+.apple-card h2,
+.apple-card h3,
+.apple-card h4,
+.apple-card h5,
+.apple-card h6 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* =============================================================================
@@ -259,21 +296,21 @@ nav a, .navigation-link, .apple-navigation-link {
 
 /* Add 'liquid-glass-site' class to body element to activate site-wide */
 body.liquid-glass-site * {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
-body.liquid-glass-site h1, 
-body.liquid-glass-site h2, 
-body.liquid-glass-site h3, 
-body.liquid-glass-site h4, 
-body.liquid-glass-site h5, 
+body.liquid-glass-site h1,
+body.liquid-glass-site h2,
+body.liquid-glass-site h3,
+body.liquid-glass-site h4,
+body.liquid-glass-site h5,
 body.liquid-glass-site h6 {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 body.liquid-glass-site .hero-title,
 body.liquid-glass-site .section-title {
-  text-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* =============================================================================
@@ -329,22 +366,22 @@ body.liquid-glass-site .section-title {
 
 /* Light liquid glass effect */
 .liquid-glass-light {
-  text-shadow: 0 0.5px 1px rgba(0,0,0,0.05) !important;
+  text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Medium liquid glass effect */
 .liquid-glass-medium {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Strong liquid glass effect */
 .liquid-glass-strong {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Ultra liquid glass effect */
 .liquid-glass-ultra {
-  text-shadow: 0 3px 6px rgba(0,0,0,0.3) !important;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* =============================================================================
@@ -366,7 +403,7 @@ body.liquid-glass-site .section-title {
   -webkit-text-fill-color: transparent;
   background-size: 300% 100%;
   animation: shimmer 4s ease-in-out infinite;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .text-chrome {
@@ -385,9 +422,7 @@ body.liquid-glass-site .section-title {
   -webkit-text-fill-color: transparent;
   background-size: 250% 100%;
   animation: shimmer 3s ease-in-out infinite;
-  filter: 
-    drop-shadow(0 1px 3px rgba(0,0,0,0.3))
-    drop-shadow(0 2px 6px rgba(65,105,225,0.2));
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3)) drop-shadow(0 2px 6px rgba(65, 105, 225, 0.2));
 }
 
 /* =============================================================================
@@ -398,15 +433,16 @@ body.liquid-glass-site .section-title {
 }
 
 @keyframes float-glow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) scale(1);
-    box-shadow: 
+    box-shadow:
       0 4px 16px rgba(65, 105, 225, 0.08),
       0 2px 8px rgba(65, 105, 225, 0.05);
   }
   50% {
     transform: translateY(-4px) scale(1.01);
-    box-shadow: 
+    box-shadow:
       0 8px 24px rgba(65, 105, 225, 0.12),
       0 4px 12px rgba(65, 105, 225, 0.08);
   }
@@ -420,38 +456,39 @@ body.liquid-glass-site .section-title {
 }
 
 @keyframes rainbow-pulse {
-  0%, 100% {
-    box-shadow: 
+  0%,
+  100% {
+    box-shadow:
       0 0 30px rgba(255, 0, 0, 0.3),
       0 0 60px rgba(255, 165, 0, 0.2),
       0 0 90px rgba(255, 255, 0, 0.1);
   }
   16% {
-    box-shadow: 
+    box-shadow:
       0 0 30px rgba(255, 165, 0, 0.3),
       0 0 60px rgba(255, 255, 0, 0.2),
       0 0 90px rgba(0, 255, 0, 0.1);
   }
   33% {
-    box-shadow: 
+    box-shadow:
       0 0 30px rgba(0, 255, 0, 0.3),
       0 0 60px rgba(0, 255, 255, 0.2),
       0 0 90px rgba(0, 0, 255, 0.1);
   }
   50% {
-    box-shadow: 
+    box-shadow:
       0 0 30px rgba(0, 0, 255, 0.3),
       0 0 60px rgba(75, 0, 130, 0.2),
       0 0 90px rgba(238, 130, 238, 0.1);
   }
   66% {
-    box-shadow: 
+    box-shadow:
       0 0 30px rgba(75, 0, 130, 0.3),
       0 0 60px rgba(238, 130, 238, 0.2),
       0 0 90px rgba(255, 0, 0, 0.1);
   }
   83% {
-    box-shadow: 
+    box-shadow:
       0 0 30px rgba(238, 130, 238, 0.3),
       0 0 60px rgba(255, 0, 0, 0.2),
       0 0 90px rgba(255, 165, 0, 0.1);
@@ -463,13 +500,14 @@ body.liquid-glass-site .section-title {
 }
 
 @keyframes electric-pulse {
-  0%, 100% {
-    box-shadow: 
+  0%,
+  100% {
+    box-shadow:
       0 0 6px rgba(0, 191, 255, 0.1),
       0 0 12px rgba(65, 105, 225, 0.05);
   }
   50% {
-    box-shadow: 
+    box-shadow:
       0 0 8px rgba(0, 191, 255, 0.15),
       0 0 16px rgba(65, 105, 225, 0.08);
   }
@@ -520,7 +558,7 @@ body.liquid-glass-site .section-title {
   .glow-primary {
     animation: none !important;
   }
-  
+
   .interactive-glossy:hover {
     transform: none;
   }

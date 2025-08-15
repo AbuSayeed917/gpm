@@ -27,7 +27,7 @@
   overflow: hidden;
   user-select: none;
   white-space: nowrap;
-  
+
   /* Performance optimization */
   will-change: transform, box-shadow;
 }
@@ -126,7 +126,7 @@
   padding: var(--space-4);
   box-shadow: var(--elevation-1);
   transition: box-shadow var(--motion-duration-medium2) var(--motion-easing-standard);
-  
+
   /* Performance optimization */
   will-change: box-shadow, transform;
 }
@@ -194,7 +194,7 @@
   z-index: var(--z-dropdown);
   margin-top: var(--space-2);
   min-width: 200px;
-  
+
   /* Performance optimization */
   will-change: opacity, transform;
 }
@@ -342,12 +342,12 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-4);
   }
-  
+
   .service-grid {
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
-  
+
   .feature-grid {
     grid-template-columns: 1fr;
     gap: var(--space-4);
@@ -359,7 +359,7 @@
     grid-template-columns: 1fr;
     gap: var(--space-3);
   }
-  
+
   .service-grid,
   .feature-grid {
     grid-template-columns: 1fr;
@@ -785,11 +785,11 @@
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
+
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  
+
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -800,19 +800,19 @@
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  
+
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-  
+
   .lg\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
-  
+
   .lg\:col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -1071,7 +1071,11 @@
 /* CTA Section Components */
 .cta-section {
   padding: var(--space-16) 0;
-  background: linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-secondary-container) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-container) 0%,
+    var(--color-secondary-container) 100%
+  );
 }
 
 .cta-content {
@@ -1115,7 +1119,11 @@
 }
 
 @keyframes bounce-slow {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
   40% {
@@ -1300,7 +1308,7 @@ button:focus-visible {
   .card {
     border: 1px solid var(--color-outline);
   }
-  
+
   .btn {
     border: 1px solid var(--color-outline);
   }
@@ -1339,19 +1347,19 @@ button:focus-visible {
     text-align: center;
     gap: 20px;
   }
-  
+
   /* Horizontal card content adjustments for mobile */
   .migration-card-content {
     padding: 24px !important;
     width: 100%;
   }
-  
+
   .migration-card-header {
     flex-direction: column;
     align-items: flex-start !important;
     gap: 12px;
   }
-  
+
   .migration-step-circle {
     width: 64px !important;
     height: 64px !important;
@@ -1363,11 +1371,11 @@ button:focus-visible {
   .migration-step-right {
     gap: 16px;
   }
-  
+
   .migration-card-content {
     padding: 20px 16px !important;
   }
-  
+
   .migration-step-circle {
     width: 56px !important;
     height: 56px !important;
@@ -1400,7 +1408,11 @@ button:focus-visible {
   gap: 8px;
   padding: 17px 44px;
   border-radius: 980px;
-  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'SF Pro Text',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-weight: 400;
   font-size: 17px;
   letter-spacing: -0.022em;
@@ -1412,7 +1424,7 @@ button:focus-visible {
 
 .apple-button-primary {
   background: #87ceeb;
-  color: #FFFFFF;
+  color: #ffffff;
   border: none;
 }
 
@@ -1438,7 +1450,7 @@ button:focus-visible {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .apple-button-glass:hover {
@@ -1449,22 +1461,30 @@ button:focus-visible {
 
 /* Apple card system with exact shadows */
 .apple-card-system {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 18px;
   padding: 32px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.04);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .apple-card-system:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 64px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.04);
 }
 
 /* Apple typography system */
 .apple-title-large {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'SF Pro Display',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-weight: 600;
   font-size: 2.5rem;
   line-height: 1.1;
@@ -1473,7 +1493,11 @@ button:focus-visible {
 }
 
 .apple-body-large {
-  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'SF Pro Text',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.6;

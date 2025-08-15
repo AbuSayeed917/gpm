@@ -15,132 +15,141 @@ export const useAppleTouchGestures = ({
   velocityThreshold = 500,
   longPressDelay = 500,
   doubleTapDelay = 300,
-  enabled = true
+  enabled = true,
 }) => {
   const [gestureState, setGestureState] = useState({
     isDragging: false,
     isLongPressing: false,
     startTime: null,
     lastTapTime: null,
-    tapCount: 0
+    tapCount: 0,
   });
 
   const longPressTimer = useRef(null);
   const doubleTapTimer = useRef(null);
 
-  const handlePanStart = useCallback((event, info) => {
-    if (!enabled) return;
-    
-    setGestureState(prev => ({
-      ...prev,
-      isDragging: true,
-      startTime: Date.now()
-    }));
+  const handlePanStart = useCallback(
+    (event, info) => {
+      if (!enabled) return;
 
-    // Start long press timer
-    if (onLongPress) {
-      longPressTimer.current = setTimeout(() => {
-        setGestureState(prev => ({ ...prev, isLongPressing: true }));
-        onLongPress(event, info);
-      }, longPressDelay);
-    }
-  }, [enabled, onLongPress, longPressDelay]);
+      setGestureState((prev) => ({
+        ...prev,
+        isDragging: true,
+        startTime: Date.now(),
+      }));
 
-  const handlePan = useCallback((event, info) => {
-    if (!enabled || gestureState.isLongPressing) return;
+      // Start long press timer
+      if (onLongPress) {
+        longPressTimer.current = setTimeout(() => {
+          setGestureState((prev) => ({ ...prev, isLongPressing: true }));
+          onLongPress(event, info);
+        }, longPressDelay);
+      }
+    },
+    [enabled, onLongPress, longPressDelay]
+  );
 
-    // Cancel long press if user moves
-    if (longPressTimer.current && (Math.abs(info.delta.x) > 10 || Math.abs(info.delta.y) > 10)) {
-      clearTimeout(longPressTimer.current);
-      longPressTimer.current = null;
-    }
-  }, [enabled, gestureState.isLongPressing]);
+  const handlePan = useCallback(
+    (event, info) => {
+      if (!enabled || gestureState.isLongPressing) return;
 
-  const handlePanEnd = useCallback((event, info) => {
-    if (!enabled) return;
+      // Cancel long press if user moves
+      if (longPressTimer.current && (Math.abs(info.delta.x) > 10 || Math.abs(info.delta.y) > 10)) {
+        clearTimeout(longPressTimer.current);
+        longPressTimer.current = null;
+      }
+    },
+    [enabled, gestureState.isLongPressing]
+  );
 
-    const { offset, velocity } = info;
-    const distance = Math.sqrt(offset.x ** 2 + offset.y ** 2);
-    const velocityMagnitude = Math.sqrt(velocity.x ** 2 + velocity.y ** 2);
+  const handlePanEnd = useCallback(
+    (event, info) => {
+      if (!enabled) return;
 
-    // Clear timers
-    if (longPressTimer.current) {
-      clearTimeout(longPressTimer.current);
-      longPressTimer.current = null;
-    }
+      const { offset, velocity } = info;
+      const distance = Math.sqrt(offset.x ** 2 + offset.y ** 2);
+      const velocityMagnitude = Math.sqrt(velocity.x ** 2 + velocity.y ** 2);
 
-    // Reset gesture state
-    setGestureState(prev => ({
-      ...prev,
-      isDragging: false,
-      isLongPressing: false,
-      startTime: null
-    }));
+      // Clear timers
+      if (longPressTimer.current) {
+        clearTimeout(longPressTimer.current);
+        longPressTimer.current = null;
+      }
 
-    // Handle swipe gestures
-    if (distance > swipeThreshold || velocityMagnitude > velocityThreshold) {
-      const absX = Math.abs(offset.x);
-      const absY = Math.abs(offset.y);
+      // Reset gesture state
+      setGestureState((prev) => ({
+        ...prev,
+        isDragging: false,
+        isLongPressing: false,
+        startTime: null,
+      }));
 
-      if (absX > absY) {
-        // Horizontal swipe
-        if (offset.x > 0) {
-          onSwipeRight?.(event, info);
+      // Handle swipe gestures
+      if (distance > swipeThreshold || velocityMagnitude > velocityThreshold) {
+        const absX = Math.abs(offset.x);
+        const absY = Math.abs(offset.y);
+
+        if (absX > absY) {
+          // Horizontal swipe
+          if (offset.x > 0) {
+            onSwipeRight?.(event, info);
+          } else {
+            onSwipeLeft?.(event, info);
+          }
         } else {
-          onSwipeLeft?.(event, info);
+          // Vertical swipe
+          if (offset.y > 0) {
+            onSwipeDown?.(event, info);
+          } else {
+            onSwipeUp?.(event, info);
+          }
         }
-      } else {
-        // Vertical swipe
-        if (offset.y > 0) {
-          onSwipeDown?.(event, info);
+      } else if (distance < 10 && !gestureState.isLongPressing) {
+        // Handle tap
+        const currentTime = Date.now();
+
+        if (gestureState.lastTapTime && currentTime - gestureState.lastTapTime < doubleTapDelay) {
+          // Double tap
+          if (doubleTapTimer.current) {
+            clearTimeout(doubleTapTimer.current);
+            doubleTapTimer.current = null;
+          }
+          setGestureState((prev) => ({ ...prev, tapCount: 0, lastTapTime: null }));
+          onDoubleTap?.(event, info);
         } else {
-          onSwipeUp?.(event, info);
+          // Single tap (with delay to check for double tap)
+          setGestureState((prev) => ({
+            ...prev,
+            tapCount: prev.tapCount + 1,
+            lastTapTime: currentTime,
+          }));
+
+          if (doubleTapTimer.current) {
+            clearTimeout(doubleTapTimer.current);
+          }
+
+          doubleTapTimer.current = setTimeout(() => {
+            onTap?.(event, info);
+            setGestureState((prev) => ({ ...prev, tapCount: 0, lastTapTime: null }));
+          }, doubleTapDelay);
         }
       }
-    } else if (distance < 10 && !gestureState.isLongPressing) {
-      // Handle tap
-      const currentTime = Date.now();
-      
-      if (gestureState.lastTapTime && (currentTime - gestureState.lastTapTime) < doubleTapDelay) {
-        // Double tap
-        if (doubleTapTimer.current) {
-          clearTimeout(doubleTapTimer.current);
-          doubleTapTimer.current = null;
-        }
-        setGestureState(prev => ({ ...prev, tapCount: 0, lastTapTime: null }));
-        onDoubleTap?.(event, info);
-      } else {
-        // Single tap (with delay to check for double tap)
-        setGestureState(prev => ({ 
-          ...prev, 
-          tapCount: prev.tapCount + 1, 
-          lastTapTime: currentTime 
-        }));
-        
-        if (doubleTapTimer.current) {
-          clearTimeout(doubleTapTimer.current);
-        }
-        
-        doubleTapTimer.current = setTimeout(() => {
-          onTap?.(event, info);
-          setGestureState(prev => ({ ...prev, tapCount: 0, lastTapTime: null }));
-        }, doubleTapDelay);
-      }
-    }
-  }, [
-    enabled, 
-    swipeThreshold, 
-    velocityThreshold, 
-    doubleTapDelay,
-    gestureState.isLongPressing,
-    gestureState.lastTapTime,
-    onSwipeLeft, 
-    onSwipeRight, 
-    onSwipeUp, 
-    onSwipeDown, 
-    onTap, 
-    onDoubleTap
-  ]);
+    },
+    [
+      enabled,
+      swipeThreshold,
+      velocityThreshold,
+      doubleTapDelay,
+      gestureState.isLongPressing,
+      gestureState.lastTapTime,
+      onSwipeLeft,
+      onSwipeRight,
+      onSwipeUp,
+      onSwipeDown,
+      onTap,
+      onDoubleTap,
+    ]
+  );
 
   // Cleanup on unmount
   useEffect(() => {
@@ -158,7 +167,7 @@ export const useAppleTouchGestures = ({
     onPanStart: handlePanStart,
     onPan: handlePan,
     onPanEnd: handlePanEnd,
-    gestureState
+    gestureState,
   };
 };
 
@@ -178,57 +187,61 @@ export const AppleSwipeableCard = ({
 }) => {
   const controls = useAnimation();
   const [isRemoved, setIsRemoved] = useState(false);
-  
+
   const gestures = useAppleTouchGestures({
     onSwipeLeft: (event, info) => {
       if (deleteOnSwipe) {
-        controls.start({ 
-          x: -window.innerWidth,
-          opacity: 0,
-          transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-        }).then(() => setIsRemoved(true));
+        controls
+          .start({
+            x: -window.innerWidth,
+            opacity: 0,
+            transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+          })
+          .then(() => setIsRemoved(true));
       } else if (snapBack) {
-        controls.start({ 
+        controls.start({
           x: 0,
-          transition: { type: "spring", stiffness: 400, damping: 30 }
+          transition: { type: 'spring', stiffness: 400, damping: 30 },
         });
       }
       onSwipeLeft?.(event, info);
     },
     onSwipeRight: (event, info) => {
       if (deleteOnSwipe) {
-        controls.start({ 
-          x: window.innerWidth,
-          opacity: 0,
-          transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-        }).then(() => setIsRemoved(true));
+        controls
+          .start({
+            x: window.innerWidth,
+            opacity: 0,
+            transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+          })
+          .then(() => setIsRemoved(true));
       } else if (snapBack) {
-        controls.start({ 
+        controls.start({
           x: 0,
-          transition: { type: "spring", stiffness: 400, damping: 30 }
+          transition: { type: 'spring', stiffness: 400, damping: 30 },
         });
       }
       onSwipeRight?.(event, info);
     },
     onSwipeUp: (event, info) => {
       if (snapBack) {
-        controls.start({ 
+        controls.start({
           y: 0,
-          transition: { type: "spring", stiffness: 400, damping: 30 }
+          transition: { type: 'spring', stiffness: 400, damping: 30 },
         });
       }
       onSwipeUp?.(event, info);
     },
     onSwipeDown: (event, info) => {
       if (snapBack) {
-        controls.start({ 
+        controls.start({
           y: 0,
-          transition: { type: "spring", stiffness: 400, damping: 30 }
+          transition: { type: 'spring', stiffness: 400, damping: 30 },
         });
       }
       onSwipeDown?.(event, info);
     },
-    swipeThreshold
+    swipeThreshold,
   });
 
   if (isRemoved) return null;
@@ -239,17 +252,17 @@ export const AppleSwipeableCard = ({
       style={{
         touchAction: 'pan-y',
         cursor: 'grab',
-        ...style
+        ...style,
       }}
       animate={controls}
       drag
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       dragElastic={0.1}
-      whileDrag={{ 
+      whileDrag={{
         cursor: 'grabbing',
         scale: 1.02,
         boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)',
-        zIndex: 1000
+        zIndex: 1000,
       }}
       {...gestures}
       {...props}
@@ -279,16 +292,19 @@ export const AppleCarousel = ({
 
   const totalItems = items.length;
 
-  const goToSlide = useCallback((index) => {
-    if (index < 0) {
-      setCurrentIndex(infiniteLoop ? totalItems - 1 : 0);
-    } else if (index >= totalItems) {
-      setCurrentIndex(infiniteLoop ? 0 : totalItems - 1);
-    } else {
-      setCurrentIndex(index);
-    }
-    onSlideChange?.(index);
-  }, [totalItems, infiniteLoop, onSlideChange]);
+  const goToSlide = useCallback(
+    (index) => {
+      if (index < 0) {
+        setCurrentIndex(infiniteLoop ? totalItems - 1 : 0);
+      } else if (index >= totalItems) {
+        setCurrentIndex(infiniteLoop ? 0 : totalItems - 1);
+      } else {
+        setCurrentIndex(index);
+      }
+      onSlideChange?.(index);
+    },
+    [totalItems, infiniteLoop, onSlideChange]
+  );
 
   const nextSlide = useCallback(() => {
     goToSlide(currentIndex + 1);
@@ -317,28 +333,28 @@ export const AppleCarousel = ({
       setIsAutoPlaying(!isAutoPlaying);
     },
     swipeThreshold: 50,
-    velocityThreshold: 300
+    velocityThreshold: 300,
   });
 
   useEffect(() => {
     controls.start({
       x: `-${currentIndex * 100}%`,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
-        damping: 30
-      }
+        damping: 30,
+      },
     });
   }, [currentIndex, controls]);
 
   return (
-    <div 
+    <div
       className={`apple-carousel ${className}`}
       style={{
         position: 'relative',
         overflow: 'hidden',
         borderRadius: '16px',
-        ...style
+        ...style,
       }}
       {...props}
     >
@@ -346,7 +362,7 @@ export const AppleCarousel = ({
         style={{
           display: 'flex',
           width: `${totalItems * 100}%`,
-          height: '100%'
+          height: '100%',
         }}
         animate={controls}
         {...gestures}
@@ -359,7 +375,7 @@ export const AppleCarousel = ({
               width: `${100 / totalItems}%`,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}
           >
             {item}
@@ -369,15 +385,17 @@ export const AppleCarousel = ({
 
       {/* Indicators */}
       {showIndicators && totalItems > 1 && (
-        <div style={{
-          position: 'absolute',
-          bottom: '16px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          gap: '8px',
-          zIndex: 10
-        }}>
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '16px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            gap: '8px',
+            zIndex: 10,
+          }}
+        >
           {items.map((_, index) => (
             <motion.button
               key={index}
@@ -387,11 +405,11 @@ export const AppleCarousel = ({
                 borderRadius: '50%',
                 border: 'none',
                 cursor: 'pointer',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
               }}
               animate={{
                 backgroundColor: index === currentIndex ? '#FFFFFF' : 'rgba(255, 255, 255, 0.5)',
-                scale: index === currentIndex ? 1.2 : 1
+                scale: index === currentIndex ? 1.2 : 1,
               }}
               whileHover={{ scale: 1.3 }}
               whileTap={{ scale: 0.9 }}
@@ -421,7 +439,7 @@ export const AppleCarousel = ({
               justifyContent: 'center',
               cursor: 'pointer',
               fontSize: '18px',
-              zIndex: 10
+              zIndex: 10,
             }}
             whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 1)' }}
             whileTap={{ scale: 0.95 }}
@@ -429,7 +447,7 @@ export const AppleCarousel = ({
           >
             ‹
           </motion.button>
-          
+
           <motion.button
             style={{
               position: 'absolute',
@@ -447,7 +465,7 @@ export const AppleCarousel = ({
               justifyContent: 'center',
               cursor: 'pointer',
               fontSize: '18px',
-              zIndex: 10
+              zIndex: 10,
             }}
             whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 1)' }}
             whileTap={{ scale: 0.95 }}
@@ -470,58 +488,55 @@ export const useAppleScrollController = ({
   momentumDeceleration = 0.95,
   elasticBounce = true,
   snapPoints = [],
-  snapThreshold = 50
+  snapThreshold = 50,
 }) => {
   const [scrollState, setScrollState] = useState({
     isScrolling: false,
     velocity: 0,
     lastPosition: 0,
-    momentum: 0
+    momentum: 0,
   });
 
   const momentumTimer = useRef(null);
 
-  const handleScroll = useCallback((event) => {
-    const currentPosition = event.target.scrollTop;
-    const deltaY = currentPosition - scrollState.lastPosition;
-    
-    setScrollState(prev => ({
-      ...prev,
-      isScrolling: true,
-      velocity: deltaY,
-      lastPosition: currentPosition,
-      momentum: prev.momentum + deltaY * 0.1
-    }));
+  const handleScroll = useCallback(
+    (event) => {
+      const currentPosition = event.target.scrollTop;
+      const deltaY = currentPosition - scrollState.lastPosition;
 
-    if (deltaY > 0) {
-      onScrollDown?.(event, { velocity: deltaY, position: currentPosition });
-    } else if (deltaY < 0) {
-      onScrollUp?.(event, { velocity: Math.abs(deltaY), position: currentPosition });
-    }
+      setScrollState((prev) => ({
+        ...prev,
+        isScrolling: true,
+        velocity: deltaY,
+        lastPosition: currentPosition,
+        momentum: prev.momentum + deltaY * 0.1,
+      }));
 
-    onScrollStart?.(event, { velocity: deltaY, position: currentPosition });
+      if (deltaY > 0) {
+        onScrollDown?.(event, { velocity: deltaY, position: currentPosition });
+      } else if (deltaY < 0) {
+        onScrollUp?.(event, { velocity: Math.abs(deltaY), position: currentPosition });
+      }
 
-    // Clear existing momentum timer
-    if (momentumTimer.current) {
-      clearTimeout(momentumTimer.current);
-    }
+      onScrollStart?.(event, { velocity: deltaY, position: currentPosition });
 
-    // Set new momentum timer
-    momentumTimer.current = setTimeout(() => {
-      setScrollState(prev => ({ ...prev, isScrolling: false, momentum: 0 }));
-      onScrollEnd?.(event, { position: currentPosition });
-    }, 150);
-  }, [
-    scrollState.lastPosition,
-    onScrollStart,
-    onScrollEnd,
-    onScrollUp,
-    onScrollDown
-  ]);
+      // Clear existing momentum timer
+      if (momentumTimer.current) {
+        clearTimeout(momentumTimer.current);
+      }
+
+      // Set new momentum timer
+      momentumTimer.current = setTimeout(() => {
+        setScrollState((prev) => ({ ...prev, isScrolling: false, momentum: 0 }));
+        onScrollEnd?.(event, { position: currentPosition });
+      }, 150);
+    },
+    [scrollState.lastPosition, onScrollStart, onScrollEnd, onScrollUp, onScrollDown]
+  );
 
   return {
     onScroll: handleScroll,
-    scrollState
+    scrollState,
   };
 };
 
@@ -542,16 +557,16 @@ export const ApplePullToRefresh = ({
   const gestures = useAppleTouchGestures({
     onSwipeDown: (event, info) => {
       const distance = Math.abs(info.offset.y);
-      
+
       if (distance > refreshThreshold && !isRefreshing) {
         setCanRefresh(true);
         onRefresh?.();
       }
-      
+
       setPullDistance(0);
       controls.start({ y: 0 });
     },
-    swipeThreshold: refreshThreshold / 2
+    swipeThreshold: refreshThreshold / 2,
   });
 
   const handlePan = (event, info) => {
@@ -559,19 +574,19 @@ export const ApplePullToRefresh = ({
       const distance = Math.min(info.offset.y, refreshThreshold * 1.5);
       setPullDistance(distance);
       setCanRefresh(distance > refreshThreshold);
-      
+
       controls.start({
         y: distance * 0.5, // Elastic effect
-        transition: { type: "spring", stiffness: 300, damping: 30 }
+        transition: { type: 'spring', stiffness: 300, damping: 30 },
       });
     }
   };
 
   useEffect(() => {
     if (!isRefreshing && pullDistance > 0) {
-      controls.start({ 
+      controls.start({
         y: 0,
-        transition: { type: "spring", stiffness: 400, damping: 30 }
+        transition: { type: 'spring', stiffness: 400, damping: 30 },
       });
       setPullDistance(0);
       setCanRefresh(false);
@@ -583,7 +598,7 @@ export const ApplePullToRefresh = ({
       className={`apple-pull-to-refresh ${className}`}
       style={{
         position: 'relative',
-        ...style
+        ...style,
       }}
       animate={controls}
       onPan={handlePan}
@@ -602,29 +617,33 @@ export const ApplePullToRefresh = ({
             flexDirection: 'column',
             alignItems: 'center',
             opacity: pullDistance / refreshThreshold,
-            color: canRefresh ? '#007AFF' : '#8E8E93'
+            color: canRefresh ? '#007AFF' : '#8E8E93',
           }}
           animate={{
-            rotate: canRefresh ? 180 : 0
+            rotate: canRefresh ? 180 : 0,
           }}
           transition={{ duration: 0.3 }}
         >
-          <div style={{ 
-            fontSize: '24px',
-            marginBottom: '4px',
-            transform: 'scaleY(-1)'
-          }}>
+          <div
+            style={{
+              fontSize: '24px',
+              marginBottom: '4px',
+              transform: 'scaleY(-1)',
+            }}
+          >
             ↓
           </div>
-          <div style={{ 
-            fontSize: '12px',
-            fontWeight: '500'
-          }}>
+          <div
+            style={{
+              fontSize: '12px',
+              fontWeight: '500',
+            }}
+          >
             {canRefresh ? 'Release to refresh' : 'Pull to refresh'}
           </div>
         </motion.div>
       )}
-      
+
       {/* Loading indicator */}
       {isRefreshing && (
         <motion.div
@@ -637,7 +656,7 @@ export const ApplePullToRefresh = ({
             alignItems: 'center',
             justifyContent: 'center',
             height: '60px',
-            color: '#007AFF'
+            color: '#007AFF',
           }}
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -649,17 +668,15 @@ export const ApplePullToRefresh = ({
               height: '20px',
               border: '2px solid transparent',
               borderTop: '2px solid currentColor',
-              borderRadius: '50%'
+              borderRadius: '50%',
             }}
             animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
           />
         </motion.div>
       )}
-      
-      <div style={{ marginTop: isRefreshing ? '60px' : '0' }}>
-        {children}
-      </div>
+
+      <div style={{ marginTop: isRefreshing ? '60px' : '0' }}>{children}</div>
     </motion.div>
   );
 };
@@ -669,7 +686,7 @@ const AppleTouchGestures = {
   AppleSwipeableCard,
   AppleCarousel,
   useAppleScrollController,
-  ApplePullToRefresh
+  ApplePullToRefresh,
 };
 
 export default AppleTouchGestures;

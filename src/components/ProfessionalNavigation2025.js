@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
+import {
   Language,
   Menu as MenuIcon,
   Close as CloseIcon,
   KeyboardArrowDown,
   Phone,
   Email,
-  BusinessCenter
+  BusinessCenter,
 } from '@mui/icons-material';
 
 const ProfessionalNavigation2025 = () => {
@@ -27,7 +27,8 @@ const ProfessionalNavigation2025 = () => {
   // Close mobile menu when screen size changes to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) { // lg breakpoint
+      if (window.innerWidth >= 1024) {
+        // lg breakpoint
         setMobileMenuOpen(false);
         setServicesOpen(false);
         setSuccessStoriesOpen(false);
@@ -52,30 +53,30 @@ const ProfessionalNavigation2025 = () => {
   }, []);
 
   const services = [
-    { 
-      name: 'SME Solutions', 
-      href: '/services/sme', 
+    {
+      name: 'SME Solutions',
+      href: '/services/sme',
       description: 'Payroll migration for small to medium enterprises',
-      icon: <BusinessCenter sx={{ fontSize: 20 }} />
+      icon: <BusinessCenter sx={{ fontSize: 20 }} />,
     },
-    { 
-      name: 'Large Enterprise', 
-      href: '/services/large-enterprise', 
+    {
+      name: 'Large Enterprise',
+      href: '/services/large-enterprise',
       description: 'Complex migrations for large organizations',
-      icon: <Language sx={{ fontSize: 20 }} />
+      icon: <Language sx={{ fontSize: 20 }} />,
     },
-    { 
-      name: 'Expert Consultancy', 
-      href: '/services/consultancy', 
+    {
+      name: 'Expert Consultancy',
+      href: '/services/consultancy',
       description: 'Strategic guidance and optimization',
-      icon: <Phone sx={{ fontSize: 20 }} />
-    }
+      icon: <Phone sx={{ fontSize: 20 }} />,
+    },
   ];
 
   const successStories = [
     { name: 'SME Success Stories', href: '/success-stories/sme' },
     { name: 'Enterprise Stories', href: '/success-stories/large-enterprise' },
-    { name: 'Consultancy Results', href: '/success-stories/consultancy' }
+    { name: 'Consultancy Results', href: '/success-stories/consultancy' },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -87,7 +88,7 @@ const ProfessionalNavigation2025 = () => {
     backgroundColor: 'var(--color-surface-container)',
     borderBottom: '1px solid var(--color-outline-variant)',
     backdropFilter: 'blur(8px)',
-    WebkitBackdropFilter: 'blur(8px)'
+    WebkitBackdropFilter: 'blur(8px)',
   };
 
   const containerStyle = {
@@ -97,7 +98,7 @@ const ProfessionalNavigation2025 = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    minHeight: '64px'
+    minHeight: '64px',
   };
 
   const brandStyle = {
@@ -108,7 +109,7 @@ const ProfessionalNavigation2025 = () => {
     color: 'var(--color-on-surface)',
     fontSize: 'var(--text-title-large)',
     fontWeight: 'var(--weight-semibold)',
-    transition: 'color var(--motion-duration-medium2) var(--motion-easing-standard)'
+    transition: 'color var(--motion-duration-medium2) var(--motion-easing-standard)',
   };
 
   const navMenuStyle = {
@@ -117,7 +118,7 @@ const ProfessionalNavigation2025 = () => {
     gap: 'var(--space-1)',
     listStyle: 'none',
     margin: 0,
-    padding: 0
+    padding: 0,
   };
 
   const navLinkStyle = {
@@ -133,13 +134,13 @@ const ProfessionalNavigation2025 = () => {
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    gap: 'var(--space-1)'
+    gap: 'var(--space-1)',
   };
 
   const activeNavLinkStyle = {
     ...navLinkStyle,
     backgroundColor: 'var(--color-secondary-container)',
-    color: 'var(--color-on-secondary-container)'
+    color: 'var(--color-on-secondary-container)',
   };
 
   const dropdownMenuStyle = {
@@ -153,7 +154,7 @@ const ProfessionalNavigation2025 = () => {
     padding: 'var(--space-2)',
     minWidth: '280px',
     zIndex: 1050, // Fixed z-index instead of CSS variable
-    border: '1px solid var(--color-outline-variant)'
+    border: '1px solid var(--color-outline-variant)',
   };
 
   const dropdownItemStyle = {
@@ -163,7 +164,7 @@ const ProfessionalNavigation2025 = () => {
     textDecoration: 'none',
     color: 'var(--color-on-surface)',
     transition: 'all var(--motion-duration-medium2) var(--motion-easing-standard)',
-    marginBottom: 'var(--space-1)'
+    marginBottom: 'var(--space-1)',
   };
 
   const mobileMenuStyle = {
@@ -178,38 +179,38 @@ const ProfessionalNavigation2025 = () => {
     boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
     border: '1px solid #e5e5e5',
     maxHeight: '500px', // Fixed height instead of vh
-    overflowY: 'auto'
+    overflowY: 'auto',
   };
 
   const mobileToggleStyle = {
     border: 'none',
     background: 'transparent',
     color: 'var(--color-on-surface)',
-    padding: 'var(--space-3)', /* FIXED: Larger touch target */
+    padding: 'var(--space-3)' /* FIXED: Larger touch target */,
     borderRadius: 'var(--shape-medium)',
     cursor: 'pointer',
-    minHeight: '44px', /* FIXED: Proper touch target size */
-    minWidth: '44px',  /* FIXED: Proper touch target size */
+    minHeight: '44px' /* FIXED: Proper touch target size */,
+    minWidth: '44px' /* FIXED: Proper touch target size */,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    transition: 'all var(--motion-duration-medium2) var(--motion-easing-standard)'
+    transition: 'all var(--motion-duration-medium2) var(--motion-easing-standard)',
   };
 
   return (
-    <nav style={navigationStyle} role="navigation" aria-label="Main navigation">
+    <nav style={navigationStyle} role='navigation' aria-label='Main navigation'>
       <div style={containerStyle}>
         {/* Brand */}
-        <Link to="/" style={brandStyle} aria-label="Global Payroll Migration - Home">
+        <Link to='/' style={brandStyle} aria-label='Global Payroll Migration - Home'>
           <Language sx={{ fontSize: 28, color: 'var(--color-primary)' }} />
           <span>Global Payroll Migration</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-6">
-          <ul style={navMenuStyle} role="menubar">
+        <div className='hidden lg:flex items-center gap-6'>
+          <ul style={navMenuStyle} role='menubar'>
             {/* Services Dropdown */}
-            <li style={{ position: 'relative' }} className="dropdown-container" role="none">
+            <li style={{ position: 'relative' }} className='dropdown-container' role='none'>
               <button
                 style={servicesOpen ? activeNavLinkStyle : navLinkStyle}
                 onClick={() => {
@@ -227,19 +228,20 @@ const ProfessionalNavigation2025 = () => {
                   }
                 }}
                 aria-expanded={servicesOpen}
-                aria-haspopup="true"
-                role="menuitem"
+                aria-haspopup='true'
+                role='menuitem'
               >
                 Services
-                <KeyboardArrowDown 
+                <KeyboardArrowDown
                   sx={{
                     transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                    transition: 'transform var(--motion-duration-medium2) var(--motion-easing-standard)'
+                    transition:
+                      'transform var(--motion-duration-medium2) var(--motion-easing-standard)',
                   }}
                 />
               </button>
               {servicesOpen && (
-                <div style={dropdownMenuStyle} role="menu" aria-label="Services menu">
+                <div style={dropdownMenuStyle} role='menu' aria-label='Services menu'>
                   {services.map((service) => (
                     <Link
                       key={service.href}
@@ -251,14 +253,14 @@ const ProfessionalNavigation2025 = () => {
                       onMouseLeave={(e) => {
                         e.target.style.backgroundColor = 'transparent';
                       }}
-                      role="menuitem"
+                      role='menuitem'
                       onClick={() => setServicesOpen(false)}
                     >
-                      <div className="flex items-center gap-3 mb-1">
+                      <div className='flex items-center gap-3 mb-1'>
                         {service.icon}
-                        <span className="title-medium font-medium">{service.name}</span>
+                        <span className='title-medium font-medium'>{service.name}</span>
                       </div>
-                      <div className="body-small text-on-surface-variant pl-7">
+                      <div className='body-small text-on-surface-variant pl-7'>
                         {service.description}
                       </div>
                     </Link>
@@ -268,7 +270,7 @@ const ProfessionalNavigation2025 = () => {
             </li>
 
             {/* Success Stories Dropdown */}
-            <li style={{ position: 'relative' }} className="dropdown-container" role="none">
+            <li style={{ position: 'relative' }} className='dropdown-container' role='none'>
               <button
                 style={successStoriesOpen ? activeNavLinkStyle : navLinkStyle}
                 onClick={() => {
@@ -286,19 +288,20 @@ const ProfessionalNavigation2025 = () => {
                   }
                 }}
                 aria-expanded={successStoriesOpen}
-                aria-haspopup="true"
-                role="menuitem"
+                aria-haspopup='true'
+                role='menuitem'
               >
                 Success Stories
-                <KeyboardArrowDown 
+                <KeyboardArrowDown
                   sx={{
                     transform: successStoriesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                    transition: 'transform var(--motion-duration-medium2) var(--motion-easing-standard)'
+                    transition:
+                      'transform var(--motion-duration-medium2) var(--motion-easing-standard)',
                   }}
                 />
               </button>
               {successStoriesOpen && (
-                <div style={dropdownMenuStyle} role="menu" aria-label="Success Stories menu">
+                <div style={dropdownMenuStyle} role='menu' aria-label='Success Stories menu'>
                   {successStories.map((story) => (
                     <Link
                       key={story.href}
@@ -310,10 +313,10 @@ const ProfessionalNavigation2025 = () => {
                       onMouseLeave={(e) => {
                         e.target.style.backgroundColor = 'transparent';
                       }}
-                      role="menuitem"
+                      role='menuitem'
                       onClick={() => setSuccessStoriesOpen(false)}
                     >
-                      <span className="title-medium">{story.name}</span>
+                      <span className='title-medium'>{story.name}</span>
                     </Link>
                   ))}
                 </div>
@@ -321,9 +324,9 @@ const ProfessionalNavigation2025 = () => {
             </li>
 
             {/* Static Navigation Items */}
-            <li role="none">
-              <Link 
-                to="/about" 
+            <li role='none'>
+              <Link
+                to='/about'
                 style={isActive('/about') ? activeNavLinkStyle : navLinkStyle}
                 onMouseEnter={(e) => {
                   if (!isActive('/about')) {
@@ -335,14 +338,14 @@ const ProfessionalNavigation2025 = () => {
                     e.target.style.backgroundColor = 'transparent';
                   }
                 }}
-                role="menuitem"
+                role='menuitem'
               >
                 About
               </Link>
             </li>
-            <li role="none">
-              <Link 
-                to="/faq" 
+            <li role='none'>
+              <Link
+                to='/faq'
                 style={isActive('/faq') ? activeNavLinkStyle : navLinkStyle}
                 onMouseEnter={(e) => {
                   if (!isActive('/faq')) {
@@ -354,14 +357,14 @@ const ProfessionalNavigation2025 = () => {
                     e.target.style.backgroundColor = 'transparent';
                   }
                 }}
-                role="menuitem"
+                role='menuitem'
               >
                 FAQ
               </Link>
             </li>
-            <li role="none">
-              <Link 
-                to="/contact" 
+            <li role='none'>
+              <Link
+                to='/contact'
                 style={isActive('/contact') ? activeNavLinkStyle : navLinkStyle}
                 onMouseEnter={(e) => {
                   if (!isActive('/contact')) {
@@ -373,7 +376,7 @@ const ProfessionalNavigation2025 = () => {
                     e.target.style.backgroundColor = 'transparent';
                   }
                 }}
-                role="menuitem"
+                role='menuitem'
               >
                 Contact
               </Link>
@@ -381,13 +384,13 @@ const ProfessionalNavigation2025 = () => {
           </ul>
 
           {/* CTA Button */}
-          <Link to="/quote" className="btn-primary">
+          <Link to='/quote' className='btn-primary'>
             Get Free Quote
           </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className='flex items-center gap-2 lg:hidden'>
           <button
             style={mobileToggleStyle}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -398,7 +401,7 @@ const ProfessionalNavigation2025 = () => {
               e.target.style.backgroundColor = 'transparent';
             }}
             aria-expanded={mobileMenuOpen}
-            aria-label="Toggle mobile menu"
+            aria-label='Toggle mobile menu'
           >
             {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -407,10 +410,10 @@ const ProfessionalNavigation2025 = () => {
 
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div style={mobileMenuStyle} role="menu" aria-label="Mobile navigation">
-          <div className="container">
+        <div style={mobileMenuStyle} role='menu' aria-label='Mobile navigation'>
+          <div className='container'>
             {/* Services Section */}
-            <div className="mb-4">
+            <div className='mb-4'>
               <div
                 style={{
                   color: 'var(--color-on-surface)',
@@ -418,7 +421,7 @@ const ProfessionalNavigation2025 = () => {
                   fontWeight: 'var(--weight-semibold)',
                   padding: 'var(--space-3) 0 var(--space-2) 0',
                   borderBottom: '1px solid var(--color-outline-variant)',
-                  marginBottom: 'var(--space-2)'
+                  marginBottom: 'var(--space-2)',
                 }}
               >
                 Services
@@ -428,7 +431,7 @@ const ProfessionalNavigation2025 = () => {
                   <Link
                     key={service.href}
                     to={service.href}
-                    className="mobile-menu-link"
+                    className='mobile-menu-link'
                     style={{
                       display: 'block',
                       padding: 'var(--space-3)',
@@ -438,7 +441,7 @@ const ProfessionalNavigation2025 = () => {
                       borderRadius: 'var(--shape-small)',
                       minHeight: '44px',
                       marginBottom: 'var(--space-1)',
-                      transition: 'all var(--motion-duration-short) var(--motion-easing-standard)'
+                      transition: 'all var(--motion-duration-short) var(--motion-easing-standard)',
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = 'var(--color-surface-container-highest)';
@@ -448,7 +451,7 @@ const ProfessionalNavigation2025 = () => {
                       e.target.style.backgroundColor = 'transparent';
                       e.target.style.color = 'var(--color-on-surface-variant)';
                     }}
-                    role="menuitem"
+                    role='menuitem'
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {service.name}
@@ -458,7 +461,7 @@ const ProfessionalNavigation2025 = () => {
             </div>
 
             {/* Success Stories Section */}
-            <div className="mb-4">
+            <div className='mb-4'>
               <div
                 style={{
                   color: 'var(--color-on-surface)',
@@ -466,7 +469,7 @@ const ProfessionalNavigation2025 = () => {
                   fontWeight: 'var(--weight-semibold)',
                   padding: 'var(--space-3) 0 var(--space-2) 0',
                   borderBottom: '1px solid var(--color-outline-variant)',
-                  marginBottom: 'var(--space-2)'
+                  marginBottom: 'var(--space-2)',
                 }}
               >
                 Success Stories
@@ -476,7 +479,7 @@ const ProfessionalNavigation2025 = () => {
                   <Link
                     key={story.href}
                     to={story.href}
-                    className="mobile-menu-link"
+                    className='mobile-menu-link'
                     style={{
                       display: 'block',
                       padding: 'var(--space-3)',
@@ -486,7 +489,7 @@ const ProfessionalNavigation2025 = () => {
                       borderRadius: 'var(--shape-small)',
                       minHeight: '44px',
                       marginBottom: 'var(--space-1)',
-                      transition: 'all var(--motion-duration-short) var(--motion-easing-standard)'
+                      transition: 'all var(--motion-duration-short) var(--motion-easing-standard)',
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = 'var(--color-surface-container-highest)';
@@ -496,7 +499,7 @@ const ProfessionalNavigation2025 = () => {
                       e.target.style.backgroundColor = 'transparent';
                       e.target.style.color = 'var(--color-on-surface-variant)';
                     }}
-                    role="menuitem"
+                    role='menuitem'
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {story.name}
@@ -506,10 +509,10 @@ const ProfessionalNavigation2025 = () => {
             </div>
 
             {/* Static Links */}
-            <div className="space-y-1 mb-6" style={{ marginBottom: 'var(--space-6)' }}>
-              <Link 
-                to="/about" 
-                className="mobile-static-link"
+            <div className='space-y-1 mb-6' style={{ marginBottom: 'var(--space-6)' }}>
+              <Link
+                to='/about'
+                className='mobile-static-link'
                 style={{
                   display: 'block',
                   padding: 'var(--space-3)',
@@ -519,8 +522,10 @@ const ProfessionalNavigation2025 = () => {
                   fontSize: 'var(--text-title-medium)',
                   fontWeight: 'var(--weight-medium)',
                   minHeight: '44px',
-                  backgroundColor: isActive('/about') ? 'var(--color-surface-container-high)' : 'transparent',
-                  cursor: 'pointer'
+                  backgroundColor: isActive('/about')
+                    ? 'var(--color-surface-container-high)'
+                    : 'transparent',
+                  cursor: 'pointer',
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive('/about')) {
@@ -533,13 +538,13 @@ const ProfessionalNavigation2025 = () => {
                   }
                 }}
                 onClick={() => setMobileMenuOpen(false)}
-                role="menuitem"
+                role='menuitem'
               >
                 About
               </Link>
-              <Link 
-                to="/faq" 
-                className="mobile-static-link"
+              <Link
+                to='/faq'
+                className='mobile-static-link'
                 style={{
                   display: 'block',
                   padding: 'var(--space-3)',
@@ -549,8 +554,10 @@ const ProfessionalNavigation2025 = () => {
                   fontSize: 'var(--text-title-medium)',
                   fontWeight: 'var(--weight-medium)',
                   minHeight: '44px',
-                  backgroundColor: isActive('/faq') ? 'var(--color-surface-container-high)' : 'transparent',
-                  cursor: 'pointer'
+                  backgroundColor: isActive('/faq')
+                    ? 'var(--color-surface-container-high)'
+                    : 'transparent',
+                  cursor: 'pointer',
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive('/faq')) {
@@ -563,13 +570,13 @@ const ProfessionalNavigation2025 = () => {
                   }
                 }}
                 onClick={() => setMobileMenuOpen(false)}
-                role="menuitem"
+                role='menuitem'
               >
                 FAQ
               </Link>
-              <Link 
-                to="/contact" 
-                className="mobile-static-link"
+              <Link
+                to='/contact'
+                className='mobile-static-link'
                 style={{
                   display: 'block',
                   padding: 'var(--space-3)',
@@ -579,8 +586,10 @@ const ProfessionalNavigation2025 = () => {
                   fontSize: 'var(--text-title-medium)',
                   fontWeight: 'var(--weight-medium)',
                   minHeight: '44px',
-                  backgroundColor: isActive('/contact') ? 'var(--color-surface-container-high)' : 'transparent',
-                  cursor: 'pointer'
+                  backgroundColor: isActive('/contact')
+                    ? 'var(--color-surface-container-high)'
+                    : 'transparent',
+                  cursor: 'pointer',
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive('/contact')) {
@@ -593,21 +602,24 @@ const ProfessionalNavigation2025 = () => {
                   }
                 }}
                 onClick={() => setMobileMenuOpen(false)}
-                role="menuitem"
+                role='menuitem'
               >
                 Contact
               </Link>
             </div>
-            
+
             {/* Mobile CTA */}
-            <div className="pt-4 border-t border-outline-variant" style={{ 
-              paddingTop: 'var(--space-4)', 
-              borderTop: '1px solid var(--color-outline-variant)',
-              marginBottom: 'var(--space-4)'
-            }}>
-              <Link 
-                to="/quote" 
-                className="btn-primary" 
+            <div
+              className='pt-4 border-t border-outline-variant'
+              style={{
+                paddingTop: 'var(--space-4)',
+                borderTop: '1px solid var(--color-outline-variant)',
+                marginBottom: 'var(--space-4)',
+              }}
+            >
+              <Link
+                to='/quote'
+                className='btn-primary'
                 style={{
                   display: 'block',
                   width: '100%',
@@ -618,30 +630,30 @@ const ProfessionalNavigation2025 = () => {
                   borderRadius: 'var(--shape-large)',
                   minHeight: '44px',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
                 }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Get Free Quote
               </Link>
-              <div className="flex flex-col gap-2">
-                <a 
-                  href="tel:XXXX-XXX-XXXX" 
-                  className="flex items-center gap-2 p-2 rounded-sm"
+              <div className='flex flex-col gap-2'>
+                <a
+                  href='tel:XXXX-XXX-XXXX'
+                  className='flex items-center gap-2 p-2 rounded-sm'
                   style={{
                     color: 'var(--color-on-surface-variant)',
-                    fontSize: 'var(--text-body-small)'
+                    fontSize: 'var(--text-body-small)',
                   }}
                 >
                   <Phone sx={{ fontSize: 16 }} />
                   XXXX-XXX-XXXX
                 </a>
-                <a 
-                  href="mailto:info@globalpayrollmigration.com" 
-                  className="flex items-center gap-2 p-2 rounded-sm"
+                <a
+                  href='mailto:info@globalpayrollmigration.com'
+                  className='flex items-center gap-2 p-2 rounded-sm'
                   style={{
                     color: 'var(--color-on-surface-variant)',
-                    fontSize: 'var(--text-body-small)'
+                    fontSize: 'var(--text-body-small)',
                   }}
                 >
                   <Email sx={{ fontSize: 16 }} />

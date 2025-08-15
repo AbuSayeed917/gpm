@@ -21,12 +21,8 @@ export const ThemeProvider = ({ children }) => {
   const value = {
     theme: 'light',
     isDark: false,
-    isLight: true
+    isLight: true,
   };
 
-  return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };

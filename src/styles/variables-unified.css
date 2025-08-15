@@ -40,25 +40,25 @@
   --font-family-mono: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
 
   /* Typography Scale - Material Design 3.0 */
-  --text-display-large: 3.5625rem;    /* 57px */
-  --text-display-medium: 2.8125rem;   /* 45px */
-  --text-display-small: 2.25rem;      /* 36px */
-  
-  --text-headline-large: 2rem;        /* 32px */
-  --text-headline-medium: 1.75rem;    /* 28px */
-  --text-headline-small: 1.5rem;      /* 24px */
-  
-  --text-title-large: 1.375rem;       /* 22px */
-  --text-title-medium: 1rem;          /* 16px */
-  --text-title-small: 0.875rem;       /* 14px */
-  
-  --text-body-large: 1rem;            /* 16px */
-  --text-body-medium: 0.875rem;       /* 14px */
-  --text-body-small: 0.75rem;         /* 12px */
-  
-  --text-label-large: 0.875rem;       /* 14px */
-  --text-label-medium: 0.75rem;       /* 12px */
-  --text-label-small: 0.6875rem;      /* 11px */
+  --text-display-large: 3.5625rem; /* 57px */
+  --text-display-medium: 2.8125rem; /* 45px */
+  --text-display-small: 2.25rem; /* 36px */
+
+  --text-headline-large: 2rem; /* 32px */
+  --text-headline-medium: 1.75rem; /* 28px */
+  --text-headline-small: 1.5rem; /* 24px */
+
+  --text-title-large: 1.375rem; /* 22px */
+  --text-title-medium: 1rem; /* 16px */
+  --text-title-small: 0.875rem; /* 14px */
+
+  --text-body-large: 1rem; /* 16px */
+  --text-body-medium: 0.875rem; /* 14px */
+  --text-body-small: 0.75rem; /* 12px */
+
+  --text-label-large: 0.875rem; /* 14px */
+  --text-label-medium: 0.75rem; /* 12px */
+  --text-label-small: 0.6875rem; /* 11px */
 
   /* Font Weights */
   --weight-light: 300;
@@ -77,7 +77,7 @@
   /* =============================================================================
      COLOR SYSTEM - WCAG AA COMPLIANT
      ============================================================================= */
-  
+
   /* Primary Colors - Top Sky Blue */
   --color-primary: #00bfff;
   --color-primary-rgb: 0, 191, 255;
@@ -121,16 +121,20 @@
   --color-on-error: #ffffff;
   --color-success-60: #16a34a; /* FIXED: Better contrast */
   --color-warning-60: #d97706; /* FIXED: Better contrast */
-  
+
   /* Additional accessible text colors - Black Theme */
   --color-text-secondary: #000000; /* Black secondary text */
   --color-text-muted: #333333; /* Dark gray muted text */
   --color-text-placeholder: #666666; /* Gray placeholder text */
-  
+
   /* Signature Gradient - Global Excellence */
   --gradient-global-excellence: linear-gradient(90deg, #30d158 0%, #ff3b30 100%);
-  --gradient-sky-blue: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-  
+  --gradient-sky-blue: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+
   /* Legacy compatibility - map old tokens to new system */
   --color-text-primary: var(--color-on-surface);
   --color-surface-secondary: var(--color-surface-variant);
@@ -160,26 +164,26 @@
   /* =============================================================================
      SPACING SYSTEM - CONSISTENT SCALE
      ============================================================================= */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.25rem;   /* 20px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-8: 2rem;      /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-  --space-20: 5rem;     /* 80px */
-  --space-24: 6rem;     /* 96px */
-  --space-32: 8rem;     /* 128px */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+  --space-32: 8rem; /* 128px */
 
   /* =============================================================================
      SHAPE SYSTEM - CONSISTENT RADII
      ============================================================================= */
-  --shape-small: 0.5rem;       /* 8px */
-  --shape-medium: 0.75rem;     /* 12px */
-  --shape-large: 1rem;         /* 16px */
+  --shape-small: 0.5rem; /* 8px */
+  --shape-medium: 0.75rem; /* 12px */
+  --shape-large: 1rem; /* 16px */
   --shape-extra-large: 1.5rem; /* 24px */
   --radius-none: 0;
   --radius-full: 9999px;
@@ -189,7 +193,7 @@
      ============================================================================= */
   --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   --elevation-2: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
-  --elevation-3: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10);
+  --elevation-3: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
   --elevation-4: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
   --elevation-5: 0 20px 40px rgba(0, 0, 0, 0.15);
 
@@ -213,10 +217,10 @@
   --motion-duration-medium: 250ms;
   --motion-duration-medium2: 300ms;
   --motion-duration-long: 500ms;
-  
-  --motion-easing-standard: cubic-bezier(0.2, 0.0, 0, 1.0);
-  --motion-easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1.0);
-  --motion-easing-accelerate: cubic-bezier(0.4, 0.0, 1.0, 1.0);
+
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
 
   /* =============================================================================
      BREAKPOINTS - RESPONSIVE DESIGN
@@ -239,12 +243,12 @@
    ============================================================================= */
 @media (max-width: 480px) {
   :root {
-    --text-display-large: 2.25rem;    /* 36px on small mobile */
-    --text-display-medium: 1.875rem;  /* 30px on small mobile */
-    --text-headline-large: 1.625rem;  /* 26px on small mobile */
+    --text-display-large: 2.25rem; /* 36px on small mobile */
+    --text-display-medium: 1.875rem; /* 30px on small mobile */
+    --text-headline-large: 1.625rem; /* 26px on small mobile */
     --text-headline-medium: 1.375rem; /* 22px on small mobile */
-    --text-headline-small: 1.25rem;   /* 20px on small mobile */
-    
+    --text-headline-small: 1.25rem; /* 20px on small mobile */
+
     /* Better line heights for mobile readability */
     --leading-display: 1.2;
     --leading-headline: 1.3;
@@ -253,9 +257,9 @@
 
 @media (min-width: 481px) and (max-width: 768px) {
   :root {
-    --text-display-large: 2.75rem;    /* 44px on tablets */
-    --text-display-medium: 2.25rem;   /* 36px on tablets */
-    --text-headline-large: 1.875rem;  /* 30px on tablets */
+    --text-display-large: 2.75rem; /* 44px on tablets */
+    --text-display-medium: 2.25rem; /* 36px on tablets */
+    --text-headline-large: 1.875rem; /* 30px on tablets */
     --text-headline-medium: 1.625rem; /* 26px on tablets */
   }
 }

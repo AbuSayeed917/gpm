@@ -18,9 +18,9 @@ const LayeredBackgroundItem = ({ layer, index, scrollYProgress, parallaxIntensit
         y: yOffset,
         zIndex: layer.zIndex || -index,
         filter: `blur(${(depth - 1) * 2}px) brightness(${1 - (depth - 1) * 0.1})`,
-        opacity: layer.opacity || (1 - (depth - 1) * 0.2),
+        opacity: layer.opacity || 1 - (depth - 1) * 0.2,
         transform: `scale(${1 + (depth - 1) * 0.1})`,
-        ...layer.style
+        ...layer.style,
       }}
     >
       {layer.content}
@@ -40,17 +40,17 @@ export const AppleLayeredBackground = ({
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start'],
   });
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={`apple-layered-background ${className}`}
       style={{
         position: 'relative',
         overflow: 'hidden',
-        ...style
+        ...style,
       }}
       {...props}
     >
@@ -66,9 +66,7 @@ export const AppleLayeredBackground = ({
       ))}
 
       {/* Foreground Content */}
-      <div style={{ position: 'relative', zIndex: 100 }}>
-        {children}
-      </div>
+      <div style={{ position: 'relative', zIndex: 100 }}>{children}</div>
     </div>
   );
 };
@@ -112,7 +110,7 @@ export const AppleGlassCard = ({
       0 16px 64px rgba(0, 122, 255, 0.15),
       0 8px 32px rgba(0, 122, 255, 0.1),
       0 4px 16px rgba(0, 122, 255, 0.05)
-    `
+    `,
   };
 
   // Elevation transforms
@@ -121,7 +119,7 @@ export const AppleGlassCard = ({
     2: 'translateZ(4px)',
     3: 'translateZ(8px)',
     4: 'translateZ(16px)',
-    5: 'translateZ(32px)'
+    5: 'translateZ(32px)',
   };
 
   useEffect(() => {
@@ -129,14 +127,14 @@ export const AppleGlassCard = ({
 
     const handleMouseMove = (e) => {
       if (!cardRef.current) return;
-      
+
       const rect = cardRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      
+
       const deltaX = (e.clientX - centerX) / rect.width;
       const deltaY = (e.clientY - centerY) / rect.height;
-      
+
       setMousePosition({ x: deltaX * 10, y: deltaY * 10 });
     };
 
@@ -162,17 +160,25 @@ export const AppleGlassCard = ({
         boxShadow: shadows[shadowIntensity] || shadows.medium,
         transform: elevationTransforms[elevation] || elevationTransforms[1],
         transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
-        ...style
+        ...style,
       }}
-      animate={interactive ? {
-        rotateX: mousePosition.y * -1,
-        rotateY: mousePosition.x,
-        scale: isHovered ? 1.02 : 1
-      } : {}}
-      whileHover={interactive ? {
-        boxShadow: shadows.heavy,
-        borderColor: 'rgba(255, 255, 255, 0.4)'
-      } : {}}
+      animate={
+        interactive
+          ? {
+              rotateX: mousePosition.y * -1,
+              rotateY: mousePosition.x,
+              scale: isHovered ? 1.02 : 1,
+            }
+          : {}
+      }
+      whileHover={
+        interactive
+          ? {
+              boxShadow: shadows.heavy,
+              borderColor: 'rgba(255, 255, 255, 0.4)',
+            }
+          : {}
+      }
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
@@ -250,7 +256,7 @@ export const AppleDepthModal = ({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '20px',
-        ...style
+        ...style,
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -270,7 +276,7 @@ export const AppleDepthModal = ({
           inset: 0,
           background: `rgba(0, 0, 0, ${overlayOpacity})`,
           backdropFilter: `blur(${backgroundBlur * 0.5}px)`,
-          WebkitBackdropFilter: `blur(${backgroundBlur * 0.5}px)`
+          WebkitBackdropFilter: `blur(${backgroundBlur * 0.5}px)`,
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -284,29 +290,29 @@ export const AppleDepthModal = ({
           maxWidth: 'min(90vw, 1200px)',
           maxHeight: 'min(90dvh, 800px)',
           overflow: 'auto',
-          zIndex: 1
+          zIndex: 1,
         }}
-        initial={{ 
-          opacity: 0, 
-          scale: 0.8, 
+        initial={{
+          opacity: 0,
+          scale: 0.8,
           y: 50,
-          filter: 'blur(20px)'
+          filter: 'blur(20px)',
         }}
-        animate={{ 
-          opacity: 1, 
-          scale: 1, 
+        animate={{
+          opacity: 1,
+          scale: 1,
           y: 0,
-          filter: 'blur(0px)'
+          filter: 'blur(0px)',
         }}
-        exit={{ 
-          opacity: 0, 
-          scale: 0.8, 
+        exit={{
+          opacity: 0,
+          scale: 0.8,
           y: 50,
-          filter: 'blur(20px)'
+          filter: 'blur(20px)',
         }}
-        transition={{ 
+        transition={{
           duration: animationDuration,
-          ease: [0.25, 0.1, 0.25, 1]
+          ease: [0.25, 0.1, 0.25, 1],
         }}
       >
         {children}
@@ -344,7 +350,7 @@ export const AppleDepthNavigation = ({
           inset 0 1px 0 rgba(255, 255, 255, 0.2),
           inset 0 -1px 0 rgba(0, 0, 0, 0.1)
         `,
-        ...style
+        ...style,
       }}
       {...props}
     >
@@ -363,22 +369,24 @@ export const AppleDepthNavigation = ({
             fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
             cursor: 'pointer',
             transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
-            zIndex: activeIndex === index ? 2 : 1
+            zIndex: activeIndex === index ? 2 : 1,
           }}
           animate={{
-            background: activeIndex === index 
-              ? 'rgba(255, 255, 255, 0.2)' 
-              : hoveredIndex === index 
-                ? 'rgba(255, 255, 255, 0.1)' 
-                : 'transparent',
-            boxShadow: activeIndex === index
-              ? `
+            background:
+              activeIndex === index
+                ? 'rgba(255, 255, 255, 0.2)'
+                : hoveredIndex === index
+                  ? 'rgba(255, 255, 255, 0.1)'
+                  : 'transparent',
+            boxShadow:
+              activeIndex === index
+                ? `
                 0 4px 16px rgba(0, 0, 0, 0.15),
                 0 2px 8px rgba(0, 0, 0, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3)
               `
-              : 'none',
-            scale: activeIndex === index ? 1.02 : hoveredIndex === index ? 1.01 : 1
+                : 'none',
+            scale: activeIndex === index ? 1.02 : hoveredIndex === index ? 1.01 : 1,
           }}
           whileTap={{ scale: 0.98 }}
           onMouseEnter={() => setHoveredIndex(index)}
@@ -388,23 +396,20 @@ export const AppleDepthNavigation = ({
           {/* Background highlight for active state */}
           {activeIndex === index && (
             <motion.div
-              layoutId="activeBackground"
+              layoutId='activeBackground'
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1))',
+                background:
+                  'linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1))',
                 borderRadius: '12px',
-                zIndex: -1
+                zIndex: -1,
               }}
-              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              transition={{ type: 'spring', stiffness: 500, damping: 30 }}
             />
           )}
-          
-          {item.icon && (
-            <span style={{ marginRight: '8px' }}>
-              {item.icon}
-            </span>
-          )}
+
+          {item.icon && <span style={{ marginRight: '8px' }}>{item.icon}</span>}
           {item.label}
         </motion.button>
       ))}
@@ -432,39 +437,39 @@ export const AppleDepthTooltip = ({
       bottom: '100%',
       left: '50%',
       transform: 'translateX(-50%)',
-      marginBottom: '8px'
+      marginBottom: '8px',
     },
     bottom: {
       top: '100%',
       left: '50%',
       transform: 'translateX(-50%)',
-      marginTop: '8px'
+      marginTop: '8px',
     },
     left: {
       right: '100%',
       top: '50%',
       transform: 'translateY(-50%)',
-      marginRight: '8px'
+      marginRight: '8px',
     },
     right: {
       left: '100%',
       top: '50%',
       transform: 'translateY(-50%)',
-      marginLeft: '8px'
+      marginLeft: '8px',
     },
     follow: {
       position: 'fixed',
       left: mousePosition.x + 10,
       top: mousePosition.y - 40,
-      transform: 'none'
-    }
+      transform: 'none',
+    },
   };
 
   const handleMouseEnter = (e) => {
     if (position === 'follow') {
       setMousePosition({ x: e.clientX, y: e.clientY });
     }
-    
+
     timeoutRef.current = setTimeout(() => {
       setIsVisible(true);
     }, delay);
@@ -493,7 +498,7 @@ export const AppleDepthTooltip = ({
       {...props}
     >
       {children}
-      
+
       {isVisible && (
         <motion.div
           className={`apple-depth-tooltip ${className}`}
@@ -502,30 +507,30 @@ export const AppleDepthTooltip = ({
             zIndex: 10001,
             pointerEvents: 'none',
             ...positionStyles[position],
-            ...style
+            ...style,
           }}
-          initial={{ 
-            opacity: 0, 
-            scale: 0.8, 
+          initial={{
+            opacity: 0,
+            scale: 0.8,
             filter: 'blur(4px)',
             y: position === 'top' ? 10 : position === 'bottom' ? -10 : 0,
-            x: position === 'left' ? 10 : position === 'right' ? -10 : 0
+            x: position === 'left' ? 10 : position === 'right' ? -10 : 0,
           }}
-          animate={{ 
-            opacity: 1, 
-            scale: 1, 
+          animate={{
+            opacity: 1,
+            scale: 1,
             filter: 'blur(0px)',
             y: 0,
-            x: 0
+            x: 0,
           }}
-          exit={{ 
-            opacity: 0, 
-            scale: 0.8, 
-            filter: 'blur(4px)'
+          exit={{
+            opacity: 0,
+            scale: 0.8,
+            filter: 'blur(4px)',
           }}
-          transition={{ 
+          transition={{
             duration: 0.2,
-            ease: [0.25, 0.1, 0.25, 1]
+            ease: [0.25, 0.1, 0.25, 1],
           }}
         >
           <div
@@ -544,7 +549,7 @@ export const AppleDepthTooltip = ({
                 0 8px 32px rgba(0, 0, 0, 0.3),
                 0 4px 16px rgba(0, 0, 0, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1)
-              `
+              `,
             }}
           >
             {content}
@@ -556,11 +561,7 @@ export const AppleDepthTooltip = ({
 };
 
 // Utility hook for depth-based interactions
-export const useAppleDepth = ({ 
-  layers = 5, 
-  baseTransform = 0,
-  intensity = 1 
-}) => {
+export const useAppleDepth = ({ layers = 5, baseTransform = 0, intensity = 1 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -568,7 +569,7 @@ export const useAppleDepth = ({
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
-      
+
       mouseX.set((clientX / innerWidth - 0.5) * intensity);
       mouseY.set((clientY / innerHeight - 0.5) * intensity);
     };
@@ -579,28 +580,28 @@ export const useAppleDepth = ({
 
   // Create transforms for up to 5 layers (fixed number to avoid hooks in loops)
   const layer0Transform = {
-    x: useTransform(mouseX, [-0.5, 0.5], [-(baseTransform || 10), (baseTransform || 10)]),
-    y: useTransform(mouseY, [-0.5, 0.5], [-(baseTransform || 10), (baseTransform || 10)])
+    x: useTransform(mouseX, [-0.5, 0.5], [-(baseTransform || 10), baseTransform || 10]),
+    y: useTransform(mouseY, [-0.5, 0.5], [-(baseTransform || 10), baseTransform || 10]),
   };
-  
+
   const layer1Transform = {
     x: useTransform(mouseX, [-0.5, 0.5], [-2 * (baseTransform || 10), 2 * (baseTransform || 10)]),
-    y: useTransform(mouseY, [-0.5, 0.5], [-2 * (baseTransform || 10), 2 * (baseTransform || 10)])
+    y: useTransform(mouseY, [-0.5, 0.5], [-2 * (baseTransform || 10), 2 * (baseTransform || 10)]),
   };
-  
+
   const layer2Transform = {
     x: useTransform(mouseX, [-0.5, 0.5], [-3 * (baseTransform || 10), 3 * (baseTransform || 10)]),
-    y: useTransform(mouseY, [-0.5, 0.5], [-3 * (baseTransform || 10), 3 * (baseTransform || 10)])
+    y: useTransform(mouseY, [-0.5, 0.5], [-3 * (baseTransform || 10), 3 * (baseTransform || 10)]),
   };
-  
+
   const layer3Transform = {
     x: useTransform(mouseX, [-0.5, 0.5], [-4 * (baseTransform || 10), 4 * (baseTransform || 10)]),
-    y: useTransform(mouseY, [-0.5, 0.5], [-4 * (baseTransform || 10), 4 * (baseTransform || 10)])
+    y: useTransform(mouseY, [-0.5, 0.5], [-4 * (baseTransform || 10), 4 * (baseTransform || 10)]),
   };
-  
+
   const layer4Transform = {
     x: useTransform(mouseX, [-0.5, 0.5], [-5 * (baseTransform || 10), 5 * (baseTransform || 10)]),
-    y: useTransform(mouseY, [-0.5, 0.5], [-5 * (baseTransform || 10), 5 * (baseTransform || 10)])
+    y: useTransform(mouseY, [-0.5, 0.5], [-5 * (baseTransform || 10), 5 * (baseTransform || 10)]),
   };
 
   const layerTransforms = [
@@ -608,9 +609,9 @@ export const useAppleDepth = ({
     layer1Transform,
     layer2Transform,
     layer3Transform,
-    layer4Transform
+    layer4Transform,
   ];
-  
+
   const createLayerTransform = (layer) => {
     if (layer < layerTransforms.length) {
       return layerTransforms[layer];
@@ -627,7 +628,7 @@ const AppleDepthSystemComponents = {
   AppleDepthModal,
   AppleDepthNavigation,
   AppleDepthTooltip,
-  useAppleDepth
+  useAppleDepth,
 };
 
 export default AppleDepthSystemComponents;

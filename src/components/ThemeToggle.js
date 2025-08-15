@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { LightMode, DarkMode, SettingsBrightness } from '@mui/icons-material';
 import { useTheme } from '../contexts/ThemeContext';
 
-const ThemeToggle = ({ 
+const ThemeToggle = ({
   variant = 'icon', // 'icon', 'button', 'dropdown'
   size = 'medium',
-  className = ''
+  className = '',
 }) => {
   const { theme, toggleTheme, setLightTheme, setDarkTheme, setSystemTheme } = useTheme();
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -28,7 +28,7 @@ const ThemeToggle = ({
 
     document.addEventListener('click', handleClickOutside);
     document.addEventListener('keydown', handleEscapeKey);
-    
+
     return () => {
       document.removeEventListener('click', handleClickOutside);
       document.removeEventListener('keydown', handleEscapeKey);
@@ -38,7 +38,7 @@ const ThemeToggle = ({
   const iconSize = {
     small: 20,
     medium: 24,
-    large: 32
+    large: 32,
   }[size];
 
   const buttonStyle = {
@@ -53,11 +53,11 @@ const ThemeToggle = ({
     transition: 'all var(--motion-duration-medium2) var(--motion-easing-standard)',
     color: 'var(--color-on-surface)',
     minWidth: '40px',
-    minHeight: '40px'
+    minHeight: '40px',
   };
 
   const buttonHoverStyle = {
-    backgroundColor: 'var(--color-surface-container)'
+    backgroundColor: 'var(--color-surface-container)',
   };
 
   if (variant === 'icon') {
@@ -108,21 +108,24 @@ const ThemeToggle = ({
 
   if (variant === 'dropdown') {
     return (
-      <div className={`theme-dropdown ${className}`} style={{ position: 'relative', display: 'inline-block' }}>
+      <div
+        className={`theme-dropdown ${className}`}
+        style={{ position: 'relative', display: 'inline-block' }}
+      >
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
           style={buttonStyle}
-          className="theme-dropdown-trigger"
+          className='theme-dropdown-trigger'
           onMouseEnter={(e) => {
             Object.assign(e.target.style, buttonHoverStyle);
           }}
           onMouseLeave={(e) => {
             e.target.style.backgroundColor = 'transparent';
           }}
-          aria-label="Theme options"
+          aria-label='Theme options'
           aria-expanded={dropdownOpen}
-          aria-haspopup="true"
-          title="Theme options"
+          aria-haspopup='true'
+          title='Theme options'
         >
           {theme === 'light' ? (
             <LightMode sx={{ fontSize: iconSize }} />
@@ -132,10 +135,10 @@ const ThemeToggle = ({
             <SettingsBrightness sx={{ fontSize: iconSize }} />
           )}
         </button>
-        
+
         {dropdownOpen && (
-          <div 
-            className="theme-dropdown-menu"
+          <div
+            className='theme-dropdown-menu'
             style={{
               position: 'absolute',
               top: '100%',
@@ -147,7 +150,7 @@ const ThemeToggle = ({
               padding: 'var(--space-2)',
               minWidth: '160px',
               zIndex: 1050,
-              border: '1px solid var(--color-outline-variant)'
+              border: '1px solid var(--color-outline-variant)',
             }}
           >
             <button
@@ -162,7 +165,8 @@ const ThemeToggle = ({
                 gap: 'var(--space-2)',
                 padding: 'var(--space-2) var(--space-3)',
                 fontSize: 'var(--text-body-medium)',
-                backgroundColor: theme === 'light' ? 'var(--color-primary-container)' : 'transparent'
+                backgroundColor:
+                  theme === 'light' ? 'var(--color-primary-container)' : 'transparent',
               }}
               onMouseEnter={(e) => {
                 if (theme !== 'light') {
@@ -170,13 +174,14 @@ const ThemeToggle = ({
                 }
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = theme === 'light' ? 'var(--color-primary-container)' : 'transparent';
+                e.target.style.backgroundColor =
+                  theme === 'light' ? 'var(--color-primary-container)' : 'transparent';
               }}
             >
               <LightMode sx={{ fontSize: 18 }} />
               Light
             </button>
-            
+
             <button
               onClick={() => {
                 setDarkTheme();
@@ -189,7 +194,8 @@ const ThemeToggle = ({
                 gap: 'var(--space-2)',
                 padding: 'var(--space-2) var(--space-3)',
                 fontSize: 'var(--text-body-medium)',
-                backgroundColor: theme === 'dark' ? 'var(--color-primary-container)' : 'transparent'
+                backgroundColor:
+                  theme === 'dark' ? 'var(--color-primary-container)' : 'transparent',
               }}
               onMouseEnter={(e) => {
                 if (theme !== 'dark') {
@@ -197,13 +203,14 @@ const ThemeToggle = ({
                 }
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = theme === 'dark' ? 'var(--color-primary-container)' : 'transparent';
+                e.target.style.backgroundColor =
+                  theme === 'dark' ? 'var(--color-primary-container)' : 'transparent';
               }}
             >
               <DarkMode sx={{ fontSize: 18 }} />
               Dark
             </button>
-            
+
             <button
               onClick={() => {
                 setSystemTheme();
@@ -216,7 +223,8 @@ const ThemeToggle = ({
                 gap: 'var(--space-2)',
                 padding: 'var(--space-2) var(--space-3)',
                 fontSize: 'var(--text-body-medium)',
-                backgroundColor: theme === 'system' ? 'var(--color-primary-container)' : 'transparent'
+                backgroundColor:
+                  theme === 'system' ? 'var(--color-primary-container)' : 'transparent',
               }}
               onMouseEnter={(e) => {
                 if (theme !== 'system') {
@@ -224,7 +232,8 @@ const ThemeToggle = ({
                 }
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = theme === 'system' ? 'var(--color-primary-container)' : 'transparent';
+                e.target.style.backgroundColor =
+                  theme === 'system' ? 'var(--color-primary-container)' : 'transparent';
               }}
             >
               <SettingsBrightness sx={{ fontSize: 18 }} />

@@ -16,16 +16,16 @@
     --color-text-secondary: #000000;
     --color-text-muted: #000000;
   }
-  
+
   .btn {
     border: 2px solid currentColor;
     font-weight: var(--weight-bold);
   }
-  
+
   .card {
     border: 2px solid var(--color-outline);
   }
-  
+
   a:not(.btn) {
     text-decoration: underline;
     text-decoration-thickness: 2px;
@@ -90,7 +90,7 @@ a[aria-describedby] {
 
 /* Loading states for screen readers */
 .loading::after {
-  content: "Loading...";
+  content: 'Loading...';
   position: absolute;
   left: -10000px;
   width: 1px;
@@ -103,9 +103,9 @@ a[aria-describedby] {
    ============================================================================= */
 :root {
   /* Enhanced contrast ratios for better readability */
-  --color-contrast-primary: #1a1a1a;      /* 15.3:1 contrast */
-  --color-contrast-secondary: #2d2d2d;    /* 11.9:1 contrast */
-  --color-contrast-muted: #404040;        /* 8.9:1 contrast */
+  --color-contrast-primary: #1a1a1a; /* 15.3:1 contrast */
+  --color-contrast-secondary: #2d2d2d; /* 11.9:1 contrast */
+  --color-contrast-muted: #404040; /* 8.9:1 contrast */
 }
 
 /* Apply high contrast text colors */
@@ -126,13 +126,15 @@ a[aria-describedby] {
    ============================================================================= */
 @media (prefers-reduced-motion: reduce) {
   /* Remove all animations and transitions */
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   /* Ensure focus indicators are still visible */
   .btn:focus-visible,
   .input:focus-visible,
@@ -178,7 +180,7 @@ textarea {
   font-weight: var(--weight-medium);
 }
 
-.input[aria-invalid="true"] {
+.input[aria-invalid='true'] {
   border-color: var(--color-error);
   border-width: 2px;
   box-shadow: 0 0 0 3px rgba(var(--color-error), 0.1);
@@ -195,27 +197,35 @@ textarea {
    TYPOGRAPHY ACCESSIBILITY
    ============================================================================= */
 /* Better line spacing for readability */
-p, li, .body-large, .body-medium {
+p,
+li,
+.body-large,
+.body-medium {
   line-height: 1.6;
 }
 
 /* Prevent text from being too wide */
-p, .body-large, .body-medium {
+p,
+.body-large,
+.body-medium {
   max-width: 65ch; /* Optimal reading width */
 }
 
 /* Better heading hierarchy */
-h1, .headline-large {
+h1,
+.headline-large {
   color: var(--color-contrast-primary);
   margin-bottom: var(--space-4);
 }
 
-h2, .headline-medium {
+h2,
+.headline-medium {
   color: var(--color-contrast-primary);
   margin-bottom: var(--space-3);
 }
 
-h3, .headline-small {
+h3,
+.headline-small {
   color: var(--color-contrast-secondary);
   margin-bottom: var(--space-3);
 }
@@ -241,8 +251,9 @@ a:not(.btn):visited {
 
 /* External links indicator for screen readers */
 a[href^="http"]::after,
-a[href^="https://"]::after {
-  content: " (external link)";
+a[href^="https://"]::after
+{
+  content: ' (external link)';
   position: absolute;
   left: -10000px;
   width: 1px;
@@ -255,7 +266,7 @@ a[href^="https://"]::after {
    ============================================================================= */
 /* Required field indicators */
 .required::after {
-  content: " *";
+  content: ' *';
   color: var(--color-error);
   font-weight: var(--weight-bold);
 }
@@ -305,7 +316,7 @@ td {
     --color-contrast-secondary: #e5e5e5;
     --color-contrast-muted: #cccccc;
   }
-  
+
   /* Ensure sufficient contrast in dark mode */
   .btn:focus-visible,
   .input:focus-visible,
