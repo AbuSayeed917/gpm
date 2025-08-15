@@ -7,7 +7,7 @@ const Footer = () => {
 
   React.useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
     
     checkScreenSize();
@@ -63,15 +63,16 @@ const Footer = () => {
         <div 
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: isMobile ? 'flex-start' : 'space-between',
             alignItems: 'flex-start',
-            gap: '40px',
+            gap: isMobile ? '32px' : '40px',
             marginBottom: '32px',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
+            flexDirection: isMobile ? 'column' : 'row'
           }}
         >
           {/* Left: Company Info */}
-          <div style={{ flex: '0 0 auto' }}>
+          <div style={{ flex: isMobile ? '1 1 100%' : '0 0 auto' }}>
             <div 
               style={{
                 display: 'flex',
@@ -219,15 +220,15 @@ const Footer = () => {
           <div 
             style={{
               display: 'flex',
-              gap: '60px',
-              flex: '1 1 auto',
-              justifyContent: 'center',
+              gap: isMobile ? '32px' : '60px',
+              flex: isMobile ? '1 1 100%' : '1 1 auto',
+              justifyContent: isMobile ? 'flex-start' : 'center',
               flexWrap: 'wrap'
             }}
           >
 
             {/* Services */}
-            <div>
+            <div style={{ minWidth: isMobile ? 'auto' : '120px' }}>
               <h4 
                 style={{
                   fontSize: '15px',
@@ -293,7 +294,7 @@ const Footer = () => {
             </div>
 
             {/* Success Stories */}
-            <div>
+            <div style={{ minWidth: isMobile ? 'auto' : '120px' }}>
               <h4 
                 style={{
                   fontSize: '15px',
@@ -359,7 +360,7 @@ const Footer = () => {
             </div>
 
             {/* Company */}
-            <div>
+            <div style={{ minWidth: isMobile ? 'auto' : '120px' }}>
               <h4 
                 style={{
                   fontSize: '15px',
@@ -426,7 +427,7 @@ const Footer = () => {
           </div>
 
           {/* Right: Get Started */}
-          <div style={{ flex: '0 0 auto', textAlign: 'right' }}>
+          <div style={{ flex: isMobile ? '1 1 100%' : '0 0 auto', textAlign: isMobile ? 'left' : 'right' }}>
             <Link 
               to="/quote"
               style={{
@@ -458,7 +459,7 @@ const Footer = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '6px',
-                alignItems: 'flex-end'
+                alignItems: isMobile ? 'flex-start' : 'flex-end'
               }}
             >
               <div 
@@ -570,7 +571,8 @@ const Footer = () => {
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                gap: '24px'
+                gap: isMobile ? '16px' : '24px',
+                justifyContent: isMobile ? 'flex-start' : 'flex-end'
               }}
             >
               <Link 
@@ -621,7 +623,8 @@ const Footer = () => {
             <div 
               style={{
                 display: 'flex',
-                gap: '12px'
+                gap: '12px',
+                justifyContent: isMobile ? 'flex-start' : 'flex-end'
               }}
             >
               <a 
