@@ -1,0 +1,29 @@
+# <type>(<scope>): <short summary>
+#   │       │             │
+#   │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
+#   │       │
+#   │       └─⫸ Commit Scope: animations|bazel|benchpress|common|compiler|compiler-cli|core|
+#   │                          elements|forms|http|language-service|localize|platform-browser|
+#   │                          platform-browser-dynamic|platform-server|router|service-worker|
+#   │                          upgrade|zone.js|packaging|changelog|docs-infra|migrations|
+#   │                          devkit|ngcc|ve
+#   │
+#   └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|style|test
+#
+# Examples:
+# feat(navigation): add mobile hamburger menu
+# fix(forms): resolve email validation issue  
+# docs(readme): update installation instructions
+# style(buttons): improve hover states
+# refactor(utils): optimize performance helper functions
+# test(components): add ErrorBoundary test coverage
+# perf(images): implement lazy loading
+# build(deps): update dependencies to latest versions
+# ci(github): add automated testing workflow
+
+# Remember:
+# - Use the imperative mood in the subject line
+# - Do not end the subject line with a period
+# - Capitalize the subject line
+# - Use the body to explain what and why vs. how
+# - Can use multiple lines with "-" for multiple changes in one commit

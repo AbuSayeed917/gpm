@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # Development environment
+  app-dev:
+    build:
+      context: .
+      target: development
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    profiles:
+      - dev
+
+  # Production environment
+  app-prod:
+    build:
+      context: .
+      target: production
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    profiles:
+      - prod
+
+  # Storybook for component development
+  storybook:
+    build:
+      context: .
+      target: development
+    ports:
+      - "6006:6006"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run storybook
+    profiles:
+      - dev
+
+  # Cypress E2E testing
+  cypress:
+    build:
+      context: .
+      target: development
+    depends_on:
+      - app-dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CYPRESS_baseUrl=http://app-dev:3000
+    command: npm run cy:run
+    profiles:
+      - test
+
+networks:
+  default:
+    name: gpm-network

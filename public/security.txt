@@ -1,0 +1,7 @@
+Contact: security@globalpayrollmigration.com
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://globalpayrollmigration.com/.well-known/pgp-key.txt
+Acknowledgments: https://globalpayrollmigration.com/security/hall-of-fame
+Policy: https://globalpayrollmigration.com/security/disclosure-policy
+Preferred-Languages: en
+Canonical: https://globalpayrollmigration.com/.well-known/security.txt
