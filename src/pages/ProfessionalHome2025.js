@@ -254,7 +254,6 @@ const ProfessionalHome2025 = () => {
         
         /* Service Cards */
         .service-card { height: 400px !important; }
-        .service-card-padding { padding: 20px 16px !important; }
         .service-card-icon { font-size: clamp(20px, 5vw, 24px) !important; }
         .service-card-title { font-size: clamp(16px, 4.5vw, 20px) !important; }
         .service-card-subtitle { font-size: clamp(11px, 3vw, 13px) !important; }
@@ -266,10 +265,8 @@ const ProfessionalHome2025 = () => {
         .service-card .features-list-item { font-size: clamp(10px, 2.8vw, 12px) !important; margin-bottom: 6px !important; }
         .service-card .check-icon { width: 12px !important; height: 12px !important; font-size: 8px !important; }
         .service-card .learn-more-btn { font-size: 11px !important; padding: 8px 14px !important; }
-        .service-card .back-content { padding: 16px 12px !important; }
         .service-card .back-title { font-size: clamp(14px, 4vw, 16px) !important; margin-bottom: 12px !important; }
         .service-card .back-icon-bg { padding: 12px !important; margin-bottom: 12px !important; }
-        .service-card .front-content { padding: 18px 14px !important; }
         .service-card .front-icon-bg { padding: 12px !important; margin-bottom: 12px !important; }
         .service-card .front-title { font-size: clamp(14px, 4vw, 18px) !important; margin-bottom: 4px !important; }
         .service-card .front-subtitle { font-size: clamp(10px, 2.8vw, 12px) !important; margin-bottom: 8px !important; }
@@ -362,7 +359,6 @@ const ProfessionalHome2025 = () => {
         
         /* Service Cards */
         .service-card { height: 360px !important; }
-        .service-card-padding { padding: 18px 14px !important; }
         .service-card-icon { font-size: clamp(18px, 4.5vw, 22px) !important; }
         .service-card-title { font-size: clamp(14px, 4vw, 18px) !important; }
         .service-card-subtitle { font-size: clamp(10px, 2.8vw, 12px) !important; }
@@ -374,10 +370,8 @@ const ProfessionalHome2025 = () => {
         .service-card .features-list-item { font-size: clamp(9px, 2.5vw, 11px) !important; margin-bottom: 4px !important; }
         .service-card .check-icon { width: 10px !important; height: 10px !important; font-size: 7px !important; }
         .service-card .learn-more-btn { font-size: 10px !important; padding: 6px 12px !important; }
-        .service-card .back-content { padding: 14px 10px !important; }
         .service-card .back-title { font-size: clamp(12px, 3.5vw, 14px) !important; margin-bottom: 8px !important; }
         .service-card .back-icon-bg { padding: 10px !important; margin-bottom: 8px !important; }
-        .service-card .front-content { padding: 14px 10px !important; }
         .service-card .front-icon-bg { padding: 10px !important; margin-bottom: 8px !important; }
         .service-card .front-title { font-size: clamp(12px, 3.5vw, 16px) !important; margin-bottom: 3px !important; }
         .service-card .front-subtitle { font-size: clamp(9px, 2.5vw, 11px) !important; margin-bottom: 6px !important; }
@@ -445,7 +439,6 @@ const ProfessionalHome2025 = () => {
         .features-card { height: 260px !important; }
         .features-card-padding { padding: 16px 12px !important; }
         .service-card { height: 320px !important; }
-        .service-card-padding { padding: 18px 14px !important; }
         .process-card { height: 300px !important; }
         .process-card-padding { padding: 18px 14px !important; }
         .country-flag { font-size: clamp(32px, 8vw, 42px) !important; }
@@ -836,7 +829,7 @@ const ProfessionalHome2025 = () => {
       {/* Services Section - Industry-Grade Mobile */}
       <section
         style={{
-          padding: '0px 20px 40px 20px',
+          padding: isMobile ? '0px 0px 40px 0px' : '0px 20px 40px 20px',
           background: '#e3f2fd',
           position: 'relative',
           overflow: 'hidden',
@@ -874,7 +867,7 @@ const ProfessionalHome2025 = () => {
 
         <div
           style={{
-            maxWidth: '1200px',
+            width: '100%',
             margin: '0 auto',
             textAlign: 'left',
             position: 'relative',
@@ -1196,7 +1189,7 @@ const ProfessionalHome2025 = () => {
                 width: '100%',
                 margin: '0 auto',
                 overflow: 'hidden',
-                padding: '0 20px',
+                padding: '0 4px',
               }}
               onTouchStart={onTouchStart}
               onTouchMove={onTouchMove}
@@ -1285,7 +1278,7 @@ const ProfessionalHome2025 = () => {
                   key={service.id}
                   style={{
                     width: '33.333%',
-                    padding: '0 5px',
+                    padding: '0 0px',
                     boxSizing: 'border-box',
                     flexShrink: 0,
                   }}
@@ -1324,12 +1317,12 @@ const ProfessionalHome2025 = () => {
                       backfaceVisibility: 'hidden',
                       background: 'rgba(255, 255, 255, 0.9)',
                       borderRadius: '20px',
-                      padding: '36px 28px',
+                      padding: '40px 28px',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
                       border: '1px solid rgba(255, 255, 255, 0.4)',
-                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                      boxShadow: 'none',
                       backdropFilter: 'blur(40px) saturate(200%)',
                     }}
                   >
@@ -1428,12 +1421,12 @@ const ProfessionalHome2025 = () => {
                       transform: 'rotateY(180deg)',
                       background: `linear-gradient(135deg, #1a237e 0%, #283593 100%)`,
                       borderRadius: '20px',
-                      padding: '32px 24px',
+                      padding: '40px 28px',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
                       color: 'rgba(255, 255, 255, 0.95)',
-                      boxShadow: '0 12px 48px rgba(26, 35, 126, 0.3)',
+                      boxShadow: 'none',
                       border: '1px solid rgba(255, 255, 255, 0.3)',
                       backdropFilter: 'blur(40px) saturate(200%)',
                     }}
@@ -1713,7 +1706,7 @@ const ProfessionalHome2025 = () => {
       {/* Features Section - Apple Style */}
       <section
         style={{
-          padding: '60px 20px',
+          padding: isMobile ? '60px 20px' : '60px 20px',
           background: '#e3f2fd',
           position: 'relative',
           overflow: 'hidden',
@@ -2077,7 +2070,7 @@ const ProfessionalHome2025 = () => {
                 width: '100%',
                 margin: '0 auto',
                 overflow: 'hidden',
-                padding: '0 16px',
+                padding: '0 4px',
               }}
               onTouchStart={onFeatureTouchStart}
               onTouchMove={onFeatureTouchMove}
@@ -2167,7 +2160,7 @@ const ProfessionalHome2025 = () => {
                     className="mobile-feature-wrapper"
                     style={{
                       width: '33.333%',
-                      padding: '0 5px',
+                      padding: '0 0px',
                       boxSizing: 'border-box',
                       flexShrink: 0,
                     }}
