@@ -1211,8 +1211,11 @@ const ProfessionalHome2025 = () => {
               }}
               transition={{
                 type: 'spring',
-                stiffness: 300,
-                damping: 30,
+                stiffness: 400,
+                damping: 40,
+                mass: 1,
+                restDelta: 0.001,
+                restSpeed: 0.001,
               }}
               style={{
                 display: 'flex',
