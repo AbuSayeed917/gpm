@@ -5,7 +5,7 @@
   },
   "mimeTypes": {
     ".json": "application/json",
-    ".js": "text/javascript",
+    ".js": "application/javascript",
     ".css": "text/css"
   },
   "routes": [
