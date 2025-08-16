@@ -173,7 +173,7 @@ const ProfessionalHome2025 = () => {
         }
         .hero-section { 
           padding: 40px 16px clamp(20px, 4vh, 30px) 16px !important; 
-          min-height: clamp(400px, 60vh, 600px) !important;
+          min-height: clamp(350px, 45vh, 500px) !important;
         }
         .hero-title { font-size: clamp(18px, 4.8vw, 28px) !important; line-height: 1.25 !important; }
         .hero-subtitle { font-size: clamp(14px, 3.5vw, 18px) !important; }
@@ -280,7 +280,7 @@ const ProfessionalHome2025 = () => {
       @media (max-width: 480px) {
         .hero-section { 
           padding: 30px 12px clamp(16px, 3vh, 24px) 12px !important; 
-          min-height: clamp(350px, 50vh, 500px) !important;
+          min-height: clamp(300px, 40vh, 450px) !important;
         }
         .hero-title { font-size: clamp(15px, 5.2vw, 22px) !important; line-height: 1.3 !important; }
         .hero-subtitle { font-size: clamp(12px, 4vw, 16px) !important; }
@@ -378,7 +378,7 @@ const ProfessionalHome2025 = () => {
       @media (max-width: 360px) {
         .hero-section { 
           padding: 25px 10px clamp(12px, 2vh, 20px) 10px !important; 
-          min-height: clamp(300px, 45vh, 450px) !important;
+          min-height: clamp(280px, 35vh, 400px) !important;
         }
         .hero-title { font-size: clamp(13px, 4.8vw, 18px) !important; line-height: 1.35 !important; }
         .hero-subtitle { font-size: clamp(11px, 3.5vw, 14px) !important; }
@@ -412,14 +412,14 @@ const ProfessionalHome2025 = () => {
       /* Viewport height adjustments for very short screens */
       @media (max-height: 600px) {
         .hero-section { 
-          min-height: 400px !important;
+          min-height: 350px !important;
           padding: 30px 20px 16px 20px !important;
         }
       }
       
       @media (max-height: 500px) {
         .hero-section { 
-          min-height: 350px !important;
+          min-height: 300px !important;
           padding: 25px 20px 12px 20px !important;
         }
       }
@@ -628,7 +628,7 @@ const ProfessionalHome2025 = () => {
           background: '#e3f2fd',
           position: 'relative',
           overflow: 'hidden',
-          minHeight: 'clamp(500px, 70vh, 800px)',
+          minHeight: 'clamp(400px, 50vh, 600px)',
           display: 'flex',
           alignItems: 'flex-start',
           paddingTop: '40px',
