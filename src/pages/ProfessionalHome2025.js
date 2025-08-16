@@ -531,7 +531,7 @@ const ProfessionalHome2025 = () => {
             display: 'flex',
             justifyContent: isMobile ? 'center' : 'flex-end',
             alignItems: 'center',
-            gap: isMobile ? '20px' : '32px',
+            gap: isMobile ? '12px' : '32px',
           }}
         >
           {/* Business Hours (Desktop only) */}
@@ -561,8 +561,8 @@ const ProfessionalHome2025 = () => {
               textDecoration: 'none',
               display: 'flex',
               alignItems: 'center',
-              gap: '8px',
-              padding: isMobile ? '4px 8px' : '4px 12px',
+              gap: isMobile ? '6px' : '8px',
+              padding: isMobile ? '3px 6px' : '4px 12px',
               borderRadius: '6px',
               transition: 'all 0.2s ease',
               background: 'rgba(26, 35, 126, 0.1)',
@@ -580,7 +580,7 @@ const ProfessionalHome2025 = () => {
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
             </svg>
-            <span style={{ fontWeight: 500, letterSpacing: '0.3px' }}>
+            <span style={{ fontWeight: 500, letterSpacing: '0.3px', fontSize: 'clamp(10px, 2.5vw, 13px)' }}>
               +44 7432 665514
             </span>
           </a>
@@ -593,8 +593,8 @@ const ProfessionalHome2025 = () => {
               textDecoration: 'none',
               display: 'flex',
               alignItems: 'center',
-              gap: '8px',
-              padding: isMobile ? '4px 8px' : '4px 12px',
+              gap: isMobile ? '6px' : '8px',
+              padding: isMobile ? '3px 6px' : '4px 12px',
               borderRadius: '6px',
               transition: 'all 0.2s ease',
               background: 'rgba(26, 35, 126, 0.1)',
@@ -612,7 +612,7 @@ const ProfessionalHome2025 = () => {
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
               <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
-            <span style={{ fontWeight: 500, letterSpacing: '0.3px' }}>
+            <span style={{ fontWeight: 500, letterSpacing: '0.3px', fontSize: 'clamp(9px, 2.2vw, 13px)' }}>
               info@globalpayrollmigration.com
             </span>
           </a>
@@ -753,7 +753,7 @@ const ProfessionalHome2025 = () => {
                 fontWeight: '500',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
+                gap: isMobile ? '6px' : '8px',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 border: 'none',
                 boxShadow: '0 4px 16px rgba(0, 122, 255, 0.3)',
@@ -1149,7 +1149,7 @@ const ProfessionalHome2025 = () => {
               style={{
                 display: 'flex',
                 justifyContent: 'center',
-                gap: '8px',
+                gap: isMobile ? '6px' : '8px',
                 marginBottom: '30px',
               }}
             >
@@ -1191,7 +1191,7 @@ const ProfessionalHome2025 = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px',
+                gap: isMobile ? '6px' : '8px',
               }}
             >
               <span>Swipe to explore services</span>
@@ -1628,7 +1628,7 @@ const ProfessionalHome2025 = () => {
                 fontWeight: '400',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
+                gap: isMobile ? '6px' : '8px',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 border: 'none',
                 fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
@@ -2409,7 +2409,7 @@ const ProfessionalHome2025 = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '8px',
+                    gap: isMobile ? '6px' : '8px',
                     padding: '8px',
                     cursor: 'pointer',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
