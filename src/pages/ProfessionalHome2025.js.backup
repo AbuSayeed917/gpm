@@ -1,24 +1,13 @@
 import { Analytics, Business, People, Shield, Speed, Timeline } from '@mui/icons-material';
+import { motion } from 'framer-motion';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const ProfessionalHome2025 = () => {
-  // Mobile detection
-  const [isMobile, setIsMobile] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
-
   // State for services card swipe
   const [currentServiceCard, setCurrentServiceCard] = React.useState(0);
   const [isTransitioning, setIsTransitioning] = React.useState(false);
+  const [isMobileView, setIsMobileView] = React.useState(false);
   
   // State for card flips
   const [flippedCards, setFlippedCards] = React.useState({});
@@ -70,7 +59,7 @@ const ProfessionalHome2025 = () => {
   };
   
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    if (!touchStart || !touchEnd || !isMobileView) return;
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
@@ -82,6 +71,23 @@ const ProfessionalHome2025 = () => {
       prevServiceCard();
     }
   };
+  
+  // Responsive breakpoint detection
+  React.useEffect(() => {
+    const checkScreenSize = () => {
+      // Enable swipe mode when screen is too small for 3 cards (below 1024px)
+      setIsMobileView(window.innerWidth < 1024);
+      
+      // Reset to first card when switching from mobile to desktop
+      if (window.innerWidth >= 1024 && currentServiceCard !== 0) {
+        setCurrentServiceCard(0);
+      }
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, [currentServiceCard]);
 
   // Ultra smooth hover handlers with optimized debounce
   const handleCardHover = (index, isHovered, setFlipState) => {
@@ -172,7 +178,7 @@ const ProfessionalHome2025 = () => {
           display: block;
         }
         .hero-section { 
-          padding: 40px 16px clamp(20px, 4vh, 30px) 16px !important; 
+          padding: clamp(20px, 6vh, 40px) 16px clamp(20px, 4vh, 30px) 16px !important; 
           min-height: clamp(400px, 60vh, 600px) !important;
         }
         .hero-title { font-size: clamp(18px, 4.8vw, 28px) !important; line-height: 1.25 !important; }
@@ -279,7 +285,7 @@ const ProfessionalHome2025 = () => {
       
       @media (max-width: 480px) {
         .hero-section { 
-          padding: 30px 12px clamp(16px, 3vh, 24px) 12px !important; 
+          padding: clamp(16px, 5vh, 30px) 12px clamp(16px, 3vh, 24px) 12px !important; 
           min-height: clamp(350px, 50vh, 500px) !important;
         }
         .hero-title { font-size: clamp(15px, 5.2vw, 22px) !important; line-height: 1.3 !important; }
@@ -377,7 +383,7 @@ const ProfessionalHome2025 = () => {
       
       @media (max-width: 360px) {
         .hero-section { 
-          padding: 25px 10px clamp(12px, 2vh, 20px) 10px !important; 
+          padding: clamp(12px, 4vh, 24px) 10px clamp(12px, 2vh, 20px) 10px !important; 
           min-height: clamp(300px, 45vh, 450px) !important;
         }
         .hero-title { font-size: clamp(13px, 4.8vw, 18px) !important; line-height: 1.35 !important; }
@@ -413,14 +419,14 @@ const ProfessionalHome2025 = () => {
       @media (max-height: 600px) {
         .hero-section { 
           min-height: 400px !important;
-          padding: 30px 20px 16px 20px !important;
+          padding: 20px 20px 16px 20px !important;
         }
       }
       
       @media (max-height: 500px) {
         .hero-section { 
           min-height: 350px !important;
-          padding: 25px 20px 12px 20px !important;
+          padding: 16px 20px 12px 20px !important;
         }
       }
     `;
@@ -508,130 +514,18 @@ const ProfessionalHome2025 = () => {
         color: '#1a237e',
       }}
     >
-      {/* Top Contact Bar */}
-      <div
-        className='top-contact-bar'
-        style={{
-          background: 'rgba(227, 242, 253, 0.95)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          color: '#1a237e',
-          fontSize: isMobile ? '12px' : '13px',
-          padding: isMobile ? '10px 16px' : '12px 24px',
-          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-          borderBottom: '0.5px solid rgba(0, 0, 0, 0.1)',
-          boxShadow: '0 1px 20px rgba(0, 0, 0, 0.05)',
-          marginBottom: '0px',
-        }}
-      >
-        <div
-          style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            display: 'flex',
-            justifyContent: isMobile ? 'center' : 'flex-end',
-            alignItems: 'center',
-            gap: isMobile ? '20px' : '32px',
-          }}
-        >
-          {/* Business Hours (Desktop only) */}
-          {!isMobile && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                color: 'rgba(26, 35, 126, 0.7)',
-              }}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"/>
-              </svg>
-              <span style={{ fontSize: '12px', fontWeight: 400 }}>
-                Mon-Fri 9AM-6PM GMT
-              </span>
-            </div>
-          )}
-
-          {/* Phone */}
-          <a
-            href="tel:+447432665514"
-            style={{
-              color: '#1a237e',
-              textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: isMobile ? '4px 8px' : '4px 12px',
-              borderRadius: '6px',
-              transition: 'all 0.2s ease',
-              background: 'rgba(26, 35, 126, 0.1)',
-              border: '1px solid rgba(26, 35, 126, 0.15)',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(26, 35, 126, 0.15)';
-              e.target.style.transform = 'translateY(-1px)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(26, 35, 126, 0.1)';
-              e.target.style.transform = 'translateY(0)';
-            }}
-          >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </svg>
-            <span style={{ fontWeight: 500, letterSpacing: '0.3px' }}>
-              +44 7432 665514
-            </span>
-          </a>
-
-          {/* Email */}
-          <a
-            href="mailto:info@globalpayrollmigration.com"
-            style={{
-              color: '#1a237e',
-              textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: isMobile ? '4px 8px' : '4px 12px',
-              borderRadius: '6px',
-              transition: 'all 0.2s ease',
-              background: 'rgba(26, 35, 126, 0.1)',
-              border: '1px solid rgba(26, 35, 126, 0.15)',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(26, 35, 126, 0.15)';
-              e.target.style.transform = 'translateY(-1px)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(26, 35, 126, 0.1)';
-              e.target.style.transform = 'translateY(0)';
-            }}
-          >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-            <span style={{ fontWeight: 500, letterSpacing: '0.3px' }}>
-              info@globalpayrollmigration.com
-            </span>
-          </a>
-        </div>
-      </div>
-
       {/* Hero Section - Apple Style */}
       <section
         className="hero-section"
         style={{
-          padding: '0px 20px clamp(20px, 4vh, 30px) 20px',
+          padding: 'clamp(30px, 8vh, 50px) 20px clamp(30px, 6vh, 40px) 20px',
           textAlign: 'center',
           background: '#e3f2fd',
           position: 'relative',
           overflow: 'hidden',
           minHeight: 'clamp(500px, 70vh, 800px)',
           display: 'flex',
-          alignItems: 'flex-start',
-          paddingTop: '40px',
+          alignItems: 'center',
         }}
       >
         {/* Enhanced Liquid Glass Background - Sky Blue Harmony */}
@@ -689,7 +583,7 @@ const ProfessionalHome2025 = () => {
               fontWeight: '600',
               lineHeight: '1.1',
               color: '#1a237e',
-              margin: '0 0 16px 0',
+              marginBottom: '16px',
               letterSpacing: '-0.025em',
               textShadow: '0 1px 3px rgba(0,0,0,0.1)',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
@@ -712,7 +606,7 @@ const ProfessionalHome2025 = () => {
               Payroll Migration Specialists
             </span>
             <br className="mobile-break" />
-            {' '}for Seamless Global Transitions
+            for Seamless Global Transitions
           </h1>
           <p
             className='hero-subtitle'
@@ -852,113 +746,31 @@ const ProfessionalHome2025 = () => {
             strategic consultancy, and compliance improvement.
           </p>
 
-          {/* Service Card Swipe Container */}
-          <div
-            style={{
-              position: 'relative',
-              maxWidth: '400px',
-              margin: '0 auto',
-              overflow: 'hidden',
-            }}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-          >
-            {/* Navigation Dots */}
+          {/* Conditional Rendering: Grid for Desktop, Swipe for Mobile */}
+          {!isMobileView ? (
+            // Desktop Grid Layout (3 cards side by side)
             <div
+              className='services-grid'
               style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '8px',
-                marginBottom: '30px',
-              }}
-            >
-              {[0, 1, 2].map((index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => goToServiceCard(index)}
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                  style={{
-                    width: currentServiceCard === index ? '32px' : '12px',
-                    height: '12px',
-                    borderRadius: '6px',
-                    border: 'none',
-                    background: currentServiceCard === index 
-                      ? 'linear-gradient(135deg, #007AFF 0%, #5856d6 100%)'
-                      : 'rgba(26, 35, 126, 0.3)',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    boxShadow: currentServiceCard === index 
-                      ? '0 4px 12px rgba(0, 122, 255, 0.4)'
-                      : 'none',
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Swipe Hint */}
-            <motion.div
-              initial={{ opacity: 1 }}
-              animate={{ opacity: [1, 0.6, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              style={{
-                textAlign: 'center',
-                marginBottom: '20px',
-                color: '#283593',
-                fontSize: '14px',
-                fontWeight: '500',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-              }}
-            >
-              <span>Swipe to explore services</span>
-              <motion.span
-                animate={{ x: [0, 8, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                style={{ fontSize: '16px' }}
-              >
-                ←→
-              </motion.span>
-            </motion.div>
-
-            {/* Service Cards Carousel */}
-            <motion.div
-              animate={{
-                x: `${-currentServiceCard * 33.333}%`,
-              }}
-              transition={{
-                type: 'spring',
-                stiffness: 300,
-                damping: 30,
-              }}
-              style={{
-                display: 'flex',
-                width: '300%',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '20px',
+                maxWidth: '1200px',
+                margin: '0 auto',
               }}
             >
               {services.map((service, index) => (
                 <div
                   key={service.id}
+                  className='service-card'
                   style={{
-                    width: '33.333%',
-                    padding: '0 10px',
-                    boxSizing: 'border-box',
-                    flexShrink: 0,
+                    perspective: '1000px',
+                    height: '480px',
+                    background: 'transparent',
+                    border: 'none',
+                    boxShadow: 'none',
                   }}
                 >
-                  <div
-                    className='service-card'
-                    style={{
-                      perspective: '1000px',
-                      height: '480px',
-                  background: 'transparent',
-                  border: 'none',
-                  boxShadow: 'none',
-                }}
-              >
                 <div
                   style={{
                     position: 'relative',
@@ -1240,7 +1052,6 @@ const ProfessionalHome2025 = () => {
                   </div>
                 </div>
               </div>
-                </div>
               ))}
             </motion.div>
           </div>

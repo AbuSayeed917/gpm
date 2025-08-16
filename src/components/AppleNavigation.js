@@ -85,6 +85,7 @@ const AppleNavigation = () => {
 
   return (
     <>
+
       {/* Apple Navigation Bar */}
       <nav
         className={`apple-navigation ${scrolled ? 'apple-navigation-scrolled' : ''}`}
@@ -104,7 +105,7 @@ const AppleNavigation = () => {
         <div
           className='apple-navigation-content'
           style={{
-            width: '90%',
+            width: '100%',
             margin: '0 auto',
             padding: '12px 20px',
             display: 'flex',
@@ -140,7 +141,7 @@ const AppleNavigation = () => {
                 filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))',
               }}
             />
-            <span className='apple-navigation-logo-text'>Global Payroll Migration</span>
+            <span className='apple-navigation-logo-text'>{isMobile ? 'GPM' : 'Global Payroll Migration'}</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -516,7 +517,7 @@ const AppleNavigation = () => {
             {/* CTA Button */}
             <div className='apple-navigation-actions'>
               <Link
-                to='/quote'
+                to='/contact'
                 className='apple-navigation-cta'
                 style={{
                   display: 'inline-block',
@@ -542,28 +543,66 @@ const AppleNavigation = () => {
                   e.target.style.transform = 'scale(1)';
                 }}
               >
-                Get Free Quote
+                Free Consultation
               </Link>
             </div>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className={`apple-navigation-mobile-toggle ${mobileOpen ? 'apple-navigation-mobile-toggle-open' : ''}`}
-            onClick={() => setMobileOpen(!mobileOpen)}
+          {/* Mobile Navigation (Quote Button + Menu Toggle) */}
+          <div
+            className='apple-navigation-mobile-section'
             style={{
               display: isMobile ? 'flex' : 'none',
-              flexDirection: 'column',
-              justifyContent: 'center',
               alignItems: 'center',
-              width: '24px',
-              height: '24px',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: 0,
+              gap: '20px',
             }}
           >
+            {/* Mobile Consultation Button */}
+            <Link
+              to='/contact'
+              className='apple-navigation-mobile-cta'
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                background: '#007AFF',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: '16px',
+                fontSize: '13px',
+                fontWeight: 500,
+                transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                fontFamily:
+                  '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#0056CC';
+                e.target.style.transform = 'scale(1.02)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = '#007AFF';
+                e.target.style.transform = 'scale(1)';
+              }}
+            >
+              Free Consultation
+            </Link>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className={`apple-navigation-mobile-toggle ${mobileOpen ? 'apple-navigation-mobile-toggle-open' : ''}`}
+              onClick={() => setMobileOpen(!mobileOpen)}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '24px',
+                height: '24px',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+              }}
+            >
             <span
               className='apple-navigation-mobile-line'
               style={{
@@ -604,6 +643,7 @@ const AppleNavigation = () => {
               }}
             />
           </button>
+          </div>
         </div>
       </nav>
 
@@ -770,7 +810,7 @@ const AppleNavigation = () => {
             {/* Mobile CTA */}
             <li className='apple-navigation-mobile-item' style={{ marginTop: '24px' }}>
               <Link
-                to='/quote'
+                to='/contact'
                 style={{
                   display: 'inline-block',
                   padding: '12px 24px',
@@ -784,7 +824,7 @@ const AppleNavigation = () => {
                     '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
                 }}
               >
-                Get Free Quote
+                Free Consultation
               </Link>
             </li>
           </ul>

@@ -243,7 +243,7 @@ const Navigation = () => {
               },
             }}
           >
-            {isMobile && isSmallMobile ? 'GPM' : 'GlobalPayrollMigration.com'}
+{isMobile ? 'GPM' : 'GlobalPayrollMigration.com'}
           </Typography>
 
           {!isMobile ? (
@@ -289,7 +289,7 @@ const Navigation = () => {
                 variant='contained'
                 size='small'
                 component={Link}
-                to='/contact'
+                to='/quote'
                 className='nav-focus'
                 sx={{
                   px: 3,
@@ -300,34 +300,55 @@ const Navigation = () => {
                   },
                 }}
               >
-                Get Started
+                Get a Quote
               </Button>
             </Stack>
           ) : (
-            <IconButton
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              className={`nav-menu-button touch-nav-button nav-focus ${isMobile ? 'nav-mobile-menu' : ''}`}
-              sx={{
-                padding: isSmallMobile ? '8px' : '12px',
-                marginRight: isSmallMobile ? '-8px' : '-12px',
-                minHeight: '44px',
-                minWidth: '44px',
-                '&:focus': {
-                  outline: '2px solid #00bfff',
-                  outlineOffset: '2px',
-                },
-              }}
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? (
-                <Close sx={{ fontSize: isSmallMobile ? 20 : 24 }} />
-              ) : (
-                <MenuIcon sx={{ fontSize: isSmallMobile ? 20 : 24 }} />
-              )}
-            </IconButton>
+            <Stack direction='row' spacing={1} alignItems='center'>
+              <Button
+                variant='contained'
+                size='small'
+                component={Link}
+                to='/quote'
+                className='nav-focus'
+                sx={{
+                  px: 2,
+                  minHeight: '36px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  '&:focus': {
+                    outline: '2px solid #ffffff',
+                    outlineOffset: '2px',
+                  },
+                }}
+              >
+                Get Quote
+              </Button>
+              <IconButton
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+                className={`nav-menu-button touch-nav-button nav-focus ${isMobile ? 'nav-mobile-menu' : ''}`}
+                sx={{
+                  padding: isSmallMobile ? '8px' : '12px',
+                  marginRight: isSmallMobile ? '-8px' : '-12px',
+                  minHeight: '44px',
+                  minWidth: '44px',
+                  '&:focus': {
+                    outline: '2px solid #00bfff',
+                    outlineOffset: '2px',
+                  },
+                }}
+                aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileMenuOpen}
+              >
+                {mobileMenuOpen ? (
+                  <Close sx={{ fontSize: isSmallMobile ? 20 : 24 }} />
+                ) : (
+                  <MenuIcon sx={{ fontSize: isSmallMobile ? 20 : 24 }} />
+                )}
+              </IconButton>
+            </Stack>
           )}
         </Toolbar>
       </AppBar>
@@ -443,7 +464,7 @@ const Navigation = () => {
                 <Button
                   variant='contained'
                   component={Link}
-                  to='/contact'
+                  to='/quote'
                   onClick={() => setMobileMenuOpen(false)}
                   className='touch-nav-button nav-focus'
                   sx={{
@@ -460,7 +481,7 @@ const Navigation = () => {
                     },
                   }}
                 >
-                  Get Started
+                  Get a Quote
                 </Button>
               </ListItem>
             </motion.div>
