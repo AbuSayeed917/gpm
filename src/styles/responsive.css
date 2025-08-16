@@ -1,0 +1,448 @@
+/* ============================================
+   GLOBAL RESPONSIVE TYPOGRAPHY SYSTEM
+   ============================================
+   
+   This CSS file provides responsive typography classes
+   that scale smoothly across all device sizes using
+   clamp() functions with viewport-relative units.
+   
+   Usage: Add these classes to any element that needs
+   responsive text scaling across your application.
+*/
+
+/* ============================================
+   BASE RESPONSIVE TYPOGRAPHY CLASSES
+   ============================================ */
+
+/* Hero Titles - Largest text elements */
+.hero-title-xl {
+  font-size: clamp(24px, 4.5vw, 48px) !important;
+  line-height: 1.1 !important;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.hero-title-lg {
+  font-size: clamp(20px, 4vw, 40px) !important;
+  line-height: 1.15 !important;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.hero-title-md {
+  font-size: clamp(18px, 3.5vw, 36px) !important;
+  line-height: 1.2 !important;
+  font-weight: 600;
+}
+
+/* Section Titles */
+.section-title-xl {
+  font-size: clamp(20px, 5vw, 32px) !important;
+  line-height: 1.2 !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-title-lg {
+  font-size: clamp(18px, 4.5vw, 28px) !important;
+  line-height: 1.25 !important;
+  font-weight: 700;
+}
+
+.section-title-md {
+  font-size: clamp(16px, 4vw, 24px) !important;
+  line-height: 1.3 !important;
+  font-weight: 700;
+}
+
+.section-title-sm {
+  font-size: clamp(14px, 3.5vw, 20px) !important;
+  line-height: 1.3 !important;
+  font-weight: 600;
+}
+
+/* Subtitles */
+.subtitle-xl {
+  font-size: clamp(16px, 4vw, 24px) !important;
+  line-height: 1.3 !important;
+  font-weight: 500;
+}
+
+.subtitle-lg {
+  font-size: clamp(14px, 3.5vw, 20px) !important;
+  line-height: 1.35 !important;
+  font-weight: 500;
+}
+
+.subtitle-md {
+  font-size: clamp(12px, 3vw, 18px) !important;
+  line-height: 1.4 !important;
+  font-weight: 500;
+}
+
+/* Body Text */
+.body-xl {
+  font-size: clamp(14px, 3.5vw, 20px) !important;
+  line-height: 1.4 !important;
+  font-weight: 400;
+}
+
+.body-lg {
+  font-size: clamp(13px, 3.2vw, 18px) !important;
+  line-height: 1.4 !important;
+  font-weight: 400;
+}
+
+.body-md {
+  font-size: clamp(12px, 3vw, 16px) !important;
+  line-height: 1.4 !important;
+  font-weight: 400;
+}
+
+.body-sm {
+  font-size: clamp(11px, 2.8vw, 14px) !important;
+  line-height: 1.35 !important;
+  font-weight: 400;
+}
+
+.body-xs {
+  font-size: clamp(10px, 2.5vw, 12px) !important;
+  line-height: 1.3 !important;
+  font-weight: 400;
+}
+
+/* Small Text */
+.text-sm {
+  font-size: clamp(10px, 2.5vw, 13px) !important;
+  line-height: 1.3 !important;
+}
+
+.text-xs {
+  font-size: clamp(9px, 2.2vw, 11px) !important;
+  line-height: 1.25 !important;
+}
+
+/* ============================================
+   CARD COMPONENT CLASSES
+   ============================================ */
+
+/* Card Heights - Responsive scaling */
+.card-height-xl {
+  height: 480px !important;
+}
+
+.card-height-lg {
+  height: 420px !important;
+}
+
+.card-height-md {
+  height: 360px !important;
+}
+
+.card-height-sm {
+  height: 300px !important;
+}
+
+/* Card Padding */
+.card-padding-xl {
+  padding: 40px 32px !important;
+}
+
+.card-padding-lg {
+  padding: 32px 28px !important;
+}
+
+.card-padding-md {
+  padding: 24px 20px !important;
+}
+
+.card-padding-sm {
+  padding: 20px 16px !important;
+}
+
+.card-padding-xs {
+  padding: 16px 12px !important;
+}
+
+/* Card Titles */
+.card-title-xl {
+  font-size: clamp(18px, 4.5vw, 24px) !important;
+  line-height: 1.2 !important;
+  font-weight: 700;
+  margin-bottom: 8px !important;
+}
+
+.card-title-lg {
+  font-size: clamp(16px, 4vw, 22px) !important;
+  line-height: 1.25 !important;
+  font-weight: 700;
+  margin-bottom: 6px !important;
+}
+
+.card-title-md {
+  font-size: clamp(14px, 3.5vw, 20px) !important;
+  line-height: 1.3 !important;
+  font-weight: 700;
+  margin-bottom: 5px !important;
+}
+
+.card-title-sm {
+  font-size: clamp(12px, 3vw, 18px) !important;
+  line-height: 1.3 !important;
+  font-weight: 600;
+  margin-bottom: 4px !important;
+}
+
+/* Card Descriptions */
+.card-description-lg {
+  font-size: clamp(12px, 3.2vw, 16px) !important;
+  line-height: 1.4 !important;
+  font-weight: 400;
+}
+
+.card-description-md {
+  font-size: clamp(11px, 3vw, 14px) !important;
+  line-height: 1.35 !important;
+  font-weight: 400;
+}
+
+.card-description-sm {
+  font-size: clamp(10px, 2.8vw, 12px) !important;
+  line-height: 1.3 !important;
+  font-weight: 400;
+}
+
+/* ============================================
+   BUTTON RESPONSIVE CLASSES
+   ============================================ */
+
+.btn-responsive-xl {
+  padding: 16px 36px !important;
+  font-size: clamp(16px, 4vw, 18px) !important;
+  font-weight: 500;
+}
+
+.btn-responsive-lg {
+  padding: 14px 32px !important;
+  font-size: clamp(15px, 3.5vw, 17px) !important;
+  font-weight: 500;
+}
+
+.btn-responsive-md {
+  padding: 12px 28px !important;
+  font-size: clamp(14px, 3vw, 16px) !important;
+  font-weight: 500;
+}
+
+.btn-responsive-sm {
+  padding: 10px 24px !important;
+  font-size: clamp(13px, 2.8vw, 15px) !important;
+  font-weight: 500;
+}
+
+.btn-responsive-xs {
+  padding: 8px 20px !important;
+  font-size: clamp(12px, 2.5vw, 14px) !important;
+  font-weight: 500;
+}
+
+/* ============================================
+   ICON RESPONSIVE CLASSES
+   ============================================ */
+
+.icon-xl {
+  font-size: clamp(32px, 8vw, 48px) !important;
+}
+
+.icon-lg {
+  font-size: clamp(28px, 7vw, 40px) !important;
+}
+
+.icon-md {
+  font-size: clamp(24px, 6vw, 32px) !important;
+}
+
+.icon-sm {
+  font-size: clamp(20px, 5vw, 28px) !important;
+}
+
+.icon-xs {
+  font-size: clamp(16px, 4vw, 24px) !important;
+}
+
+/* Icon Background Containers */
+.icon-bg-xl {
+  padding: 24px !important;
+  border-radius: 50%;
+  margin-bottom: 24px !important;
+}
+
+.icon-bg-lg {
+  padding: 20px !important;
+  border-radius: 50%;
+  margin-bottom: 20px !important;
+}
+
+.icon-bg-md {
+  padding: 16px !important;
+  border-radius: 50%;
+  margin-bottom: 16px !important;
+}
+
+.icon-bg-sm {
+  padding: 14px !important;
+  border-radius: 50%;
+  margin-bottom: 14px !important;
+}
+
+.icon-bg-xs {
+  padding: 12px !important;
+  border-radius: 50%;
+  margin-bottom: 12px !important;
+}
+
+/* ============================================
+   SPACING RESPONSIVE CLASSES
+   ============================================ */
+
+.margin-bottom-xl {
+  margin-bottom: clamp(40px, 8vw, 60px) !important;
+}
+
+.margin-bottom-lg {
+  margin-bottom: clamp(32px, 6vw, 48px) !important;
+}
+
+.margin-bottom-md {
+  margin-bottom: clamp(24px, 5vw, 36px) !important;
+}
+
+.margin-bottom-sm {
+  margin-bottom: clamp(16px, 4vw, 24px) !important;
+}
+
+.margin-bottom-xs {
+  margin-bottom: clamp(12px, 3vw, 18px) !important;
+}
+
+/* ============================================
+   LAYOUT RESPONSIVE CLASSES
+   ============================================ */
+
+/* Grid Responsive Classes */
+.grid-responsive {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-responsive-2 {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ============================================
+   MEDIA QUERY BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Tablet Adjustments */
+  .card-height-xl { height: 400px !important; }
+  .card-height-lg { height: 360px !important; }
+  .card-height-md { height: 320px !important; }
+  .card-height-sm { height: 280px !important; }
+  
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  
+  .grid-responsive-2 {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Mobile Adjustments */
+  .card-height-xl { height: 360px !important; }
+  .card-height-lg { height: 320px !important; }
+  .card-height-md { height: 280px !important; }
+  .card-height-sm { height: 240px !important; }
+  
+  .card-padding-xl { padding: 20px 16px !important; }
+  .card-padding-lg { padding: 18px 14px !important; }
+  .card-padding-md { padding: 16px 12px !important; }
+  .card-padding-sm { padding: 14px 10px !important; }
+  .card-padding-xs { padding: 12px 8px !important; }
+  
+  .grid-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  .btn-responsive-xl,
+  .btn-responsive-lg,
+  .btn-responsive-md {
+    padding: 12px 24px !important;
+  }
+  
+  .btn-responsive-sm,
+  .btn-responsive-xs {
+    padding: 10px 20px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Small Mobile Adjustments */
+  .card-height-xl { height: 320px !important; }
+  .card-height-lg { height: 280px !important; }
+  .card-height-md { height: 240px !important; }
+  .card-height-sm { height: 200px !important; }
+  
+  .btn-responsive-xl,
+  .btn-responsive-lg,
+  .btn-responsive-md,
+  .btn-responsive-sm,
+  .btn-responsive-xs {
+    padding: 8px 16px !important;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center { text-align: center !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+
+.font-weight-normal { font-weight: 400 !important; }
+.font-weight-medium { font-weight: 500 !important; }
+.font-weight-semibold { font-weight: 600 !important; }
+.font-weight-bold { font-weight: 700 !important; }
+
+.line-height-tight { line-height: 1.1 !important; }
+.line-height-snug { line-height: 1.25 !important; }
+.line-height-normal { line-height: 1.4 !important; }
+.line-height-relaxed { line-height: 1.5 !important; }
+
+/* Responsive Display */
+.hide-mobile {
+  display: block !important;
+}
+
+.show-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .show-mobile {
+    display: block !important;
+  }
+}

@@ -91,97 +91,6 @@ const ProfessionalHome2025 = () => {
         animation-duration: 0.8s;
       }
       
-      @media (max-width: 768px) {
-        .hero-title { font-size: clamp(20px, 5vw, 32px) !important; line-height: 1.15 !important; }
-        .hero-subtitle { font-size: clamp(14px, 3.5vw, 18px) !important; }
-        .section-title { font-size: clamp(20px, 5vw, 28px) !important; }
-        .section-description { font-size: clamp(12px, 3.5vw, 16px) !important; }
-        .card-title { font-size: clamp(16px, 4.5vw, 20px) !important; }
-        .card-description { font-size: clamp(11px, 3vw, 14px) !important; }
-        .float-bg { display: none !important; }
-        
-        /* Features Cards */
-        .features-card { height: 300px !important; }
-        .features-card-padding { padding: 20px 16px !important; }
-        .features-card-icon { font-size: clamp(28px, 7vw, 36px) !important; }
-        .features-card-title { font-size: clamp(14px, 4vw, 18px) !important; }
-        .features-card-description { font-size: clamp(10px, 2.8vw, 12px) !important; }
-        .features-card .glass-bg { width: 120px !important; height: 120px !important; }
-        .features-card .back-title { font-size: clamp(16px, 4vw, 18px) !important; margin-bottom: 16px !important; }
-        .features-card .back-description { font-size: clamp(12px, 3vw, 14px) !important; line-height: 1.3 !important; }
-        .features-card .back-icon-bg { padding: 16px !important; margin-bottom: 16px !important; }
-        
-        /* Service Cards */
-        .service-card { height: 400px !important; }
-        .service-card-padding { padding: 20px 16px !important; }
-        .service-card-icon { font-size: clamp(20px, 5vw, 24px) !important; }
-        .service-card-title { font-size: clamp(16px, 4.5vw, 20px) !important; }
-        .service-card-subtitle { font-size: clamp(11px, 3vw, 13px) !important; }
-        .service-card-description { font-size: clamp(12px, 3.2vw, 14px) !important; }
-        .service-card .icon-bg { padding: 14px !important; margin-bottom: 14px !important; }
-        .service-card .back-glass-1 { width: 120px !important; height: 120px !important; }
-        .service-card .back-glass-2 { width: 100px !important; height: 100px !important; }
-        .service-card .hover-hint { font-size: 11px !important; padding: 10px 16px !important; }
-        .service-card .features-list-item { font-size: clamp(10px, 2.8vw, 12px) !important; margin-bottom: 6px !important; }
-        .service-card .check-icon { width: 12px !important; height: 12px !important; font-size: 8px !important; }
-        .service-card .learn-more-btn { font-size: 11px !important; padding: 8px 14px !important; }
-        .service-card .back-content { padding: 16px 12px !important; }
-        .service-card .back-title { font-size: clamp(14px, 4vw, 16px) !important; margin-bottom: 12px !important; }
-        .service-card .back-icon-bg { padding: 12px !important; margin-bottom: 12px !important; }
-        .service-card .front-content { padding: 18px 14px !important; }
-        .service-card .front-icon-bg { padding: 12px !important; margin-bottom: 12px !important; }
-        .service-card .front-title { font-size: clamp(14px, 4vw, 18px) !important; margin-bottom: 4px !important; }
-        .service-card .front-subtitle { font-size: clamp(10px, 2.8vw, 12px) !important; margin-bottom: 8px !important; }
-        .service-card .front-description { font-size: clamp(11px, 3vw, 13px) !important; line-height: 1.3 !important; }
-        
-        /* Process Cards */
-        .process-card { height: 350px !important; }
-        .process-card-padding { padding: 24px 18px !important; }
-        .process-step { font-size: clamp(32px, 8vw, 40px) !important; margin-bottom: 20px !important; }
-        .process-title { font-size: clamp(16px, 4.5vw, 20px) !important; margin-bottom: 16px !important; }
-        .process-description { font-size: clamp(11px, 3vw, 13px) !important; }
-        .process-card .back-glass { width: 120px !important; height: 120px !important; }
-        .process-card .hover-hint { font-size: 11px !important; padding: 10px 16px !important; }
-        
-        /* Country Section */
-        .country-flag { font-size: clamp(40px, 10vw, 56px) !important; }
-        .country-name { font-size: clamp(10px, 2.5vw, 12px) !important; }
-        
-        /* Services Section Text */
-        .services-title { font-size: clamp(20px, 5vw, 32px) !important; }
-        .services-description { font-size: clamp(13px, 3.5vw, 16px) !important; line-height: 1.3 !important; margin-bottom: 40px !important; }
-        
-        /* Discovery Call Section */
-        .discovery-title { font-size: clamp(20px, 4vw, 28px) !important; }
-        .discovery-description { font-size: clamp(14px, 3.5vw, 16px) !important; line-height: 1.3 !important; margin-bottom: 24px !important; }
-        
-        /* Migration Process Section */
-        .process-section-title { font-size: clamp(20px, 5vw, 32px) !important; }
-        .process-section-description { font-size: clamp(13px, 3.5vw, 16px) !important; line-height: 1.3 !important; margin-bottom: 40px !important; }
-        
-        /* Where We Operate Section */
-        .operate-title { font-size: clamp(20px, 5vw, 32px) !important; }
-        .operate-description { font-size: clamp(13px, 3.5vw, 16px) !important; line-height: 1.3 !important; margin-bottom: 40px !important; }
-        
-        /* Final CTA Section */
-        .cta-main-title { font-size: clamp(20px, 4.5vw, 32px) !important; }
-        .cta-main-description { font-size: clamp(13px, 3.5vw, 16px) !important; line-height: 1.3 !important; margin-bottom: 40px !important; }
-        .cta-card-title { font-size: clamp(18px, 4vw, 24px) !important; }
-        .cta-card-description { font-size: clamp(12px, 3vw, 14px) !important; line-height: 1.3 !important; margin-bottom: 20px !important; }
-        
-        /* Why Choose Us Text */
-        .why-choose-text { font-size: clamp(14px, 4vw, 18px) !important; line-height: 1.4 !important; margin-bottom: 16px !important; }
-        
-        /* Buttons */
-        .hero-button { padding: 12px 24px !important; font-size: 15px !important; }
-        .cta-button { padding: 12px 24px !important; font-size: 15px !important; }
-      }
-      
-      @media (max-width: 1024px) {
-        .services-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
-        .migration-process-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
-        .features-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
-      }
       
       .trusted-organizations-grid > div:nth-child(3) {
         grid-column: 1 / -1;
@@ -194,129 +103,7 @@ const ProfessionalHome2025 = () => {
         .trusted-organizations-grid > div:nth-child(3) { grid-column: auto !important; width: auto !important; }
       }
       
-      @media (max-width: 480px) {
-        .hero-title { font-size: clamp(16px, 5.5vw, 24px) !important; line-height: 1.1 !important; }
-        .hero-subtitle { font-size: clamp(12px, 4vw, 16px) !important; }
-        .section-title { font-size: clamp(18px, 6vw, 24px) !important; }
-        .section-description { font-size: clamp(11px, 3.5vw, 14px) !important; }
-        .card-title { font-size: clamp(14px, 5vw, 18px) !important; }
-        .card-description { font-size: clamp(10px, 3vw, 12px) !important; }
-        
-        /* Features Cards */
-        .features-card { height: 280px !important; }
-        .features-card-padding { padding: 18px 14px !important; }
-        .features-card-icon { font-size: clamp(24px, 8vw, 32px) !important; }
-        .features-card-title { font-size: clamp(12px, 4vw, 16px) !important; }
-        .features-card-description { font-size: clamp(9px, 2.5vw, 11px) !important; }
-        .features-card .glass-bg { width: 100px !important; height: 100px !important; }
-        .features-card .icon-bg { padding: 24px !important; margin-bottom: 20px !important; }
-        .features-card .hover-hint { font-size: 10px !important; padding: 8px 14px !important; }
-        .features-card .back-title { font-size: clamp(14px, 3.5vw, 16px) !important; margin-bottom: 12px !important; }
-        .features-card .back-description { font-size: clamp(10px, 2.5vw, 12px) !important; line-height: 1.25 !important; }
-        .features-card .back-icon-bg { padding: 14px !important; margin-bottom: 12px !important; }
-        
-        /* Service Cards */
-        .service-card { height: 360px !important; }
-        .service-card-padding { padding: 18px 14px !important; }
-        .service-card-icon { font-size: clamp(18px, 4.5vw, 22px) !important; }
-        .service-card-title { font-size: clamp(14px, 4vw, 18px) !important; }
-        .service-card-subtitle { font-size: clamp(10px, 2.8vw, 12px) !important; }
-        .service-card-description { font-size: clamp(11px, 3vw, 13px) !important; }
-        .service-card .icon-bg { padding: 12px !important; margin-bottom: 12px !important; }
-        .service-card .back-glass-1 { width: 100px !important; height: 100px !important; }
-        .service-card .back-glass-2 { width: 80px !important; height: 80px !important; }
-        .service-card .hover-hint { font-size: 10px !important; padding: 8px 14px !important; }
-        .service-card .features-list-item { font-size: clamp(9px, 2.5vw, 11px) !important; margin-bottom: 4px !important; }
-        .service-card .check-icon { width: 10px !important; height: 10px !important; font-size: 7px !important; }
-        .service-card .learn-more-btn { font-size: 10px !important; padding: 6px 12px !important; }
-        .service-card .back-content { padding: 14px 10px !important; }
-        .service-card .back-title { font-size: clamp(12px, 3.5vw, 14px) !important; margin-bottom: 8px !important; }
-        .service-card .back-icon-bg { padding: 10px !important; margin-bottom: 8px !important; }
-        .service-card .front-content { padding: 14px 10px !important; }
-        .service-card .front-icon-bg { padding: 10px !important; margin-bottom: 8px !important; }
-        .service-card .front-title { font-size: clamp(12px, 3.5vw, 16px) !important; margin-bottom: 3px !important; }
-        .service-card .front-subtitle { font-size: clamp(9px, 2.5vw, 11px) !important; margin-bottom: 6px !important; }
-        .service-card .front-description { font-size: clamp(10px, 2.8vw, 12px) !important; line-height: 1.25 !important; }
-        
-        /* Process Cards */
-        .process-card { height: 320px !important; }
-        .process-card-padding { padding: 20px 16px !important; }
-        .process-step { font-size: clamp(28px, 7vw, 36px) !important; margin-bottom: 16px !important; }
-        .process-title { font-size: clamp(14px, 4vw, 18px) !important; margin-bottom: 12px !important; }
-        .process-description { font-size: clamp(10px, 2.8vw, 12px) !important; }
-        .process-card .back-glass { width: 100px !important; height: 100px !important; }
-        .process-card .hover-hint { font-size: 10px !important; padding: 8px 14px !important; }
-        
-        /* Country Section */
-        .country-flag { font-size: clamp(36px, 9vw, 48px) !important; }
-        .country-name { font-size: clamp(9px, 2.2vw, 11px) !important; }
-        
-        /* Services Section Text */
-        .services-title { font-size: clamp(18px, 4.5vw, 28px) !important; }
-        .services-description { font-size: clamp(11px, 3vw, 14px) !important; line-height: 1.25 !important; margin-bottom: 35px !important; }
-        
-        /* Discovery Call Section */
-        .discovery-title { font-size: clamp(16px, 4vw, 24px) !important; }
-        .discovery-description { font-size: clamp(12px, 3vw, 14px) !important; line-height: 1.25 !important; margin-bottom: 20px !important; }
-        
-        /* Migration Process Section */
-        .process-section-title { font-size: clamp(18px, 4.5vw, 28px) !important; }
-        .process-section-description { font-size: clamp(11px, 3vw, 14px) !important; line-height: 1.25 !important; margin-bottom: 35px !important; }
-        
-        /* Where We Operate Section */
-        .operate-title { font-size: clamp(18px, 4.5vw, 28px) !important; }
-        .operate-description { font-size: clamp(11px, 3vw, 14px) !important; line-height: 1.25 !important; margin-bottom: 35px !important; }
-        
-        /* Final CTA Section */
-        .cta-main-title { font-size: clamp(16px, 4vw, 28px) !important; }
-        .cta-main-description { font-size: clamp(11px, 3vw, 14px) !important; line-height: 1.25 !important; margin-bottom: 35px !important; }
-        .cta-card-title { font-size: clamp(14px, 3.5vw, 20px) !important; }
-        .cta-card-description { font-size: clamp(10px, 2.8vw, 12px) !important; line-height: 1.25 !important; margin-bottom: 18px !important; }
-        
-        /* Why Choose Us Text */
-        .why-choose-text { font-size: clamp(12px, 3.5vw, 16px) !important; line-height: 1.3 !important; margin-bottom: 14px !important; }
-        
-        /* Buttons */
-        .hero-button { padding: 10px 20px !important; font-size: 14px !important; }
-        .cta-button { padding: 10px 20px !important; font-size: 14px !important; }
-        .hero-buttons { flex-direction: column !important; align-items: center !important; gap: 16px !important; }
-        
-        /* Layout */
-        .grid-layout { grid-template-columns: 1fr !important; }
-        .services-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-        .migration-process-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-        .features-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
-      }
       
-      @media (max-width: 360px) {
-        .hero-title { font-size: clamp(14px, 5vw, 20px) !important; line-height: 1.05 !important; }
-        .hero-subtitle { font-size: clamp(11px, 3.5vw, 14px) !important; }
-        .section-title { font-size: clamp(16px, 5.5vw, 22px) !important; }
-        .section-description { font-size: clamp(10px, 3vw, 12px) !important; }
-        .features-card { height: 260px !important; }
-        .features-card-padding { padding: 16px 12px !important; }
-        .service-card { height: 320px !important; }
-        .service-card-padding { padding: 18px 14px !important; }
-        .process-card { height: 300px !important; }
-        .process-card-padding { padding: 18px 14px !important; }
-        .country-flag { font-size: clamp(32px, 8vw, 42px) !important; }
-        .country-name { font-size: clamp(8px, 2vw, 10px) !important; }
-        .services-title { font-size: clamp(16px, 4vw, 24px) !important; }
-        .services-description { font-size: clamp(9px, 2.5vw, 12px) !important; line-height: 1.2 !important; margin-bottom: 30px !important; }
-        .discovery-title { font-size: clamp(14px, 3.5vw, 20px) !important; }
-        .discovery-description { font-size: clamp(10px, 2.5vw, 12px) !important; line-height: 1.2 !important; margin-bottom: 18px !important; }
-        .process-section-title { font-size: clamp(16px, 4vw, 24px) !important; }
-        .process-section-description { font-size: clamp(9px, 2.5vw, 12px) !important; line-height: 1.2 !important; margin-bottom: 30px !important; }
-        .operate-title { font-size: clamp(16px, 4vw, 24px) !important; }
-        .operate-description { font-size: clamp(9px, 2.5vw, 12px) !important; line-height: 1.2 !important; margin-bottom: 30px !important; }
-        .cta-main-title { font-size: clamp(14px, 3.5vw, 24px) !important; }
-        .cta-main-description { font-size: clamp(9px, 2.5vw, 12px) !important; line-height: 1.2 !important; margin-bottom: 30px !important; }
-        .cta-card-title { font-size: clamp(12px, 3vw, 18px) !important; }
-        .cta-card-description { font-size: clamp(9px, 2.2vw, 11px) !important; line-height: 1.2 !important; margin-bottom: 16px !important; }
-        .why-choose-text { font-size: clamp(10px, 3vw, 14px) !important; line-height: 1.25 !important; margin-bottom: 12px !important; }
-        .hero-button { padding: 8px 16px !important; font-size: 13px !important; }
-        .cta-button { padding: 8px 16px !important; font-size: 13px !important; }
-      }
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
@@ -461,11 +248,8 @@ const ProfessionalHome2025 = () => {
 
         <div style={{ width: '95%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <h1
-            className='hero-title'
+            className='hero-title-xl text-center'
             style={{
-              fontSize: 'clamp(24px, 4.5vw, 44px)',
-              fontWeight: '600',
-              lineHeight: '1.1',
               color: '#1a237e',
               marginBottom: '16px',
               letterSpacing: '-0.025em',
@@ -492,10 +276,8 @@ const ProfessionalHome2025 = () => {
             for Seamless Global Transitions
           </h1>
           <p
-            className='hero-subtitle'
+            className='subtitle-xl text-center'
             style={{
-              fontSize: 'clamp(16px, 4vw, 20px)',
-              lineHeight: '1.3',
               color: '#283593',
               fontWeight: '400',
               marginBottom: '32px',
@@ -514,14 +296,12 @@ const ProfessionalHome2025 = () => {
           >
             <Link
               to='/contact'
-              className='hero-button'
+              className='hero-button btn-responsive-lg'
               style={{
                 background: '#007AFF',
                 color: 'white',
-                padding: '14px 32px',
                 borderRadius: '980px',
                 textDecoration: 'none',
-                fontSize: '17px',
                 fontWeight: '500',
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -596,14 +376,12 @@ const ProfessionalHome2025 = () => {
           }}
         >
           <h2
-            className='services-title'
+            className='section-title-xl text-center'
             style={{
-              fontSize: 'clamp(24px, 4vw, 36px)',
               fontWeight: '700',
               color: '#1a237e',
               marginBottom: '12px',
               letterSpacing: '-0.025em',
-              textAlign: 'center',
               textShadow: '0 1px 3px rgba(0,0,0,0.2)',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
             }}
