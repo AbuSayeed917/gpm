@@ -1647,10 +1647,198 @@ const QuotePage = () => {
             transform: rotate(360deg);
           }
         }
+
+        /* ============================================
+           QUOTE PAGE MOBILE RESPONSIVE STYLES
+           ============================================ */
+
+        /* Tablet and Small Desktop */
+        @media (max-width: 1024px) {
+          .quote-section-padding { padding: 60px 0 !important; }
+          .quote-container { padding: 0 18px !important; }
+          .quote-header h1 { font-size: clamp(28px, 4vw, 40px) !important; }
+          .quote-header p { font-size: clamp(15px, 3.5vw, 18px) !important; }
+          .quote-card { padding: 32px 24px !important; }
+          .quote-step-container { padding: 24px 18px !important; }
+        }
+
+        /* Mobile Devices */
+        @media (max-width: 768px) {
+          .quote-section-padding { padding: 40px 0 !important; }
+          .quote-container { padding: 0 16px !important; }
+          
+          /* Headers and Titles */
+          .quote-header h1 { font-size: clamp(24px, 5vw, 32px) !important; line-height: 1.2 !important; }
+          .quote-header p { font-size: clamp(13px, 4vw, 16px) !important; line-height: 1.4 !important; }
+          .quote-card h3 { font-size: clamp(20px, 4.5vw, 24px) !important; }
+          .quote-card h4 { font-size: clamp(16px, 4vw, 20px) !important; }
+          .quote-card p { font-size: clamp(13px, 3.5vw, 15px) !important; line-height: 1.4 !important; }
+          
+          /* Cards and Containers */
+          .quote-card { 
+            padding: 24px 18px !important; 
+            margin-bottom: 20px !important;
+            border-radius: 16px !important;
+          }
+          .quote-step-container { 
+            padding: 20px 16px !important;
+            margin-bottom: 24px !important;
+          }
+          .quote-discovery-call {
+            padding: 24px 18px !important;
+            margin-bottom: 32px !important;
+          }
+          
+          /* Service Selection Cards */
+          .quote-service-card {
+            padding: 18px 16px !important;
+            margin-bottom: 16px !important;
+            border-radius: 16px !important;
+          }
+          .quote-service-card h4 { font-size: clamp(15px, 4vw, 18px) !important; }
+          .quote-service-card p { font-size: clamp(12px, 3.2vw, 14px) !important; }
+          
+          /* Buttons */
+          .quote-button {
+            padding: 12px 20px !important;
+            font-size: clamp(14px, 3.5vw, 16px) !important;
+            border-radius: 20px !important;
+          }
+          .quote-button-large {
+            padding: 14px 24px !important;
+            font-size: clamp(14px, 3.8vw, 16px) !important;
+          }
+          
+          /* Input Fields */
+          .quote-input {
+            padding: 12px 16px !important;
+            font-size: clamp(14px, 3.5vw, 16px) !important;
+          }
+          .quote-textarea {
+            padding: 16px !important;
+            font-size: clamp(13px, 3.2vw, 15px) !important;
+          }
+          
+          /* Progress Steps */
+          .quote-progress-step {
+            padding: 8px 12px !important;
+            font-size: clamp(11px, 2.8vw, 13px) !important;
+          }
+          .quote-step-container {
+            overflow-x: auto !important;
+            overflow-y: visible !important;
+          }
+          .quote-steps-flex {
+            min-width: 100% !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+          }
+          .quote-step-item {
+            flex: 1 1 auto !important;
+            min-width: 120px !important;
+            text-align: center !important;
+          }
+          .quote-step-text {
+            font-size: clamp(10px, 2.5vw, 12px) !important;
+            word-break: break-word !important;
+            white-space: normal !important;
+          }
+          
+          /* Form Sections */
+          .quote-form-section {
+            margin-bottom: 24px !important;
+          }
+          .quote-form-section h3 {
+            font-size: clamp(18px, 4.2vw, 22px) !important;
+            margin-bottom: 12px !important;
+          }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+          .quote-section-padding { padding: 30px 0 !important; }
+          .quote-container { padding: 0 14px !important; }
+          
+          /* Headers and Titles */
+          .quote-header h1 { font-size: clamp(20px, 5.5vw, 28px) !important; line-height: 1.15 !important; }
+          .quote-header p { font-size: clamp(12px, 3.8vw, 14px) !important; }
+          .quote-card h3 { font-size: clamp(18px, 4.8vw, 22px) !important; }
+          .quote-card h4 { font-size: clamp(14px, 4.2vw, 18px) !important; }
+          .quote-card p { font-size: clamp(12px, 3.5vw, 14px) !important; }
+          
+          /* Cards and Containers */
+          .quote-card { 
+            padding: 20px 16px !important; 
+            border-radius: 14px !important;
+          }
+          .quote-step-container { padding: 18px 14px !important; }
+          .quote-discovery-call { padding: 20px 16px !important; }
+          
+          /* Service Selection Cards */
+          .quote-service-card {
+            padding: 16px 14px !important;
+            gap: 14px !important;
+          }
+          .quote-service-card h4 { font-size: clamp(14px, 4.2vw, 16px) !important; }
+          .quote-service-card p { font-size: clamp(11px, 3.2vw, 13px) !important; }
+          
+          /* Buttons */
+          .quote-button {
+            padding: 10px 18px !important;
+            font-size: clamp(13px, 3.5vw, 15px) !important;
+          }
+          .quote-button-large {
+            padding: 12px 20px !important;
+            font-size: clamp(13px, 3.8vw, 15px) !important;
+          }
+          
+          /* Input Fields */
+          .quote-input {
+            padding: 10px 14px !important;
+            font-size: clamp(13px, 3.5vw, 15px) !important;
+          }
+          
+          /* Form Layout */
+          .quote-form-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          
+          /* Step Container Mobile Fix */
+          .quote-step-container {
+            padding: 18px 14px !important;
+            overflow: visible !important;
+          }
+          .quote-steps-flex {
+            flex-direction: column !important;
+            gap: 12px !important;
+          }
+          .quote-step-item {
+            min-width: 100% !important;
+            flex: none !important;
+          }
+        }
+
+        /* Extra Small Mobile */
+        @media (max-width: 360px) {
+          .quote-section-padding { padding: 24px 0 !important; }
+          .quote-container { padding: 0 12px !important; }
+          
+          .quote-header h1 { font-size: clamp(18px, 5.8vw, 24px) !important; }
+          .quote-card { padding: 18px 14px !important; }
+          .quote-step-container { padding: 16px 12px !important; }
+          .quote-service-card { padding: 14px 12px !important; }
+          
+          .quote-button { 
+            padding: 9px 16px !important;
+            font-size: clamp(12px, 3.5vw, 14px) !important;
+          }
+        }
       `}</style>
 
       <AppleBackground variant='primary'>
         <section
+          className="quote-section-padding"
           style={{
             background: '#f0f9ff',
             padding: '80px 0',
@@ -1675,6 +1863,7 @@ const QuotePage = () => {
           />
 
           <div
+            className="quote-container"
             style={{
               maxWidth: '1200px',
               margin: '0 auto',
@@ -1685,6 +1874,7 @@ const QuotePage = () => {
           >
             {/* Not Sure? Discovery Call Section - Top Priority */}
             <motion.div
+              className="quote-discovery-call"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -1729,6 +1919,7 @@ const QuotePage = () => {
 
               <motion.div whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}>
                 <button
+                  className="quote-button-large"
                   onClick={() => navigate('/contact')}
                   style={{
                     display: 'inline-flex',
@@ -1776,6 +1967,7 @@ const QuotePage = () => {
             >
               {/* Apple Header */}
               <motion.div
+                className="quote-header"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
@@ -1823,6 +2015,7 @@ const QuotePage = () => {
 
               {/* Apple Progress Stepper */}
               <motion.div
+                className="quote-step-container"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
@@ -1837,6 +2030,7 @@ const QuotePage = () => {
                 }}
               >
                 <div
+                  className="quote-steps-flex"
                   style={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -1847,6 +2041,7 @@ const QuotePage = () => {
                   {steps.map((label, index) => (
                     <div
                       key={label}
+                      className="quote-step-item"
                       style={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -1883,6 +2078,7 @@ const QuotePage = () => {
                         {index + 1}
                       </motion.div>
                       <span
+                        className="quote-step-text"
                         style={{
                           fontSize: '14px',
                           textAlign: 'center',
