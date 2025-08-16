@@ -1,8 +1,13 @@
 import { Analytics, Business, People, Shield, Speed, Timeline } from '@mui/icons-material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const ProfessionalHome2025 = () => {
+  // State for services card swipe
+  const [currentServiceCard, setCurrentServiceCard] = React.useState(0);
+  const [isTransitioning, setIsTransitioning] = React.useState(false);
+  
   // State for card flips
   const [flippedCards, setFlippedCards] = React.useState({});
   const [flippedFeatures, setFlippedFeatures] = React.useState({});
@@ -11,6 +16,60 @@ const ProfessionalHome2025 = () => {
 
   // Refs to prevent rapid toggling
   const hoverTimeouts = React.useRef({});
+  
+  // Services card swipe functions
+  const totalServiceCards = 3; // SME, Large Enterprise, Consultancy
+  
+  const goToServiceCard = (cardIndex) => {
+    if (isTransitioning || cardIndex === currentServiceCard) return;
+    if (cardIndex < 0 || cardIndex >= totalServiceCards) return;
+    
+    setIsTransitioning(true);
+    setCurrentServiceCard(cardIndex);
+    
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 600);
+  };
+  
+  const nextServiceCard = () => {
+    const nextIndex = currentServiceCard === totalServiceCards - 1 ? 0 : currentServiceCard + 1;
+    goToServiceCard(nextIndex);
+  };
+  
+  const prevServiceCard = () => {
+    const prevIndex = currentServiceCard === 0 ? totalServiceCards - 1 : currentServiceCard - 1;
+    goToServiceCard(prevIndex);
+  };
+  
+  // Touch/swipe handling for services cards
+  const [touchStart, setTouchStart] = React.useState(null);
+  const [touchEnd, setTouchEnd] = React.useState(null);
+  
+  const minSwipeDistance = 50;
+  
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      nextServiceCard();
+    }
+    if (isRightSwipe) {
+      prevServiceCard();
+    }
+  };
 
   // Ultra smooth hover handlers with optimized debounce
   const handleCardHover = (index, isHovered, setFlipState) => {
@@ -669,23 +728,108 @@ const ProfessionalHome2025 = () => {
             strategic consultancy, and compliance improvement.
           </p>
 
+          {/* Service Card Swipe Container */}
           <div
-            className='services-grid'
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '20px',
-              maxWidth: '1200px',
+              position: 'relative',
+              maxWidth: '400px',
               margin: '0 auto',
+              overflow: 'hidden',
             }}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
-            {services.map((service, index) => (
-              <div
-                key={service.id}
-                className='service-card'
-                style={{
-                  perspective: '1000px',
-                  height: '480px',
+            {/* Navigation Dots */}
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '8px',
+                marginBottom: '30px',
+              }}
+            >
+              {[0, 1, 2].map((index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => goToServiceCard(index)}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  style={{
+                    width: currentServiceCard === index ? '32px' : '12px',
+                    height: '12px',
+                    borderRadius: '6px',
+                    border: 'none',
+                    background: currentServiceCard === index 
+                      ? 'linear-gradient(135deg, #007AFF 0%, #5856d6 100%)'
+                      : 'rgba(26, 35, 126, 0.3)',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    boxShadow: currentServiceCard === index 
+                      ? '0 4px 12px rgba(0, 122, 255, 0.4)'
+                      : 'none',
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Swipe Hint */}
+            <motion.div
+              initial={{ opacity: 1 }}
+              animate={{ opacity: [1, 0.6, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              style={{
+                textAlign: 'center',
+                marginBottom: '20px',
+                color: '#283593',
+                fontSize: '14px',
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+              }}
+            >
+              <span>Swipe to explore services</span>
+              <motion.span
+                animate={{ x: [0, 8, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                style={{ fontSize: '16px' }}
+              >
+                ←→
+              </motion.span>
+            </motion.div>
+
+            {/* Service Cards Carousel */}
+            <motion.div
+              animate={{
+                x: `${-currentServiceCard * 33.333}%`,
+              }}
+              transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 30,
+              }}
+              style={{
+                display: 'flex',
+                width: '300%',
+              }}
+            >
+              {services.map((service, index) => (
+                <div
+                  key={service.id}
+                  style={{
+                    width: '33.333%',
+                    padding: '0 10px',
+                    boxSizing: 'border-box',
+                    flexShrink: 0,
+                  }}
+                >
+                  <div
+                    className='service-card'
+                    style={{
+                      perspective: '1000px',
+                      height: '480px',
                   background: 'transparent',
                   border: 'none',
                   boxShadow: 'none',
@@ -972,7 +1116,9 @@ const ProfessionalHome2025 = () => {
                   </div>
                 </div>
               </div>
-            ))}
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
