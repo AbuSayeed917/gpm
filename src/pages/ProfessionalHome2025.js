@@ -175,8 +175,8 @@ const ProfessionalHome2025 = () => {
           padding: 40px 16px clamp(20px, 4vh, 30px) 16px !important; 
           min-height: clamp(350px, 45vh, 500px) !important;
         }
-        .hero-title { font-size: clamp(18px, 4.8vw, 28px) !important; line-height: 1.25 !important; }
-        .hero-subtitle { font-size: clamp(13px, 3vw, 16px) !important; line-height: 1.4 !important; }
+        .hero-title { font-size: clamp(16px, 4.2vw, 26px) !important; line-height: 1.25 !important; }
+        .hero-subtitle { font-size: clamp(11px, 2.6vw, 15px) !important; line-height: 1.4 !important; }
         .section-title { font-size: clamp(20px, 5vw, 28px) !important; }
         .section-description { font-size: clamp(12px, 3.5vw, 16px) !important; }
         .card-title { font-size: clamp(16px, 4.5vw, 20px) !important; }
@@ -282,8 +282,8 @@ const ProfessionalHome2025 = () => {
           padding: 30px 12px clamp(16px, 3vh, 24px) 12px !important; 
           min-height: clamp(300px, 40vh, 450px) !important;
         }
-        .hero-title { font-size: clamp(15px, 5.2vw, 22px) !important; line-height: 1.3 !important; }
-        .hero-subtitle { font-size: clamp(11px, 3.2vw, 14px) !important; line-height: 1.35 !important; }
+        .hero-title { font-size: clamp(13px, 4.5vw, 20px) !important; line-height: 1.3 !important; }
+        .hero-subtitle { font-size: clamp(9px, 2.8vw, 13px) !important; line-height: 1.35 !important; }
         .section-title { font-size: clamp(18px, 6vw, 24px) !important; }
         .section-description { font-size: clamp(11px, 3.5vw, 14px) !important; }
         .card-title { font-size: clamp(14px, 5vw, 18px) !important; }
@@ -380,8 +380,8 @@ const ProfessionalHome2025 = () => {
           padding: 25px 10px clamp(12px, 2vh, 20px) 10px !important; 
           min-height: clamp(280px, 35vh, 400px) !important;
         }
-        .hero-title { font-size: clamp(13px, 4.8vw, 18px) !important; line-height: 1.35 !important; }
-        .hero-subtitle { font-size: clamp(10px, 2.8vw, 12px) !important; line-height: 1.3 !important; }
+        .hero-title { font-size: clamp(11px, 4.0vw, 16px) !important; line-height: 1.35 !important; }
+        .hero-subtitle { font-size: clamp(8px, 2.4vw, 11px) !important; line-height: 1.3 !important; }
         .section-title { font-size: clamp(16px, 5.5vw, 22px) !important; }
         .section-description { font-size: clamp(10px, 3vw, 12px) !important; }
         .features-card { height: 260px !important; }
@@ -685,9 +685,9 @@ const ProfessionalHome2025 = () => {
           <h1
             className='hero-title'
             style={{
-              fontSize: 'clamp(24px, 4.5vw, 44px)',
+              fontSize: 'clamp(20px, 4.0vw, 44px)',
               fontWeight: '600',
-              lineHeight: '1.1',
+              lineHeight: '1.15',
               color: '#1a237e',
               margin: '0 0 16px 0',
               letterSpacing: '-0.025em',
@@ -717,7 +717,7 @@ const ProfessionalHome2025 = () => {
           <p
             className='hero-subtitle'
             style={{
-              fontSize: 'clamp(14px, 3.2vw, 18px)',
+              fontSize: 'clamp(12px, 2.8vw, 18px)',
               lineHeight: '1.4',
               color: '#283593',
               fontWeight: '400',
