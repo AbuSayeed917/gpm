@@ -20,6 +20,10 @@ const ProfessionalHome2025 = () => {
   const [currentServiceCard, setCurrentServiceCard] = React.useState(0);
   const [isTransitioning, setIsTransitioning] = React.useState(false);
   
+  // State for features card swipe
+  const [currentFeatureCard, setCurrentFeatureCard] = React.useState(0);
+  const [isFeatureTransitioning, setIsFeatureTransitioning] = React.useState(false);
+  
   // State for card flips
   const [flippedCards, setFlippedCards] = React.useState({});
   const [flippedFeatures, setFlippedFeatures] = React.useState({});
@@ -31,6 +35,9 @@ const ProfessionalHome2025 = () => {
   
   // Services card swipe functions
   const totalServiceCards = 3; // SME, Large Enterprise, Consultancy
+  
+  // Features card swipe functions  
+  const totalFeatureCards = 3; // UK & Global Compliance, Zero Downtime, 24/7 Support
   
   const goToServiceCard = (cardIndex) => {
     if (isTransitioning || cardIndex === currentServiceCard) return;
@@ -54,9 +61,36 @@ const ProfessionalHome2025 = () => {
     goToServiceCard(prevIndex);
   };
   
+  // Features card navigation functions
+  const goToFeatureCard = (cardIndex) => {
+    if (isFeatureTransitioning || cardIndex === currentFeatureCard) return;
+    if (cardIndex < 0 || cardIndex >= totalFeatureCards) return;
+    
+    setIsFeatureTransitioning(true);
+    setCurrentFeatureCard(cardIndex);
+    
+    setTimeout(() => {
+      setIsFeatureTransitioning(false);
+    }, 600);
+  };
+  
+  const nextFeatureCard = () => {
+    const nextIndex = currentFeatureCard === totalFeatureCards - 1 ? 0 : currentFeatureCard + 1;
+    goToFeatureCard(nextIndex);
+  };
+  
+  const prevFeatureCard = () => {
+    const prevIndex = currentFeatureCard === 0 ? totalFeatureCards - 1 : currentFeatureCard - 1;
+    goToFeatureCard(prevIndex);
+  };
+  
   // Touch/swipe handling for services cards
   const [touchStart, setTouchStart] = React.useState(null);
   const [touchEnd, setTouchEnd] = React.useState(null);
+  
+  // Touch/swipe handling for features cards
+  const [featureTouchStart, setFeatureTouchStart] = React.useState(null);
+  const [featureTouchEnd, setFeatureTouchEnd] = React.useState(null);
   
   const minSwipeDistance = 50;
   
@@ -80,6 +114,30 @@ const ProfessionalHome2025 = () => {
     }
     if (isRightSwipe) {
       prevServiceCard();
+    }
+  };
+  
+  // Features touch handlers
+  const onFeatureTouchStart = (e) => {
+    setFeatureTouchEnd(null);
+    setFeatureTouchStart(e.targetTouches[0].clientX);
+  };
+  
+  const onFeatureTouchMove = (e) => {
+    setFeatureTouchEnd(e.targetTouches[0].clientX);
+  };
+  
+  const onFeatureTouchEnd = () => {
+    if (!featureTouchStart || !featureTouchEnd) return;
+    const distance = featureTouchStart - featureTouchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      nextFeatureCard();
+    }
+    if (isRightSwipe) {
+      prevFeatureCard();
     }
   };
 
@@ -1583,7 +1641,7 @@ const ProfessionalHome2025 = () => {
             style={{
               background: 'rgba(255, 255, 255, 0.9)',
               borderRadius: '32px',
-              padding: '80px 60px',
+              padding: '32px 24px',
               border: '1px solid rgba(255, 255, 255, 0.4)',
               boxShadow: '0 20px 64px rgba(13, 71, 161, 0.15)',
               backdropFilter: 'blur(40px) saturate(200%)',
@@ -1624,10 +1682,10 @@ const ProfessionalHome2025 = () => {
               style={{
                 background: '#007AFF',
                 color: 'white',
-                padding: '12px 28px',
+                padding: '10px 20px',
                 borderRadius: '980px',
                 textDecoration: 'none',
-                fontSize: '15px',
+                fontSize: '14px',
                 fontWeight: '400',
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -1807,17 +1865,20 @@ const ProfessionalHome2025 = () => {
             </div>
           </div>
 
-          <div
-            className='features-grid'
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '32px',
-              maxWidth: '1200px',
-              margin: '0 auto',
-            }}
-          >
-            {features.map((feature, index) => (
+          {/* Responsive Features Cards */}
+          {!isMobile ? (
+            // Desktop Layout - All three cards horizontal
+            <div
+              className='features-grid'
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '32px',
+                maxWidth: '1200px',
+                margin: '0 auto',
+              }}
+            >
+              {features.map((feature, index) => (
               <div
                 key={index}
                 className='features-card'
@@ -2006,7 +2067,282 @@ const ProfessionalHome2025 = () => {
                 </div>
               </div>
             ))}
-          </div>
+            </div>
+          ) : (
+            // Mobile Layout - Swipe Carousel
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+                margin: '0 auto',
+                overflow: 'hidden',
+                padding: '0 16px',
+              }}
+              onTouchStart={onFeatureTouchStart}
+              onTouchMove={onFeatureTouchMove}
+              onTouchEnd={onFeatureTouchEnd}
+            >
+              {/* Navigation Dots */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  marginBottom: '30px',
+                }}
+              >
+                {[0, 1, 2].map((index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => goToFeatureCard(index)}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                    style={{
+                      width: currentFeatureCard === index ? '32px' : '12px',
+                      height: '12px',
+                      borderRadius: '6px',
+                      border: 'none',
+                      background: currentFeatureCard === index 
+                        ? 'linear-gradient(135deg, #007AFF 0%, #5856d6 100%)'
+                        : 'rgba(26, 35, 126, 0.3)',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      boxShadow: currentFeatureCard === index 
+                        ? '0 4px 12px rgba(0, 122, 255, 0.4)'
+                        : 'none',
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Swipe Hint */}
+              <motion.div
+                initial={{ opacity: 1 }}
+                animate={{ opacity: [1, 0.6, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                style={{
+                  textAlign: 'center',
+                  marginBottom: '20px',
+                  color: '#283593',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                }}
+              >
+                <span>Swipe to explore features</span>
+                <motion.span
+                  animate={{ x: [0, 8, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  style={{ fontSize: '16px' }}
+                >
+                  ←→
+                </motion.span>
+              </motion.div>
+
+              {/* Feature Cards Carousel */}
+              <motion.div
+                animate={{
+                  x: `${-currentFeatureCard * 33.333}%`,
+                }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 400,
+                  damping: 40,
+                  mass: 1,
+                  restDelta: 0.001,
+                  restSpeed: 0.001,
+                }}
+                style={{
+                  display: 'flex',
+                  width: '300%',
+                }}
+              >
+                {features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="mobile-feature-wrapper"
+                    style={{
+                      width: '33.333%',
+                      padding: '0 5px',
+                      boxSizing: 'border-box',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <div
+                      className='features-card mobile-feature-container'
+                      style={{
+                        perspective: '1000px',
+                        height: '450px',
+                        background: 'transparent',
+                        border: 'none',
+                        boxShadow: 'none',
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: 'relative',
+                          width: '100%',
+                          height: '100%',
+                          transformStyle: 'preserve-3d',
+                          transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          cursor: 'pointer',
+                          transform: flippedFeatures[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                        }}
+                        onMouseEnter={() => handleCardHover(index, true, setFlippedFeatures)}
+                        onMouseLeave={() => handleCardHover(index, false, setFlippedFeatures)}
+                      >
+                        {/* Front of card */}
+                        <div
+                          className='features-card-padding mobile-feature-card'
+                          style={{
+                            position: 'absolute',
+                            width: '100%',
+                            height: '100%',
+                            backfaceVisibility: 'hidden',
+                            background: 'rgba(255, 255, 255, 0.9)',
+                            borderRadius: '20px',
+                            padding: '40px 28px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            border: '1px solid rgba(255, 255, 255, 0.4)',
+                            boxShadow: 'none',
+                            backdropFilter: 'blur(40px) saturate(200%)',
+                          }}
+                        >
+                          <div
+                            className='icon-bg'
+                            style={{
+                              marginBottom: '32px',
+                              padding: '32px',
+                              borderRadius: '50%',
+                              background:
+                                'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(240, 248, 255, 0.3) 100%)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              backdropFilter: 'blur(20px)',
+                              border: '1px solid rgba(255, 255, 255, 0.4)',
+                            }}
+                          >
+                            {React.cloneElement(feature.icon, {
+                              sx: { fontSize: 32, color: '#1a237e' },
+                            })}
+                          </div>
+
+                          <h3
+                            className='features-card-title'
+                            style={{
+                              fontSize: '22px',
+                              fontWeight: '600',
+                              color: '#1a237e',
+                              marginBottom: '16px',
+                              letterSpacing: '-0.01em',
+                              textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                              fontFamily:
+                                '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                            }}
+                          >
+                            {feature.title}
+                          </h3>
+
+                          <p
+                            className='features-card-description'
+                            style={{
+                              fontSize: '16px',
+                              color: '#283593',
+                              lineHeight: '1.5',
+                              fontWeight: '400',
+                              textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                              fontFamily:
+                                '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                            }}
+                          >
+                            {feature.description}
+                          </p>
+                        </div>
+
+                        {/* Back of card */}
+                        <div
+                          className='mobile-feature-card'
+                          style={{
+                            position: 'absolute',
+                            width: '100%',
+                            height: '100%',
+                            backfaceVisibility: 'hidden',
+                            transform: 'rotateY(180deg)',
+                            background: 'linear-gradient(135deg, #1a237e 0%, #283593 100%)',
+                            borderRadius: '20px',
+                            padding: '40px 28px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            color: 'rgba(255, 255, 255, 0.95)',
+                            boxShadow: 'none',
+                            border: '1px solid rgba(255, 255, 255, 0.3)',
+                            backdropFilter: 'blur(40px) saturate(200%)',
+                          }}
+                        >
+                          <div
+                            style={{
+                              marginBottom: '24px',
+                              padding: '24px',
+                              borderRadius: '50%',
+                              background: 'rgba(255, 255, 255, 0.2)',
+                              backdropFilter: 'blur(20px)',
+                              border: '1px solid rgba(255, 255, 255, 0.3)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            {React.cloneElement(feature.icon, {
+                              sx: { fontSize: 28, color: 'rgba(255,255,255,0.9)' },
+                            })}
+                          </div>
+
+                          <h3
+                            className='back-title'
+                            style={{
+                              fontSize: '20px',
+                              fontWeight: '600',
+                              color: 'rgba(255, 255, 255, 0.95)',
+                              marginBottom: '16px',
+                              textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+                              fontFamily:
+                                '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                            }}
+                          >
+                            {feature.title}
+                          </h3>
+
+                          <p
+                            className='back-description'
+                            style={{
+                              fontSize: '16px',
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              lineHeight: '1.5',
+                              fontFamily:
+                                '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                            }}
+                          >
+                            {feature.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          )}
         </div>
       </section>
 
