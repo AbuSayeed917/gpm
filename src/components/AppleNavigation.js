@@ -121,7 +121,7 @@ const AppleNavigation = () => {
               alignItems: 'center',
               gap: '12px',
               textDecoration: 'none',
-              fontSize: '18px',
+              fontSize: '16px',
               fontWeight: 700,
               color: '#1a237e',
               fontFamily:
@@ -169,7 +169,7 @@ const AppleNavigation = () => {
                   to='/'
                   className={`apple-navigation-link ${isActiveLink('/') ? 'apple-navigation-link-active' : ''}`}
                   style={{
-                    fontSize: '17px',
+                    fontSize: '14px',
                     fontWeight: 400,
                     color: isActiveLink('/') ? '#007AFF' : '#1a237e',
                     textDecoration: 'none',
@@ -211,7 +211,7 @@ const AppleNavigation = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '4px',
-                    fontSize: '17px',
+                    fontSize: '14px',
                     fontWeight: 400,
                     color: isActiveLink('/services') ? '#007AFF' : '#1a237e',
                     textDecoration: 'none',
@@ -286,7 +286,7 @@ const AppleNavigation = () => {
                       <div
                         className='apple-navigation-dropdown-item-name'
                         style={{
-                          fontSize: '17px',
+                          fontSize: '14px',
                           fontWeight: 500,
                           marginBottom: '2px',
                           fontFamily:
@@ -325,7 +325,7 @@ const AppleNavigation = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '4px',
-                    fontSize: '17px',
+                    fontSize: '14px',
                     fontWeight: 400,
                     color: isActiveLink('/success-stories') ? '#007AFF' : '#1a237e',
                     textDecoration: 'none',
@@ -400,7 +400,7 @@ const AppleNavigation = () => {
                       <div
                         className='apple-navigation-dropdown-item-name'
                         style={{
-                          fontSize: '17px',
+                          fontSize: '14px',
                           fontWeight: 500,
                           marginBottom: '2px',
                           fontFamily:
@@ -433,7 +433,7 @@ const AppleNavigation = () => {
                   to='/about'
                   className={`apple-navigation-link ${isActiveLink('/about') ? 'apple-navigation-link-active' : ''}`}
                   style={{
-                    fontSize: '17px',
+                    fontSize: '14px',
                     fontWeight: 400,
                     color: isActiveLink('/about') ? '#007AFF' : '#1a237e',
                     textDecoration: 'none',
@@ -467,7 +467,7 @@ const AppleNavigation = () => {
                   to='/contact'
                   className={`apple-navigation-link ${isActiveLink('/contact') ? 'apple-navigation-link-active' : ''}`}
                   style={{
-                    fontSize: '17px',
+                    fontSize: '14px',
                     fontWeight: 400,
                     color: isActiveLink('/contact') ? '#007AFF' : '#1a237e',
                     textDecoration: 'none',
@@ -509,7 +509,7 @@ const AppleNavigation = () => {
                   color: 'white',
                   textDecoration: 'none',
                   borderRadius: '20px',
-                  fontSize: '17px',
+                  fontSize: '14px',
                   fontWeight: 500,
                   transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                   fontFamily:
@@ -624,11 +624,30 @@ const AppleNavigation = () => {
               padding: 0,
             }}
           >
+            {/* Home - First */}
+            <li className='apple-navigation-mobile-item' style={{ marginBottom: '12px' }}>
+              <Link
+                to='/'
+                style={{
+                  display: 'block',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  color: '#1a237e',
+                  textDecoration: 'none',
+                  padding: '12px 0',
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                }}
+              >
+                Home
+              </Link>
+            </li>
+
             {/* Mobile Services */}
             <li className='apple-navigation-mobile-item' style={{ marginBottom: '20px' }}>
               <div
                 style={{
-                  fontSize: '19px',
+                  fontSize: '14px',
                   fontWeight: 600,
                   color: '#1a237e',
                   marginBottom: '8px',
@@ -645,7 +664,7 @@ const AppleNavigation = () => {
                       to={item.path}
                       style={{
                         display: 'block',
-                        fontSize: '17px',
+                        fontSize: '13px',
                         color: '#1a237e',
                         textDecoration: 'none',
                         padding: '8px 0',
@@ -664,7 +683,7 @@ const AppleNavigation = () => {
             <li className='apple-navigation-mobile-item' style={{ marginBottom: '20px' }}>
               <div
                 style={{
-                  fontSize: '19px',
+                  fontSize: '14px',
                   fontWeight: 600,
                   color: '#1a237e',
                   marginBottom: '8px',
@@ -681,7 +700,7 @@ const AppleNavigation = () => {
                       to={item.path}
                       style={{
                         display: 'block',
-                        fontSize: '17px',
+                        fontSize: '13px',
                         color: '#1a237e',
                         textDecoration: 'none',
                         padding: '8px 0',
@@ -696,31 +715,12 @@ const AppleNavigation = () => {
               </ul>
             </li>
 
-            {/* Mobile Direct Links */}
-            <li className='apple-navigation-mobile-item' style={{ marginBottom: '12px' }}>
-              <Link
-                to='/'
-                style={{
-                  display: 'block',
-                  fontSize: '19px',
-                  fontWeight: 500,
-                  color: '#1a237e',
-                  textDecoration: 'none',
-                  padding: '12px 0',
-                  fontFamily:
-                    '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
-                }}
-              >
-                Home
-              </Link>
-            </li>
-
             <li className='apple-navigation-mobile-item' style={{ marginBottom: '12px' }}>
               <Link
                 to='/about'
                 style={{
                   display: 'block',
-                  fontSize: '19px',
+                  fontSize: '14px',
                   fontWeight: 500,
                   color: '#1a237e',
                   textDecoration: 'none',
@@ -738,7 +738,7 @@ const AppleNavigation = () => {
                 to='/faq'
                 style={{
                   display: 'block',
-                  fontSize: '19px',
+                  fontSize: '14px',
                   fontWeight: 500,
                   color: '#1a237e',
                   textDecoration: 'none',
@@ -762,7 +762,7 @@ const AppleNavigation = () => {
                   color: 'white',
                   textDecoration: 'none',
                   borderRadius: '24px',
-                  fontSize: '17px',
+                  fontSize: '14px',
                   fontWeight: 500,
                   fontFamily:
                     '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
