@@ -91,12 +91,20 @@ const ProfessionalHome2025 = () => {
         animation-duration: 0.8s;
       }
       
+      /* Mobile line break control */
+      .mobile-break {
+        display: none;
+      }
+      
       @media (max-width: 768px) {
+        .mobile-break {
+          display: block;
+        }
         .hero-section { 
           padding: clamp(20px, 6vh, 40px) 16px clamp(20px, 4vh, 30px) 16px !important; 
           min-height: clamp(400px, 60vh, 600px) !important;
         }
-        .hero-title { font-size: clamp(20px, 5vw, 32px) !important; line-height: 1.15 !important; }
+        .hero-title { font-size: clamp(18px, 4.8vw, 28px) !important; line-height: 1.25 !important; }
         .hero-subtitle { font-size: clamp(14px, 3.5vw, 18px) !important; }
         .section-title { font-size: clamp(20px, 5vw, 28px) !important; }
         .section-description { font-size: clamp(12px, 3.5vw, 16px) !important; }
@@ -203,7 +211,7 @@ const ProfessionalHome2025 = () => {
           padding: clamp(16px, 5vh, 30px) 12px clamp(16px, 3vh, 24px) 12px !important; 
           min-height: clamp(350px, 50vh, 500px) !important;
         }
-        .hero-title { font-size: clamp(16px, 5.5vw, 24px) !important; line-height: 1.1 !important; }
+        .hero-title { font-size: clamp(15px, 5.2vw, 22px) !important; line-height: 1.3 !important; }
         .hero-subtitle { font-size: clamp(12px, 4vw, 16px) !important; }
         .section-title { font-size: clamp(18px, 6vw, 24px) !important; }
         .section-description { font-size: clamp(11px, 3.5vw, 14px) !important; }
@@ -301,7 +309,7 @@ const ProfessionalHome2025 = () => {
           padding: clamp(12px, 4vh, 24px) 10px clamp(12px, 2vh, 20px) 10px !important; 
           min-height: clamp(300px, 45vh, 450px) !important;
         }
-        .hero-title { font-size: clamp(14px, 5vw, 20px) !important; line-height: 1.05 !important; }
+        .hero-title { font-size: clamp(13px, 4.8vw, 18px) !important; line-height: 1.35 !important; }
         .hero-subtitle { font-size: clamp(11px, 3.5vw, 14px) !important; }
         .section-title { font-size: clamp(16px, 5.5vw, 22px) !important; }
         .section-description { font-size: clamp(10px, 3vw, 12px) !important; }
@@ -519,7 +527,8 @@ const ProfessionalHome2025 = () => {
               }}
             >
               Payroll Migration Specialists
-            </span>{' '}
+            </span>
+            <br className="mobile-break" />
             for Seamless Global Transitions
           </h1>
           <p
