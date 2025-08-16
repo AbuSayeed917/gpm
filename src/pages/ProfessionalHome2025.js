@@ -204,7 +204,7 @@ const ProfessionalHome2025 = () => {
         .service-card .icon-bg { padding: 14px !important; margin-bottom: 14px !important; }
         .service-card .back-glass-1 { width: 120px !important; height: 120px !important; }
         .service-card .back-glass-2 { width: 100px !important; height: 100px !important; }
-        .service-card .hover-hint { font-size: 11px !important; padding: 10px 16px !important; }
+        .service-card .hover-hint { font-size: 11px !important; padding: 8px 8px !important; }
         .service-card .features-list-item { font-size: clamp(10px, 2.8vw, 12px) !important; margin-bottom: 6px !important; }
         .service-card .check-icon { width: 12px !important; height: 12px !important; font-size: 8px !important; }
         .service-card .learn-more-btn { font-size: 11px !important; padding: 8px 14px !important; }
@@ -312,7 +312,7 @@ const ProfessionalHome2025 = () => {
         .service-card .icon-bg { padding: 12px !important; margin-bottom: 12px !important; }
         .service-card .back-glass-1 { width: 100px !important; height: 100px !important; }
         .service-card .back-glass-2 { width: 80px !important; height: 80px !important; }
-        .service-card .hover-hint { font-size: 10px !important; padding: 8px 14px !important; }
+        .service-card .hover-hint { font-size: 10px !important; padding: 6px 6px !important; }
         .service-card .features-list-item { font-size: clamp(9px, 2.5vw, 11px) !important; margin-bottom: 4px !important; }
         .service-card .check-icon { width: 10px !important; height: 10px !important; font-size: 7px !important; }
         .service-card .learn-more-btn { font-size: 10px !important; padding: 6px 12px !important; }
