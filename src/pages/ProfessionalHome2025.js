@@ -152,7 +152,7 @@ const ProfessionalHome2025 = () => {
       () => {
         setFlipState((prev) => ({ ...prev, [index]: isHovered }));
       },
-      isHovered ? 20 : 100
+      isHovered ? 50 : 150
     ); // Ultra fast enter, smooth leave
   };
 
@@ -945,7 +945,7 @@ const ProfessionalHome2025 = () => {
                       width: '100%',
                       height: '100%',
                       transformStyle: 'preserve-3d',
-                      transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                      transition: 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)',
                       cursor: 'pointer',
                       transform: flippedCards[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
                     }}
@@ -1306,12 +1306,13 @@ const ProfessionalHome2025 = () => {
                     width: '100%',
                     height: '100%',
                     transformStyle: 'preserve-3d',
-                    transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    transition: 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     cursor: 'pointer',
                     transform: flippedCards[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
                   }}
-                  onMouseEnter={() => handleCardHover(index, true, setFlippedCards)}
-                  onMouseLeave={() => handleCardHover(index, false, setFlippedCards)}
+                  onMouseEnter={() => !isMobile && handleCardHover(index, true, setFlippedCards)}
+                  onMouseLeave={() => !isMobile && handleCardHover(index, false, setFlippedCards)}
+                  onClick={() => isMobile && handleCardHover(index, !flippedCards[index], setFlippedCards)}
                 >
                   {/* Front of card */}
                   <div
@@ -1893,7 +1894,7 @@ const ProfessionalHome2025 = () => {
                     width: '100%',
                     height: '100%',
                     transformStyle: 'preserve-3d',
-                    transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    transition: 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     cursor: 'pointer',
                     transform: flippedFeatures[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
                   }}
@@ -2187,12 +2188,13 @@ const ProfessionalHome2025 = () => {
                           width: '100%',
                           height: '100%',
                           transformStyle: 'preserve-3d',
-                          transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          transition: 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)',
                           cursor: 'pointer',
                           transform: flippedFeatures[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
                         }}
-                        onMouseEnter={() => handleCardHover(index, true, setFlippedFeatures)}
-                        onMouseLeave={() => handleCardHover(index, false, setFlippedFeatures)}
+                        onMouseEnter={() => !isMobile && handleCardHover(index, true, setFlippedFeatures)}
+                        onMouseLeave={() => !isMobile && handleCardHover(index, false, setFlippedFeatures)}
+                        onClick={() => isMobile && handleCardHover(index, !flippedFeatures[index], setFlippedFeatures)}
                       >
                         {/* Front of card */}
                         <div
@@ -2477,7 +2479,7 @@ const ProfessionalHome2025 = () => {
                     width: '100%',
                     height: '100%',
                     transformStyle: 'preserve-3d',
-                    transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    transition: 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     cursor: 'pointer',
                     transform: flippedProcesses[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
                   }}
