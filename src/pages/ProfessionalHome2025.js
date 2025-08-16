@@ -286,8 +286,8 @@ const ProfessionalHome2025 = () => {
         .country-name { font-size: clamp(10px, 2.5vw, 12px) !important; }
         
         /* Services Section Text */
-        .services-title { font-size: clamp(20px, 5vw, 32px) !important; }
-        .services-description { font-size: clamp(13px, 3.5vw, 16px) !important; line-height: 1.3 !important; margin-bottom: 40px !important; }
+        .services-title { font-size: clamp(18px, 4vw, 28px) !important; }
+        .services-description { font-size: clamp(11px, 2.8vw, 14px) !important; line-height: 1.3 !important; margin-bottom: 40px !important; }
         
         /* Discovery Call Section */
         .discovery-title { font-size: clamp(20px, 4vw, 28px) !important; }
@@ -391,8 +391,8 @@ const ProfessionalHome2025 = () => {
         .country-name { font-size: clamp(9px, 2.2vw, 11px) !important; }
         
         /* Services Section Text */
-        .services-title { font-size: clamp(18px, 4.5vw, 28px) !important; }
-        .services-description { font-size: clamp(11px, 3vw, 14px) !important; line-height: 1.25 !important; margin-bottom: 35px !important; }
+        .services-title { font-size: clamp(16px, 3.8vw, 24px) !important; }
+        .services-description { font-size: clamp(10px, 2.5vw, 12px) !important; line-height: 1.25 !important; margin-bottom: 35px !important; }
         
         /* Discovery Call Section */
         .discovery-title { font-size: clamp(16px, 4vw, 24px) !important; }
@@ -443,8 +443,8 @@ const ProfessionalHome2025 = () => {
         .process-card-padding { padding: 18px 14px !important; }
         .country-flag { font-size: clamp(32px, 8vw, 42px) !important; }
         .country-name { font-size: clamp(8px, 2vw, 10px) !important; }
-        .services-title { font-size: clamp(16px, 4vw, 24px) !important; }
-        .services-description { font-size: clamp(9px, 2.5vw, 12px) !important; line-height: 1.2 !important; margin-bottom: 30px !important; }
+        .services-title { font-size: clamp(14px, 3.5vw, 20px) !important; }
+        .services-description { font-size: clamp(8px, 2.2vw, 11px) !important; line-height: 1.2 !important; margin-bottom: 30px !important; }
         .discovery-title { font-size: clamp(14px, 3.5vw, 20px) !important; }
         .discovery-description { font-size: clamp(10px, 2.5vw, 12px) !important; line-height: 1.2 !important; margin-bottom: 18px !important; }
         .process-section-title { font-size: clamp(16px, 4vw, 24px) !important; }
@@ -900,6 +900,7 @@ const ProfessionalHome2025 = () => {
               fontWeight: '500',
               textShadow: '0 1px 2px rgba(0,0,0,0.1)',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              padding: '0 20px',
             }}
           >
             We provide tailored, end-to-end services to support your business through every phase of
