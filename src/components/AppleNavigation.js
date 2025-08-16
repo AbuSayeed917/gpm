@@ -227,16 +227,24 @@ const AppleNavigation = () => {
                   }}
                 >
                   Services
-                  <span
+                  <svg
                     className='apple-navigation-chevron'
                     style={{
                       transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                       color: '#86868b',
                     }}
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    ▼
-                  </span>
+                    <polyline points="6,9 12,15 18,9"></polyline>
+                  </svg>
                 </button>
 
                 {/* Services Dropdown Menu */}
@@ -341,16 +349,24 @@ const AppleNavigation = () => {
                   }}
                 >
                   Success Stories
-                  <span
+                  <svg
                     className='apple-navigation-chevron'
                     style={{
                       transform: successStoriesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                       color: '#86868b',
                     }}
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    ▼
-                  </span>
+                    <polyline points="6,9 12,15 18,9"></polyline>
+                  </svg>
                 </button>
 
                 {/* Success Stories Dropdown Menu */}
