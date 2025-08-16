@@ -1729,13 +1729,13 @@ const QuotePage = () => {
             overflow-y: visible !important;
           }
           .quote-steps-flex {
-            min-width: 100% !important;
-            flex-wrap: wrap !important;
+            display: flex !important;
+            justify-content: space-between !important;
             gap: 8px !important;
           }
           .quote-step-item {
-            flex: 1 1 auto !important;
-            min-width: 120px !important;
+            flex: 1 !important;
+            min-width: 100px !important;
             text-align: center !important;
           }
           .quote-step-text {
@@ -1804,18 +1804,20 @@ const QuotePage = () => {
             gap: 16px !important;
           }
           
-          /* Step Container Mobile Fix */
+          /* Keep horizontal layout on small mobile, just more compact */
           .quote-step-container {
             padding: 18px 14px !important;
-            overflow: visible !important;
+            overflow-x: auto !important;
           }
           .quote-steps-flex {
-            flex-direction: column !important;
-            gap: 12px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            gap: 6px !important;
+            min-width: 100% !important;
           }
           .quote-step-item {
-            min-width: 100% !important;
-            flex: none !important;
+            flex: 1 !important;
+            min-width: 80px !important;
           }
         }
 
@@ -1832,6 +1834,18 @@ const QuotePage = () => {
           .quote-button { 
             padding: 9px 16px !important;
             font-size: clamp(12px, 3.5vw, 14px) !important;
+          }
+          
+          /* Keep horizontal but very compact */
+          .quote-steps-flex {
+            gap: 4px !important;
+          }
+          .quote-step-item {
+            min-width: 70px !important;
+          }
+          .quote-step-text {
+            font-size: clamp(9px, 2.2vw, 11px) !important;
+            padding: 0 4px !important;
           }
         }
       `}</style>
