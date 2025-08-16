@@ -477,7 +477,7 @@ const ProfessionalSMEServices = () => {
                         maxWidth: '280px',
                       }}
                     >
-                      Complete accounting system migration with enterprise-grade security
+                      QuickBooks to Xero migration with seamless data transfer
                     </p>
                   </div>
                 </div>
@@ -586,7 +586,7 @@ const ProfessionalSMEServices = () => {
             />
           </motion.div>
 
-          {/* Iris ↔ QuickBooks */}
+          {/* Sage ↔ Xero */}
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -724,7 +724,7 @@ const ProfessionalSMEServices = () => {
                         letterSpacing: '-0.005em',
                       }}
                     >
-                      Iris ↔ QuickBooks
+                      Sage ↔ Xero
                     </h3>
 
                     <p
@@ -739,7 +739,7 @@ const ProfessionalSMEServices = () => {
                         maxWidth: '280px',
                       }}
                     >
-                      UK payroll system migration with HMRC compliance
+                      Sage to Xero migration with UK compliance maintained
                     </p>
                   </div>
                 </div>
@@ -835,7 +835,7 @@ const ProfessionalSMEServices = () => {
             />
           </motion.div>
 
-          {/* ADP ↔ Any System */}
+          {/* IRIS ↔ Xero */}
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -920,7 +920,7 @@ const ProfessionalSMEServices = () => {
                           letterSpacing: '-0.01em',
                         }}
                       >
-                        ADP
+                        IRIS
                       </div>
 
                       <div
@@ -973,7 +973,7 @@ const ProfessionalSMEServices = () => {
                         letterSpacing: '-0.005em',
                       }}
                     >
-                      ADP ↔ Any System
+                      IRIS ↔ Xero
                     </h3>
 
                     <p
@@ -988,7 +988,7 @@ const ProfessionalSMEServices = () => {
                         maxWidth: '280px',
                       }}
                     >
-                      Enterprise payroll migration with multi-country support
+                      IRIS to Xero migration with seamless data transfer
                     </p>
                   </div>
                 </div>
@@ -1290,10 +1290,10 @@ const ProfessionalSMEServices = () => {
 
                     <div style={{ marginBottom: '0' }}>
                       {[
-                        'Paychex ↔ QuickBooks',
-                        'Gusto ↔ Xero',
-                        'BambooHR ↔ NetSuite',
-                        'Workday ↔ Sage',
+                        'IRIS ↔ Xero',
+                        'Sage ↔ Xero', 
+                        'QuickBooks ↔ Xero',
+                        'FreeAgent ↔ Xero',
                       ].map((feature, idx) => (
                         <motion.div
                           key={idx}
