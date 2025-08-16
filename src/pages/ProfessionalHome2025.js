@@ -899,7 +899,7 @@ const ProfessionalHome2025 = () => {
           <p
             className='services-description'
             style={{
-              fontSize: '18px',
+              fontSize: 'clamp(10px, 2.5vw, 16px)',
               color: '#283593',
               marginBottom: '50px',
               lineHeight: '1.4',
