@@ -1683,6 +1683,92 @@ const QuotePage = () => {
               zIndex: 1,
             }}
           >
+            {/* Not Sure? Discovery Call Section - Top Priority */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              style={{
+                marginBottom: '48px',
+                padding: '32px',
+                background: 'rgba(135, 206, 250, 0.08)',
+                borderRadius: '20px',
+                border: '1px solid rgba(135, 206, 250, 0.2)',
+                backdropFilter: 'blur(20px)',
+                textAlign: 'center',
+              }}
+            >
+              <div
+                style={{
+                  marginBottom: '20px',
+                }}
+              >
+                <h4
+                  style={{
+                    fontSize: '20px',
+                    fontWeight: '600',
+                    color: '#000000',
+                    marginBottom: '8px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                  }}
+                >
+                  Not sure which option is right for you?
+                </h4>
+                <p
+                  style={{
+                    fontSize: '16px',
+                    color: '#6e6e73',
+                    margin: '0',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                    lineHeight: '1.47',
+                  }}
+                >
+                  Speak with our experts to find the perfect migration solution for your needs.
+                </p>
+              </div>
+
+              <motion.div whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}>
+                <button
+                  onClick={() => navigate('/contact')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '16px 28px',
+                    background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                    border: 'none',
+                    borderRadius: '24px',
+                    color: '#ccebff',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    boxShadow: '0 6px 20px rgba(135, 206, 250, 0.4)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.boxShadow = '0 8px 28px rgba(135, 206, 250, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.boxShadow = '0 6px 20px rgba(135, 206, 250, 0.4)';
+                  }}
+                >
+                  Book a Free Discovery Call
+                </button>
+              </motion.div>
+
+              <p
+                style={{
+                  fontSize: '14px',
+                  color: '#000000',
+                  margin: '12px 0 0 0',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                }}
+              >
+                15-minute consultation • No obligation • Expert guidance
+              </p>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -2010,92 +2096,6 @@ const QuotePage = () => {
                 </div>
               </motion.div>
 
-              {/* Not Sure? Discovery Call Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                style={{
-                  marginTop: '48px',
-                  marginBottom: '32px',
-                  padding: '32px',
-                  background: 'rgba(135, 206, 250, 0.08)',
-                  borderRadius: '20px',
-                  border: '1px solid rgba(135, 206, 250, 0.2)',
-                  backdropFilter: 'blur(20px)',
-                  textAlign: 'center',
-                }}
-              >
-                <div
-                  style={{
-                    marginBottom: '20px',
-                  }}
-                >
-                  <h4
-                    style={{
-                      fontSize: '20px',
-                      fontWeight: '600',
-                      color: '#000000',
-                      marginBottom: '8px',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
-                    }}
-                  >
-                    Not sure which option is right for you?
-                  </h4>
-                  <p
-                    style={{
-                      fontSize: '16px',
-                      color: '#6e6e73',
-                      margin: '0',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
-                      lineHeight: '1.47',
-                    }}
-                  >
-                    Speak with our experts to find the perfect migration solution for your needs.
-                  </p>
-                </div>
-
-                <motion.div whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}>
-                  <button
-                    onClick={() => navigate('/contact')}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      padding: '16px 28px',
-                      background: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
-                      border: 'none',
-                      borderRadius: '24px',
-                      color: '#ccebff',
-                      fontSize: '16px',
-                      fontWeight: '600',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      boxShadow: '0 6px 20px rgba(135, 206, 250, 0.4)',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.boxShadow = '0 8px 28px rgba(135, 206, 250, 0.5)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.boxShadow = '0 6px 20px rgba(135, 206, 250, 0.4)';
-                    }}
-                  >
-                    Book a Free Discovery Call
-                  </button>
-                </motion.div>
-
-                <p
-                  style={{
-                    fontSize: '14px',
-                    color: '#000000',
-                    margin: '12px 0 0 0',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
-                  }}
-                >
-                  15-minute consultation • No obligation • Expert guidance
-                </p>
-              </motion.div>
 
               {/* Apple Service Type Alert */}
               <motion.div
