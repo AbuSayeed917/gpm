@@ -176,7 +176,7 @@ const ProfessionalHome2025 = () => {
           min-height: clamp(350px, 45vh, 500px) !important;
         }
         .hero-title { font-size: clamp(18px, 4.8vw, 28px) !important; line-height: 1.25 !important; }
-        .hero-subtitle { font-size: clamp(14px, 3.5vw, 18px) !important; }
+        .hero-subtitle { font-size: clamp(13px, 3vw, 16px) !important; line-height: 1.4 !important; }
         .section-title { font-size: clamp(20px, 5vw, 28px) !important; }
         .section-description { font-size: clamp(12px, 3.5vw, 16px) !important; }
         .card-title { font-size: clamp(16px, 4.5vw, 20px) !important; }
@@ -256,8 +256,8 @@ const ProfessionalHome2025 = () => {
         .why-choose-text { font-size: clamp(14px, 4vw, 18px) !important; line-height: 1.4 !important; margin-bottom: 16px !important; }
         
         /* Buttons */
-        .hero-button { padding: 12px 24px !important; font-size: 15px !important; }
-        .cta-button { padding: 12px 24px !important; font-size: 15px !important; }
+        .hero-button { padding: 10px 20px !important; font-size: 14px !important; }
+        .cta-button { padding: 10px 20px !important; font-size: 14px !important; }
       }
       
       @media (max-width: 1024px) {
@@ -283,7 +283,7 @@ const ProfessionalHome2025 = () => {
           min-height: clamp(300px, 40vh, 450px) !important;
         }
         .hero-title { font-size: clamp(15px, 5.2vw, 22px) !important; line-height: 1.3 !important; }
-        .hero-subtitle { font-size: clamp(12px, 4vw, 16px) !important; }
+        .hero-subtitle { font-size: clamp(11px, 3.2vw, 14px) !important; line-height: 1.35 !important; }
         .section-title { font-size: clamp(18px, 6vw, 24px) !important; }
         .section-description { font-size: clamp(11px, 3.5vw, 14px) !important; }
         .card-title { font-size: clamp(14px, 5vw, 18px) !important; }
@@ -364,8 +364,8 @@ const ProfessionalHome2025 = () => {
         .why-choose-text { font-size: clamp(12px, 3.5vw, 16px) !important; line-height: 1.3 !important; margin-bottom: 14px !important; }
         
         /* Buttons */
-        .hero-button { padding: 10px 20px !important; font-size: 14px !important; }
-        .cta-button { padding: 10px 20px !important; font-size: 14px !important; }
+        .hero-button { padding: 8px 16px !important; font-size: 13px !important; }
+        .cta-button { padding: 8px 16px !important; font-size: 13px !important; }
         .hero-buttons { flex-direction: column !important; align-items: center !important; gap: 16px !important; }
         
         /* Layout */
@@ -381,7 +381,7 @@ const ProfessionalHome2025 = () => {
           min-height: clamp(280px, 35vh, 400px) !important;
         }
         .hero-title { font-size: clamp(13px, 4.8vw, 18px) !important; line-height: 1.35 !important; }
-        .hero-subtitle { font-size: clamp(11px, 3.5vw, 14px) !important; }
+        .hero-subtitle { font-size: clamp(10px, 2.8vw, 12px) !important; line-height: 1.3 !important; }
         .section-title { font-size: clamp(16px, 5.5vw, 22px) !important; }
         .section-description { font-size: clamp(10px, 3vw, 12px) !important; }
         .features-card { height: 260px !important; }
@@ -405,8 +405,8 @@ const ProfessionalHome2025 = () => {
         .cta-card-title { font-size: clamp(12px, 3vw, 18px) !important; }
         .cta-card-description { font-size: clamp(9px, 2.2vw, 11px) !important; line-height: 1.2 !important; margin-bottom: 16px !important; }
         .why-choose-text { font-size: clamp(10px, 3vw, 14px) !important; line-height: 1.25 !important; margin-bottom: 12px !important; }
-        .hero-button { padding: 8px 16px !important; font-size: 13px !important; }
-        .cta-button { padding: 8px 16px !important; font-size: 13px !important; }
+        .hero-button { padding: 6px 14px !important; font-size: 12px !important; }
+        .cta-button { padding: 6px 14px !important; font-size: 12px !important; }
       }
 
       /* Viewport height adjustments for very short screens */
@@ -717,20 +717,24 @@ const ProfessionalHome2025 = () => {
           <p
             className='hero-subtitle'
             style={{
-              fontSize: 'clamp(16px, 4vw, 20px)',
-              lineHeight: '1.3',
+              fontSize: 'clamp(14px, 3.2vw, 18px)',
+              lineHeight: '1.4',
               color: '#283593',
               fontWeight: '400',
               marginBottom: '32px',
-              maxWidth: '90%',
+              maxWidth: '85%',
               margin: '0 auto 32px auto',
-              textAlign: 'justify',
+              textAlign: 'center',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
             }}
           >
-            Trusted by companies across the UK, US, Germany, France, Spain, Netherlands, UAE, and
-            beyond — we help businesses migrate to modern payroll platforms with precision,
-            compliance, and complete peace of mind.
+            Trusted by companies across the{' '}
+            <span style={{ whiteSpace: 'nowrap' }}>UK, US, Germany,</span>{' '}
+            <span style={{ whiteSpace: 'nowrap' }}>France, Spain,</span>{' '}
+            <span style={{ whiteSpace: 'nowrap' }}>Netherlands, UAE,</span> and beyond —{' '}
+            <br className="mobile-break" />
+            we help businesses migrate to modern payroll platforms with{' '}
+            <span style={{ whiteSpace: 'nowrap' }}>precision, compliance,</span> and complete peace of mind.
           </p>
           <div
             className='hero-buttons'

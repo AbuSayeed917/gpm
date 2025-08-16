@@ -563,12 +563,12 @@ const AppleNavigation = () => {
               className='apple-navigation-mobile-cta'
               style={{
                 display: 'inline-block',
-                padding: '6px 16px',
+                padding: '4px 12px',
                 background: '#007AFF',
                 color: 'white',
                 textDecoration: 'none',
-                borderRadius: '16px',
-                fontSize: '13px',
+                borderRadius: '12px',
+                fontSize: '12px',
                 fontWeight: 500,
                 transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
                 fontFamily:
