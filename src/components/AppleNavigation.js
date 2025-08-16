@@ -21,13 +21,22 @@ const AppleNavigation = () => {
   // Handle responsive breakpoints
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 1024);
+      const isMobileNow = window.innerWidth < 1024;
+      const wasMobile = isMobile;
+      setIsMobile(isMobileNow);
+      
+      // Close mobile menu when switching from mobile to desktop
+      if (wasMobile && !isMobileNow && mobileOpen) {
+        setMobileOpen(false);
+        setServicesOpen(false);
+        setSuccessStoriesOpen(false);
+      }
     };
 
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
+  }, [isMobile, mobileOpen]);
 
   // Close menus on route change
   useEffect(() => {
@@ -97,7 +106,7 @@ const AppleNavigation = () => {
           style={{
             width: '90%',
             margin: '0 auto',
-            padding: '16px 24px',
+            padding: '12px 20px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -125,8 +134,8 @@ const AppleNavigation = () => {
               alt='GPM Logo'
               className='apple-navigation-logo-icon'
               style={{
-                width: '48px',
-                height: '48px',
+                width: '40px',
+                height: '40px',
                 objectFit: 'contain',
                 filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))',
               }}
