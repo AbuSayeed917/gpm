@@ -65,7 +65,7 @@ const QuotePage = () => {
   const serviceConfig = {
     sme: {
       title: 'SME Payroll Migration Quote',
-      icon: <Business sx={{ fontSize: 40, color: '#87ceeb' }} />,
+      icon: <Business className="icon-md" sx={{ fontSize: 40, color: '#87ceeb' }} />,
       gradient: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
       description: 'Get a tailored quote for your small to medium enterprise payroll migration',
       migrationOptions: [
@@ -95,7 +95,7 @@ const QuotePage = () => {
     },
     'large-enterprise': {
       title: 'Enterprise Payroll Migration Quote',
-      icon: <CorporateFare sx={{ fontSize: 40, color: '#87ceeb' }} />,
+      icon: <CorporateFare className="icon-md" sx={{ fontSize: 40, color: '#87ceeb' }} />,
       gradient: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
       description: 'Enterprise-grade payroll migration solutions for large organizations',
       migrationOptions: [
@@ -127,7 +127,7 @@ const QuotePage = () => {
     },
     consultancy: {
       title: 'Consultancy Partnership Quote',
-      icon: <Groups sx={{ fontSize: 40, color: '#87ceeb' }} />,
+      icon: <Groups className="icon-md" sx={{ fontSize: 40, color: '#87ceeb' }} />,
       gradient: 'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
       description: 'Partnership opportunities for consulting firms and professional services',
       migrationOptions: [
@@ -322,19 +322,19 @@ const QuotePage = () => {
                       key: 'sme',
                       title: 'SME Payroll Migration',
                       description: 'Perfect for small to medium enterprises (1-250 employees)',
-                      icon: <Business sx={{ fontSize: 32, color: '#00bfff' }} />,
+                      icon: <Business className="icon-sm" sx={{ fontSize: 32, color: '#00bfff' }} />,
                     },
                     {
                       key: 'large-enterprise',
                       title: 'Large Enterprise Solutions',
                       description: 'Enterprise-grade solutions for organizations with 500+ employees',
-                      icon: <CorporateFare sx={{ fontSize: 32, color: '#00bfff' }} />,
+                      icon: <CorporateFare className="icon-sm" sx={{ fontSize: 32, color: '#00bfff' }} />,
                     },
                     {
                       key: 'consultancy',
                       title: 'Payroll Consultancy',
                       description: 'Partnership opportunities for consulting firms and professional services',
-                      icon: <Groups sx={{ fontSize: 32, color: '#00bfff' }} />,
+                      icon: <Groups className="icon-sm" sx={{ fontSize: 32, color: '#00bfff' }} />,
                     },
                   ].map((service) => (
                     <button
@@ -349,6 +349,7 @@ const QuotePage = () => {
                           service.key === 'consultancy' ? 'consultancy' : ''
                         );
                       }}
+                      className="quote-service-card card-padding-lg"
                       style={{
                         padding: '24px',
                         border: '2px solid rgba(173, 216, 230, 0.3)',
@@ -1698,6 +1699,40 @@ const QuotePage = () => {
           .quote-service-card h4 { font-size: clamp(15px, 4vw, 18px) !important; }
           .quote-service-card p { font-size: clamp(12px, 3.2vw, 14px) !important; }
           
+          /* Card Icons and Elements Scaling */
+          .quote-card-icon {
+            width: clamp(40px, 8vw, 60px) !important;
+            height: clamp(40px, 8vw, 60px) !important;
+            font-size: clamp(20px, 4vw, 30px) !important;
+          }
+          .quote-service-card .quote-card-icon {
+            width: clamp(35px, 7vw, 50px) !important;
+            height: clamp(35px, 7vw, 50px) !important;
+            font-size: clamp(18px, 3.5vw, 25px) !important;
+          }
+          
+          /* Navigation Buttons - Orange Gradient */
+          .quote-nav-button {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 35%, #ff5722 70%, #e64a19 100%) !important;
+            color: white !important;
+            border: none !important;
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4) !important;
+            padding: 12px 20px !important;
+            font-size: clamp(14px, 3.5vw, 16px) !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            min-width: 100px !important;
+          }
+          .quote-nav-button:hover {
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5) !important;
+            transform: translateY(-1px) !important;
+          }
+          .quote-nav-button:disabled {
+            background: rgba(135, 206, 250, 0.3) !important;
+            box-shadow: none !important;
+            opacity: 0.5 !important;
+          }
+          
           /* Buttons */
           .quote-button {
             padding: 12px 20px !important;
@@ -1781,6 +1816,18 @@ const QuotePage = () => {
           }
           .quote-service-card h4 { font-size: clamp(14px, 4.2vw, 16px) !important; }
           .quote-service-card p { font-size: clamp(11px, 3.2vw, 13px) !important; }
+          
+          /* Smaller Card Icons */
+          .quote-card-icon {
+            width: clamp(30px, 6vw, 45px) !important;
+            height: clamp(30px, 6vw, 45px) !important;
+            font-size: clamp(15px, 3vw, 22px) !important;
+          }
+          .quote-service-card .quote-card-icon {
+            width: clamp(28px, 5.5vw, 40px) !important;
+            height: clamp(28px, 5.5vw, 40px) !important;
+            font-size: clamp(14px, 2.8vw, 20px) !important;
+          }
           
           /* Buttons */
           .quote-button {
@@ -2194,15 +2241,16 @@ const QuotePage = () => {
                       onClick={handleBack}
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
+                      className="quote-nav-button"
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: '8px',
                         padding: '12px 24px',
-                        background: 'rgba(135, 206, 250, 0.08)',
-                        border: '2px solid rgba(135, 206, 250, 0.4)',
+                        background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 35%, #ff5722 70%, #e64a19 100%)',
+                        border: 'none',
                         borderRadius: '25px',
-                        color: '#87ceeb',
+                        color: 'white',
                         textDecoration: 'none',
                         fontSize: '15px',
                         fontWeight: '600',
@@ -2210,6 +2258,7 @@ const QuotePage = () => {
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                         cursor: 'pointer',
                         minWidth: '120px',
+                        boxShadow: '0 4px 16px rgba(255, 107, 53, 0.4)',
                       }}
                     >
                       <ArrowBack sx={{ fontSize: 18 }} />
@@ -2277,6 +2326,7 @@ const QuotePage = () => {
                       disabled={!formData.serviceCategory && activeStep === 0}
                       whileHover={(!formData.serviceCategory && activeStep === 0) ? {} : { scale: 1.05, y: -2 }}
                       whileTap={(!formData.serviceCategory && activeStep === 0) ? {} : { scale: 0.98 }}
+                      className="quote-nav-button"
                       style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -2284,10 +2334,10 @@ const QuotePage = () => {
                         padding: '16px 32px',
                         background: (!formData.serviceCategory && activeStep === 0) ? 
                           'rgba(135, 206, 250, 0.3)' : 
-                          'linear-gradient(135deg, #00bfff 0%, #87ceeb 100%)',
+                          'linear-gradient(135deg, #ff6b35 0%, #f7931e 35%, #ff5722 70%, #e64a19 100%)',
                         border: 'none',
                         borderRadius: '980px',
-                        color: '#ccebff',
+                        color: 'white',
                         fontSize: '16px',
                         fontWeight: '600',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -2295,7 +2345,7 @@ const QuotePage = () => {
                         cursor: (!formData.serviceCategory && activeStep === 0) ? 'not-allowed' : 'pointer',
                         minWidth: '140px',
                         boxShadow: (!formData.serviceCategory && activeStep === 0) ? 
-                          'none' : '0 8px 32px rgba(135, 206, 250, 0.4)',
+                          'none' : '0 4px 16px rgba(255, 107, 53, 0.4)',
                         opacity: (!formData.serviceCategory && activeStep === 0) ? 0.5 : 1,
                       }}
                     >
