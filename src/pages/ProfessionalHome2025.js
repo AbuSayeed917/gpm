@@ -541,6 +541,7 @@ const ProfessionalHome2025 = () => {
               marginBottom: '32px',
               maxWidth: '90%',
               margin: '0 auto 32px auto',
+              textAlign: 'justify',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
             }}
           >
@@ -558,10 +559,10 @@ const ProfessionalHome2025 = () => {
               style={{
                 background: '#007AFF',
                 color: 'white',
-                padding: '14px 32px',
+                padding: '12px 24px',
                 borderRadius: '980px',
                 textDecoration: 'none',
-                fontSize: '17px',
+                fontSize: '15px',
                 fontWeight: '500',
                 display: 'inline-flex',
                 alignItems: 'center',
