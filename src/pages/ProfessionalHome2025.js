@@ -856,18 +856,294 @@ const ProfessionalHome2025 = () => {
             strategic consultancy, and compliance improvement.
           </p>
 
-          {/* Service Card Swipe Container */}
-          <div
-            style={{
-              position: 'relative',
-              maxWidth: '400px',
-              margin: '0 auto',
-              overflow: 'hidden',
-            }}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-          >
+          {/* Responsive Service Cards */}
+          {!isMobile ? (
+            // Desktop Layout - All three cards horizontal
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '24px',
+                maxWidth: '1200px',
+                margin: '0 auto',
+                padding: '0 20px',
+              }}
+            >
+              {services.map((service, index) => (
+                <div
+                  key={service.id}
+                  className='service-card'
+                  style={{
+                    perspective: '1000px',
+                    height: '480px',
+                    background: 'transparent',
+                    border: 'none',
+                    boxShadow: 'none',
+                  }}
+                >
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      height: '100%',
+                      transformStyle: 'preserve-3d',
+                      transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                      cursor: 'pointer',
+                      transform: flippedCards[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                    }}
+                    onMouseEnter={() => handleCardHover(index, true, setFlippedCards)}
+                    onMouseLeave={() => handleCardHover(index, false, setFlippedCards)}
+                  >
+                    {/* Front of card */}
+                    <div
+                      className='service-card-padding front-content'
+                      style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        backfaceVisibility: 'hidden',
+                        background: 'rgba(255, 255, 255, 0.9)',
+                        borderRadius: '20px',
+                        padding: '36px 28px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        border: '1px solid rgba(255, 255, 255, 0.4)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                        backdropFilter: 'blur(40px) saturate(200%)',
+                      }}
+                    >
+                      <div>
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '64px',
+                            height: '64px',
+                            borderRadius: '16px',
+                            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%)',
+                            border: '1px solid rgba(59, 130, 246, 0.2)',
+                            marginBottom: '24px',
+                            boxShadow: '0 8px 32px rgba(59, 130, 246, 0.15)',
+                          }}
+                        >
+                          {service.icon}
+                        </div>
+
+                        <h3
+                          className='service-card-title'
+                          style={{
+                            fontSize: '20px',
+                            fontWeight: '600',
+                            color: '#1a237e',
+                            marginBottom: '8px',
+                            lineHeight: '1.3',
+                            textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                          }}
+                        >
+                          {service.title}
+                        </h3>
+
+                        <p
+                          className='service-card-subtitle'
+                          style={{
+                            fontSize: '12px',
+                            color: '#86868b',
+                            marginBottom: '16px',
+                            fontWeight: '500',
+                            textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                          }}
+                        >
+                          {service.subtitle}
+                        </p>
+
+                        <p
+                          style={{
+                            fontSize: '14px',
+                            color: '#283593',
+                            lineHeight: '1.4',
+                            marginBottom: '20px',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                          }}
+                        >
+                          {service.description}
+                        </p>
+                      </div>
+
+                      <Link
+                        to={service.href}
+                        className='learn-more-btn'
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          padding: '12px 20px',
+                          background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                          border: 'none',
+                          borderRadius: '20px',
+                          color: 'white',
+                          textDecoration: 'none',
+                          fontSize: '13px',
+                          fontWeight: '600',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                          transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          position: 'relative',
+                          zIndex: 2,
+                        }}
+                      >
+                        Learn More →
+                      </Link>
+                    </div>
+
+                    {/* Back of card */}
+                    <div
+                      className='service-card-padding back-content'
+                      style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        backfaceVisibility: 'hidden',
+                        transform: 'rotateY(180deg)',
+                        background: 'rgba(255, 255, 255, 0.95)',
+                        borderRadius: '20px',
+                        padding: '36px 28px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        border: '1px solid rgba(255, 255, 255, 0.4)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                        backdropFilter: 'blur(40px) saturate(200%)',
+                      }}
+                    >
+                      <div>
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            marginBottom: '24px',
+                          }}
+                        >
+                          <h4
+                            style={{
+                              fontSize: '16px',
+                              fontWeight: '600',
+                              color: '#1a237e',
+                              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                            }}
+                          >
+                            Key Features
+                          </h4>
+                          <span
+                            style={{
+                              fontSize: '11px',
+                              color: '#86868b',
+                              padding: '4px 8px',
+                              background: 'rgba(0, 122, 255, 0.1)',
+                              borderRadius: '8px',
+                              fontWeight: '500',
+                            }}
+                          >
+                            {service.timeline}
+                          </span>
+                        </div>
+
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '12px',
+                          }}
+                        >
+                          {service.features.map((feature, idx) => (
+                            <div
+                              key={idx}
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '12px',
+                                fontSize: '13px',
+                                color: '#283593',
+                                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                              }}
+                            >
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: '20px',
+                                  height: '20px',
+                                  borderRadius: '50%',
+                                  background: 'linear-gradient(135deg, #34c759 0%, #30d158 100%)',
+                                  flexShrink: 0,
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    color: 'white',
+                                    fontSize: '12px',
+                                    fontWeight: '600',
+                                  }}
+                                >
+                                  ✓
+                                </span>
+                              </div>
+                              {feature}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <Link
+                        to={service.href}
+                        className='learn-more-btn'
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          padding: '12px 20px',
+                          background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                          border: 'none',
+                          borderRadius: '20px',
+                          color: 'white',
+                          textDecoration: 'none',
+                          fontSize: '13px',
+                          fontWeight: '600',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                          transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          position: 'relative',
+                          zIndex: 2,
+                        }}
+                      >
+                        Learn More →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            // Mobile Layout - Swipe Carousel
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+                margin: '0 auto',
+                overflow: 'hidden',
+                padding: '0 20px',
+              }}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
             {/* Navigation Dots */}
             <div
               style={{
@@ -948,7 +1224,7 @@ const ProfessionalHome2025 = () => {
                   key={service.id}
                   style={{
                     width: '33.333%',
-                    padding: '0 10px',
+                    padding: '0 5px',
                     boxSizing: 'border-box',
                     flexShrink: 0,
                   }}
@@ -1248,6 +1524,7 @@ const ProfessionalHome2025 = () => {
               ))}
             </motion.div>
           </div>
+          )}
         </div>
       </section>
 
