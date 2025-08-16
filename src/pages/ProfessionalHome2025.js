@@ -92,6 +92,10 @@ const ProfessionalHome2025 = () => {
       }
       
       @media (max-width: 768px) {
+        .hero-section { 
+          padding: clamp(20px, 6vh, 40px) 16px clamp(20px, 4vh, 30px) 16px !important; 
+          min-height: clamp(400px, 60vh, 600px) !important;
+        }
         .hero-title { font-size: clamp(20px, 5vw, 32px) !important; line-height: 1.15 !important; }
         .hero-subtitle { font-size: clamp(14px, 3.5vw, 18px) !important; }
         .section-title { font-size: clamp(20px, 5vw, 28px) !important; }
@@ -195,6 +199,10 @@ const ProfessionalHome2025 = () => {
       }
       
       @media (max-width: 480px) {
+        .hero-section { 
+          padding: clamp(16px, 5vh, 30px) 12px clamp(16px, 3vh, 24px) 12px !important; 
+          min-height: clamp(350px, 50vh, 500px) !important;
+        }
         .hero-title { font-size: clamp(16px, 5.5vw, 24px) !important; line-height: 1.1 !important; }
         .hero-subtitle { font-size: clamp(12px, 4vw, 16px) !important; }
         .section-title { font-size: clamp(18px, 6vw, 24px) !important; }
@@ -289,6 +297,10 @@ const ProfessionalHome2025 = () => {
       }
       
       @media (max-width: 360px) {
+        .hero-section { 
+          padding: clamp(12px, 4vh, 24px) 10px clamp(12px, 2vh, 20px) 10px !important; 
+          min-height: clamp(300px, 45vh, 450px) !important;
+        }
         .hero-title { font-size: clamp(14px, 5vw, 20px) !important; line-height: 1.05 !important; }
         .hero-subtitle { font-size: clamp(11px, 3.5vw, 14px) !important; }
         .section-title { font-size: clamp(16px, 5.5vw, 22px) !important; }
@@ -316,6 +328,21 @@ const ProfessionalHome2025 = () => {
         .why-choose-text { font-size: clamp(10px, 3vw, 14px) !important; line-height: 1.25 !important; margin-bottom: 12px !important; }
         .hero-button { padding: 8px 16px !important; font-size: 13px !important; }
         .cta-button { padding: 8px 16px !important; font-size: 13px !important; }
+      }
+
+      /* Viewport height adjustments for very short screens */
+      @media (max-height: 600px) {
+        .hero-section { 
+          min-height: 400px !important;
+          padding: 20px 20px 16px 20px !important;
+        }
+      }
+      
+      @media (max-height: 500px) {
+        .hero-section { 
+          min-height: 350px !important;
+          padding: 16px 20px 12px 20px !important;
+        }
       }
     `;
     document.head.appendChild(style);
@@ -404,12 +431,16 @@ const ProfessionalHome2025 = () => {
     >
       {/* Hero Section - Apple Style */}
       <section
+        className="hero-section"
         style={{
-          padding: '50px 20px 40px 20px',
+          padding: 'clamp(30px, 8vh, 50px) 20px clamp(30px, 6vh, 40px) 20px',
           textAlign: 'center',
           background: '#e3f2fd',
           position: 'relative',
           overflow: 'hidden',
+          minHeight: 'clamp(500px, 70vh, 800px)',
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
         {/* Enhanced Liquid Glass Background - Sky Blue Harmony */}
