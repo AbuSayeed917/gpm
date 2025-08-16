@@ -588,7 +588,7 @@ const ProfessionalHome2025 = () => {
               Payroll Migration Specialists
             </span>
             <br className="mobile-break" />
-            for Seamless Global Transitions
+            {' '}for Seamless Global Transitions
           </h1>
           <p
             className='hero-subtitle'
