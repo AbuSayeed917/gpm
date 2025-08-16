@@ -99,11 +99,13 @@ const ProfessionalSMEServices = () => {
   ];
 
   return (
-    <AppleBackground variant='primary'>
+    <AppleBackground variant='primary' className='professional-sme-services'>
       {/* Hero Section - Homepage Style */}
       <section
+        className="hero-section"
         style={{
-          padding: '50px 20px 40px 20px',
+          padding: 'clamp(20px, 6vh, 40px) 16px clamp(20px, 4vh, 30px) 16px',
+          minHeight: 'clamp(400px, 60vh, 600px)',
           textAlign: 'center',
           background: '#e3f2fd',
           position: 'relative',
@@ -167,10 +169,11 @@ const ProfessionalSMEServices = () => {
             </motion.div>
 
             <h1
+              className="hero-title"
               style={{
-                fontSize: 'clamp(38px, 4.5vw, 50px)',
-                fontWeight: '700',
-                lineHeight: '1.05',
+                fontSize: 'clamp(24px, 4.5vw, 44px)',
+                fontWeight: '600',
+                lineHeight: '1.1',
                 color: '#1a237e',
                 marginBottom: '16px',
                 letterSpacing: '-0.025em',
@@ -198,8 +201,9 @@ const ProfessionalSMEServices = () => {
             </h1>
 
             <p
+              className="hero-subtitle"
               style={{
-                fontSize: '20px',
+                fontSize: 'clamp(16px, 4vw, 20px)',
                 lineHeight: '1.3',
                 color: '#283593',
                 fontWeight: '400',
@@ -216,13 +220,14 @@ const ProfessionalSMEServices = () => {
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
               <Link
                 to='/contact'
+                className="hero-button"
                 style={{
                   background: '#007AFF',
                   color: 'white',
-                  padding: '14px 32px',
+                  padding: '12px 24px',
                   borderRadius: '980px',
                   textDecoration: 'none',
-                  fontSize: '17px',
+                  fontSize: '15px',
                   fontWeight: '500',
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -252,7 +257,7 @@ const ProfessionalSMEServices = () => {
       {/* Services Section */}
       <section
         style={{
-          padding: '0px 20px 40px 20px',
+          padding: '0px clamp(12px, 4vw, 20px) clamp(20px, 6vw, 40px) clamp(12px, 4vw, 20px)',
           background: '#e3f2fd',
           position: 'relative',
           overflow: 'hidden',
@@ -268,8 +273,9 @@ const ProfessionalSMEServices = () => {
             style={{ textAlign: 'center' }}
           >
             <h2
+              className="section-title-lg"
               style={{
-                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontSize: 'clamp(20px, 3.5vw, 28px)',
                 fontWeight: '700',
                 color: '#1a237e',
                 marginBottom: '12px',
@@ -282,6 +288,7 @@ const ProfessionalSMEServices = () => {
               Our Services.
             </h2>
             <p
+              className="body-xl"
               style={{
                 fontSize: '18px',
                 color: '#283593',
@@ -324,12 +331,12 @@ const ProfessionalSMEServices = () => {
                 <div
                   style={{
                     background: 'rgba(255, 255, 255, 0.9)',
-                    borderRadius: '22px',
-                    padding: '48px 32px',
+                    borderRadius: 'clamp(16px, 4vw, 22px)',
+                    padding: 'clamp(24px, 6vw, 48px) clamp(16px, 4vw, 32px)',
                     color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
-                    height: '440px',
+                    height: 'clamp(320px, 50vw, 440px)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
@@ -352,7 +359,7 @@ const ProfessionalSMEServices = () => {
                         'linear-gradient(135deg, rgba(0, 122, 255, 0.025) 0%, rgba(88, 86, 214, 0.025) 100%)',
                       backdropFilter: 'blur(40px)',
                       WebkitBackdropFilter: 'blur(40px)',
-                      borderRadius: '22px',
+                      borderRadius: 'clamp(16px, 4vw, 22px)',
                     }}
                   />
 
@@ -379,10 +386,10 @@ const ProfessionalSMEServices = () => {
                     >
                       <div
                         style={{
-                          width: '72px',
-                          height: '72px',
+                          width: 'clamp(52px, 10vw, 72px)',
+                          height: 'clamp(52px, 10vw, 72px)',
                           background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
-                          borderRadius: '22px',
+                          borderRadius: 'clamp(16px, 4vw, 22px)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -425,10 +432,10 @@ const ProfessionalSMEServices = () => {
 
                       <div
                         style={{
-                          width: '72px',
-                          height: '72px',
+                          width: 'clamp(52px, 10vw, 72px)',
+                          height: 'clamp(52px, 10vw, 72px)',
                           background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
-                          borderRadius: '22px',
+                          borderRadius: 'clamp(16px, 4vw, 22px)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -448,6 +455,7 @@ const ProfessionalSMEServices = () => {
 
                     {/* Typography */}
                     <h3
+                      className="card-title-lg"
                       style={{
                         fontSize: '22px',
                         fontWeight: '700',
@@ -466,6 +474,7 @@ const ProfessionalSMEServices = () => {
                     </h3>
 
                     <p
+                      className="card-description-lg"
                       style={{
                         fontSize: '15px',
                         color: '#283593',
@@ -486,12 +495,12 @@ const ProfessionalSMEServices = () => {
                 <div
                   style={{
                     background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
-                    borderRadius: '22px',
-                    padding: '48px 32px',
+                    borderRadius: 'clamp(16px, 4vw, 22px)',
+                    padding: 'clamp(24px, 6vw, 48px) clamp(16px, 4vw, 32px)',
                     color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
-                    height: '440px',
+                    height: 'clamp(320px, 50vw, 440px)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -527,6 +536,7 @@ const ProfessionalSMEServices = () => {
 
                   <div style={{ position: 'relative', zIndex: 1 }}>
                     <h4
+                      className="card-title-lg"
                       style={{
                         fontSize: '22px',
                         fontWeight: '700',
@@ -602,12 +612,12 @@ const ProfessionalSMEServices = () => {
                 <div
                   style={{
                     background: 'rgba(255, 255, 255, 0.9)',
-                    borderRadius: '22px',
-                    padding: '48px 32px',
+                    borderRadius: 'clamp(16px, 4vw, 22px)',
+                    padding: 'clamp(24px, 6vw, 48px) clamp(16px, 4vw, 32px)',
                     color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
-                    height: '440px',
+                    height: 'clamp(320px, 50vw, 440px)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
@@ -629,7 +639,7 @@ const ProfessionalSMEServices = () => {
                         'linear-gradient(135deg, rgba(48, 209, 88, 0.025) 0%, rgba(50, 215, 75, 0.025) 100%)',
                       backdropFilter: 'blur(40px)',
                       WebkitBackdropFilter: 'blur(40px)',
-                      borderRadius: '22px',
+                      borderRadius: 'clamp(16px, 4vw, 22px)',
                     }}
                   />
 
@@ -654,10 +664,10 @@ const ProfessionalSMEServices = () => {
                     >
                       <div
                         style={{
-                          width: '72px',
-                          height: '72px',
+                          width: 'clamp(52px, 10vw, 72px)',
+                          height: 'clamp(52px, 10vw, 72px)',
                           background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
-                          borderRadius: '22px',
+                          borderRadius: 'clamp(16px, 4vw, 22px)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -688,10 +698,10 @@ const ProfessionalSMEServices = () => {
 
                       <div
                         style={{
-                          width: '72px',
-                          height: '72px',
+                          width: 'clamp(52px, 10vw, 72px)',
+                          height: 'clamp(52px, 10vw, 72px)',
                           background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
-                          borderRadius: '22px',
+                          borderRadius: 'clamp(16px, 4vw, 22px)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -710,6 +720,7 @@ const ProfessionalSMEServices = () => {
                     </div>
 
                     <h3
+                      className="card-title-lg"
                       style={{
                         fontSize: '22px',
                         fontWeight: '700',
@@ -728,6 +739,7 @@ const ProfessionalSMEServices = () => {
                     </h3>
 
                     <p
+                      className="card-description-lg"
                       style={{
                         fontSize: '15px',
                         color: '#283593',
@@ -748,12 +760,12 @@ const ProfessionalSMEServices = () => {
                 <div
                   style={{
                     background: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
-                    borderRadius: '22px',
-                    padding: '48px 32px',
+                    borderRadius: 'clamp(16px, 4vw, 22px)',
+                    padding: 'clamp(24px, 6vw, 48px) clamp(16px, 4vw, 32px)',
                     color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
-                    height: '440px',
+                    height: 'clamp(320px, 50vw, 440px)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -776,6 +788,7 @@ const ProfessionalSMEServices = () => {
 
                   <div style={{ position: 'relative', zIndex: 1 }}>
                     <h4
+                      className="card-title-lg"
                       style={{
                         fontSize: '22px',
                         fontWeight: '700',
@@ -851,12 +864,12 @@ const ProfessionalSMEServices = () => {
                 <div
                   style={{
                     background: 'rgba(255, 255, 255, 0.9)',
-                    borderRadius: '22px',
-                    padding: '48px 32px',
+                    borderRadius: 'clamp(16px, 4vw, 22px)',
+                    padding: 'clamp(24px, 6vw, 48px) clamp(16px, 4vw, 32px)',
                     color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
-                    height: '440px',
+                    height: 'clamp(320px, 50vw, 440px)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
@@ -878,7 +891,7 @@ const ProfessionalSMEServices = () => {
                         'linear-gradient(135deg, rgba(255, 59, 48, 0.025) 0%, rgba(255, 149, 0, 0.025) 100%)',
                       backdropFilter: 'blur(40px)',
                       WebkitBackdropFilter: 'blur(40px)',
-                      borderRadius: '22px',
+                      borderRadius: 'clamp(16px, 4vw, 22px)',
                     }}
                   />
 
@@ -903,10 +916,10 @@ const ProfessionalSMEServices = () => {
                     >
                       <div
                         style={{
-                          width: '72px',
-                          height: '72px',
+                          width: 'clamp(52px, 10vw, 72px)',
+                          height: 'clamp(52px, 10vw, 72px)',
                           background: 'linear-gradient(135deg, #ff3b30 0%, #ff9500 100%)',
-                          borderRadius: '22px',
+                          borderRadius: 'clamp(16px, 4vw, 22px)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -937,10 +950,10 @@ const ProfessionalSMEServices = () => {
 
                       <div
                         style={{
-                          width: '72px',
-                          height: '72px',
+                          width: 'clamp(52px, 10vw, 72px)',
+                          height: 'clamp(52px, 10vw, 72px)',
                           background: 'linear-gradient(135deg, #ff3b30 0%, #ff9500 100%)',
-                          borderRadius: '22px',
+                          borderRadius: 'clamp(16px, 4vw, 22px)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -959,6 +972,7 @@ const ProfessionalSMEServices = () => {
                     </div>
 
                     <h3
+                      className="card-title-lg"
                       style={{
                         fontSize: '22px',
                         fontWeight: '700',
@@ -977,6 +991,7 @@ const ProfessionalSMEServices = () => {
                     </h3>
 
                     <p
+                      className="card-description-lg"
                       style={{
                         fontSize: '15px',
                         color: '#283593',
@@ -997,12 +1012,12 @@ const ProfessionalSMEServices = () => {
                 <div
                   style={{
                     background: 'linear-gradient(135deg, #ff3b30 0%, #ff9500 100%)',
-                    borderRadius: '22px',
-                    padding: '48px 32px',
+                    borderRadius: 'clamp(16px, 4vw, 22px)',
+                    padding: 'clamp(24px, 6vw, 48px) clamp(16px, 4vw, 32px)',
                     color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
-                    height: '440px',
+                    height: 'clamp(320px, 50vw, 440px)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -1025,6 +1040,7 @@ const ProfessionalSMEServices = () => {
 
                   <div style={{ position: 'relative', zIndex: 1 }}>
                     <h4
+                      className="card-title-lg"
                       style={{
                         fontSize: '22px',
                         fontWeight: '700',
@@ -1100,12 +1116,12 @@ const ProfessionalSMEServices = () => {
                 <div
                   style={{
                     background: 'rgba(255, 255, 255, 0.9)',
-                    borderRadius: '22px',
-                    padding: '48px 32px',
+                    borderRadius: 'clamp(16px, 4vw, 22px)',
+                    padding: 'clamp(24px, 6vw, 48px) clamp(16px, 4vw, 32px)',
                     color: '#000000',
                     position: 'relative',
                     overflow: 'hidden',
-                    height: '440px',
+                    height: 'clamp(320px, 50vw, 440px)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
@@ -1127,7 +1143,7 @@ const ProfessionalSMEServices = () => {
                         'linear-gradient(135deg, rgba(88, 86, 214, 0.025) 0%, rgba(175, 82, 222, 0.025) 100%)',
                       backdropFilter: 'blur(40px)',
                       WebkitBackdropFilter: 'blur(40px)',
-                      borderRadius: '22px',
+                      borderRadius: 'clamp(16px, 4vw, 22px)',
                     }}
                   />
 
@@ -1152,10 +1168,10 @@ const ProfessionalSMEServices = () => {
                     >
                       <div
                         style={{
-                          width: '72px',
-                          height: '72px',
+                          width: 'clamp(52px, 10vw, 72px)',
+                          height: 'clamp(52px, 10vw, 72px)',
                           background: 'linear-gradient(135deg, #5856d6 0%, #af52de 100%)',
-                          borderRadius: '22px',
+                          borderRadius: 'clamp(16px, 4vw, 22px)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -1186,10 +1202,10 @@ const ProfessionalSMEServices = () => {
 
                       <div
                         style={{
-                          width: '72px',
-                          height: '72px',
+                          width: 'clamp(52px, 10vw, 72px)',
+                          height: 'clamp(52px, 10vw, 72px)',
                           background: 'linear-gradient(135deg, #5856d6 0%, #af52de 100%)',
-                          borderRadius: '22px',
+                          borderRadius: 'clamp(16px, 4vw, 22px)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -1208,6 +1224,7 @@ const ProfessionalSMEServices = () => {
                     </div>
 
                     <h3
+                      className="card-title-lg"
                       style={{
                         fontSize: '22px',
                         fontWeight: '700',
@@ -1226,6 +1243,7 @@ const ProfessionalSMEServices = () => {
                     </h3>
 
                     <p
+                      className="card-description-lg"
                       style={{
                         fontSize: '15px',
                         color: '#283593',
@@ -1246,12 +1264,12 @@ const ProfessionalSMEServices = () => {
                 <div
                   style={{
                     background: 'linear-gradient(135deg, #5856d6 0%, #af52de 100%)',
-                    borderRadius: '22px',
-                    padding: '48px 32px',
+                    borderRadius: 'clamp(16px, 4vw, 22px)',
+                    padding: 'clamp(24px, 6vw, 48px) clamp(16px, 4vw, 32px)',
                     color: '#ccebff',
                     position: 'relative',
                     overflow: 'hidden',
-                    height: '440px',
+                    height: 'clamp(320px, 50vw, 440px)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -1274,6 +1292,7 @@ const ProfessionalSMEServices = () => {
 
                   <div style={{ position: 'relative', zIndex: 1 }}>
                     <h4
+                      className="card-title-lg"
                       style={{
                         fontSize: '22px',
                         fontWeight: '700',
@@ -1338,7 +1357,7 @@ const ProfessionalSMEServices = () => {
       {/* Why SMEs Choose Us Section */}
       <section
         style={{
-          padding: '80px 20px 60px 20px',
+          padding: 'clamp(40px, 10vw, 80px) clamp(12px, 4vw, 20px) clamp(30px, 8vw, 60px) clamp(12px, 4vw, 20px)',
           background: '#e3f2fd',
           position: 'relative',
           overflow: 'hidden',
@@ -1368,8 +1387,9 @@ const ProfessionalSMEServices = () => {
             style={{ textAlign: 'center' }}
           >
             <h2
+              className="section-title-lg"
               style={{
-                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontSize: 'clamp(20px, 3.5vw, 28px)',
                 fontWeight: '700',
                 background:
                   'linear-gradient(135deg, #FF6B35 0%, #F7931E 35%, #FF5722 70%, #E64A19 100%)',
@@ -1385,6 +1405,7 @@ const ProfessionalSMEServices = () => {
               Why SMEs Choose Us
             </h2>
             <p
+              className="subtitle-xl"
               style={{
                 fontSize: '21px',
                 color: '#000000',
@@ -1428,8 +1449,8 @@ const ProfessionalSMEServices = () => {
                   <div
                     style={{
                       background: 'rgba(255, 255, 255, 0.72)',
-                      borderRadius: '22px',
-                      padding: '32px',
+                      borderRadius: 'clamp(16px, 4vw, 22px)',
+                      padding: 'clamp(20px, 5vw, 32px)',
                       height: '100%',
                       display: 'flex',
                       flexDirection: 'column',
@@ -1443,17 +1464,18 @@ const ProfessionalSMEServices = () => {
                       style={{
                         width: '72px',
                         height: '72px',
-                        borderRadius: '22px',
+                        borderRadius: 'clamp(16px, 4vw, 22px)',
                         background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        marginBottom: '24px',
+                        marginBottom: 'clamp(16px, 4vw, 24px)',
                         boxShadow:
                           '0 8px 32px rgba(0, 122, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                       }}
                     >
                       {React.cloneElement(feature.icon, {
+                        className: 'icon-md',
                         sx: {
                           fontSize: 32,
                           color: '#ccebff',
@@ -1463,6 +1485,7 @@ const ProfessionalSMEServices = () => {
                     </div>
 
                     <h3
+                      className="card-title-lg"
                       style={{
                         fontSize: '22px',
                         fontWeight: '700',
@@ -1481,10 +1504,11 @@ const ProfessionalSMEServices = () => {
                     </h3>
 
                     <p
+                      className="card-description-lg"
                       style={{
                         fontSize: '15px',
                         color: '#1a237e',
-                        marginBottom: '24px',
+                        marginBottom: 'clamp(16px, 4vw, 24px)',
                         fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: '1.47059',
                         letterSpacing: '-0.022em',
@@ -1524,8 +1548,8 @@ const ProfessionalSMEServices = () => {
                   <div
                     style={{
                       background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
-                      borderRadius: '22px',
-                      padding: '32px',
+                      borderRadius: 'clamp(16px, 4vw, 22px)',
+                      padding: 'clamp(20px, 5vw, 32px)',
                       color: '#ccebff',
                       height: '100%',
                       display: 'flex',
@@ -1563,9 +1587,9 @@ const ProfessionalSMEServices = () => {
                       {/* Icon */}
                       <div
                         style={{
-                          width: '72px',
-                          height: '72px',
-                          borderRadius: '22px',
+                          width: 'clamp(52px, 10vw, 72px)',
+                          height: 'clamp(52px, 10vw, 72px)',
+                          borderRadius: 'clamp(16px, 4vw, 22px)',
                           background: 'rgba(255, 255, 255, 0.2)',
                           backdropFilter: 'blur(20px)',
                           border: '1px solid rgba(255, 255, 255, 0.3)',
@@ -1678,7 +1702,7 @@ const ProfessionalSMEServices = () => {
       {/* Process Section */}
       <section
         style={{
-          padding: '40px 20px 60px 20px',
+          padding: 'clamp(20px, 6vw, 40px) clamp(12px, 4vw, 20px) clamp(30px, 8vw, 60px) clamp(12px, 4vw, 20px)',
           background: '#e3f2fd',
           position: 'relative',
           overflow: 'hidden',
@@ -1741,13 +1765,9 @@ const ProfessionalSMEServices = () => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '40px',
-                  flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
-                  '@media (max-width: 768px)': {
-                    flexDirection: 'column',
-                    textAlign: 'center',
-                    gap: '20px',
-                  },
+                  gap: 'clamp(20px, 5vw, 40px)',
+                  flexDirection: window.innerWidth <= 768 ? 'column' : (index % 2 === 0 ? 'row' : 'row-reverse'),
+                  textAlign: window.innerWidth <= 768 ? 'center' : 'left',
                 }}
                 className={`migration-step-${index % 2 === 0 ? 'left' : 'right'}`}
               >
@@ -1756,8 +1776,8 @@ const ProfessionalSMEServices = () => {
                   whileHover={{ scale: 1.1 }}
                   className='migration-step-circle'
                   style={{
-                    width: '80px',
-                    height: '80px',
+                    width: 'clamp(60px, 12vw, 80px)',
+                    height: 'clamp(60px, 12vw, 80px)',
                     borderRadius: '50%',
                     background: 'linear-gradient(135deg, #007aff 0%, #5856d6 100%)',
                     display: 'flex',
@@ -1769,7 +1789,7 @@ const ProfessionalSMEServices = () => {
                 >
                   <span
                     style={{
-                      fontSize: '1.5rem',
+                      fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                       fontWeight: '700',
                       color: '#ccebff',
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -1804,8 +1824,8 @@ const ProfessionalSMEServices = () => {
                   style={{
                     flex: 1,
                     background: 'rgba(255, 255, 255, 0.72)',
-                    borderRadius: '18px',
-                    padding: '32px 40px',
+                    borderRadius: 'clamp(12px, 3vw, 18px)',
+                    padding: 'clamp(20px, 5vw, 32px) clamp(16px, 4vw, 40px)',
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
                     border: '1px solid rgba(255, 255, 255, 0.4)',
                     position: 'relative',
@@ -1839,8 +1859,9 @@ const ProfessionalSMEServices = () => {
                       }}
                     >
                       <h3
+                        className="card-title-lg"
                         style={{
-                          fontSize: '1.5rem',
+                          fontSize: 'clamp(1.2rem, 4vw, 1.5rem)',
                           fontWeight: '700',
                           background:
                             'linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%)',
@@ -1874,8 +1895,9 @@ const ProfessionalSMEServices = () => {
 
                     {/* Description */}
                     <p
+                      className="card-description-lg"
                       style={{
-                        fontSize: '1rem',
+                        fontSize: 'clamp(0.9rem, 3vw, 1rem)',
                         lineHeight: '1.6',
                         color: '#1a237e',
                         margin: 0,
@@ -1937,7 +1959,7 @@ const ProfessionalSMEServices = () => {
       {/* Success Story Section */}
       <section
         style={{
-          padding: '80px 20px 60px 20px',
+          padding: 'clamp(40px, 10vw, 80px) clamp(12px, 4vw, 20px) clamp(30px, 8vw, 60px) clamp(12px, 4vw, 20px)',
           background: '#e3f2fd',
           position: 'relative',
           overflow: 'hidden',
@@ -1951,8 +1973,8 @@ const ProfessionalSMEServices = () => {
             viewport={{ once: true }}
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '64px',
+              gridTemplateColumns: window.innerWidth <= 768 ? '1fr' : '1fr 1fr',
+              gap: 'clamp(32px, 8vw, 64px)',
               alignItems: 'center',
               maxWidth: '1200px',
               margin: '0 auto',
@@ -2103,12 +2125,12 @@ const ProfessionalSMEServices = () => {
                 transition={{ duration: 0.3 }}
                 style={{
                   background: 'linear-gradient(135deg, #87CEEB 0%, #87CEFA 50%, #ADD8E6 100%)',
-                  borderRadius: '20px',
-                  padding: '40px 32px',
+                  borderRadius: 'clamp(16px, 4vw, 20px)',
+                  padding: 'clamp(24px, 6vw, 40px) clamp(20px, 5vw, 32px)',
                   color: '#1a237e',
                   position: 'relative',
                   overflow: 'hidden',
-                  minHeight: '400px',
+                  minHeight: 'clamp(300px, 40vw, 400px)',
                   display: 'flex',
                   flexDirection: 'column',
                   boxShadow: '0 8px 32px rgba(135, 206, 235, 0.4)',
@@ -2208,7 +2230,7 @@ const ProfessionalSMEServices = () => {
       {/* CTA Section */}
       <section
         style={{
-          padding: '80px 20px',
+          padding: 'clamp(40px, 10vw, 80px) clamp(12px, 4vw, 20px)',
           background: '#e3f2fd',
           textAlign: 'center',
           position: 'relative',
@@ -2248,8 +2270,9 @@ const ProfessionalSMEServices = () => {
             style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}
           >
             <h2
+              className="section-title-lg"
               style={{
-                fontSize: 'clamp(28px, 3.5vw, 36px)',
+                fontSize: 'clamp(20px, 3.5vw, 28px)',
                 fontWeight: '600',
                 color: '#1a237e',
                 marginBottom: '20px',
@@ -2261,6 +2284,7 @@ const ProfessionalSMEServices = () => {
               Ready to migrate your SME payroll?
             </h2>
             <p
+              className="subtitle-xl"
               style={{
                 fontSize: '24px',
                 color: '#283593',
@@ -2274,11 +2298,19 @@ const ProfessionalSMEServices = () => {
             </p>
 
             <div
-              style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}
+              style={{ 
+                display: 'flex', 
+                gap: 'clamp(12px, 3vw, 16px)', 
+                justifyContent: 'center', 
+                flexWrap: 'wrap',
+                flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
+                alignItems: 'center'
+              }}
             >
               <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   to='/quote'
+                  className="btn-responsive-lg"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -2306,6 +2338,7 @@ const ProfessionalSMEServices = () => {
               <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   to='/quote'
+                  className="btn-responsive-lg"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -2349,3 +2382,4 @@ const ProfessionalSMEServices = () => {
 };
 
 export default ProfessionalSMEServices;
+
